@@ -30,6 +30,7 @@
 
   <!--MODULOS DEL SISTEMA-->  
   <script language="JavaScript" type='text/javascript' src='js/modulos/configuracion.js'></script> 
+  <script language="JavaScript" type='text/javascript' src='js/modulos/administracion.js'></script> 
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
     
