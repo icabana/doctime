@@ -14,6 +14,22 @@ function cargar_dependencias(){
         
 }
 
+function cargar_empleados(){
+
+    $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
+    $('.ui-widget').remove();
+    $('.elfinder-quicklook').remove();
+    $('.ui-draggable').remove();
+    $('.ui-resizable').remove();
+
+    limpiar_cuerpo();
+    
+    abrirVentanaContenedorTabla(
+        'tabla_empleados',
+        'administracion', 'Empleados', 'index', '');    
+        
+}
+
 function cargar_series(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
