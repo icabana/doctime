@@ -112,6 +112,9 @@
                with font-awesome or any other icon font library -->
         
           
+          <?php
+            if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
+          ?>
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -143,6 +146,9 @@
               </li>
             </ul>
           </li>
+          
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -159,9 +165,98 @@
                 </a>
               </li>
             </ul>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Empleados </p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Series </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Subseries </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipos documentales </p>
+                </a>
+              </li>
             </ul>
           </li>
+         
+         <?php
+            }
+         ?>
+
+
+
+
+
+
+          <?php
+            if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+          ?>
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Carpetas
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes_activos();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados Activos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados Finalizados</p>
+                </a>
+              </li>
+
+              <?php
+                foreach($carpetas as $carpeta){
+              ?>
+              <li class="nav-item">
+                <a  href="#" onclick="cargar_entrantes_carpeta(<?php $carpeta['id_carpeta']; ?>);" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><?php echo $carpeta['nombre_carpeta']; ?></p>
+                </a>
+              </li>
+              <?php
+                }
+              ?>
+
+
+            </ul>
+
+          </li>
+
+          <?php
+            if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+          ?>
           
         </ul>
       </nav>
