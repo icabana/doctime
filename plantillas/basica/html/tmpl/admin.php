@@ -49,24 +49,22 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Inicio</a>
+        <a href="index3.html" class="nav-link">Nuevo radicado de entrada</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contactos</a>
+        <a href="#" class="nav-link">Nuevo radicado de salida</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Nuevo pre-radicado</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+          Seleccionar Año 
+          <select>
+              /// QUE ESTE SELECT SE LLENE AUTOMATICAMENTE SI CADA AÑO TIENE RADICADOS
+          </select>
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
 
     
     <!-- Right navbar links -->
@@ -115,6 +113,52 @@
           <?php
             if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
           ?>
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Radicados
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_usuarios();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados de Entrada</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_roles();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados de Salida</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  href="#" onclick="cargar_parametros();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pre-Radicaci&oacute;n</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_roles();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados Finalizados</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" onclick="cargar_roles();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados Archivados</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
