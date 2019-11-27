@@ -53,7 +53,7 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4 style="color:grey">GESTIONAR ROLES</h4>
+                            <h4 style="color:grey">GESTIONAR SERIES DOCUMENTALES</h4>
                         </div>
                         <div class="col-md-2">
 

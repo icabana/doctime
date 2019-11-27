@@ -52,12 +52,167 @@ $froms = new Formularios();
                         value="<?php echo $datos['id_entrante']; ?>">
 
               <div class="card-body">
-                <div class="form-group">
-                  <label>Nombre del Entrante</label>
+              
+              
+              <div class="form-group">
+                <label>Remitente</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
 
-                  <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante" 
-                        value="<?php echo $datos['nombre_entrante']; ?>">
-                </div>
+              //OCULTAR
+              <div class="form-group">
+                <label>Tipo de documento</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Documento</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Telefono</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Direcci&oacute;n</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Ciudad</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+
+
+              <div class="form-group">
+                <label>Destinatario</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+
+              //OCULTAR
+              <div class="form-group">
+                <label>Tipo de documento</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Documento</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Telefono</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Direcci&oacute;n</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Ciudad</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+
+
+
+            
+              <div class="form-group">
+                <label>Asunto</label>
+                <textarea id="asunto_entrante" name="asunto_entrante"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Tipo de Radicado</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+              <div class="form-group">
+                <label>Fecha max de respuesta</label>
+                <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+              </div>
+
+
+              <div class="form-group">
+                <label>Descripcion de los anexos</label>
+                <textarea id="asunto_entrante" name="asunto_entrante"></textarea>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label>Serie</label>
+                <?php
+                echo $froms->Lista_Desplegable(
+                        $roles,
+                        'nombre_rol',
+                        'id_rol',
+                        'rol_usuario',
+                        '',
+                        '',
+                        ''
+                    );
+                ?>
+
+              </div>
+
+
+              <div class="form-group">
+                <label>Subserie</label>
+                <?php
+                echo $froms->Lista_Desplegable(
+                        $roles,
+                        'nombre_rol',
+                        'id_rol',
+                        'rol_usuario',
+                        '',
+                        '',
+                        ''
+                    );
+                ?>
+
+              </div>
+
+
+              <div class="form-group">
+                <label>Tipo Documental</label>
+                <?php
+                echo $froms->Lista_Desplegable(
+                        $roles,
+                        'nombre_rol',
+                        'id_rol',
+                        'rol_usuario',
+                        '',
+                        '',
+                        ''
+                    );
+                ?>
+
+              </div>
+
+
+              <div class="form-group">
+                <label>Usuario responsable</label>
+                <?php
+                echo $froms->Lista_Desplegable(
+                        $roles,
+                        'nombre_rol',
+                        'id_rol',
+                        'rol_usuario',
+                        '',
+                        '',
+                        ''
+                    );
+                ?>
+
+              </div>
               </div>
 
               <div class="card-footer">

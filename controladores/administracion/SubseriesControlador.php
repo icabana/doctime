@@ -46,13 +46,13 @@ class SubseriesControlador extends ControllerBase {
         $SubseriesModel = new SubseriesModel();            
         
         $resp = $SubseriesModel->insertar(
-                                        $_POST['serie_subserie'],
-                                        $_POST['codigo_subserie'],
-                                        $_POST['nombre_subserie'],
-                                        $_POST['tiempogestion_subserie'],
-                                        $_POST['tiempocentral_subserie'],
-                                        $_POST['soporte_subserie'],
-                                        $_POST['disposicion_subserie']
+                                $_POST['serie_subserie'],
+                                $_POST['codigo_subserie'],
+                                $_POST['nombre_subserie'],
+                                $_POST['ag_subserie'],
+                                $_POST['ac_subserie'],
+                                $_POST['soporte_subserie'],
+                                $_POST['disposicion_subserie']
                                 );        
         
         if( $resp != 0 ){
@@ -73,8 +73,8 @@ class SubseriesControlador extends ControllerBase {
                                 $_POST['serie_subserie'],
                                 $_POST['codigo_subserie'],
                                 $_POST['nombre_subserie'],
-                                $_POST['tiempogestion_subserie'],
-                                $_POST['tiempocentral_subserie'],
+                                $_POST['ag_subserie'],
+                                $_POST['ac_subserie'],
                                 $_POST['soporte_subserie'],
                                 $_POST['disposicion_subserie']
         );        

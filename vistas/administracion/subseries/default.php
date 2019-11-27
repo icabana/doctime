@@ -53,12 +53,12 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4 style="color:grey">GESTIONAR SUBSERIES</h4>
+                            <h4 style="color:grey">GESTIONAR SUBSERIES DOCUMENTAL</h4>
                         </div>
                         <div class="col-md-2">
 
                             <button onclick="nuevo_subserie(); return false;" class="btn btn-success btn-sm">
-                                NUEVO ROL
+                                NUEVO SUBSERIE DOCUMENTAL
                             </button>
 
                         </div>

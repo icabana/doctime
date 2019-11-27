@@ -6,7 +6,9 @@ class DependenciasModel extends ModelBase {
         
         $query = "select 
                     dependencias.id_dependencia, 
-                    dependencias.nombre_dependencia
+                    dependencias.codigo_dependencia, 
+                    dependencias.nombre_dependencia, 
+                    dependencias.jefe_dependencia
                 
                     from dependencias";
         
@@ -19,7 +21,9 @@ class DependenciasModel extends ModelBase {
        
         $query = "select 	
                     dependencias.id_dependencia, 
-                    dependencias.nombre_dependencia
+                    dependencias.codigo_dependencia, 
+                    dependencias.nombre_dependencia, 
+                    dependencias.jefe_dependencia
                 
                     from dependencias
 
@@ -31,14 +35,20 @@ class DependenciasModel extends ModelBase {
     }
     
     function insertar(                               
-                        $nombre_dependencia
+                        $codigo_dependencia,
+                        $nombre_dependencia,
+                        $jefe_dependencia
                     ){
                 
-        $query = "INSERT INTO dependencias (
-                                nombre_dependencia
+        $query = "INSERT INTO dependencias (                                
+                                codigo_dependencia, 
+                                nombre_dependencia, 
+                                jefe_dependencia
                             )
                             VALUES(
-                                '".$nombre_dependencia."'
+                                '".$codigo_dependencia."',
+                                '".$nombre_dependencia."',
+                                '".$jefe_dependencia."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -47,10 +57,17 @@ class DependenciasModel extends ModelBase {
     
     function editar(
                     $id_dependencia, 
-                    $nombre_dependencia
+                    $codigo_dependencia,
+                    $nombre_dependencia,
+                    $jefe_dependencia
                 ) {
         
-        $query = "  UPDATE dependencias SET nombre_dependencia = '". $nombre_dependencia ."'           
+        $query = "  UPDATE dependencias 
+
+                    SET codigo_dependencia = '". $codigo_dependencia ."',
+                        nombre_dependencia = '". $nombre_dependencia ."',
+                        jefe_dependencia = '". $jefe_dependencia ."'
+                        
                     WHERE id_dependencia = '" . $id_dependencia . "'";
        
         return $this->modificarRegistros($query);

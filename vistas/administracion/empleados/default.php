@@ -58,7 +58,7 @@
                         <div class="col-md-2">
 
                             <button onclick="nuevo_empleado(); return false;" class="btn btn-success btn-sm">
-                                NUEVO ROL
+                                NUEVO EMPLEADO
                             </button>
 
                         </div>

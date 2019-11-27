@@ -1,30 +1,31 @@
 <script type="text/javascript">
+
   function editar_empleado() {
 
-    var datos = $('#formEmpleados').serialize();
+      var datos = $('#formEmpleados').serialize();
 
-    ejecutarAccion(
-      'configuracion',
-      'Empleados',
-      'guardar',
-      datos,
-      'editar_empleado2(data)'
-    );
+      ejecutarAccion(
+        'configuracion',
+        'Empleados',
+        'guardar',
+        datos,
+        'editar_empleado2(data)'
+      );
 
   }
 
   function editar_empleado2(data) {
 
-    if (data == 1) {
-      mensaje_alertas("success", "Empleado Editado Exitosamente", "center");
-      cargar_empleados();
-    } else {
-      mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
-    }
+      if (data == 1) {
+        mensaje_alertas("success", "Empleado Editado Exitosamente", "center");
+        cargar_empleados();
+      } else {
+        mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
+      }
 
   }
-</script>
 
+</script>
 
 <?php
 $froms = new Formularios();
@@ -58,13 +59,13 @@ $froms = new Formularios();
                   <label>Tipo de Documento</label>
                   <?php
                   echo $froms->Lista_Desplegable(
-                    $roles,
-                    'nombre_tipodocumento',
-                    'id_tipodocumento',
-                    'tipodocumento_empleado',
-                    $datos['rol_usuario'],
-                    '',
-                    ''
+                      $roles,
+                      'nombre_tipodocumento',
+                      'id_tipodocumento',
+                      'tipodocumento_empleado',
+                      $datos['rol_usuario'],
+                      '',
+                      ''
                   );
                   ?>
                 </div>

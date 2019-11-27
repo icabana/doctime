@@ -53,12 +53,12 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4 style="color:grey">GESTIONAR ROLES</h4>
+                            <h4 style="color:grey">GESTIONAR RADICADOS DE SALIDA</h4>
                         </div>
                         <div class="col-md-2">
 
                             <button onclick="nuevo_saliente(); return false;" class="btn btn-success btn-sm">
-                                NUEVO ROL
+                                NUEVO RADICADO DE SALIDA
                             </button>
 
                         </div>
@@ -88,13 +88,12 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_saliente'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['numero_saliente'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['fecha_saliente'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_remitente'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_destinatario'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['asunto_saliente'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['tipocomunicacion_saliente'])) . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_saliente(" . $items['id_saliente'] . ");' 
