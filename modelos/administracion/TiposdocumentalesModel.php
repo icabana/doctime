@@ -50,7 +50,8 @@ class TiposdocumentalesModel extends ModelBase {
                     $nombre_tipodocumental
                 ) {
         
-        $query = "  UPDATE tiposdocumentales SET nombre_tipodocumental = '". $nombre_tipodocumental ."'           
+        $query = "  UPDATE tiposdocumentales 
+                    SET nombre_tipodocumental = '". $nombre_tipodocumental ."'           
                     WHERE id_tipodocumental = '" . $id_tipodocumental . "'";
        
         return $this->modificarRegistros($query);

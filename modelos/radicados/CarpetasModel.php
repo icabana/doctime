@@ -48,9 +48,8 @@ class CarpetasModel extends ModelBase {
         
     }
     
-    function insertar(        
-                        $usuario_carpeta,
-                        $nombre_carpeta
+    function insertar(
+                    $nombre_carpeta
                     ){
                 
         $query = "INSERT INTO carpetas (                                 
@@ -68,13 +67,13 @@ class CarpetasModel extends ModelBase {
     
     function editar(
                     $id_carpeta, 
-                    $usuario_carpeta,
                     $nombre_carpeta
                 ) {
         
         $query = "  UPDATE carpetas 
-                    SET nombre_carpeta = '". $nombre_carpeta ."',
-                        usuario_carpeta = '". $_SESSION['ID_USUARIO'] ."'           
+
+                    SET nombre_carpeta = '". $nombre_carpeta ."'
+
                     WHERE id_carpeta = '" . $id_carpeta . "'";
        
         return $this->modificarRegistros($query);

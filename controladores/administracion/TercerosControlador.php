@@ -46,15 +46,15 @@ class TercerosControlador extends ControllerBase {
         $TercerosModel = new TercerosModel();            
         
         $resp = $TercerosModel->insertar(
-            $_POST["documento_tercero"],
-            $_POST["tipodocumento_tercero"],
-            $_POST["nombres_tercero"],
-            $_POST["apellidos_tercero"],
-            $_POST["telefono_tercero"],
-            $_POST["celular_tercero"],
-            $_POST["correo_tercero"],
-            $_POST["direccion_tercero"],
-            $_POST["ciudad_tercero"]
+                            $_POST["documento_tercero"],
+                            $_POST["tipodocumento_tercero"],
+                            $_POST["nombres_tercero"],
+                            $_POST["apellidos_tercero"],
+                            $_POST["telefono_tercero"],
+                            $_POST["celular_tercero"],
+                            $_POST["correo_tercero"],
+                            $_POST["direccion_tercero"],
+                            $_POST["ciudad_tercero"]
         );        
         
         if( $resp != 0 ){
@@ -71,16 +71,16 @@ class TercerosControlador extends ControllerBase {
         $TercerosModel = new TercerosModel();
             
         $resp = $TercerosModel->editar(
-            $_POST["id_tercero"], 
-            $_POST["documento_tercero"],
-            $_POST["tipodocumento_tercero"],
-            $_POST["nombres_tercero"],
-            $_POST["apellidos_tercero"],
-            $_POST["telefono_tercero"],
-            $_POST["celular_tercero"],
-            $_POST["correo_tercero"],
-            $_POST["direccion_tercero"],
-            $_POST["ciudad_tercero"]
+                            $_POST["id_tercero"], 
+                            $_POST["documento_tercero"],
+                            $_POST["tipodocumento_tercero"],
+                            $_POST["nombres_tercero"],
+                            $_POST["apellidos_tercero"],
+                            $_POST["telefono_tercero"],
+                            $_POST["celular_tercero"],
+                            $_POST["correo_tercero"],
+                            $_POST["direccion_tercero"],
+                            $_POST["ciudad_tercero"]
         );        
       
         if( $resp != 0 ){

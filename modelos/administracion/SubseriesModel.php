@@ -19,7 +19,7 @@ class SubseriesModel extends ModelBase {
         $consulta = $this->consulta($query);
         return $consulta;       
                
-    }  
+    }
 
     function getDatos($id_subserie) {
        
@@ -45,7 +45,11 @@ class SubseriesModel extends ModelBase {
     function insertar(                               
                         $serie_subserie,
                         $codigo_subserie,
-                        $nombre_subserie
+                        $nombre_subserie, 
+                        $tiempogestion_subserie, 
+                        $tiempocentral_subserie, 
+                        $soporte_subserie, 
+                        $disposicion_subserie
                     ){
                 
         $query = "INSERT INTO subseries (
@@ -82,13 +86,16 @@ class SubseriesModel extends ModelBase {
                     $disposicion_subserie
                 ) {
         
-        $query = "  UPDATE subseries SET    serie_subserie = '". $serie_subserie ."',    
-                                            codigo_subserie = '". $codigo_subserie ."',  
-                                            nombre_subserie = '". $nombre_subserie ."',  
-                                            tiempogestion_subserie = '". $tiempogestion_subserie ."',  
-                                            tiempocentral_subserie = '". $tiempocentral_subserie ."',  
-                                            soporte_subserie = '". $soporte_subserie ."',  
-                                            disposicion_subserie = '". $disposicion_subserie ."'  
+        $query = "  UPDATE subseries 
+
+                    SET serie_subserie = '". $serie_subserie ."',    
+                        codigo_subserie = '". $codigo_subserie ."',  
+                        nombre_subserie = '". $nombre_subserie ."',  
+                        tiempogestion_subserie = '". $tiempogestion_subserie ."',  
+                        tiempocentral_subserie = '". $tiempocentral_subserie ."',  
+                        soporte_subserie = '". $soporte_subserie ."',  
+                        disposicion_subserie = '". $disposicion_subserie ."'  
+
                     WHERE id_subserie = '" . $id_subserie . "'";
        
         return $this->modificarRegistros($query);

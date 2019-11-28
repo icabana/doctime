@@ -50,7 +50,8 @@ class ExpedientesModel extends ModelBase {
                     $nombre_expediente
                 ) {
         
-        $query = "  UPDATE expedientes SET nombre_expediente = '". $nombre_expediente ."'           
+        $query = "  UPDATE expedientes 
+                    SET nombre_expediente = '". $nombre_expediente ."'           
                     WHERE id_expediente = '" . $id_expediente . "'";
        
         return $this->modificarRegistros($query);

@@ -43,7 +43,7 @@ $froms = new Formularios();
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Editar Tipoarchivo</h3>
+              <h3 class="card-title">Editar Tipo de archivo</h3>
             </div>
 
             <form role="form">
@@ -53,7 +53,7 @@ $froms = new Formularios();
 
               <div class="card-body">
                 <div class="form-group">
-                  <label>Nombre del Tipoarchivo</label>
+                  <label>Tipo de archivo</label>
 
                   <input type="text" class="form-control" id="nombre_tipoarchivo" name="nombre_tipoarchivo" 
                         value="<?php echo $datos['nombre_tipoarchivo']; ?>">
