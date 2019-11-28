@@ -3,7 +3,7 @@
     function nuevo_serie() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Series', 'nuevo', '', ''
+            'administracion', 'Series', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_serie(id_serie) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Series',
             'editar',
             'id_serie=' + id_serie,
@@ -29,7 +29,7 @@
     function eliminar_serie2(id_serie) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Series',
             'eliminar',
             "id_serie=" + id_serie,

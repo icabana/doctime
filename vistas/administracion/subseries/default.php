@@ -3,7 +3,7 @@
     function nuevo_subserie() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Subseries', 'nuevo', '', ''
+            'administracion', 'Subseries', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_subserie(id_subserie) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Subseries',
             'editar',
             'id_subserie=' + id_subserie,
@@ -29,7 +29,7 @@
     function eliminar_subserie2(id_subserie) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Subseries',
             'eliminar',
             "id_subserie=" + id_subserie,

@@ -4,7 +4,7 @@
     var datos = $('#formDependencias').serialize();
 
     ejecutarAccion(
-      'configuracion',
+      'administracion',
       'Dependencias',
       'guardar',
       datos,

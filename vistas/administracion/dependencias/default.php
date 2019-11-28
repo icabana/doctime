@@ -3,7 +3,7 @@
     function nuevo_dependencia() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Dependencias', 'nuevo', '', ''
+            'administracion', 'Dependencias', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_dependencia(id_dependencia) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Dependencias',
             'editar',
             'id_dependencia=' + id_dependencia,
@@ -29,7 +29,7 @@
     function eliminar_dependencia2(id_dependencia) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Dependencias',
             'eliminar',
             "id_dependencia=" + id_dependencia,

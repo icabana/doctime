@@ -4,7 +4,7 @@
     var datos = $('#formTerceros').serialize();
 
     ejecutarAccion(
-      'configuracion',
+      'administracion',
       'Terceros',
       'guardar',
       datos,

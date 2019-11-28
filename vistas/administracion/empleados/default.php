@@ -3,7 +3,7 @@
     function nuevo_empleado() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Empleados', 'nuevo', '', ''
+            'administracion', 'Empleados', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_empleado(id_empleado) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Empleados',
             'editar',
             'id_empleado=' + id_empleado,
@@ -29,7 +29,7 @@
     function eliminar_empleado2(id_empleado) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Empleados',
             'eliminar',
             "id_empleado=" + id_empleado,

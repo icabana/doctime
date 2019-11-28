@@ -5,7 +5,7 @@
       var datos = $('#formEmpleados').serialize();
 
       ejecutarAccion(
-        'configuracion',
+        'administracion',
         'Empleados',
         'insertar',
         datos,

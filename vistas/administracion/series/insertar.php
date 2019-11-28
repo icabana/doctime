@@ -5,7 +5,7 @@
       var datos = $('#formSeries').serialize();
 
       ejecutarAccion(
-        'configuracion',
+        'administracion',
         'Series',
         'insertar',
         datos,

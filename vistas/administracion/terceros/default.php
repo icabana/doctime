@@ -3,7 +3,7 @@
     function nuevo_tercero() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Terceros', 'nuevo', '', ''
+            'administracion', 'Terceros', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_tercero(id_tercero) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Terceros',
             'editar',
             'id_tercero=' + id_tercero,
@@ -29,7 +29,7 @@
     function eliminar_tercero2(id_tercero) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Terceros',
             'eliminar',
             "id_tercero=" + id_tercero,

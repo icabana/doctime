@@ -31,6 +31,8 @@
   <!--MODULOS DEL SISTEMA-->  
   <script language="JavaScript" type='text/javascript' src='js/modulos/configuracion.js'></script> 
   <script language="JavaScript" type='text/javascript' src='js/modulos/administracion.js'></script> 
+  <script language="JavaScript" type='text/javascript' src='js/modulos/archivos.js'></script>  
+  <script language="JavaScript" type='text/javascript' src='js/modulos/radicados.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
     
@@ -116,7 +118,7 @@
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i onclick="cargar_usuarios();" class="nav-icon fas fa-copy"></i>
               <p>
                 Radicados
                 <i class="fas fa-angle-right right"></i>
@@ -126,31 +128,31 @@
             <ul class="nav nav-treeview">
             
               <li class="nav-item">
-                <a href="#" onclick="cargar_usuarios();" class="nav-link">
+                <a href="#" onclick="cargar_entrantes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Entrada</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" onclick="cargar_roles();" class="nav-link">
+                <a href="#" onclick="cargar_salientes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Salida</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a  href="#" onclick="cargar_parametros();" class="nav-link">
+                <a  href="#" onclick="cargar_preradicados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pre-Radicaci&oacute;n</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" onclick="cargar_roles();" class="nav-link">
+                <a href="#" onclick="cargar_finalizados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados Finalizados</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" onclick="cargar_roles();" class="nav-link">
+                <a href="#" onclick="cargar_archivados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados Archivados</p>
                 </a>
@@ -159,7 +161,7 @@
           </li>
 
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -203,7 +205,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="#" onclick="cargar_dependencias();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dependencias </p>
                 </a>
@@ -211,7 +213,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="#" onclick="cargar_empleados();"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleados </p>
                 </a>
@@ -219,7 +221,7 @@
               </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="#"  onclick="cargar_series();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Series </p>
                 </a>
@@ -227,7 +229,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="#" onclick="cargar_subseries();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Subseries </p>
                 </a>
@@ -235,7 +237,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="#" onclick="cargar_tiposdocumentales();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipos documentales </p>
                 </a>
@@ -299,7 +301,7 @@
           </li>
 
           <?php
-            if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+            }
           ?>
           
         </ul>

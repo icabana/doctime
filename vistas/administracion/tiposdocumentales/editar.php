@@ -4,7 +4,7 @@
     var datos = $('#formTiposdocumentales').serialize();
 
     ejecutarAccion(
-      'configuracion',
+      'administracion',
       'Tiposdocumentales',
       'guardar',
       datos,

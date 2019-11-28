@@ -110,6 +110,7 @@ class UsuariosModel extends ModelBase {
                     usuarios.estado_usuario,
                     usuarios.rol_usuario,
                 
+                    roles.id_rol,
                     roles.nombre_rol
                 
                     from usuarios LEFT JOIN roles ON usuarios.rol_usuario = roles.id_rol

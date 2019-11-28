@@ -5,7 +5,7 @@
       var datos = $('#formTerceros').serialize();
 
       ejecutarAccion(
-        'configuracion',
+        'administracion',
         'Terceros',
         'insertar',
         datos,

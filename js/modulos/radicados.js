@@ -1,4 +1,4 @@
-function cargar_salientes(){
+function cargar_entrantes(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -9,7 +9,7 @@ function cargar_salientes(){
     limpiar_cuerpo();
     
     abrirVentanaContenedorTabla(
-        'tabla_salientes',
+        'tabla_entrantes',
         'radicados', 'Entrantes', 'index', '');    
         
 }

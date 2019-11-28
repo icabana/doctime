@@ -3,7 +3,7 @@
     function nuevo_tipodocumental() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Tiposdocumentales', 'nuevo', '', ''
+            'administracion', 'Tiposdocumentales', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_tipodocumental(id_tipodocumental) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'administracion',
             'Tiposdocumentales',
             'editar',
             'id_tipodocumental=' + id_tipodocumental,
@@ -29,7 +29,7 @@
     function eliminar_tipodocumental2(id_tipodocumental) {
 
         ejecutarAccion(
-            'configuracion',
+            'administracion',
             'Tiposdocumentales',
             'eliminar',
             "id_tipodocumental=" + id_tipodocumental,

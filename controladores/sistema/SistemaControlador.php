@@ -16,7 +16,7 @@ class SistemaControlador extends ControllerBase {
 
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nick_usuario'] = $usuario['nick_usuario'];
-            $_SESSION['nombre_rol'] = $usuario['nombre_rol'];
+            $_SESSION['rol'] = $usuario['id_rol'];
 
         } else {
             
