@@ -62,7 +62,7 @@
       <li class="nav-item d-none d-sm-inline-block">
           Seleccionar Año 
           <select>
-              /// QUE ESTE SELECT SE LLENE AUTOMATICAMENTE SI CADA AÑO TIENE RADICADOS
+              <option></option>
           </select>
       </li>
     </ul>
@@ -138,13 +138,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Salida</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a  href="#" onclick="cargar_preradicados();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pre-Radicaci&oacute;n</p>
-                </a>
-              </li>
+              </li>                      
               <li class="nav-item">
                 <a href="#" onclick="cargar_finalizados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -299,6 +293,28 @@
             </ul>
 
           </li>
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Configuraci&oacute;n
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_carpetas();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Carpetas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
           <?php
             }

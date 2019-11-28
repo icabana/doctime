@@ -4,7 +4,7 @@
     var datos = $('#formSalientes').serialize();
 
     ejecutarAccion(
-      'configuracion',
+      'radicados',
       'Salientes',
       'guardar',
       datos,

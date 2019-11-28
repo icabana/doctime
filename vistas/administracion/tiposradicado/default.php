@@ -1,45 +1,45 @@
 <script type="text/javascript">
 
-    function nuevo_tipodocumental() {
+    function nuevo_tiporadicado() {
 
         abrirVentanaContenedor(
-            'administracion', 'Tiposdocumentales', 'nuevo', '', ''
+            'administracion', 'Tiposradicado', 'nuevo', '', ''
         );
 
     }
 
-    function editar_tipodocumental(id_tipodocumental) {
+    function editar_tiporadicado(id_tiporadicado) {
 
         abrirVentanaContenedor(
             'administracion',
-            'Tiposdocumentales',
+            'Tiposradicado',
             'editar',
-            'id_tipodocumental=' + id_tipodocumental,
+            'id_tiporadicado=' + id_tiporadicado,
             ''
         );
 
     }
 
-    function eliminar_tipodocumental(id_tipodocumental) {
+    function eliminar_tiporadicado(id_tiporadicado) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tipodocumental2(" + id_tipodocumental + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tiporadicado2(" + id_tiporadicado + "); ");
 
     }
 
-    function eliminar_tipodocumental2(id_tipodocumental) {
+    function eliminar_tiporadicado2(id_tiporadicado) {
 
         ejecutarAccion(
             'administracion',
-            'Tiposdocumentales',
+            'Tiposradicado',
             'eliminar',
-            "id_tipodocumental=" + id_tipodocumental,
-            ' mensaje_alertas("success", "Dependencia Eliminado con Éxito", "center"); cargar_tiposdocumentales();'
+            "id_tiporadicado=" + id_tiporadicado,
+            ' mensaje_alertas("success", "Tiporadicado Eliminado con Éxito", "center"); cargar_tiposradicado();'
         );
 
     }
 
     $(document).ready(function() {
-        CrearTabla('tabla_tiposdocumentales');
+        CrearTabla('tabla_tiposradicado');
     });
 </script>
 
@@ -53,12 +53,12 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4 style="color:grey">GESTIONAR TIPOS DOCUMENTALES</h4>
+                            <h4 style="color:grey">GESTIONAR TIPOS DE RADICADO</h4>
                         </div>
                         <div class="col-md-2">
 
-                            <button onclick="nuevo_tipodocumental(); return false;" class="btn btn-success btn-sm">
-                                NUEVO TIPO DOCUMENTAL
+                            <button onclick="nuevo_tiporadicado(); return false;" class="btn btn-success btn-sm">
+                                NUEVO TIPO DE RADICADO
                             </button>
 
                         </div>
@@ -72,24 +72,24 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>NOMBRE</th>
+                            <th style='background-color:lavender'>TIPO DE RADICADO</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($tiposdocumentales as $NM => $items) {
+                        foreach ($tiposradicado as $NM => $items) {
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tipodocumental'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_tiporadicado'])) . "</td>";
+                            
 
-
-                            echo "<td><a href='#'><i onclick='editar_tipodocumental(" . $items['id_tipodocumental'] . ");' 
+                            echo "<td><a href='#'><i onclick='editar_tiporadicado(" . $items['id_tiporadicado'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_tipodocumental(" . $items['id_tipodocumental'] . ");' 
+                            echo "<td><a href='#'><i onclick='eliminar_tiporadicado(" . $items['id_tiporadicado'] . ");' 
                                     class='fas fa-trash'></i></a></td>";
 
 

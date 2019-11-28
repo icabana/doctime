@@ -43,7 +43,7 @@ $froms = new Formularios();
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Editar Tipodocumental</h3>
+              <h3 class="card-title">Editar Tipo Documental</h3>
             </div>
 
             <form role="form">
@@ -53,7 +53,7 @@ $froms = new Formularios();
 
               <div class="card-body">
                 <div class="form-group">
-                  <label>Nombre del Tipodocumental</label>
+                  <label>Tipo Documental</label>
 
                   <input type="text" class="form-control" id="nombre_tipodocumental" name="nombre_tipodocumental" 
                         value="<?php echo $datos['nombre_tipodocumental']; ?>">

@@ -86,12 +86,12 @@
                         foreach ($empleados as $NM => $items) {
 
                             echo "<tr>";
-
-                            echo "<td>" . utf8_encode(strtolower($items['documento_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']." ".$items['empleados_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['telefono_empleado'])) . "</td>";
+                            
+                            echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']."  ".$items['empleados_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['celular_empleado']."     ".$items['telefono_empleado'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['correo_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['direccion_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['direccion_empleado']." ".$items['ciudad_empleado'])) . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 

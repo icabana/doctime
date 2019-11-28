@@ -3,7 +3,7 @@
     function nuevo_entrante() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Entrantes', 'nuevo', '', ''
+            'radicados', 'Entrantes', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_entrante(id_entrante) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'radicados',
             'Entrantes',
             'editar',
             'id_entrante=' + id_entrante,
@@ -29,7 +29,7 @@
     function eliminar_entrante2(id_entrante) {
 
         ejecutarAccion(
-            'configuracion',
+            'radicados',
             'Entrantes',
             'eliminar',
             "id_entrante=" + id_entrante,

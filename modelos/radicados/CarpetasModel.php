@@ -6,6 +6,7 @@ class CarpetasModel extends ModelBase {
         
         $query = "select 
                     carpetas.id_carpeta, 
+                    carpetas.usuario_carpeta,
                     carpetas.nombre_carpeta
                 
                     from carpetas";
@@ -18,7 +19,8 @@ class CarpetasModel extends ModelBase {
     function getDatos($id_carpeta) {
        
         $query = "select 	
-                    carpetas.id_carpeta, 
+                    carpetas.id_carpeta,  
+                    carpetas.usuario_carpeta,
                     carpetas.nombre_carpeta
                 
                     from carpetas
@@ -29,15 +31,34 @@ class CarpetasModel extends ModelBase {
         return $consulta[0];    
         
     }
+
+    function getCarpetasPorUsuario($usuario_carpeta) {
+       
+        $query = "select 	
+                    carpetas.id_carpeta,  
+                    carpetas.usuario_carpeta,
+                    carpetas.nombre_carpeta
+                
+                    from carpetas
+
+                    where carpetas.usuario_carpeta='".$usuario_carpeta."'";
+        
+         $consulta = $this->consulta($query);
+        return $consulta;    
+        
+    }
     
-    function insertar(                               
+    function insertar(        
+                        $usuario_carpeta,
                         $nombre_carpeta
                     ){
                 
-        $query = "INSERT INTO carpetas (
+        $query = "INSERT INTO carpetas (                                 
+                                usuario_carpeta, 
                                 nombre_carpeta
                             )
                             VALUES(
+                                '".$_SESSION['ID_USUARIO']."',
                                 '".$nombre_carpeta."'
                             );";
        
@@ -47,10 +68,13 @@ class CarpetasModel extends ModelBase {
     
     function editar(
                     $id_carpeta, 
+                    $usuario_carpeta,
                     $nombre_carpeta
                 ) {
         
-        $query = "  UPDATE carpetas SET nombre_carpeta = '". $nombre_carpeta ."'           
+        $query = "  UPDATE carpetas 
+                    SET nombre_carpeta = '". $nombre_carpeta ."',
+                        usuario_carpeta = '". $_SESSION['ID_USUARIO'] ."'           
                     WHERE id_carpeta = '" . $id_carpeta . "'";
        
         return $this->modificarRegistros($query);

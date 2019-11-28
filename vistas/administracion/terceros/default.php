@@ -73,7 +73,7 @@
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>DOCUMENTO</th>
-                            <th style='background-color:lavender'>NOMBRE DEL EMPLEADO</th>
+                            <th style='background-color:lavender'>NOMBRE DEL TERCERO</th>
                             <th style='background-color:lavender'>TELEFONO</th>
                             <th style='background-color:lavender'>CORREO</th>
                             <th style='background-color:lavender'>DIRECCION</th>
@@ -87,11 +87,12 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['documento_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_tercero']." ".$items['terceros_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['telefono_tercero'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_tercero'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_tercero']."  ".$items['terceros_tercero'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['celular_tercero']."     ".$items['telefono_tercero'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['correo_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['direccion_tercero'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['direccion_tercero']." ".$items['ciudad_tercero'])) . "</td>";
+
 
 
                             echo "<td><a href='#'><i onclick='editar_tercero(" . $items['id_tercero'] . ");' 

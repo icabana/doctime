@@ -14,9 +14,12 @@ class TercerosModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero
+                    terceros.cuidad_tercero,
+
+                    tiposdocumento.codigo_tipodocumento
                 
-                    from terceros";
+                    from terceros left join 
+                            tiposdocumento on terceros.tipodocumento_tercero = tiposdocumento.id_tipodocumento";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -35,9 +38,12 @@ class TercerosModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero
+                    terceros.cuidad_tercero,
+
+                    tiposdocumento.codigo_tipodocumento
                 
-                    from terceros
+                    from terceros left join 
+                            tiposdocumento on terceros.tipodocumento_tercero = tiposdocumento.id_tipodocumento
 
                     where terceros.id_tercero='".$id_tercero."'";
         

@@ -14,6 +14,11 @@ class SistemaControlador extends ControllerBase {
 
         if ( is_array( $usuario ) ) {
 
+            $this->model->cargar("CarpetasModel.php", "radicados");
+            $CarpetasModel = new CarpetasModel();                
+
+            $_SESSION['carpetas'] = $CarpetasModel->getCarpetasPorUsuario($usuario['id_usuario']);
+
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nick_usuario'] = $usuario['nick_usuario'];
             $_SESSION['rol'] = $usuario['id_rol'];

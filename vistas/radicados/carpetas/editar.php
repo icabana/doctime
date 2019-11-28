@@ -4,7 +4,7 @@
     var datos = $('#formCarpetas').serialize();
 
     ejecutarAccion(
-      'configuracion',
+      'radicados',
       'Carpetas',
       'guardar',
       datos,

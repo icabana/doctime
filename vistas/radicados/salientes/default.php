@@ -3,7 +3,7 @@
     function nuevo_saliente() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Salientes', 'nuevo', '', ''
+            'radicados', 'Salientes', 'nuevo', '', ''
         );
 
     }
@@ -11,7 +11,7 @@
     function editar_saliente(id_saliente) {
 
         abrirVentanaContenedor(
-            'configuracion',
+            'radicados',
             'Salientes',
             'editar',
             'id_saliente=' + id_saliente,
@@ -29,7 +29,7 @@
     function eliminar_saliente2(id_saliente) {
 
         ejecutarAccion(
-            'configuracion',
+            'radicados',
             'Salientes',
             'eliminar',
             "id_saliente=" + id_saliente,

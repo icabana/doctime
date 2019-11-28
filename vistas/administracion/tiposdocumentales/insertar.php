@@ -42,14 +42,14 @@
 
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Registrar Tipodocumental</h3>
+            <h3 class="card-title">Registrar Tipo Documental</h3>
           </div>
 
           <form autocomplete="on" id="formTiposdocumentales" method="post">
 
             <div class="card-body">
               <div class="form-group">
-                <label>Nombre del Tipodocumental</label>
+                <label>Tipo Documental</label>
                 <input type="text" class="form-control" id="nombre_tipodocumental" name="nombre_tipodocumental">
               </div>
             </div>

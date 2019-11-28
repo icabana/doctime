@@ -14,9 +14,12 @@ class EmpleadosModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.cuidad_empleado
+                    empleados.cuidad_empleado,
+
+                    tiposdocumento.codigo_tipodocumento
                 
-                    from empleados";
+                    from empleados left join 
+                            tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -35,9 +38,12 @@ class EmpleadosModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.cuidad_empleado
+                    empleados.cuidad_empleado,
+
+                    tiposdocumento.codigo_tipodocumento
                 
-                    from empleados
+                    from empleados left join 
+                            tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
 
                     where empleados.id_empleado='".$id_empleado."'";
         
