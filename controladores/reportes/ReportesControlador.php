@@ -3,7 +3,7 @@
 class ReportesControlador extends ControllerBase {
         
     /// REPORTE POR GRUPO
-    public function cargarReportePorGrupo() {      
+    public function cargarReportePorGrupo() {
         include 'vistas/reportes/reporte_por_grupo.php';
     }  
     

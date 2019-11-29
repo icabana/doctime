@@ -213,6 +213,25 @@ class SalientesModel extends ModelBase {
         $this->modificarRegistros($query);
 
     }
+
+
+
+    /// CONSULTAS EXTRAS
+
+    function getNumeroSalientes() {
+        
+        $query = "select count(salientes.id_saliente) as numero
+                
+                    from salientes 
+                    
+                    where ano_saliente = '".$_SESSION['ano']."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+
+
     
 }
 

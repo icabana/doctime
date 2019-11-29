@@ -46,8 +46,8 @@ class TiposdocumentalesControlador extends ControllerBase {
         $TiposdocumentalesModel = new TiposdocumentalesModel();            
         
         $resp = $TiposdocumentalesModel->insertar(
-                    $_POST["nombre_tipodocumental"]
-                );        
+                                            $_POST["nombre_tipodocumental"]
+                                        );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +63,9 @@ class TiposdocumentalesControlador extends ControllerBase {
         $TiposdocumentalesModel = new TiposdocumentalesModel();
             
         $resp = $TiposdocumentalesModel->editar(
-            $_POST["id_tipodocumental"], 
-            $_POST["nombre_tipodocumental"]
-        );        
+                                            $_POST["id_tipodocumental"], 
+                                            $_POST["nombre_tipodocumental"]
+                                        );        
       
         if( $resp != 0 ){
              echo 1;             

@@ -46,13 +46,13 @@ class SubseriesControlador extends ControllerBase {
         $SubseriesModel = new SubseriesModel();            
         
         $resp = $SubseriesModel->insertar(
-                                $_POST['serie_subserie'],
-                                $_POST['codigo_subserie'],
-                                $_POST['nombre_subserie'],
-                                $_POST['ag_subserie'],
-                                $_POST['ac_subserie'],
-                                $_POST['soporte_subserie'],
-                                $_POST['disposicion_subserie']
+                                    $_POST['serie_subserie'],
+                                    $_POST['codigo_subserie'],
+                                    $_POST['nombre_subserie'],
+                                    $_POST['ag_subserie'],
+                                    $_POST['ac_subserie'],
+                                    $_POST['soporte_subserie'],
+                                    $_POST['disposicion_subserie']
                                 );        
         
         if( $resp != 0 ){
@@ -69,15 +69,15 @@ class SubseriesControlador extends ControllerBase {
         $SubseriesModel = new SubseriesModel();
             
         $resp = $SubseriesModel->editar(
-                                $_POST["id_subserie"], 
-                                $_POST['serie_subserie'],
-                                $_POST['codigo_subserie'],
-                                $_POST['nombre_subserie'],
-                                $_POST['ag_subserie'],
-                                $_POST['ac_subserie'],
-                                $_POST['soporte_subserie'],
-                                $_POST['disposicion_subserie']
-        );        
+                                    $_POST["id_subserie"], 
+                                    $_POST['serie_subserie'],
+                                    $_POST['codigo_subserie'],
+                                    $_POST['nombre_subserie'],
+                                    $_POST['ag_subserie'],
+                                    $_POST['ac_subserie'],
+                                    $_POST['soporte_subserie'],
+                                    $_POST['disposicion_subserie']
+                                );        
       
         if( $resp != 0 ){
              echo 1;             
@@ -85,7 +85,7 @@ class SubseriesControlador extends ControllerBase {
             echo 0;		
         }
         
-    }    
+    }
         
     public function eliminar() {
         

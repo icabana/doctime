@@ -48,6 +48,7 @@ class EntrantesControlador extends ControllerBase {
         $resp = $EntrantesModel->insertar(
                     $_POST["numero_entrante"],
                     $_POST["remitente_entrante"],
+                    $_POST["enviadopor_entrante"],
                     $_POST["destinatario_entrante"],
                     $_POST["fecharadicado_entrante"],
                     $_POST["fecharecibido_entrante"],
@@ -79,6 +80,7 @@ class EntrantesControlador extends ControllerBase {
                     $_POST["id_entrante"], 
                     $_POST["numero_entrante"],
                     $_POST["remitente_entrante"],
+                    $_POST["enviadopor_entrante"],
                     $_POST["destinatario_entrante"],
                     $_POST["fecharadicado_entrante"],
                     $_POST["fecharecibido_entrante"],

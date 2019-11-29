@@ -30,10 +30,8 @@ class TiposradicadoModel extends ModelBase {
         
     }
     
-    function insertar(                               
-                        $codigo_tiporadicado,
-                        $nombre_tiporadicado,
-                        $jefe_tiporadicado
+    function insertar(                         
+                        $nombre_tiporadicado
                     ){
                 
         $query = "INSERT INTO tiposradicado (         

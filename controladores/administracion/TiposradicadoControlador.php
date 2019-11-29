@@ -46,8 +46,8 @@ class TiposradicadoControlador extends ControllerBase {
         $TiposradicadoModel = new TiposradicadoModel();            
         
         $resp = $TiposradicadoModel->insertar(
-                    $_POST["nombre_tiporadicado"]
-                );        
+                                        $_POST["nombre_tiporadicado"]
+                                    );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +63,9 @@ class TiposradicadoControlador extends ControllerBase {
         $TiposradicadoModel = new TiposradicadoModel();
             
         $resp = $TiposradicadoModel->editar(
-            $_POST["id_tiporadicado"], 
-            $_POST["nombre_tiporadicado"]
-        );        
+                                        $_POST["id_tiporadicado"], 
+                                        $_POST["nombre_tiporadicado"]
+                                    );        
       
         if( $resp != 0 ){
              echo 1;             

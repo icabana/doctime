@@ -14,7 +14,12 @@ class TercerosModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero,
+                    terceros.ciudad_tercero,
+                    terceros.sexo_tercero,
+                    terceros.estadocivil_tercero,
+                    terceros.fechanacimiento_tercero,
+                    terceros.lugarnacimiento_tercero,
+                    terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
                 
@@ -24,7 +29,8 @@ class TercerosModel extends ModelBase {
         $consulta = $this->consulta($query);
         return $consulta;       
                
-    }  
+    }
+
 
     function getDatos($id_tercero) {
        
@@ -38,7 +44,12 @@ class TercerosModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero,
+                    terceros.ciudad_tercero,
+                    terceros.sexo_tercero,
+                    terceros.estadocivil_tercero,
+                    terceros.fechanacimiento_tercero,
+                    terceros.lugarnacimiento_tercero,
+                    terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
                 
@@ -61,7 +72,12 @@ class TercerosModel extends ModelBase {
                     $celular_tercero, 
                     $correo_tercero, 
                     $direccion_tercero, 
-                    $cuidad_tercero
+                    $ciudad_tercero, 
+                    $sexo_tercero, 
+                    $estadocivil_tercero, 
+                    $fechanacimiento_tercero, 
+                    $lugarnacimiento_tercero, 
+                    $estado_tercero
                     ){
                 
         $query = "INSERT INTO terceros (
@@ -73,7 +89,12 @@ class TercerosModel extends ModelBase {
                                 celular_tercero, 
                                 correo_tercero, 
                                 direccion_tercero, 
-                                cuidad_tercero
+                                ciudad_tercero,
+                                sexo_tercero,
+                                estadocivil_tercero,
+                                fechanacimiento_tercero,
+                                lugarnacimiento_tercero,
+                                estado_tercero
                             )
                             VALUES(
                                 '".$documento_tercero."',
@@ -84,7 +105,12 @@ class TercerosModel extends ModelBase {
                                 '".$celular_tercero."',
                                 '".$correo_tercero."',
                                 '".$direccion_tercero."',
-                                '".$cuidad_tercero."'
+                                '".$ciudad_tercero."',
+                                '".$sexo_tercero."',
+                                '".$estadocivil_tercero."',
+                                '".$fechanacimiento_tercero."',
+                                '".$lugarnacimiento_tercero."',
+                                '".$estado_tercero."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -101,7 +127,12 @@ class TercerosModel extends ModelBase {
                     $celular_tercero, 
                     $correo_tercero, 
                     $direccion_tercero, 
-                    $cuidad_tercero
+                    $ciudad_tercero,
+                    $sexo_tercero,
+                    $estadocivil_tercero,
+                    $fechanacimiento_tercero,
+                    $lugarnacimiento_tercero,
+                    $estado_tercero
                 ) {
         
         $query = "  UPDATE terceros 
@@ -113,8 +144,13 @@ class TercerosModel extends ModelBase {
                         telefono_tercero = '". $telefono_tercero ."',
                         celular_tercero = '". $celular_tercero ."',
                         correo_tercero = '". $correo_tercero ."',
-                        direccion_tercero = '". $direccion_tercero ."'
-                        cuidad_tercero = '". $cuidad_tercero ."'
+                        direccion_tercero = '". $direccion_tercero ."',
+                        ciudad_tercero = '". $ciudad_tercero ."',
+                        sexo_tercero = '". $sexo_tercero ."',
+                        estadocivil_tercero = '". $estadocivil_tercero ."',
+                        fechanacimiento_tercero = '". $fechanacimiento_tercero ."',
+                        lugarnacimiento_tercero = '". $lugarnacimiento_tercero ."',
+                        estado_tercero = '". $estado_tercero ."'
 
                     WHERE id_tercero = '" . $id_tercero . "'";
        

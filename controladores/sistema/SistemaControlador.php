@@ -15,7 +15,9 @@ class SistemaControlador extends ControllerBase {
         if ( is_array( $usuario ) ) {
 
             $this->model->cargar("CarpetasModel.php", "radicados");
-            $CarpetasModel = new CarpetasModel();                
+            $CarpetasModel = new CarpetasModel();    
+            
+            $_SESSION['ano'] = date("Y");
 
             $_SESSION['carpetas'] = $CarpetasModel->getCarpetasPorUsuario($usuario['id_usuario']);
 
@@ -33,7 +35,7 @@ class SistemaControlador extends ControllerBase {
 
     public function Inicio(){
 		
-	$plantilla = $this->config->get('plantillas').$this->params->valor('TEMPLATE');
+	    $plantilla = $this->config->get('plantillas').$this->params->valor('TEMPLATE');
         $vistas = $this->config->get('vistas');
 
         if ( !isset($_SESSION['id_usuario']) ) {

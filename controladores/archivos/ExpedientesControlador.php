@@ -46,8 +46,8 @@ class ExpedientesControlador extends ControllerBase {
         $ExpedientesModel = new ExpedientesModel();            
         
         $resp = $ExpedientesModel->insertar(
-                    $_POST["nombre_expediente"]
-                );        
+                                        $_POST["nombre_expediente"]
+                                    );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +63,9 @@ class ExpedientesControlador extends ControllerBase {
         $ExpedientesModel = new ExpedientesModel();
             
         $resp = $ExpedientesModel->editar(
-            $_POST["id_expediente"], 
-            $_POST["nombre_expediente"]
-        );        
+                                        $_POST["id_expediente"], 
+                                        $_POST["nombre_expediente"]
+                                    );        
       
         if( $resp != 0 ){
              echo 1;             

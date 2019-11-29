@@ -230,7 +230,78 @@ class EntrantesModel extends ModelBase {
         $this->modificarRegistros($query);
 
     }
+
+
+
+    /// CONSULTAS EXTRAS
+
+    function getNumeroEntrantes() {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where ano_entrante = '".$_SESSION['ano']."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+
+    function getNumeroEntrantesActivos() {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '1'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+
+    function getNumeroEntrantesFinalizados() {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where ano_entrante = '".$_SESSION['ano']."' and estado_entante = '2'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+
+    function getNumeroEntrantesArchivados() {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '3'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+
     
+    function getRadicadosPorUsuario() {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where ano_entrante = '".$_SESSION['ano']."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta[0]['numero'];       
+               
+    }  
+    
+
 }
 
 ?>

@@ -11,7 +11,7 @@ class SeriesControlador extends ControllerBase {
 
         include 'vistas/administracion/series/default.php';
                         
-    }    
+    }
     
     public function nuevo(){
         
@@ -46,7 +46,8 @@ class SeriesControlador extends ControllerBase {
         $SeriesModel = new SeriesModel();            
         
         $resp = $SeriesModel->insertar(
-                $_POST["codigo_serie"], $_POST["nombre_serie"]
+                    $_POST["codigo_serie"], 
+                    $_POST["nombre_serie"]
                 );        
         
         if( $resp != 0 ){
@@ -63,10 +64,10 @@ class SeriesControlador extends ControllerBase {
         $SeriesModel = new SeriesModel();
             
         $resp = $SeriesModel->editar(
-            $_POST["id_serie"], 
-            $_POST["codigo_serie"], 
-            $_POST["nombre_serie"]
-        );        
+                    $_POST["id_serie"], 
+                    $_POST["codigo_serie"], 
+                    $_POST["nombre_serie"]
+                );        
       
         if( $resp != 0 ){
              echo 1;             

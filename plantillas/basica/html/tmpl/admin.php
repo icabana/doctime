@@ -35,6 +35,23 @@
   <script language="JavaScript" type='text/javascript' src='js/modulos/radicados.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
+  <?php
+                    
+    include("modelos/radicados/EntrantesModel.php");
+    $EntrantesModel = new EntrantesModel();   
+    
+    $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
+    $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
+    $numero_entrantes_finalizados = $EntrantesModel->getNumeroEntrantesFinalizados();
+    $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados()();
+
+                     
+    include("modelos/radicados/SalientesModel.php");
+    $SalientesModel = new SalientesModel();   
+    
+    $numero_salientes = $SalientesModel->getNumeroSalientes();
+    
+?>
     
     
 </head>
@@ -239,6 +256,50 @@
             </ul>
           </li>
          
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Estadisticas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_usuarios();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados por usuarios </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_dependencias();"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados por dependencia </p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#"  onclick="radicados_vencidos();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados vencidos </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_trd();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados por TRD </p>
+                </a>
+              </li>
+            </ul>
+           
+          </li>
+
          <?php
             }
          ?>
@@ -345,6 +406,110 @@
     </div>
     <!-- /.content-header -->
 
+
+
+
+      <?php
+          if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
+      ?>
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Entrantes (Todos)</span>
+                <span class="info-box-number">
+                  <?php echo $numero_entrantes; ?>
+                </span>
+              </div>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Entrantes (Activos)</span>
+                <span class="info-box-number">
+                  <?php echo $numero_entrantes_activos; ?>
+                </span>
+              </div>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Entrantes (Finalizados)</span>
+                <span class="info-box-number">
+                  <?php echo $numero_entrantes_finalizados; ?>
+                </span>
+              </div>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Entrantes (Archivados)</span>
+                <span class="info-box-number">
+                  <?php echo $numero_entrantes_archivados; ?>
+                </span>
+              </div>
+
+
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Salientes</span>
+                <span class="info-box-number">
+                <?php echo $numero_salientes; ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Sales</span>
+                <span class="info-box-number">760</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">New Members</span>
+                <span class="info-box-number">2,000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div> <!-- ./col -->
+        </div>
+        <?php
+          }
+        ?>
+
+
+
+
+      <?php
+          if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+      ?>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -409,6 +574,15 @@
           <!-- /.col -->
         </div> <!-- ./col -->
         </div>
+        <?php
+          }
+        ?>
+
+
+
+
+
+
             <!-- /.card -->
           </section>
           <!-- right col -->

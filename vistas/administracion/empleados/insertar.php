@@ -104,6 +104,67 @@
                 <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado">
               </div>
 
+              <div class="form-group">
+                  <label>Sexo</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estadis,
+                        'nombre_sexo',
+                        'id_sexo',
+                        'sexo_empleado',
+                        '',
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
+
+                <div class="form-group">
+                  <label>Estado Civil</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estadis,
+                        'nombre_estadocivil',
+                        'id_estadocivil',
+                        'estadocivil_empleado',
+                        '',
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
+
+                <div class="form-group">
+                  <label>Fecha de Nacimiento</label>
+
+                  <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" 
+                        value="<?php echo $datos['fechanacimiento_empleado']; ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Lugar de nacimiento</label>
+
+                  <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado" 
+                        value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Estado</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estados,
+                        'nombre_estado',
+                        'id_estado',
+                        'estado_empleado',
+                        '',
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
 
 
             </div>

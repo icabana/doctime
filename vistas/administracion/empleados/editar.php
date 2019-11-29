@@ -53,8 +53,6 @@ $froms = new Formularios();
               <input type="hidden" class="form-control" id="id_empleado" name="id_empleado" 
                         value="<?php echo $datos['id_empleado']; ?>">
 
-
-
                 <div class="form-group">
                   <label>Tipo de Documento</label>
                   <?php
@@ -115,14 +113,79 @@ $froms = new Formularios();
                   <label>Direcci&oacute;n</label>
 
                   <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado" 
-                        value="<?php echo $datos['celular_empleado']; ?>">
+                        value="<?php echo $datos['direccion_empleado']; ?>">
                 </div>
+
+
                 <div class="form-group">
                   <label>Ciudad</label>
 
                   <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado" 
-                        value="<?php echo $datos['celular_empleado']; ?>">
+                        value="<?php echo $datos['ciudad_empleado']; ?>">
                 </div>
+
+                <div class="form-group">
+                  <label>Sexo</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estadis,
+                        'nombre_sexo',
+                        'id_sexo',
+                        'sexo_empleado',
+                        $datos['sexo_empleado'],
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
+
+                <div class="form-group">
+                  <label>Estado Civil</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estados,
+                        'nombre_estadocivil',
+                        'id_estadocivil',
+                        'estadocivil_empleado',
+                        $datos['estadocivil_empleado'],
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
+
+                <div class="form-group">
+                  <label>Fecha de Nacimiento</label>
+
+                  <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" 
+                        value="<?php echo $datos['fechanacimiento_empleado']; ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Lugar de nacimiento</label>
+
+                  <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado" 
+                        value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Estado</label>
+
+                  <?php
+                    echo $froms->Lista_Desplegable(
+                        $estadis,
+                        'nombre_estado',
+                        'id_estado',
+                        'estado_empleado',
+                        $datos['estado_empleado'],
+                        '',
+                        ''
+                    );
+                  ?>
+                </div>
+
 
               </div>
 
