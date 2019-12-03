@@ -26,18 +26,14 @@ class UsuariosControlador extends ControllerBase {
 
          
     public function editar(){
-    
-        $data['operacion'] = 'editar';
-                    
-        $this->model->cargar("UsuariosModel.php");
+                        
+        $this->model->cargar("UsuariosModel.php", "configuracion");
         $UsuariosModel = new UsuariosModel();    
-
-        $this->model->cargar("RolesModel.php");
-        $RolesModel = new RolesModel();    
-        
-        $roles = $RolesModel->getTodos();       
-        
         $datos = $UsuariosModel->getDatos($_POST['id_usuario']);
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();            
+        $roles = $RolesModel->getTodos();     
             
         include 'vistas/configuracion/usuarios/editar.php';
                
@@ -68,13 +64,13 @@ class UsuariosControlador extends ControllerBase {
         $UsuariosModel = new UsuariosModel();
             
         $resp = $UsuariosModel->editar(
-            $_POST["id_usuario"], 
-            $_POST["nick_usuario"], 
-            $_POST["password_usuario"], 
-            $_POST["password2_usuario"], 
-            $_POST["estado_usuario"], 
-            $_POST["rol_usuario"]
-        );        
+                                    $_POST["id_usuario"], 
+                                    $_POST["nick_usuario"], 
+                                    $_POST["password_usuario"], 
+                                    $_POST["password2_usuario"], 
+                                    $_POST["estado_usuario"], 
+                                    $_POST["rol_usuario"]
+                                );        
       
         if( $resp != 0 ){
              echo 1;             
@@ -93,7 +89,6 @@ class UsuariosControlador extends ControllerBase {
         
         echo "1";        
         
-    }    
-   
+    }       
     
  }

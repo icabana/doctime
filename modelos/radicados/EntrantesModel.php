@@ -272,7 +272,7 @@ class EntrantesModel extends ModelBase {
         $consulta = $this->consulta($query);
         return $consulta[0]['numero'];       
                
-    }  
+    }
 
     function getNumeroEntrantesArchivados() {
         
@@ -285,22 +285,45 @@ class EntrantesModel extends ModelBase {
         $consulta = $this->consulta($query);
         return $consulta[0]['numero'];       
                
-    }  
+    }
 
     
     function getRadicadosPorUsuario() {
         
-        $query = "select count(entrantes.id_entrante) as numero
+        $query = "  empleados.nombres_empleado,
+                    empleados.apellidos_empleado,
+                    count(entrantes.id_entrante) as cantidad
                 
                     from entrantes 
+                        left join empleados ON entrantes.responsable_entrante = empleados.id_empleado
                     
-                    where ano_entrante = '".$_SESSION['ano']."'";
+                    where ano_entrante = '".$_SESSION['ano']."'
+                    
+                    group by entrantes.responsable_entrante";
         
         $consulta = $this->consulta($query);
-        return $consulta[0]['numero'];       
+        return $consulta;       
                
-    }  
+    }
     
+    
+    function getRadicadosPorDependencias() {
+        
+        $query = "  dependencias.nombre_dependencia,
+                    count(entrantes.id_entrante) as cantidad
+                
+                    from entrantes 
+                        left join empleados ON entrantes.responsable_entrante = empleados.id_empleado
+                        left join dependencias ON empleados.dependencia_empleado = dependencias.id_dependencia
+                    
+                    where ano_entrante = '".$_SESSION['ano']."'
+                    
+                    group by dependencias.id_dependencia";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    }
 
 }
 

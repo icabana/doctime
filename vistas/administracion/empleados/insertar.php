@@ -49,12 +49,11 @@
 
             <div class="card-body">
 
-
             <div class="form-group">
                   <label>Tipo de Documento</label>
                   <?php
                   echo $froms->Lista_Desplegable(
-                    $roles,
+                    $tiposdocumento,
                     'nombre_tipodocumento',
                     'id_tipodocumento',
                     'tipodocumento_empleado',
@@ -70,24 +69,20 @@
                 <input type="text" class="form-control" id="documento_empleado" name="documento_empleado">
               </div>
 
-
               <div class="form-group">
                 <label>Nombres</label>
                 <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado">
               </div>
-
 
               <div class="form-group">
                 <label>Apellidos</label>
                 <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado">
               </div>
 
-
               <div class="form-group">
                 <label>Telefono</label>
                 <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
               </div>
-
 
               <div class="form-group">
                 <label>Celular</label>
@@ -109,7 +104,7 @@
 
                   <?php
                     echo $froms->Lista_Desplegable(
-                        $estadis,
+                        $sexos,
                         'nombre_sexo',
                         'id_sexo',
                         'sexo_empleado',
@@ -125,7 +120,7 @@
 
                   <?php
                     echo $froms->Lista_Desplegable(
-                        $estadis,
+                        $estadoscivil,
                         'nombre_estadocivil',
                         'id_estadocivil',
                         'estadocivil_empleado',
@@ -164,17 +159,13 @@
                         ''
                     );
                   ?>
-                </div>
-
-
+                </div>                
             </div>
-
 
             <div class="card-footer">
               <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
               <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
             </div>
-
             
           </form>
         </div>

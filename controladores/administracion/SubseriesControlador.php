@@ -15,24 +15,24 @@ class SubseriesControlador extends ControllerBase {
     
     public function nuevo(){
         
-        $this->model->cargar("SubseriesModel.php", "administracion");
-        $SubseriesModel = new SubseriesModel();
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
 
-        $subseries = $SubseriesModel->getTodos();
+        $series = $SeriesModel->getTodos();
 
         include 'vistas/administracion/subseries/insertar.php';
         
     }
-
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+
+        $series = $SeriesModel->getTodos();
 
         $this->model->cargar("SubseriesModel.php");
-        $SubseriesModel = new SubseriesModel();    
-        
-        $subseries = $SubseriesModel->getTodos();       
+        $SubseriesModel = new SubseriesModel();               
         
         $datos = $SubseriesModel->getDatos($_POST['id_subserie']);
             

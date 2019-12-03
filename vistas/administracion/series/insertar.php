@@ -48,11 +48,10 @@
           <form autocomplete="on" id="formSeries" method="post">
 
             <div class="card-body">
-            <div class="form-group">
-                <label>Codigo</label>
-                <input type="text" class="form-control" id="codigo_serie" name="codigo_serie">
+              <div class="form-group">
+                  <label>Codigo</label>
+                  <input type="text" class="form-control" id="codigo_serie" name="codigo_serie">
               </div>
-
 
               <div class="form-group">
                 <label>Nombre del Serie</label>

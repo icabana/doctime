@@ -15,10 +15,6 @@ class TercerosModel extends ModelBase {
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
                     terceros.ciudad_tercero,
-                    terceros.sexo_tercero,
-                    terceros.estadocivil_tercero,
-                    terceros.fechanacimiento_tercero,
-                    terceros.lugarnacimiento_tercero,
                     terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
@@ -45,10 +41,6 @@ class TercerosModel extends ModelBase {
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
                     terceros.ciudad_tercero,
-                    terceros.sexo_tercero,
-                    terceros.estadocivil_tercero,
-                    terceros.fechanacimiento_tercero,
-                    terceros.lugarnacimiento_tercero,
                     terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
@@ -73,10 +65,6 @@ class TercerosModel extends ModelBase {
                     $correo_tercero, 
                     $direccion_tercero, 
                     $ciudad_tercero, 
-                    $sexo_tercero, 
-                    $estadocivil_tercero, 
-                    $fechanacimiento_tercero, 
-                    $lugarnacimiento_tercero, 
                     $estado_tercero
                     ){
                 
@@ -90,10 +78,6 @@ class TercerosModel extends ModelBase {
                                 correo_tercero, 
                                 direccion_tercero, 
                                 ciudad_tercero,
-                                sexo_tercero,
-                                estadocivil_tercero,
-                                fechanacimiento_tercero,
-                                lugarnacimiento_tercero,
                                 estado_tercero
                             )
                             VALUES(
@@ -106,10 +90,6 @@ class TercerosModel extends ModelBase {
                                 '".$correo_tercero."',
                                 '".$direccion_tercero."',
                                 '".$ciudad_tercero."',
-                                '".$sexo_tercero."',
-                                '".$estadocivil_tercero."',
-                                '".$fechanacimiento_tercero."',
-                                '".$lugarnacimiento_tercero."',
                                 '".$estado_tercero."'
                             );";
        
@@ -128,10 +108,6 @@ class TercerosModel extends ModelBase {
                     $correo_tercero, 
                     $direccion_tercero, 
                     $ciudad_tercero,
-                    $sexo_tercero,
-                    $estadocivil_tercero,
-                    $fechanacimiento_tercero,
-                    $lugarnacimiento_tercero,
                     $estado_tercero
                 ) {
         
@@ -146,10 +122,6 @@ class TercerosModel extends ModelBase {
                         correo_tercero = '". $correo_tercero ."',
                         direccion_tercero = '". $direccion_tercero ."',
                         ciudad_tercero = '". $ciudad_tercero ."',
-                        sexo_tercero = '". $sexo_tercero ."',
-                        estadocivil_tercero = '". $estadocivil_tercero ."',
-                        fechanacimiento_tercero = '". $fechanacimiento_tercero ."',
-                        lugarnacimiento_tercero = '". $lugarnacimiento_tercero ."',
                         estado_tercero = '". $estado_tercero ."'
 
                     WHERE id_tercero = '" . $id_tercero . "'";

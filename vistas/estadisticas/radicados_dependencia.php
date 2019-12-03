@@ -54,7 +54,7 @@
                     <div class="row">
                         
                         <div class="col-md-12">
-                            <h4 style="color:grey">RADICADOS POR USUARIO</h4>
+                            <h4 style="color:grey">RADICADOS POR DEPENDENCIA</h4>
                         </div>
                        
                     </div>
@@ -67,7 +67,7 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>Nombre del Usuario</th>
+                            <th style='background-color:lavender'>Nombre de la dependencia</th>
                             <th style='background-color:lavender'>No. de Radicados</th>
                         </tr>
                     </thead>
@@ -77,7 +77,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']." ".$items['apellidos_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_dependencia'])) . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_carpeta(" . $items['cantidad'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

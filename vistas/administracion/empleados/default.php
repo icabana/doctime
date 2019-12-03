@@ -3,7 +3,11 @@
     function nuevo_empleado() {
 
         abrirVentanaContenedor(
-            'administracion', 'Empleados', 'nuevo', '', ''
+            'administracion', 
+            'Empleados', 
+            'nuevo', 
+            '', 
+            ''
         );
 
     }
@@ -41,10 +45,11 @@
     $(document).ready(function() {
         CrearTabla('tabla_empleados');
     });
+
 </script>
 
-<div class="row">
 
+<div class="row">
 
     <div style="padding:25px" class="box-body table-responsive no-padding">
 
@@ -56,15 +61,12 @@
                             <h4 style="color:grey">GESTIONAR EMPLEADOS</h4>
                         </div>
                         <div class="col-md-2">
-
                             <button onclick="nuevo_empleado(); return false;" class="btn btn-success btn-sm">
                                 NUEVO EMPLEADO
                             </button>
-
                         </div>
                     </div>
                 </div>
-
 
             </div>
             <!-- /.card-header -->
@@ -93,13 +95,11 @@
                             echo "<td>" . utf8_encode(strtolower($items['correo_empleado'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['direccion_empleado']." ".$items['ciudad_empleado'])) . "</td>";
 
-
                             echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
 
                             echo "<td><a href='#'><i onclick='eliminar_empleado(" . $items['id_empleado'] . ");' 
                                     class='fas fa-trash'></i></a></td>";
-
 
                             echo "</tr>";
                         }

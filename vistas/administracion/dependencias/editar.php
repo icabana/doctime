@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
   function editar_dependencia() {
 
     var datos = $('#formDependencias').serialize();
@@ -25,7 +26,6 @@
   }
 </script>
 
-
 <?php
 $froms = new Formularios();
 ?>
@@ -33,7 +33,6 @@ $froms = new Formularios();
 <form id="formDependencias" method="post">
 
   <div class="box box-default">
-
 
     <div class="box-body">
 
@@ -53,7 +52,6 @@ $froms = new Formularios();
 
               <div class="card-body">
 
-
               <div class="form-group">
                   <label>C&oacute;digo Dependencia</label>
 
@@ -72,10 +70,10 @@ $froms = new Formularios();
                   <label>Nombre del Jefe</label>
                     <?php
                     echo $froms->Lista_Desplegable(
-                            $roles,
-                            'nombre_usuario',
-                            'id_usuario',
-                            'jefe_dependencias',
+                            $empleados,
+                            'nombre_empleado',
+                            'id_empleado',
+                            'jefe_dependencia',
                             $datos['jefe_dependencia'],
                             '',
                             ''

@@ -15,25 +15,22 @@ class DependenciasControlador extends ControllerBase {
     
     public function nuevo(){
         
-        $this->model->cargar("DependenciasModel.php", "administracion");
-        $DependenciasModel = new DependenciasModel();
-
-        $dependencias = $DependenciasModel->getTodos();
-
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+        
         include 'vistas/administracion/dependencias/insertar.php';
         
     }
-
          
     public function editar(){
-    
-        $data['operacion'] = 'editar';
+     
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
 
         $this->model->cargar("DependenciasModel.php");
-        $DependenciasModel = new DependenciasModel();    
-        
-        $dependencias = $DependenciasModel->getTodos();       
-        
+        $DependenciasModel = new DependenciasModel();          
         $datos = $DependenciasModel->getDatos($_POST['id_dependencia']);
             
         include 'vistas/administracion/dependencias/editar.php';
@@ -46,10 +43,10 @@ class DependenciasControlador extends ControllerBase {
         $DependenciasModel = new DependenciasModel();            
         
         $resp = $DependenciasModel->insertar(
-                    $_POST["codigo_dependencia"],
-                    $_POST["nombre_dependencia"],
-                    $_POST["jefe_dependencia"]
-                );        
+                                        $_POST["codigo_dependencia"],
+                                        $_POST["nombre_dependencia"],
+                                        $_POST["jefe_dependencia"]
+                                    );        
         
         if( $resp != 0 ){
             echo 1;
@@ -65,11 +62,11 @@ class DependenciasControlador extends ControllerBase {
         $DependenciasModel = new DependenciasModel();
             
         $resp = $DependenciasModel->editar(
-                    $_POST["id_dependencia"], 
-                    $_POST["codigo_dependencia"],
-                    $_POST["nombre_dependencia"],
-                    $_POST["jefe_dependencia"]
-                );        
+                                        $_POST["id_dependencia"], 
+                                        $_POST["codigo_dependencia"],
+                                        $_POST["nombre_dependencia"],
+                                        $_POST["jefe_dependencia"]
+                                    );        
       
         if( $resp != 0 ){
              echo 1;             
@@ -88,7 +85,6 @@ class DependenciasControlador extends ControllerBase {
         
         echo "1";        
         
-    }    
-   
+    }       
              
  }

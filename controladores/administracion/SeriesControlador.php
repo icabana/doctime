@@ -15,11 +15,6 @@ class SeriesControlador extends ControllerBase {
     
     public function nuevo(){
         
-        $this->model->cargar("SeriesModel.php", "administracion");
-        $SeriesModel = new SeriesModel();
-
-        $series = $SeriesModel->getTodos();
-
         include 'vistas/administracion/series/insertar.php';
         
     }
@@ -27,12 +22,8 @@ class SeriesControlador extends ControllerBase {
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
-
-        $this->model->cargar("SeriesModel.php");
-        $SeriesModel = new SeriesModel();    
-        
-        $series = $SeriesModel->getTodos();       
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();       
         
         $datos = $SeriesModel->getDatos($_POST['id_serie']);
             
@@ -46,9 +37,9 @@ class SeriesControlador extends ControllerBase {
         $SeriesModel = new SeriesModel();            
         
         $resp = $SeriesModel->insertar(
-                    $_POST["codigo_serie"], 
-                    $_POST["nombre_serie"]
-                );        
+                                    $_POST["codigo_serie"], 
+                                    $_POST["nombre_serie"]
+                                );        
         
         if( $resp != 0 ){
             echo 1;
@@ -64,10 +55,10 @@ class SeriesControlador extends ControllerBase {
         $SeriesModel = new SeriesModel();
             
         $resp = $SeriesModel->editar(
-                    $_POST["id_serie"], 
-                    $_POST["codigo_serie"], 
-                    $_POST["nombre_serie"]
-                );        
+                                    $_POST["id_serie"], 
+                                    $_POST["codigo_serie"], 
+                                    $_POST["nombre_serie"]
+                                );        
       
         if( $resp != 0 ){
              echo 1;             

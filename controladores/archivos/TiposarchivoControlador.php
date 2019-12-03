@@ -27,13 +27,9 @@ class TiposarchivoControlador extends ControllerBase {
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
-
         $this->model->cargar("TiposarchivoModel.php");
         $TiposarchivoModel = new TiposarchivoModel();    
-        
-        $tiposarchivo = $TiposarchivoModel->getTodos();       
-        
+                
         $datos = $TiposarchivoModel->getDatos($_POST['id_tipoarchivo']);
             
         include 'vistas/administracion/tiposarchivo/editar.php';
@@ -46,8 +42,8 @@ class TiposarchivoControlador extends ControllerBase {
         $TiposarchivoModel = new TiposarchivoModel();            
         
         $resp = $TiposarchivoModel->insertar(
-                    $_POST["nombre_tipoarchivo"]
-                );        
+                                        $_POST["nombre_tipoarchivo"]
+                                    );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +59,9 @@ class TiposarchivoControlador extends ControllerBase {
         $TiposarchivoModel = new TiposarchivoModel();
             
         $resp = $TiposarchivoModel->editar(
-            $_POST["id_tipoarchivo"], 
-            $_POST["nombre_tipoarchivo"]
-        );        
+                                        $_POST["id_tipoarchivo"], 
+                                        $_POST["nombre_tipoarchivo"]
+                                    );        
       
         if( $resp != 0 ){
              echo 1;             

@@ -23,16 +23,11 @@ class TiposradicadoControlador extends ControllerBase {
         include 'vistas/administracion/tiposradicado/insertar.php';
         
     }
-
          
     public function editar(){
-    
-        $data['operacion'] = 'editar';
 
         $this->model->cargar("TiposradicadoModel.php");
-        $TiposradicadoModel = new TiposradicadoModel();    
-        
-        $tiposradicado = $TiposradicadoModel->getTodos();       
+        $TiposradicadoModel = new TiposradicadoModel();       
         
         $datos = $TiposradicadoModel->getDatos($_POST['id_tiporadicado']);
             

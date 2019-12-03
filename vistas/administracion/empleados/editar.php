@@ -35,7 +35,6 @@ $froms = new Formularios();
 
   <div class="box box-default">
 
-
     <div class="box-body">
 
       <div class="row">
@@ -56,18 +55,17 @@ $froms = new Formularios();
                 <div class="form-group">
                   <label>Tipo de Documento</label>
                   <?php
-                  echo $froms->Lista_Desplegable(
-                      $roles,
-                      'nombre_tipodocumento',
-                      'id_tipodocumento',
-                      'tipodocumento_empleado',
-                      $datos['rol_usuario'],
-                      '',
-                      ''
-                  );
+                    echo $froms->Lista_Desplegable(
+                        $tiposdocumento,
+                        'nombre_tipodocumento',
+                        'id_tipodocumento',
+                        'tipodocumento_empleado',
+                        $datos['rol_usuario'],
+                        '',
+                        ''
+                    );
                   ?>
                 </div>
-
               
                 <div class="form-group">
                   <label>Documento</label>
@@ -129,7 +127,7 @@ $froms = new Formularios();
 
                   <?php
                     echo $froms->Lista_Desplegable(
-                        $estadis,
+                        $sexos,
                         'nombre_sexo',
                         'id_sexo',
                         'sexo_empleado',
@@ -145,7 +143,7 @@ $froms = new Formularios();
 
                   <?php
                     echo $froms->Lista_Desplegable(
-                        $estados,
+                        $estadoscivil,
                         'nombre_estadocivil',
                         'id_estadocivil',
                         'estadocivil_empleado',
@@ -175,7 +173,7 @@ $froms = new Formularios();
 
                   <?php
                     echo $froms->Lista_Desplegable(
-                        $estadis,
+                        $estados,
                         'nombre_estado',
                         'id_estado',
                         'estado_empleado',

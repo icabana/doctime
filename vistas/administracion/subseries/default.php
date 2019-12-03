@@ -56,15 +56,12 @@
                             <h4 style="color:grey">GESTIONAR SUBSERIES DOCUMENTAL</h4>
                         </div>
                         <div class="col-md-2">
-
                             <button onclick="nuevo_subserie(); return false;" class="btn btn-success btn-sm">
                                 NUEVO SUBSERIE DOCUMENTAL
                             </button>
-
                         </div>
                     </div>
                 </div>
-
 
             </div>
             <!-- /.card-header -->
@@ -89,13 +86,11 @@
                             echo "<td>" . utf8_encode(strtolower($items['codigo_subserie'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['nombre_subserie'])) . "</td>";
 
-
                             echo "<td><a href='#'><i onclick='editar_subserie(" . $items['id_subserie'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
 
                             echo "<td><a href='#'><i onclick='eliminar_subserie(" . $items['id_subserie'] . ");' 
                                     class='fas fa-trash'></i></a></td>";
-
 
                             echo "</tr>";
                         }

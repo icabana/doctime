@@ -34,7 +34,6 @@ $froms = new Formularios();
 
   <div class="box box-default">
 
-
     <div class="box-body">
 
       <div class="row">

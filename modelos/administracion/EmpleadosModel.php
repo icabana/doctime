@@ -6,8 +6,8 @@ class EmpleadosModel extends ModelBase {
         
         $query = "select 
                     empleados.id_empleado, 
+                    empleados.dependencia_empleado, 
                     empleados.documento_empleado, 
-                    empleados.tipodocumento_empleado, 
                     empleados.nombres_empleado, 
                     empleados.apellidos_empleado, 
                     empleados.telefono_empleado, 
@@ -35,6 +35,7 @@ class EmpleadosModel extends ModelBase {
        
         $query = "select 
                     empleados.id_empleado, 
+                    empleados.dependencia_empleado, 
                     empleados.documento_empleado, 
                     empleados.tipodocumento_empleado, 
                     empleados.nombres_empleado, 
@@ -64,6 +65,7 @@ class EmpleadosModel extends ModelBase {
     
     function insertar(                               
                     $documento_empleado, 
+                    $dependencia_empleado, 
                     $tipodocumento_empleado, 
                     $nombres_empleado, 
                     $apellidos_empleado, 
@@ -81,6 +83,7 @@ class EmpleadosModel extends ModelBase {
                 
         $query = "INSERT INTO empleados (
                                 documento_empleado, 
+                                dependencia_empleado, 
                                 tipodocumento_empleado, 
                                 nombres_empleado, 
                                 apellidos_empleado, 
@@ -97,6 +100,7 @@ class EmpleadosModel extends ModelBase {
                             )
                             VALUES(
                                 '".$documento_empleado."',
+                                '".$dependencia_empleado."',
                                 '".$tipodocumento_empleado."',
                                 '".$nombres_empleado."',
                                 '".$apellidos_empleado."',
@@ -119,6 +123,7 @@ class EmpleadosModel extends ModelBase {
     function editar(
                     $id_empleado, 
                     $documento_empleado, 
+                    $dependencia_empleado, 
                     $tipodocumento_empleado, 
                     $nombres_empleado, 
                     $apellidos_empleado, 
@@ -137,6 +142,7 @@ class EmpleadosModel extends ModelBase {
         $query = "  UPDATE empleados 
         
                     SET documento_empleado = '". $documento_empleado ."',
+                        dependencia_empleado = '". $dependencia_empleado ."',
                         tipodocumento_empleado = '". $tipodocumento_empleado ."',
                         nombres_empleado = '". $nombres_empleado ."',
                         apellidos_empleado = '". $apellidos_empleado ."',

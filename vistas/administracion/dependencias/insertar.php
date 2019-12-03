@@ -49,27 +49,24 @@
 
             <div class="card-body">
 
-
               <div class="form-group">
                 <label>C&oacute;digo Dependencia</label>
                 <input type="text" class="form-control" id="nombre_dependencia" name="nombre_dependencia">
               </div>
 
-
               <div class="form-group">
-                <label>Nombre del Dependencia</label>
+                <label>Nombre de la Dependencia</label>
                 <input type="text" class="form-control" id="nombre_dependencia" name="nombre_dependencia">
               </div>
-
 
               <div class="form-group">
                   <label>Nombre del Jefe</label>
                     <?php
                     echo $froms->Lista_Desplegable(
-                            $roles,
-                            'nombre_usuario',
-                            'id_usuario',
-                            'jefe_dependencias',
+                            $empleados,
+                            'nombre_empleado',
+                            'id_empleado',
+                            'jefe_dependencia',
                             '',
                             '',
                             ''
@@ -77,8 +74,6 @@
                     ?>
 
                 </div>
-
-
 
             </div>
 

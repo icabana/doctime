@@ -4,12 +4,23 @@ class EstadisticasControlador extends ControllerBase {
 
     public function radicadosPorUsuario() {
         
-        $this->model->cargar("CarpetasModel.php", "radicados");
-        $CarpetasModel = new CarpetasModel();
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
 
-        $carpetas = $CarpetasModel->getTodos();
+        $entrantes = $EntrantesModel->getRadicadosPorUsuario();
 
         include 'vistas/estadisticas/radicados_usuario.php';
+                        
+    }    
+   
+    public function radicadosPorDependencia() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+
+        $entrantes = $EntrantesModel->getRadicadosPorDependencias();
+
+        include 'vistas/estadisticas/radicados_dependencia.php';
                         
     }    
    

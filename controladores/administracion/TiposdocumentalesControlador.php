@@ -26,13 +26,9 @@ class TiposdocumentalesControlador extends ControllerBase {
 
          
     public function editar(){
-    
-        $data['operacion'] = 'editar';
 
         $this->model->cargar("TiposdocumentalesModel.php");
-        $TiposdocumentalesModel = new TiposdocumentalesModel();    
-        
-        $tiposdocumentales = $TiposdocumentalesModel->getTodos();       
+        $TiposdocumentalesModel = new TiposdocumentalesModel();       
         
         $datos = $TiposdocumentalesModel->getDatos($_POST['id_tipodocumental']);
             
@@ -84,7 +80,6 @@ class TiposdocumentalesControlador extends ControllerBase {
         
         echo "1";        
         
-    }    
-   
+    }       
              
  }

@@ -27,12 +27,8 @@ class CarpetasControlador extends ControllerBase {
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
-
         $this->model->cargar("CarpetasModel.php");
-        $CarpetasModel = new CarpetasModel();    
-        
-        $carpetas = $CarpetasModel->getTodos();       
+        $CarpetasModel = new CarpetasModel();   
         
         $datos = $CarpetasModel->getDatos($_POST['id_carpeta']);
             
@@ -46,8 +42,8 @@ class CarpetasControlador extends ControllerBase {
         $CarpetasModel = new CarpetasModel();            
         
         $resp = $CarpetasModel->insertar(
-                    $_POST["nombre_carpeta"]
-                );        
+                                    $_POST["nombre_carpeta"]
+                                );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +59,9 @@ class CarpetasControlador extends ControllerBase {
         $CarpetasModel = new CarpetasModel();
             
         $resp = $CarpetasModel->editar(
-            $_POST["id_carpeta"], 
-            $_POST["nombre_carpeta"]
-        );        
+                                    $_POST["id_carpeta"], 
+                                    $_POST["nombre_carpeta"]
+                                );        
       
         if( $resp != 0 ){
              echo 1;             

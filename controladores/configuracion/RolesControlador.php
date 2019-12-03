@@ -23,16 +23,11 @@ class RolesControlador extends ControllerBase {
         include 'vistas/configuracion/roles/insertar.php';
         
     }
-
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
-
         $this->model->cargar("RolesModel.php");
-        $RolesModel = new RolesModel();    
-        
-        $roles = $RolesModel->getTodos();       
+        $RolesModel = new RolesModel();             
         
         $datos = $RolesModel->getDatos($_POST['id_rol']);
             
@@ -46,8 +41,8 @@ class RolesControlador extends ControllerBase {
         $RolesModel = new RolesModel();            
         
         $resp = $RolesModel->insertar(
-                    $_POST["nombre_rol"]
-                );        
+                                    $_POST["nombre_rol"]
+                                );        
         
         if( $resp != 0 ){
             echo 1;
@@ -63,9 +58,9 @@ class RolesControlador extends ControllerBase {
         $RolesModel = new RolesModel();
             
         $resp = $RolesModel->editar(
-            $_POST["id_rol"], 
-            $_POST["nombre_rol"]
-        );        
+                                $_POST["id_rol"], 
+                                $_POST["nombre_rol"]
+                            );        
       
         if( $resp != 0 ){
              echo 1;             

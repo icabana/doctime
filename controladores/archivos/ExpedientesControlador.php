@@ -27,12 +27,8 @@ class ExpedientesControlador extends ControllerBase {
          
     public function editar(){
     
-        $data['operacion'] = 'editar';
-
         $this->model->cargar("ExpedientesModel.php");
-        $ExpedientesModel = new ExpedientesModel();    
-        
-        $expedientes = $ExpedientesModel->getTodos();       
+        $ExpedientesModel = new ExpedientesModel();   
         
         $datos = $ExpedientesModel->getDatos($_POST['id_expediente']);
             

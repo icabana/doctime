@@ -18,12 +18,9 @@ class ParametrosControlador extends ControllerBase {
         include 'vistas/configuracion/parametros/insertar.php';
         
     }
-
          
     public function editar(){
-    
-        $data['operacion'] = 'editar';
-                    
+                        
         $this->model->cargar("ParametrosModel.php");
         $ParametrosModel = new ParametrosModel();    
         
@@ -57,10 +54,10 @@ class ParametrosControlador extends ControllerBase {
         $ParametrosModel = new ParametrosModel();
             
         $resp = $ParametrosModel->editar(
-            $_POST["id_parametro"],  
-            $_POST["nombre_parametro"],  
-            $_POST["valor_parametro"]
-        );        
+                                        $_POST["id_parametro"],  
+                                        $_POST["nombre_parametro"],  
+                                        $_POST["valor_parametro"]
+                                    );        
       
         if( $resp != 0 ){
              echo 1;             

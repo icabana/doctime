@@ -53,12 +53,10 @@ $froms = new Formularios();
 
               <div class="card-body">
 
-
               <div class="form-group">
                 <label>C&oacute;digo de la Subserie</label>
                 <input type="text" class="form-control" id="nombre_subserie" name="nombre_subserie">
               </div>
-
 
               <div class="form-group">
                 <label>Nombre del Subserie</label>
@@ -76,7 +74,6 @@ $froms = new Formularios();
                 <input type="text" class="form-control" id="ac_subserie" name="ac_subserie">
               </div>
 
-
               <div class="form-group">
                 <label>Serie Documental</label>
                 <?php
@@ -92,7 +89,6 @@ $froms = new Formularios();
                 ?>
 
               </div>
-
 
               <div class="form-group">
                 <label>Soporte</label>
@@ -110,7 +106,6 @@ $froms = new Formularios();
 
               </div>
 
-
               <div class="form-group">
                 <label>Disposici&oacute;n Final</label>
                 <?php
@@ -126,7 +121,6 @@ $froms = new Formularios();
                 ?>
 
               </div>
-
 
               </div>
 
