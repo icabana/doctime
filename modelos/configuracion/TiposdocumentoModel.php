@@ -5,9 +5,10 @@ class TiposdocumentoModel extends ModelBase {
     function getTodos(){
         
         $query = "select    tiposdocumento.id_tipodocumento, 
+                            tiposdocumento.codigo_tipodocumento,
                             tiposdocumento.nombre_tipodocumento
             	                 
-                        from tiposdocumento
+                            from tiposdocumento
                         
                         ORDER BY tiposdocumento.nombre_tipodocumento";
 
@@ -19,6 +20,7 @@ class TiposdocumentoModel extends ModelBase {
     function getDatos($id_tipodocumento){
         
         $query = "select    tiposdocumento.id_tipodocumento, 
+                            tiposdocumento.codigo_tipodocumento,    
                             tiposdocumento.nombre_tipodocumento
             	                 
                         from tiposdocumento
