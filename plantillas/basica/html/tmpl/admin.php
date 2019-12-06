@@ -36,7 +36,7 @@
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
   <?php
-                    
+      /*              
     include("modelos/radicados/EntrantesModel.php");
     $EntrantesModel = new EntrantesModel();   
     
@@ -50,7 +50,7 @@
     $SalientesModel = new SalientesModel();   
     
     $numero_salientes = $SalientesModel->getNumeroSalientes();
-    
+    */
 ?>
     
     
@@ -68,13 +68,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Nuevo radicado de entrada</a>
+        <a href="index3.html" class="nav-link">Nueva Entrada</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Nuevo radicado de salida</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Nuevo pre-radicado</a>
+        <a href="#" class="nav-link">Nueva Salida</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
           Seleccionar Año 
@@ -422,28 +419,28 @@
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes (Todos)</span>
                 <span class="info-box-number">
-                  <?php echo $numero_entrantes; ?>
+                  <?php //echo $numero_entrantes; ?>
                 </span>
               </div>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes (Activos)</span>
                 <span class="info-box-number">
-                  <?php echo $numero_entrantes_activos; ?>
+                  <?php //echo $numero_entrantes_activos; ?>
                 </span>
               </div>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes (Finalizados)</span>
                 <span class="info-box-number">
-                  <?php echo $numero_entrantes_finalizados; ?>
+                  <?php //echo $numero_entrantes_finalizados; ?>
                 </span>
               </div>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes (Archivados)</span>
                 <span class="info-box-number">
-                  <?php echo $numero_entrantes_archivados; ?>
+                  <?php //echo $numero_entrantes_archivados; ?>
                 </span>
               </div>
 
@@ -460,7 +457,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Salientes</span>
                 <span class="info-box-number">
-                <?php echo $numero_salientes; ?>
+                <?php //echo $numero_salientes; ?>
                 </span>
               </div>
               <!-- /.info-box-content -->

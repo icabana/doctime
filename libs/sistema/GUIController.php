@@ -17,8 +17,6 @@ class GUIController
         require 'libs/utilidades/Fechas.php';
         require 'libs/utilidades/ValorLetras.php';
 
-        require 'libs/uploads/upload.php';
-
         //SE CARGAN LIBRERIAS DEL SISTEMA
         require 'libs/sistema/SPDO.php'; //PDO con singleton
         require 'libs/sistema/configuracion/Config.php'; //de configuracion

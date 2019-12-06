@@ -244,7 +244,9 @@ class EntrantesModel extends ModelBase {
                     where ano_entrante = '".$_SESSION['ano']."'";
         
         $consulta = $this->consulta($query);
-        return $consulta[0]['numero'];       
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
                
     }  
 
@@ -257,7 +259,9 @@ class EntrantesModel extends ModelBase {
                     where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '1'";
         
         $consulta = $this->consulta($query);
-        return $consulta[0]['numero'];       
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }  
                
     }  
 
@@ -270,7 +274,9 @@ class EntrantesModel extends ModelBase {
                     where ano_entrante = '".$_SESSION['ano']."' and estado_entante = '2'";
         
         $consulta = $this->consulta($query);
-        return $consulta[0]['numero'];       
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }      
                
     }
 
@@ -283,7 +289,9 @@ class EntrantesModel extends ModelBase {
                     where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '3'";
         
         $consulta = $this->consulta($query);
-        return $consulta[0]['numero'];       
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }        
                
     }
 
