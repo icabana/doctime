@@ -120,7 +120,7 @@ $froms = new Formularios();
                   <label>Ciudad</label>
 
                   <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero" 
-                        value="<?php echo $datos['celular_tercero']; ?>">
+                        value="<?php echo $datos['ciudad_tercero']; ?>">
                 </div>
 
                 <div class="form-group">

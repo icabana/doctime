@@ -31,173 +31,214 @@
 $froms = new Formularios();
 ?>
 
-<form id="formEmpleados" method="post">
+<div class="box box-default">
 
-  <div class="box box-default">
+  <div style="padding: 25px" class="box-body">
 
-    <div class="box-body">
-
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div style="padding: 25px" class="col-md-6">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Editar Empleado</h3>
-            </div>
-
-            <div class="card-body">
-            <form role="form">
-           
-              <input type="hidden" class="form-control" id="id_empleado" name="id_empleado" 
-                        value="<?php echo $datos['id_empleado']; ?>">
-
-                <div class="form-group">
-                  <label>Tipo de Documento</label>
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $tiposdocumento,
-                        'nombre_tipodocumento',
-                        'id_tipodocumento',
-                        'tipodocumento_empleado',
-                        $datos['rol_usuario'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-              
-                <div class="form-group">
-                  <label>Documento</label>
-
-                  <input type="text" class="form-control" id="documento_empleado" name="documento_empleado" 
-                        value="<?php echo $datos['documento_empleado']; ?>">
-                </div>
-           
-
-
-                <div class="form-group">
-                  <label>Nombres</label>
-
-                  <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado" 
-                        value="<?php echo $datos['nombres_empleado']; ?>">
-                </div>
-             
-
-
-                <div class="form-group">
-                  <label>Apellidos</label>
-
-                  <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado" 
-                        value="<?php echo $datos['apellidos_empleado']; ?>">
-                </div>
-            
-             
-                <div class="form-group">
-                  <label>Telefono</label>
-
-                  <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado" 
-                        value="<?php echo $datos['telefono_empleado']; ?>">
-                </div>           
-
-                <div class="form-group">
-                  <label>Celular</label>
-
-                  <input type="text" class="form-control" id="celular_empleado" name="celular_empleado" 
-                        value="<?php echo $datos['celular_empleado']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Direcci&oacute;n</label>
-
-                  <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado" 
-                        value="<?php echo $datos['direccion_empleado']; ?>">
-                </div>
-
-
-                <div class="form-group">
-                  <label>Ciudad</label>
-
-                  <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado" 
-                        value="<?php echo $datos['ciudad_empleado']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Sexo</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $sexos,
-                        'nombre_sexo',
-                        'id_sexo',
-                        'sexo_empleado',
-                        $datos['sexo_empleado'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-
-                <div class="form-group">
-                  <label>Estado Civil</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estadoscivil,
-                        'nombre_estadocivil',
-                        'id_estadocivil',
-                        'estadocivil_empleado',
-                        $datos['estadocivil_empleado'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-
-                <div class="form-group">
-                  <label>Fecha de Nacimiento</label>
-
-                  <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" 
-                        value="<?php echo $datos['fechanacimiento_empleado']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Lugar de nacimiento</label>
-
-                  <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado" 
-                        value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Estado</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estados,
-                        'nombre_estado',
-                        'id_estado',
-                        'estado_empleado',
-                        $datos['estado_empleado'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-
-
-              </div>
-
-              <div class="card-footer">
-                <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
-                <button onclick="editar_empleado(); return false;" class="btn btn-success">Guardar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-3"></div>
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Editar Empleado</h3>
       </div>
 
-    </div>
+      <form autocomplete="on" id="formEmpleados" method="post">
 
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-12">
+              <!-- Custom Tabs -->
+              <div class="card">
+
+
+                <ul class="nav nav-pills ml-auto p-2">
+                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Datos de Usuario</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                  <div style="padding: 20px;" class="tab-pane active" id="tab_1">
+                    <div class="row">
+
+                      <div class="col-md-3">
+
+                        <label>Tipo de Documento</label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $tiposdocumento,
+                          'nombre_tipodocumento',
+                          'id_tipodocumento',
+                          'tipodocumento_empleado',
+                          $datos['tipodocumento_usuario'],
+                          '',
+                          ''
+                        );
+                        ?>
+
+                      </div>
+
+                      <div class="col-md-3">
+                        <label>Documento</label>
+                        <input type="text" class="form-control" id="documento_empleado" name="documento_empleado" 
+                        value="<?php echo $datos['documento_empleado']; ?>" >
+                      </div>
+
+                     
+
+                      <div class="col-md-6"></div>
+
+                    </div>
+
+                    <br>
+
+
+
+
+
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado"
+                        value="<?php echo $datos['nombres_empleado']; ?>">
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado"
+                        value="<?php echo $datos['apellidos_empleado']; ?>">
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 20px;" class="tab-pane" id="tab_2">
+
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label>Celular</label>
+                      <input type="text" class="form-control" id="celular_empleado" name="celular_empleado"
+                        value="<?php echo $datos['celular_empleado']; ?>">
+                    </div>
+
+                    <div class="col-md-2">
+                      <label>Tel&eacute;fono</label>
+                      <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado"
+                        value="<?php echo $datos['telefono_empleado']; ?>">
+                    </div>
+
+                   
+                      <div class="col-md-4">
+                        <label>Direcci&oacute;n</label>
+                        <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado"
+                        value="<?php echo $datos['direccion_empleado']; ?>">
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>Ciudad</label>
+                        <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado"
+                        value="<?php echo $datos['ciudad_empleado']; ?>">
+                      </div>
+                      </div>
+
+<br>
+
+                      <div class="row">
+                      <div class="col-md-2">
+                        <label>Sexo</label>
+
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $sexos,
+                          'nombre_sexo',
+                          'id_sexo',
+                          'sexo_empleado',
+                          $datos['sexo_usuario'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+
+                      <div class="col-md-2">
+                        <label>Estado Civil</label>
+
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $estadoscivil,
+                          'nombre_estadocivil',
+                          'id_estadocivil',
+                          'estadocivil_empleado',
+                          $datos['estadocivil_usuario'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+
+                      <div class="col-md-3">
+                        <label>Fecha de Nacimiento</label>
+
+                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado"
+                         value="<?php echo $datos['fechanacimiento_empleado']; ?>">
+                      </div>
+
+                      <div class="col-md-3">
+                        <label>Lugar de Nacimiento</label>
+
+                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado"
+                         value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                      </div>
+                    </div>
+                    </div>
+
+
+
+                  <div style="padding: 20px;" class="tab-pane" id="tab_3">
+
+                    <div class="row">
+                    <div class="col-md-3">
+                      <label>Nombre de Usuario</label>
+                      <input type="text" class="form-control" id="celular_empleado" name="usuario_empleado">
+                    </div>
+
+                    <div class="col-md-3">
+                      <label>Contrase&ntilde;a</label>
+                      <input type="text" class="form-control" id="telefono_empleado" name="password_empleado">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Estado</label>
+
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $estados,
+                          'nombre_estado',
+                          'id_estado',
+                          'estado_empleado',
+                          $datos['estado_usuario'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
+          <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
+
+        </div>
+
+      </form>
+
+    </div>
   </div>
-</form>

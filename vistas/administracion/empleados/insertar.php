@@ -70,7 +70,7 @@ $froms = new Formularios();
                           'nombre_tipodocumento',
                           'id_tipodocumento',
                           'tipodocumento_empleado',
-                          $datos['rol_usuario'],
+                          '',
                           '',
                           ''
                         );
@@ -176,13 +176,13 @@ $froms = new Formularios();
                       <div class="col-md-3">
                         <label>Fecha de Nacimiento</label>
 
-                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" value="<?php echo $datos['fechanacimiento_empleado']; ?>">
+                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" >
                       </div>
 
                       <div class="col-md-3">
                         <label>Lugar de Nacimiento</label>
 
-                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado" value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado">
                       </div>
                     </div>
                     </div>
