@@ -39,18 +39,17 @@
       /*              
     include("modelos/radicados/EntrantesModel.php");
     $EntrantesModel = new EntrantesModel();   
-    
+    /*
     $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
     $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
     $numero_entrantes_finalizados = $EntrantesModel->getNumeroEntrantesFinalizados();
     $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados()();
 
-                     
     include("modelos/radicados/SalientesModel.php");
     $SalientesModel = new SalientesModel();   
     
     $numero_salientes = $SalientesModel->getNumeroSalientes();
-    */
+
 ?>
     
     
