@@ -85,12 +85,12 @@ class EntrantesControlador extends ControllerBase {
     
     public function buscarRemitente() {
 
-        $this->model->cargar("TercerosModel.php", "configuracion");
+        $this->model->cargar("TercerosModel.php", "administracion");
         $TercerosModel = new TercerosModel();
 
-        $clientes = $TercerosModel->getTercerosLIKE($_POST['texto']);
-
-        $tabla_clientes = "<table id='tabla_clientes'  class='table table-hover'>
+        $terceros = $TercerosModel->getTercerosLIKE($_POST['texto']);
+print_r($terceros);
+        $tabla_terceros = "<table id='tabla_terceros'  class='table table-hover'>
 
     <thead>
         <tr>     
@@ -99,24 +99,62 @@ class EntrantesControlador extends ControllerBase {
         </thead>
     <tbody>";
 
-        foreach ($clientes as $clave => $valor) {
+        foreach ($terceros as $clave => $valor) {
 
-            $tabla_clientes .= "<tr onclick='seleccionar_cliente(" . $valor['ID_ESTUDIANTE'] . ", \"" . ($valor['NOMBRES_ESTUDIANTE']) . "\", \"" . (utf8_encode($valor['DOCUMENTO_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['DIRECCION_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['DIRECCION_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['TELEFONO_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['CELULAR_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['CIUDAD_ESTUDIANTE'])) . "\", \"" . (utf8_encode($valor['APELLIDOS_ESTUDIANTE'])) . "\");'>";  
+            $tabla_terceros .= "<tr onclick='seleccionar_tercero(" . $valor['ID_TERCERO'] . ", \"" . ($valor['NOMBRES_TERCERO']) . "\");'>";  
 
-            $tabla_clientes .= "<td><strong>" . utf8_encode($valor['NOMBRES_ESTUDIANTE'])." ".(utf8_encode($valor['APELLIDOS_ESTUDIANTE'])) . "</strong></td>";
+            $tabla_terceros .= "<td><strong>" . utf8_encode($valor['NOMBRE_TERCERO']) . "</strong></td>";
 
-            $tabla_clientes .= "</tr>";
+            $tabla_terceros .= "</tr>";
 
         }
 
-       $tabla_clientes .= "
+       $tabla_terceros .= "
 
 </tbody></table>";
 
-        echo $tabla_clientes;
+        echo $tabla_terceros;
 
       }
-        
+
+      
+    
+    public function buscarDestinatario() {
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+
+        $empleados = $EmpleadosModel->getEmpleadosLIKE($_POST['texto']);
+
+        $tabla_empleados = "<table id='tabla_empleados'  class='table table-hover'>
+
+    <thead>
+        <tr>     
+            <th><center>NOMBRE</center></th> 
+        </tr>
+        </thead>
+    <tbody>";
+
+        foreach ($empleados as $clave => $valor) {
+
+            $tabla_empleados .= "<tr onclick='seleccionar_empleado(" . $valor['ID_EMPLEADO'] . ", \"" . ($valor['NOMBRES_EMPLEADO']) . "\", \"" . (utf8_encode($valor['APELLIDOS_EMPLEADO'])) . "\");'>";  
+
+            $tabla_empleados .= "<td><strong>" . utf8_encode($valor['NOMBRES_EMPLEADO'])." ".(utf8_encode($valor['APELLIDOS_EMPLEADO'])) . "</strong></td>";
+
+            $tabla_empleados .= "</tr>";
+
+        }
+
+       $tabla_empleados .= "
+
+</tbody></table>";
+
+        echo $tabla_empleados;
+
+      }
+
+
+
     public function insertar() {
       
         $this->model->cargar("EntrantesModel.php", "radicados");

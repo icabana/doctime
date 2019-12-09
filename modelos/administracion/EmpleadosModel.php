@@ -67,6 +67,41 @@ class EmpleadosModel extends ModelBase {
         return $consulta[0];    
         
     }
+
+    function getEmpleadosLIKE($texto) {
+       
+        $query = "select 
+                    empleados.id_empleado, 
+                    empleados.dependencia_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
+                    empleados.sexo_empleado,
+                    empleados.estadocivil_empleado,
+                    empleados.fechanacimiento_empleado,
+                    empleados.lugarnacimiento_empleado,
+                    empleados.usuario_empleado,
+
+                    tiposdocumento.codigo_tipodocumento
+                
+                    from empleados left join 
+                            tiposdocumento on 
+                            empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
+
+                    where   empleados.nombres_empleado LIKE '%".$texto."%' OR 
+                            empleados.apellidos_empleado LIKE '%".$texto."%' OR
+                            empleados.documento_empleado LIKE '%".$texto."%' ";
+        
+         $consulta = $this->consulta($query);
+        return $consulta;    
+        
+    }
     
     function existeDocumento($documento_empleado) {
        

@@ -61,6 +61,26 @@ function buscar_destinatario(texto) {
 }
 
 
+function seleccionar_remitente(id_remitente, nombre_remitente){
+
+    $("#remitente_entrante").val(id_remitente);
+    $("#remitente_entrante2").val(nombre_remitente);
+
+    $('#vista_remitentes').hide();
+
+}	
+
+function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario){
+
+    $("#destinatario_entrante").val(id_destinatario);
+    $("#destinatario_entrante2").val(nombre_destinatario+' '+apellidos_destinatario);
+
+    $('#vista_destinatarios').hide();
+
+}	
+
+
+
 </script>
 
 
@@ -141,8 +161,10 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="remitente_entrante" 
-                        name="remitente_entrante"  onkeyup="buscar_remitente(this.value); return false;">
+                        <input type="hidden" class="requerido" id="remitente_entrante" 
+                        name="remitente_entrante">
+                        <input type="text" class="form-control requerido" id="remitente_entrante2" 
+                        name="remitente_entrante2"  onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
 
@@ -155,8 +177,10 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="destinatario_entrante" 
-                        name="destinario_entrante" onkeyup="buscar_destinatario(this.value); return false;">
+                        <input type="hidden" class="requerido" id="destinatario_entrante" 
+                        name="destinario_entrante">
+                        <input type="text" class="form-control requerido" id="destinatario_entrante2" 
+                        name="destinario_entrante2" onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
 

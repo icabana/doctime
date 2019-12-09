@@ -8,8 +8,7 @@ class TercerosModel extends ModelBase {
                     terceros.id_tercero, 
                     terceros.documento_tercero, 
                     terceros.tipodocumento_tercero, 
-                    terceros.nombres_tercero, 
-                    terceros.apellidos_tercero, 
+                    terceros.nombre_tercero, 
                     terceros.telefono_tercero, 
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
@@ -33,8 +32,7 @@ class TercerosModel extends ModelBase {
                     terceros.id_tercero, 
                     terceros.documento_tercero, 
                     terceros.tipodocumento_tercero, 
-                    terceros.nombres_tercero, 
-                    terceros.apellidos_tercero, 
+                    terceros.nombre_tercero, 
                     terceros.telefono_tercero, 
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
@@ -52,12 +50,40 @@ class TercerosModel extends ModelBase {
         return $consulta[0];    
         
     }
+
     
+
+    function getTercerosLIKE($texto) {
+       
+        $query = "select 
+                    terceros.id_tercero, 
+                    terceros.documento_tercero, 
+                    terceros.tipodocumento_tercero, 
+                    terceros.nombre_tercero, 
+                    terceros.telefono_tercero, 
+                    terceros.celular_tercero, 
+                    terceros.correo_tercero, 
+                    terceros.direccion_tercero, 
+                    terceros.ciudad_tercero,
+
+                    tiposdocumento.codigo_tipodocumento
+                
+                    from terceros left join 
+                            tiposdocumento on terceros.tipodocumento_tercero = tiposdocumento.id_tipodocumento
+
+                    where terceros.nombre_tercero LIKE '%".$texto."%' or
+                    terceros.documento_tercero LIKE '%".$texto."%'";
+        
+         $consulta = $this->consulta($query);
+        return $consulta;    
+        
+    }
+
+
     function insertar(                               
                     $documento_tercero, 
                     $tipodocumento_tercero, 
-                    $nombres_tercero, 
-                    $apellidos_tercero, 
+                    $nombre_tercero,
                     $telefono_tercero, 
                     $celular_tercero, 
                     $correo_tercero, 
@@ -68,8 +94,7 @@ class TercerosModel extends ModelBase {
         $query = "INSERT INTO terceros (
                                 documento_tercero, 
                                 tipodocumento_tercero, 
-                                nombres_tercero, 
-                                apellidos_tercero, 
+                                nombre_tercero, 
                                 telefono_tercero, 
                                 celular_tercero, 
                                 correo_tercero, 
@@ -79,8 +104,7 @@ class TercerosModel extends ModelBase {
                             VALUES(
                                 '".$documento_tercero."',
                                 '".$tipodocumento_tercero."',
-                                '".$nombres_tercero."',
-                                '".$apellidos_tercero."',
+                                '".$nombre_tercero."',
                                 '".$telefono_tercero."',
                                 '".$celular_tercero."',
                                 '".$correo_tercero."',
@@ -96,8 +120,7 @@ class TercerosModel extends ModelBase {
                     $id_tercero, 
                     $documento_tercero, 
                     $tipodocumento_tercero, 
-                    $nombres_tercero, 
-                    $apellidos_tercero, 
+                    $nombre_tercero, 
                     $telefono_tercero, 
                     $celular_tercero, 
                     $correo_tercero, 
@@ -109,8 +132,7 @@ class TercerosModel extends ModelBase {
         
                     SET documento_tercero = '". $documento_tercero ."',
                         tipodocumento_tercero = '". $tipodocumento_tercero ."',
-                        nombres_tercero = '". $nombres_tercero ."',
-                        apellidos_tercero = '". $apellidos_tercero ."',
+                        nombre_tercero = '". $nombre_tercero ."',
                         telefono_tercero = '". $telefono_tercero ."',
                         celular_tercero = '". $celular_tercero ."',
                         correo_tercero = '". $correo_tercero ."',

@@ -180,7 +180,7 @@
 
                     <td class="mailbox-name">
                         <a href="read-mail.html">
-                            <?php echo $entrante['nombres_tercero'].' '.$entrante['apellidos_tercero'] ?>
+                            <?php echo $entrante['nombre_tercero'] ?>
                         </a>
                     </td>
                     <td class="mailbox-subject">

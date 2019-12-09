@@ -83,7 +83,7 @@
                             echo "<tr>";
 
                             echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_tercero']."  ".$items['terceros_tercero'])) . "</td>";                            
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_tercero'])) . "</td>";                            
                             echo "<td>" . utf8_encode(strtolower($items['direccion_tercero']." ".$items['ciudad_tercero'])) . "</td>";
 
 
