@@ -31,21 +31,21 @@
 
   function nuevo_radicado_entrante() {
 
-    abrirVentanaContenedor(
-        'radicados', 'Entrantes', 'nuevo', '', ''
-    );
+      abrirVentanaContenedor(
+          'radicados', 'Entrantes', 'nuevo', '', ''
+      );
 
   }
 
   function nuevo_radicado_saliente() {
 
-    abrirVentanaContenedor(
-        'radicados', 'Salientes', 'nuevo', '', ''
-    );
+      abrirVentanaContenedor(
+          'radicados', 'Salientes', 'nuevo', '', ''
+      );
 
   }
 
-    </script>
+  </script>
 
   <!--MODULOS DEL SISTEMA-->  
   <script language="JavaScript" type='text/javascript' src='js/modulos/configuracion.js'></script> 
@@ -337,7 +337,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" onclick="radicados_usuarios();" class="nav-link">
+                <a href="#" onclick="radicados_responsable();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Usuarios </p>
                 </a>
@@ -350,20 +350,12 @@
                   <p>Por Dependencia </p>
                 </a>
               </li>
-              </ul>
+              </ul>            
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#"  onclick="radicados_vencidos();" class="nav-link">
+                <a href="#" onclick="radicados_tiporadicado();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados vencidos </p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" onclick="radicados_trd();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Por TRD </p>
+                  <p>Por Tipo de Radicado </p>
                 </a>
               </li>
             </ul>

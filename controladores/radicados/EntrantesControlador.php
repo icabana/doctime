@@ -310,6 +310,78 @@ print_r($terceros);
         
     }    
 
+
+
+    public function mover_default() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->mover_default(
+                                    $_POST["radicados"], 
+                                    $_POST["carpeta_entrante"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se movió el radicado de carpeta"
+            ); 
+
+             echo 1;             
+        }else{
+            echo 0;		
+        }
+        
+    }    
+
+    public function cambiar_default() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->cambiar_default(
+                                    $_POST["radicados"], 
+                                    $_POST["responsable_entrante"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se cambió el responsable del radicado"
+            ); 
+
+             echo 1;    
+
+        }else{
+
+            echo 0;		
+
+        }
+        
+    }    
+
+    public function nueva_default() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();   
+        
+        $array_radicados = explode(",", $_POST['radicados']);
+
+        foreach($array_radicados as $array){
+    
+            $EntrantesModel->insertar_trazabilidad(
+                $array[0],
+                $_POST["bitacora_entrante"]
+            ); 
+
+        }
+        
+    }    
+
+
     public function eliminar() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");

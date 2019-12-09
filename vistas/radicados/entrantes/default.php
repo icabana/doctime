@@ -40,13 +40,23 @@
 
     function mover_carpeta() {
 
-        ejecutarAccion(
-          'radicados',
-          'Entrantes',
-          'mover',
-          'carpeta='+$("#carpeta_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
-          'mover_carpeta2(data)'
-        );
+      var radicados = "";
+
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              radicados += $(this).val()+",";
+          }
+      );
+
+      radicados += '0';
+
+      ejecutarAccion(
+        'radicados',
+        'Entrantes',
+        'mover_default',
+        'carpeta='+$("#carpeta_entrante").val()+'&radicados='+radicados,
+        'mover_carpeta2(data)'
+      );
 
     }
 
@@ -81,18 +91,22 @@
     }
 
     function cambiar_responsable() {
+        
+      var radicados = "";
 
-        if(!validar_requeridos()){
-            return 0;
-        }
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              radicados += $(this).val()+",";
+          }
+      );
 
-        ejecutarAccion(
-          'radicados',
-          'Entrantes',
-          'cambiar',
-          'responsable_entrante='+$("#responsable_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
-          'cambiar_responsable2(data)'
-        );
+      ejecutarAccion(
+        'radicados',
+        'Entrantes',
+        'cambiar_default',
+        'responsable_entrante='+$("#responsable_entrante").val()+'&radicados='+radicados,
+        'cambiar_responsable2(data)'
+      );
 
     }
 
@@ -126,15 +140,24 @@
 
     function nueva_bitacora() {
 
-        if(!validar_requeridos()){
-            return 0;
-        }
+      if($("#bitacora_entrante").val() == ""){
+        mensaje_alertas("error", "Debe escribir alguna bitacora", "center");
+        return 0;
+      }
+       
+      var radicados = "";
+
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              radicados += $(this).val()+",";
+          }
+      );
 
         ejecutarAccion(
           'radicados',
           'Entrantes',
-          'nueva',
-          'bitacora_entrante='+$("#bitacora_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
+          'nueva_default',
+          'bitacora_entrante='+$("#bitacora_entrante").val()+'&radicados='+radicados,
           'nueva_bitacora2(data)'
         );
 

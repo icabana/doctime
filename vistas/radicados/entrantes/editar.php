@@ -127,28 +127,11 @@
       'insertar_entrante2(data)'
     );
 
-    }
+  }
 
 
 
-    function mover_carpeta0() {
-
-          var cont = 0;
-
-          $("input[name=check_radicados]:checked").each(
-              function(){
-                  cont++;
-              }
-          );
-
-          if(cont == 0){
-            mensaje_alertas("error", "Debe seleccionar algún registro");
-            return 0;
-          }
-
-      }
-
-
+    
     function mover_carpeta() {
 
           ejecutarAccion(
@@ -174,22 +157,6 @@
 
 
 
-      function cambiar_responsable0() {
-
-          var cont = 0;
-
-          $("input[name=check_radicados]:checked").each(
-              function(){
-                  cont++;
-              }
-          );
-
-          if(cont == 0){
-            mensaje_alertas("error", "Debe seleccionar algún registro");
-            return 0;
-          }
-
-      }
 
       function cambiar_responsable() {
 
@@ -218,22 +185,6 @@
       } 
 
 
-      function nueva_bitacora0() {
-
-          var cont = 0;
-
-          $("input[name=check_radicados]:checked").each(
-              function(){
-                  cont++;
-              }
-          );
-
-          if(cont == 0){
-            mensaje_alertas("error", "Debe seleccionar algún registro");
-            return 0;
-          }
-
-      }
 
       function nueva_bitacora() {
 

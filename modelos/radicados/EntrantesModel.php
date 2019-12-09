@@ -327,6 +327,21 @@ class EntrantesModel extends ModelBase {
 
     }
 
+    function mover_default(
+                $radicados, 
+                $carpeta_entrante
+    ) {
+
+        $query = "UPDATE entrantes 
+
+                SET carpeta_entrante = '". $carpeta_entrante ."'
+
+                WHERE id_entrante in (" . $radicados . ")";
+
+        return $this->modificarRegistros($query);
+
+    }
+
     
     function cambiar(
                 $id_entrante, 
@@ -338,6 +353,23 @@ class EntrantesModel extends ModelBase {
                 SET responsable_entrante = '". $responsable_entrante ."'
 
                 WHERE id_entrante = '" . $id_entrante . "'";
+
+        return $this->modificarRegistros($query);
+
+    }
+    
+
+    
+    function cambiar_default(
+                $radicados, 
+                $responsable_entrante
+    ) {
+
+        $query = "UPDATE entrantes 
+
+                    SET responsable_entrante = '". $responsable_entrante ."'
+
+                    WHERE id_entrante in (" . $radicados . ")";
 
         return $this->modificarRegistros($query);
 
@@ -388,6 +420,55 @@ class EntrantesModel extends ModelBase {
         }
                
     }
+    
+
+    function getNumeroRadicadosPorResponsable($responsable_entrante) {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where responsable_entrante = '".$responsable_entrante."'";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
+               
+    }  
+
+
+    function getNumeroRadicadosPorDependencia($dependencia_entrante) {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where dependencia_entrante = '".$dependencia_entrante."'";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
+               
+    }  
+
+
+    function getNumeroRadicadosPorTiporadicado($tiporadicado_entrante) {
+        
+        $query = "select count(entrantes.id_entrante) as numero
+                
+                    from entrantes 
+                    
+                    where tiporadicado_entrante = '".$tiporadicado_entrante."'";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
+               
+    }
+
 
     function getNumeroEntrantes() {
         
