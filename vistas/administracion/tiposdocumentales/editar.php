@@ -1,6 +1,10 @@
 <script type="text/javascript">
   function editar_tipodocumental() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
     var datos = $('#formTiposdocumentales').serialize();
 
     ejecutarAccion(
@@ -53,9 +57,9 @@ $froms = new Formularios();
 
               <div class="card-body">
                 <div class="form-group">
-                  <label>Tipo Documental</label>
+                  <label>Tipo Documental<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="nombre_tipodocumental" name="nombre_tipodocumental" 
+                  <input type="text" class="form-control requerido" id="nombre_tipodocumental" name="nombre_tipodocumental" 
                         value="<?php echo $datos['nombre_tipodocumental']; ?>">
                 </div>
               </div>

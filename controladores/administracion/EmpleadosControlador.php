@@ -65,6 +65,10 @@ class EmpleadosControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();     
         $datos = $EmpleadosModel->getDatos($_POST['id_empleado']);
             
+        $this->model->cargar("UsuariosModel.php", "configuracion");
+        $UsuariosModel = new UsuariosModel();     
+        $datos_usuario = $UsuariosModel->getDatos($datos['usuario_empleado']);
+
         include 'vistas/administracion/empleados/editar.php';
                
     }
@@ -72,32 +76,52 @@ class EmpleadosControlador extends ControllerBase {
     public function insertar() {
       
         $this->model->cargar("EmpleadosModel.php", "administracion");
-        $EmpleadosModel = new EmpleadosModel();            
+        $EmpleadosModel = new EmpleadosModel();      
         
-        $resp = $EmpleadosModel->insertar(
-                                    $_POST["documento_empleado"],
-                                    $_POST["dependencia_empleado"],
-                                    $_POST["tipodocumento_empleado"],
-                                    $_POST["nombres_empleado"],
-                                    $_POST["apellidos_empleado"],
-                                    $_POST["telefono_empleado"],
-                                    $_POST["celular_empleado"],
-                                    $_POST["correo_empleado"],
-                                    $_POST["direccion_empleado"],
-                                    $_POST["ciudad_empleado"],
-                                    $_POST["sexo_empleado"],
-                                    $_POST["estadocivil_empleado"],
-                                    $_POST["fechanacimiento_empleado"],
-                                    $_POST["lugarnacimiento_empleado"],
-                                    $_POST["estado_empleado"]
-                                );        
+        $this->model->cargar("UsuariosModel.php", "configuracion");
+        $UsuariosModel = new UsuariosModel();     
         
-        if( $resp != 0 ){
-            echo 1;
+        if($UsuariosModel->existeNick($_POST["usuario_empleado"])){
+
+            echo "error_nick";
+
+        }else if($EmpleadosModel->existeDocumento($_POST["documento_empleado"])){
+
+            echo "error_documento";
+            return;
+
+        }else if($EmpleadosModel->existeCorreo($_POST["correo_empleado"])){
+
+            echo "error_correo";
+            return;
+
         }else{
-            echo 0;			
-        }      
         
+            $resp = $UsuariosModel->insertar(
+                                            $_POST["usuario_empleado"], 
+                                            $_POST["password_empleado"], 
+                                            '3'
+                                        );        
+            
+            $resp = $EmpleadosModel->insertar(
+                $_POST["documento_empleado"],
+                $_POST["dependencia_empleado"],
+                $_POST["tipodocumento_empleado"],
+                $_POST["nombres_empleado"],
+                $_POST["apellidos_empleado"],
+                $_POST["telefono_empleado"],
+                $_POST["celular_empleado"],
+                $_POST["correo_empleado"],
+                $_POST["direccion_empleado"],
+                $_POST["ciudad_empleado"],
+                $_POST["sexo_empleado"],
+                $_POST["estadocivil_empleado"],
+                $_POST["fechanacimiento_empleado"],
+                $_POST["lugarnacimiento_empleado"],
+                $resp
+            );              
+            
+        }
     }
     
     public function guardar() {
@@ -120,8 +144,7 @@ class EmpleadosControlador extends ControllerBase {
                                     $_POST["sexo_empleado"],
                                     $_POST["estadocivil_empleado"],
                                     $_POST["fechanacimiento_empleado"],
-                                    $_POST["lugarnacimiento_empleado"],
-                                    $_POST["estado_empleado"]
+                                    $_POST["lugarnacimiento_empleado"]
                                 );        
       
         if( $resp != 0 ){

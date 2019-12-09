@@ -2,6 +2,10 @@
 
   function editar_parametro() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
     var datos = $('#formParametros').serialize();
 
     ejecutarAccion(
@@ -20,7 +24,7 @@
       mensaje_alertas("success", "Parametro Editado Exitosamente", "center");
       cargar_parametros();
     } else {
-      mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
+      mensaje_alertas("error", "No se modificaron los datos del formulario", "center");
     }
 
   }
@@ -53,18 +57,18 @@ $froms = new Formularios();
               <div class="card-body">
 
                 <div class="form-group">
-                  <label>Nombre del Parametro</label>
+                  <label>Nombre del Parametro<span style="color:red">*</span></label>
                   
-                  <input type="text" class="form-control" id="nombre_parametro" name="nombre_parametro" 
-                        value="<?php echo $datos['nombre_parametro']; ?>">
+                  <input type="text" class="form-control requerido" id="nombre_parametro" name="nombre_parametro" 
+                        value="<?php echo utf8_encode($datos['nombre_parametro']); ?>">
 
                 </div>
 
                 <div class="form-group">
 
-                  <label>Valor</label>
-                  <input type="text" class="form-control" id="valor_parametro" name="valor_parametro"
-                        value="<?php echo $datos['valor_parametro']; ?>">
+                  <label>Valor<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="valor_parametro" name="valor_parametro"
+                        value="<?php echo utf8_encode($datos['valor_parametro']); ?>">
 
                 </div>
 

@@ -26,7 +26,7 @@
 
     function eliminar_empleado(id_empleado) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_empleado2(" + id_empleado + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar el Empleado?", "eliminar_empleado2(" + id_empleado + "); ");
 
     }
 
@@ -41,10 +41,6 @@
         );
 
     }
-
-    $(document).ready(function() {
-        CrearTabla('tabla_empleados');
-    });
 
 </script>
 
@@ -71,14 +67,12 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_empleados" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>DOCUMENTO</th>
+                            <th style='background-color:lavender'>DEPENDENCIA</th>
                             <th style='background-color:lavender'>NOMBRE DEL EMPLEADO</th>
-                            <th style='background-color:lavender'>TELEFONO</th>
-                            <th style='background-color:lavender'>CORREO</th>
-                            <th style='background-color:lavender'>DIRECCION</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -89,11 +83,9 @@
 
                             echo "<tr>";
                             
-                            echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']."  ".$items['empleados_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['celular_empleado']."     ".$items['telefono_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['correo_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['direccion_empleado']." ".$items['ciudad_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtoupper($items['codigo_tipodocumento'])." ".strtolower($items['documento_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombre_dependencia'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']."  ".$items['apellidos_empleado'])) . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

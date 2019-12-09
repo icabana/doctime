@@ -38,6 +38,24 @@ class UsuariosModel extends ModelBase {
          $consulta = $this->consulta($query);
         return $consulta[0];    
         
+    }    
+
+    function existeNick($nick_usuario) {
+       
+        $query = "select count(usuarios.id_usuario) as cantidad
+                
+                    from usuarios
+
+                    where usuarios.nick_usuario='".$nick_usuario."'";
+        
+        $consulta = $this->consulta($query);
+        
+        if($consulta[0]['cantidad']){
+            return true;
+        }else{
+            return false;
+        }    
+        
     }
     
     function insertar(                               
@@ -96,7 +114,7 @@ class UsuariosModel extends ModelBase {
     function eliminar($id_usuario) {
         
         $query = "DELETE FROM usuarios WHERE id_usuario = '". $id_usuario ."'";
-        
+
         $this->modificarRegistros($query);
 
     }
@@ -113,7 +131,7 @@ class UsuariosModel extends ModelBase {
                     roles.id_rol,
                     roles.nombre_rol
                 
-                    from usuarios LEFT JOIN roles ON usuarios.rol_usuario = roles.id_rol
+                    from usuarios   LEFT JOIN roles ON usuarios.rol_usuario = roles.id_rol
         
                     WHERE   nick_usuario = '". $nick_usuario . "' AND 
                             usuarios.password_usuario = '" . md5($password_usuario) . "' AND 

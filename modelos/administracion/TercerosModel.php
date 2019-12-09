@@ -15,7 +15,6 @@ class TercerosModel extends ModelBase {
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
                     terceros.ciudad_tercero,
-                    terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
                 
@@ -41,7 +40,6 @@ class TercerosModel extends ModelBase {
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
                     terceros.ciudad_tercero,
-                    terceros.estado_tercero,
 
                     tiposdocumento.codigo_tipodocumento
                 
@@ -64,8 +62,7 @@ class TercerosModel extends ModelBase {
                     $celular_tercero, 
                     $correo_tercero, 
                     $direccion_tercero, 
-                    $ciudad_tercero, 
-                    $estado_tercero
+                    $ciudad_tercero
                     ){
                 
         $query = "INSERT INTO terceros (
@@ -77,8 +74,7 @@ class TercerosModel extends ModelBase {
                                 celular_tercero, 
                                 correo_tercero, 
                                 direccion_tercero, 
-                                ciudad_tercero,
-                                estado_tercero
+                                ciudad_tercero
                             )
                             VALUES(
                                 '".$documento_tercero."',
@@ -89,8 +85,7 @@ class TercerosModel extends ModelBase {
                                 '".$celular_tercero."',
                                 '".$correo_tercero."',
                                 '".$direccion_tercero."',
-                                '".$ciudad_tercero."',
-                                '".$estado_tercero."'
+                                '".$ciudad_tercero."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -107,8 +102,7 @@ class TercerosModel extends ModelBase {
                     $celular_tercero, 
                     $correo_tercero, 
                     $direccion_tercero, 
-                    $ciudad_tercero,
-                    $estado_tercero
+                    $ciudad_tercero
                 ) {
         
         $query = "  UPDATE terceros 
@@ -121,8 +115,7 @@ class TercerosModel extends ModelBase {
                         celular_tercero = '". $celular_tercero ."',
                         correo_tercero = '". $correo_tercero ."',
                         direccion_tercero = '". $direccion_tercero ."',
-                        ciudad_tercero = '". $ciudad_tercero ."',
-                        estado_tercero = '". $estado_tercero ."'
+                        ciudad_tercero = '". $ciudad_tercero ."'
 
                     WHERE id_tercero = '" . $id_tercero . "'";
        

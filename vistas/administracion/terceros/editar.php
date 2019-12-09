@@ -1,6 +1,12 @@
 <script type="text/javascript">
   function editar_tercero() {
 
+    
+    if(!validar_requeridos()){
+        return 0;
+    }
+
+
     var datos = $('#formTerceros').serialize();
 
     ejecutarAccion(
@@ -30,174 +36,140 @@
 $froms = new Formularios();
 ?>
 
-<form id="formTerceros" method="post">
-
-  <div class="box box-default">
 
 
-    <div class="box-body">
+<div class="box box-default">
 
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div style="padding: 25px" class="col-md-6">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Editar Tercero</h3>
-            </div>
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div style="padding: 25px" class="col-md-12">
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Registrar Tercero</h3>
+          </div>
+
+          <form autocomplete="on" id="formTerceros" method="post">
+
+            <input type="hidden" id="id_tercero" name="id_tercero"
+                  value="<?php echo $datos['id_tercero']; ?>">
 
             <div class="card-body">
-            <form role="form">
-           
-              <input type="hidden" class="form-control" id="id_tercero" name="id_tercero" 
-                        value="<?php echo $datos['id_tercero']; ?>">
 
+              <div class="row">
 
+                <div class="col-md-3">
 
-                <div class="form-group">
-                  <label>Tipo de Documento</label>
+                  <label>Tipo de Documento<span style="color:red">*</span></label>
                   <?php
                   echo $froms->Lista_Desplegable(
-                          $roles,
-                          'nombre_tipodocumento',
-                          'id_tipodocumento',
-                          'tipodocumento_tercero',
-                          $datos['rol_usuario'],
-                          '',
-                          ''
+                    $tiposdocumento,
+                    'nombre_tipodocumento',
+                    'id_tipodocumento',
+                    'tipodocumento_tercero',
+                    $datos['tipodocumento_tercero'],
+                    '',
+                    ''
                   );
                   ?>
+
                 </div>
+
+                <div class="col-md-3">
+                  <label>Documento<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="documento_tercero" name="documento_tercero"
+                  value="<?php echo $datos['documento_tercero']; ?>">
+                </div>
+
+                <div class="col-md-6">
+                  <label>Correo el&eacute;ctronico</label>
+                  <input type="text" class="form-control " id="correo_tercero" name="correo_tercero"
+                  value="<?php echo $datos['correo_tercero']; ?>">
+                </div>
+
+                
+              </div>
+
+              <br>
+
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <label>Nombres<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="nombres_tercero" name="nombres_tercero"
+                  value="<?php echo $datos['nombres_tercero']; ?>">
+                </div>
+
+
+                <div class="col-md-6">
+                  <label>Apellidos<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="apellidos_tercero" name="apellidos_tercero"
+                  value="<?php echo $datos['apellidos_tercero']; ?>">
+                </div>
+
+
+              </div>
 
               
-                <div class="form-group">
-                  <label>Documento</label>
-
-                  <input type="text" class="form-control" id="documento_tercero" name="documento_tercero" 
-                        value="<?php echo $datos['documento_tercero']; ?>">
-                </div>
-           
+              <br>
 
 
-                <div class="form-group">
-                  <label>Nombres</label>
+              <div class="row">
 
-                  <input type="text" class="form-control" id="nombres_tercero" name="nombres_tercero" 
-                        value="<?php echo $datos['nombres_tercero']; ?>">
-                </div>
-             
-
-
-                <div class="form-group">
-                  <label>Apellidos</label>
-
-                  <input type="text" class="form-control" id="apellidos_tercero" name="apellidos_tercero" 
-                        value="<?php echo $datos['apellidos_tercero']; ?>">
-                </div>
-            
-             
-                <div class="form-group">
-                  <label>Telefono</label>
-
-                  <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero" 
-                        value="<?php echo $datos['telefono_tercero']; ?>">
-                </div>           
-
-                <div class="form-group">
-                  <label>Celular</label>
-
-                  <input type="text" class="form-control" id="celular_tercero" name="celular_tercero" 
-                        value="<?php echo $datos['celular_tercero']; ?>">
-                </div>
-
-                <div class="form-group">
+                <div class="col-md-6">
                   <label>Direcci&oacute;n</label>
-
-                  <input type="text" class="form-control" id="direccion_tercero" name="direccion_tercero" 
-                        value="<?php echo $datos['celular_tercero']; ?>">
+                  <input type="text" class="form-control" id="direccion_tercero" name="direccion_tercero"
+                  value="<?php echo $datos['direccion_tercero']; ?>">
                 </div>
-                <div class="form-group">
+
+
+                <div class="col-md-6">
                   <label>Ciudad</label>
-
-                  <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero" 
-                        value="<?php echo $datos['ciudad_tercero']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Sexo</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estadis,
-                        'nombre_sexo',
-                        'id_sexo',
-                        'sexo_tercero',
-                        $datos['sexo_tercero'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-
-                <div class="form-group">
-                  <label>Estado Civil</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estados,
-                        'nombre_estadocivil',
-                        'id_estadocivil',
-                        'estadocivil_tercero',
-                        $datos['estadocivil_tercero'],
-                        '',
-                        ''
-                    );
-                  ?>
-                </div>
-
-                <div class="form-group">
-                  <label>Fecha de Nacimiento</label>
-
-                  <input type="text" class="form-control" id="fechanacimiento_tercero" name="fechanacimiento_tercero" 
-                        value="<?php echo $datos['fechanacimiento_tercero']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Lugar de nacimiento</label>
-
-                  <input type="text" class="form-control" id="lugarnacimiento_tercero" name="lugarnacimiento_tercero" 
-                        value="<?php echo $datos['lugarnacimiento_tercero']; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label>Estado</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estados,
-                        'nombre_estado',
-                        'id_estado',
-                        'estado_tercero',
-                        $datos['estado_tercero'],
-                        '',
-                        ''
-                    );
-                  ?>
+                  <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero"
+                  value="<?php echo $datos['ciudad_tercero']; ?>">
                 </div>
 
               </div>
 
-              <div class="card-footer">
-                <button onclick="cargar_terceros();" class="btn btn-danger">Cancelar</button>
-                <button onclick="editar_tercero(); return false;" class="btn btn-success">Guardar</button>
+              
+              <br>
+
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label>Celular</label>
+                  <input type="text" class="form-control" id="celular_tercero" name="celular_tercero"
+                  value="<?php echo $datos['celular_tercero']; ?>">
+                </div>
+
+
+                <div class="col-md-4">
+                  <label>Tel&eacute;fono</label>
+                  <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero"
+                  value="<?php echo $datos['telefono_tercero']; ?>">
+                </div>
+
               </div>
-            </form>
-          </div>
+
+
+            </div>
         </div>
-        <div class="col-md-3"></div>
-      </div>
 
+
+        <div class="card-footer">
+          <button onclick="cargar_terceros();" class="btn btn-danger">Cancelar</button>
+          <button onclick="editar_tercero(); return false;" class="btn btn-success">Guardar</button>
+        </div>
+
+
+        </form>
+      </div>
     </div>
 
   </div>
-</form>
+</div>
+</div>

@@ -16,10 +16,10 @@
   function editar_serie2(data) {
 
     if (data == 1) {
-      mensaje_alertas("success", "Serie Editado Exitosamente", "center");
+      mensaje_alertas("success", "Serie Editada Exitosamente", "center");
       cargar_series();
     } else {
-      mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
+      mensaje_alertas("error", "Error al editar la Serie Documental", "center");
     }
 
   }
@@ -30,7 +30,7 @@
 $froms = new Formularios();
 ?>
 
-<form id="formSeries" method="post">
+
 
   <div class="box box-default">
 
@@ -45,7 +45,7 @@ $froms = new Formularios();
               <h3 class="card-title">Editar Serie Documental</h3>
             </div>
 
-            <form role="form">
+            <form id="formSeries" method="post">
 
               <input type="hidden" class="form-control" id="id_serie" name="id_serie" 
                         value="<?php echo $datos['id_serie']; ?>">
@@ -53,7 +53,7 @@ $froms = new Formularios();
               <div class="card-body">
 
               <div class="form-group">
-                  <label>C&oacute;digo</label>
+                  <label>C&oacute;digo de la Serie</label>
 
                   <input type="text" class="form-control" id="codigo_serie" name="codigo_serie" 
                         value="<?php echo $datos['codigo_serie']; ?>">
@@ -80,4 +80,3 @@ $froms = new Formularios();
     </div>
 
   </div>
-</form>

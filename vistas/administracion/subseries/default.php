@@ -22,7 +22,7 @@
 
     function eliminar_subserie(id_subserie) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_subserie2(" + id_subserie + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar la Subserie?", "eliminar_subserie2(" + id_subserie + "); ");
 
     }
 
@@ -38,9 +38,6 @@
 
     }
 
-    $(document).ready(function() {
-        CrearTabla('tabla_subseries');
-    });
 </script>
 
 <div class="row">
@@ -66,12 +63,12 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_subseries" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>SERIE</th>
-                            <th style='background-color:lavender'>CODIGO</th>
-                            <th style='background-color:lavender'>NOMBRE</th>
+                            <th style='background-color:lavender'>NOMBRE DE LA SERIE</th>
+                            <th style='background-color:lavender'>C&Oacute;DIGO DE LA SUBSERIE</th>
+                            <th style='background-color:lavender'>NOMBRE DE LA SUBSERIE</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -82,7 +79,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['serie_subserie'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['codigo_serie']." - ".$items['nombre_serie'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['codigo_subserie'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['nombre_subserie'])) . "</td>";
 

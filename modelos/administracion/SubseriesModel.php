@@ -12,9 +12,14 @@ class SubseriesModel extends ModelBase {
                     subseries.tiempogestion_subserie, 
                     subseries.tiempocentral_subserie, 
                     subseries.soporte_subserie, 
-                    subseries.disposicion_subserie
+                    subseries.disposicion_subserie,
+
+                    series.id_serie,
+                    series.codigo_serie,
+                    series.nombre_serie
                 
-                    from subseries";
+                    from subseries LEFT JOIN series 
+                    ON subseries.serie_subserie = series.id_serie";
         
         $consulta = $this->consulta($query);
         return $consulta;       

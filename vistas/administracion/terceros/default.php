@@ -22,7 +22,7 @@
 
     function eliminar_tercero(id_tercero) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tercero2(" + id_tercero + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar el Tercero?", "eliminar_tercero2(" + id_tercero + "); ");
 
     }
 
@@ -38,9 +38,6 @@
 
     }
 
-    $(document).ready(function() {
-        CrearTabla('tabla_terceros');
-    });
 </script>
 
 <div class="row">
@@ -69,14 +66,12 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_terceros" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>DOCUMENTO</th>
                             <th style='background-color:lavender'>NOMBRE DEL TERCERO</th>
-                            <th style='background-color:lavender'>TELEFONO</th>
-                            <th style='background-color:lavender'>CORREO</th>
-                            <th style='background-color:lavender'>DIRECCION</th>
+                            <th style='background-color:lavender'>DIRECCI&Oacute;N</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -88,11 +83,8 @@
                             echo "<tr>";
 
                             echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_tercero']."  ".$items['terceros_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['celular_tercero']."     ".$items['telefono_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['correo_tercero'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_tercero']."  ".$items['terceros_tercero'])) . "</td>";                            
                             echo "<td>" . utf8_encode(strtolower($items['direccion_tercero']." ".$items['ciudad_tercero'])) . "</td>";
-
 
 
                             echo "<td><a href='#'><i onclick='editar_tercero(" . $items['id_tercero'] . ");' 

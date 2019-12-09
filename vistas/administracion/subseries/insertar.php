@@ -1,6 +1,10 @@
 <script type="text/javascript">
 
   function insertar_subserie() {
+    
+      if(!validar_requeridos()){
+              return 0;
+      }
 
       var datos = $('#formSubseries').serialize();
 
@@ -37,8 +41,8 @@
   <div class="box-body">
 
     <div class="row">
-      <div class="col-md-3"></div>
-      <div style="padding: 25px" class="col-md-6">
+      <div class="col-md-1"></div>
+      <div style="padding: 25px" class="col-md-10">
 
         <div class="card card-primary">
           <div class="card-header">
@@ -51,29 +55,34 @@
           <div class="card-body">
           
           
-              <div class="form-group">
-                <label>C&oacute;digo de la Subserie</label>
-                <input type="text" class="form-control" id="nombre_subserie" name="nombre_subserie">
+            <div class="row">
+
+              <div class="col-md-6">
+                <label>C&oacute;digo de la Subserie<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="codigo_subserie" name="codigo_subserie">
               </div>
 
-              <div class="form-group">
-                <label>Nombre del Subserie</label>
-                <input type="text" class="form-control" id="nombre_subserie" name="nombre_subserie">
+              <div class="col-md-6">
+                <label>Nombre del Subserie<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_subserie" name="nombre_subserie">
+              </div>
               </div>
 
-              <div class="form-group">
-                <label>Años en Archivos de Gestion</label>
-                <input type="text" class="form-control" id="ag_subserie" name="ag_subserie">
+              <br>
+
+              <div class="row">
+              <div class="col-md-3">
+                <label>Años Archivo Gestion</label>
+                <input type="text" class="form-control" id="tiempogestion_subserie" name="tiempogestion_subserie">
               </div>
 
-              <div class="form-group">
-                <label>Años en Archivos Central</label>
-                <input type="text" class="form-control" id="ac_subserie" name="ac_subserie">
+              <div class="col-md-3">
+                <label>Años Archivo Central</label>
+                <input type="text" class="form-control" id="tiempocentral_subserie" name="tiempocentral_subserie">
               </div>
-
-
-              <div class="form-group">
-                <label>Serie Documental</label>
+              
+              <div class="col-md-6">
+                <label>Serie Documental<span style="color:red">*</span></label>
                 <?php
                 echo $froms->Lista_Desplegable(
                         $series,
@@ -87,10 +96,13 @@
                 ?>
 
               </div>
+              </div>
 
+              <br>
 
-              <div class="form-group">
-                <label>Soporte</label>
+              <div class="row">
+              <div class="col-md-5">
+                <label>Soporte<span style="color:red">*</span></label>
                 <?php
                 echo $froms->Lista_Desplegable(
                         $soportes,
@@ -106,8 +118,8 @@
               </div>
 
 
-              <div class="form-group">
-                <label>Disposici&oacute;n Final</label>
+              <div class="col-md-5">
+                <label>Disposici&oacute;n Final<span style="color:red">*</span></label>
                 <?php
                 echo $froms->Lista_Desplegable(
                         $disposiciones,
@@ -121,8 +133,7 @@
                 ?>
 
               </div>
-
-
+              </div>
               
             </div>
 

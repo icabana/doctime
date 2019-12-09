@@ -37,10 +37,6 @@
         );
 
     }
-
-    $(document).ready(function() {
-        CrearTabla('tabla_roles');
-    });
 </script>
 
 <div class="row">
@@ -69,11 +65,10 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_roles" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>NOMBRE</th>
-                            <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
                     </thead>
@@ -88,10 +83,6 @@
 
                             echo "<td><a href='#'><i onclick='editar_rol(" . $items['id_rol'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
-
-                            echo "<td><a href='#'><i onclick='eliminar_rol(" . $items['id_rol'] . ");' 
-                                    class='fas fa-trash'></i></a></td>";
-
 
                             echo "</tr>";
                         }

@@ -38,9 +38,6 @@
 
     }
 
-    $(document).ready(function() {
-        CrearTabla('tabla_tiposdocumentales');
-    });
 </script>
 
 <div class="row">
@@ -69,7 +66,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_tiposdocumentales" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>NOMBRE</th>

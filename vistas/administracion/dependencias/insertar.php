@@ -2,6 +2,10 @@
 
   function insertar_dependencia() {
 
+    if(!validar_requeridos()){
+        return 0;
+}
+
       var datos = $('#formDependencias').serialize();
 
       ejecutarAccion(
@@ -50,17 +54,17 @@
             <div class="card-body">
 
               <div class="form-group">
-                <label>C&oacute;digo Dependencia</label>
-                <input type="text" class="form-control" id="nombre_dependencia" name="nombre_dependencia">
+                <label>C&oacute;digo Dependencia<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="codigo_dependencia" name="codigo_dependencia">
               </div>
 
               <div class="form-group">
-                <label>Nombre de la Dependencia</label>
-                <input type="text" class="form-control" id="nombre_dependencia" name="nombre_dependencia">
+                <label>Nombre de la Dependencia<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_dependencia" name="nombre_dependencia">
               </div>
 
               <div class="form-group">
-                  <label>Nombre del Jefe</label>
+                  <label>Nombre del Jefe<span style="color:red">*</span></label>
                     <?php
                     echo $froms->Lista_Desplegable(
                             $empleados,

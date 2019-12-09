@@ -2,6 +2,10 @@
 
   function insertar_rol() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+    
       var datos = $('#formRoles').serialize();
 
       ejecutarAccion(
@@ -49,8 +53,8 @@
 
             <div class="card-body">
               <div class="form-group">
-                <label>Nombre del Rol</label>
-                <input type="text" class="form-control" id="nombre_rol" name="nombre_rol">
+                <label>Nombre del Rol<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_rol" name="nombre_rol">
               </div>
             </div>
 

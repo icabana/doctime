@@ -42,10 +42,6 @@
 
     }
 
-    $(document).ready(function() {
-        CrearTabla('tabla_series');
-    });
-
 </script>
 
 <div class="row">
@@ -73,11 +69,11 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="tabla_series" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th style='background-color:lavender'>C&Oacute;DIGO</th>
-                        <th style='background-color:lavender'>NOMBRE</th>
+                        <th style='background-color:lavender'>C&Oacute;DIGO DE LA SERIE</th>
+                        <th style='background-color:lavender'>NOMBRE DE LA SERIE</th>
                         <th style='background-color:lavender; width:15px'></th>
                         <th style='background-color:lavender; width:15px'></th>
                     </tr>

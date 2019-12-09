@@ -33,6 +33,7 @@ class SeriesModel extends ModelBase {
     }
     
     function insertar(                               
+                        $codigo_serie,
                         $nombre_serie
                     ){
                 
@@ -41,6 +42,7 @@ class SeriesModel extends ModelBase {
                                 nombre_serie
                             )
                             VALUES(
+                                '".$codigo_serie."',
                                 '".$nombre_serie."'
                             );";
        
@@ -50,11 +52,12 @@ class SeriesModel extends ModelBase {
     
     function editar(
                     $id_serie, 
+                    $codigo_serie, 
                     $nombre_serie
                 ) {
         
         $query = "  UPDATE series SET   codigo_serie = '". $codigo_serie ."', 
-        |                               nombre_serie = '". $nombre_serie ."'           
+                                      nombre_serie = '". $nombre_serie ."'           
                     WHERE id_serie = '" . $id_serie . "'";
        
         return $this->modificarRegistros($query);

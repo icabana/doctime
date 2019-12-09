@@ -2,6 +2,10 @@
 
   function insertar_carpeta() {
 
+      if(!validar_requeridos()){
+        return 0;
+      }
+
       var datos = $('#formCarpetas').serialize();
 
       ejecutarAccion(
@@ -49,8 +53,8 @@
 
             <div class="card-body">
               <div class="form-group">
-                <label>Nombre del Carpeta</label>
-                <input type="text" class="form-control" id="nombre_carpeta" name="nombre_carpeta">
+                <label>Nombre del Carpeta <span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_carpeta" name="nombre_carpeta">
               </div>
             </div>
 

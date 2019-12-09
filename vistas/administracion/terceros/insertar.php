@@ -1,34 +1,38 @@
 <script type="text/javascript">
-
   function insertar_tercero() {
 
-      var datos = $('#formTerceros').serialize();
+    if(!validar_requeridos()){
+        return 0;
+    }
 
-      ejecutarAccion(
-        'administracion',
-        'Terceros',
-        'insertar',
-        datos,
-        'insertar_tercero2(data)'
-      );
+
+    var datos = $('#formTerceros').serialize();
+
+    ejecutarAccion(
+      'administracion',
+      'Terceros',
+      'insertar',
+      datos,
+      'insertar_tercero2(data)'
+    );
 
   }
 
   function insertar_tercero2(data) {
 
-      if (data == 1) {
-        mensaje_alertas("success", "Tercero Registrado Exitosamente", "center");
-        cargar_terceros();
-      } else {
-        mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
-      }
+    if (data == 1) {
+      mensaje_alertas("success", "Tercero Registrado Exitosamente", "center");
+      cargar_terceros();
+    } else {
+      mensaje_alertas("error", "El Documento ya se encuentra registrado", "center");
+    }
 
   }
 </script>
 
 
 <?php
-    $froms = new Formularios();
+$froms = new Formularios();
 ?>
 
 
@@ -38,7 +42,7 @@
 
     <div class="row">
       <div class="col-md-3"></div>
-      <div style="padding: 25px" class="col-md-6">
+      <div style="padding: 25px" class="col-md-12">
 
         <div class="card card-primary">
           <div class="card-header">
@@ -49,137 +53,110 @@
 
             <div class="card-body">
 
+              <div class="row">
 
-            <div class="form-group">
-                  <label>Tipo de Documento</label>
+                <div class="col-md-3">
+
+                  <label>Tipo de Documento<span style="color:red">*</span></label>
                   <?php
                   echo $froms->Lista_Desplegable(
-                    $roles,
+                    $tiposdocumento,
                     'nombre_tipodocumento',
                     'id_tipodocumento',
-                    'tipodocumento_tercero',
-                    $datos['rol_usuario'],
+                    'tipodocumento_emterceropleado',
+                    '',
                     '',
                     ''
                   );
                   ?>
+
                 </div>
 
-              <div class="form-group">
-                <label>Documento</label>
-                <input type="text" class="form-control" id="documento_tercero" name="documento_tercero">
-              </div>
-
-
-              <div class="form-group">
-                <label>Nombres</label>
-                <input type="text" class="form-control" id="nombres_tercero" name="nombres_tercero">
-              </div>
-
-
-              <div class="form-group">
-                <label>Apellidos</label>
-                <input type="text" class="form-control" id="apellidos_tercero" name="apellidos_tercero">
-              </div>
-
-
-              <div class="form-group">
-                <label>Telefono</label>
-                <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero">
-              </div>
-
-
-              <div class="form-group">
-                <label>Celular</label>
-                <input type="text" class="form-control" id="celular_tercero" name="celular_tercero">
-              </div>
-
-              <div class="form-group">
-                <label>Direcci&oacute;n</label>
-                <input type="text" class="form-control" id="direccion_tercero" name="direccion_tercero">
-              </div>
-
-              <div class="form-group">
-                <label>Ciudad</label>
-                <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero">
-              </div>
-
-              <div class="form-group">
-                  <label>Sexo</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estadis,
-                        'nombre_sexo',
-                        'id_sexo',
-                        'sexo_tercero',
-                        '',
-                        '',
-                        ''
-                    );
-                  ?>
+                <div class="col-md-3">
+                  <label>Documento<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="documento_tercero" name="documento_tercero">
                 </div>
 
-                <div class="form-group">
-                  <label>Estado Civil</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estados,
-                        'nombre_estadocivil',
-                        'id_estadocivil',
-                        'estadocivil_tercero',
-                        '',
-                        '',
-                        ''
-                    );
-                  ?>
+                <div class="col-md-6">
+                  <label>Correo el&eacute;ctronico</label>
+                  <input type="text" class="form-control" id="correo_tercero" name="correo_tercero">
                 </div>
 
-                <div class="form-group">
-                  <label>Fecha de Nacimiento</label>
+                
+              </div>
 
-                  <input type="text" class="form-control" id="fechanacimiento_tercero" name="fechanacimiento_tercero" 
-                        value="<?php echo $datos['fechanacimiento_tercero']; ?>">
-                </div>
+              <br>
 
-                <div class="form-group">
-                  <label>Lugar de nacimiento</label>
 
-                  <input type="text" class="form-control" id="lugarnacimiento_tercero" name="lugarnacimiento_tercero" 
-                        value="<?php echo $datos['lugarnacimiento_tercero']; ?>">
-                </div>
+              <div class="row">
 
-                <div class="form-group">
-                  <label>Estado</label>
-
-                  <?php
-                    echo $froms->Lista_Desplegable(
-                        $estados,
-                        'nombre_estado',
-                        'id_estado',
-                        'estado_tercero',
-                        '',
-                        '',
-                        ''
-                    );
-                  ?>
+                <div class="col-md-6">
+                  <label>Nombres<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="nombres_tercero" name="nombres_tercero">
                 </div>
 
 
-            </div>
+                <div class="col-md-6">
+                  <label>Apellidos<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="apellidos_tercero" name="apellidos_tercero">
+                </div>
 
 
-            <div class="card-footer">
-              <button onclick="cargar_terceros();" class="btn btn-danger">Cancelar</button>
-              <button onclick="insertar_tercero(); return false;" class="btn btn-success">Guardar</button>
-            </div>
+              </div>
 
-            
-          </form>
+              
+              <br>
+
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <label>Direcci&oacute;n</label>
+                  <input type="text" class="form-control" id="direccion_tercero" name="direccion_tercero">
+                </div>
+
+
+                <div class="col-md-6">
+                  <label>Ciudad</label>
+                  <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero">
+                </div>
+
+              </div>
+
+              
+              <br>
+
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label>Celular</label>
+                  <input type="text" class="form-control" id="celular_tercero" name="celular_tercero">
+                </div>
+
+
+                <div class="col-md-4">
+                  <label>Tel&eacute;fono</label>
+                  <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero">
+                </div>
+
+              </div>
+
+       
+<br>
+        <div>
+          <button onclick="cargar_terceros();" class="btn btn-danger">Cancelar</button>
+          <button onclick="insertar_tercero(); return false;" class="btn btn-success">Guardar</button>
+        </div>
+       
+
+
+        </form>
+
         </div>
       </div>
-      
     </div>
+
   </div>
+</div>
 </div>

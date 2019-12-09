@@ -8,9 +8,12 @@ class DependenciasModel extends ModelBase {
                     dependencias.id_dependencia, 
                     dependencias.codigo_dependencia, 
                     dependencias.nombre_dependencia, 
-                    dependencias.jefe_dependencia
+                    dependencias.jefe_dependencia,
+
+                    CONCAT(empleados.nombres_empleado, ' ', empleados.apellidos_empleado) as nombre_jefe
                 
-                    from dependencias";
+                    from dependencias left join empleados on 
+                    dependencias.jefe_dependencia = empleados.id_empleado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -19,14 +22,16 @@ class DependenciasModel extends ModelBase {
 
     function getDatos($id_dependencia) {
        
-        $query = "select 	
-                    dependencias.id_dependencia, 
-                    dependencias.codigo_dependencia, 
-                    dependencias.nombre_dependencia, 
-                    dependencias.jefe_dependencia
-                
-                    from dependencias
+        $query = "select 
+        dependencias.id_dependencia, 
+        dependencias.codigo_dependencia, 
+        dependencias.nombre_dependencia, 
+        dependencias.jefe_dependencia,
 
+        CONCAT(empleados.nombres_empleado, ' ',empleados.apellidos_empleado) as nombre_jefe
+    
+        from dependencias left join empleados on 
+        dependencias.jefe_dependencia = empleados.id_empleado
                     where dependencias.id_dependencia='".$id_dependencia."'";
         
          $consulta = $this->consulta($query);

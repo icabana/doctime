@@ -37,10 +37,6 @@
         );
 
     }
-
-    $(document).ready(function() {
-        CrearTabla('tabla_tiposradicado');
-    });
 </script>
 
 <div class="row">
@@ -69,7 +65,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_tiposradicado" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>TIPO DE RADICADO</th>

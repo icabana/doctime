@@ -22,7 +22,7 @@
 
     function eliminar_carpeta(id_carpeta) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_carpeta2(" + id_carpeta + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar la carpeta seleccionada?", "eliminar_carpeta2(" + id_carpeta + "); ");
 
     }
 
@@ -33,7 +33,7 @@
             'Carpetas',
             'eliminar',
             "id_carpeta=" + id_carpeta,
-            ' mensaje_alertas("success", "Carpeta Eliminado con Éxito", "center"); cargar_carpetas();'
+            ' mensaje_alertas("success", "Carpeta Eliminada con Éxito", "center"); cargar_carpetas();'
         );
 
     }

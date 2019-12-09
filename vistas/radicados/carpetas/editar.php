@@ -1,5 +1,10 @@
 <script type="text/javascript">
+
   function editar_carpeta() {
+
+    if(!validar_requeridos()){
+        return 0;
+    }
 
     var datos = $('#formCarpetas').serialize();
 
@@ -53,9 +58,9 @@ $froms = new Formularios();
 
               <div class="card-body">
                 <div class="form-group">
-                  <label>Nombre del Carpeta</label>
+                  <label>Nombre del Carpeta<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="nombre_carpeta" name="nombre_carpeta" 
+                  <input type="text" class="form-control requerido" id="nombre_carpeta" name="nombre_carpeta" 
                         value="<?php echo $datos['nombre_carpeta']; ?>">
                 </div>
               </div>

@@ -20,27 +20,6 @@
 
     }
 
-    function eliminar_usuario(id_usuario) {
-
-        mensaje_confirmar("¿Está seguro de eliminar el usuario?", "eliminar_usuario2(" + id_usuario + "); ");
-
-    }
-
-    function eliminar_usuario2(id_usuario) {
-
-        ejecutarAccion(
-            'configuracion',
-            'Usuarios',
-            'eliminar',
-            "id_usuario=" + id_usuario,
-            ' mensaje_alertas("success", "Usuario Eliminado con Éxito", "center"); cargar_usuarios();'
-        );
-
-    }
-
-    $(document).ready(function() {
-        CrearTabla('tabla_usuarios');
-    });
 </script>
 
 <div class="row">
@@ -69,13 +48,12 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="tabla_usuarios" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>NICK</th>
                             <th style='background-color:lavender'>ESTADO</th>
                             <th style='background-color:lavender'>ROL</th>
-                            <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
                     </thead>
@@ -97,10 +75,6 @@
 
                             echo "<td><a href='#'><i onclick='editar_usuario(" . $items['id_usuario'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
-
-                            echo "<td><a href='#'><i onclick='eliminar_usuario(" . $items['id_usuario'] . ");' 
-                                    class='fas fa-trash'></i></a></td>";
-
 
                             echo "</tr>";
                         }

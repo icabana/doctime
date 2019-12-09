@@ -76,8 +76,7 @@ class TercerosControlador extends ControllerBase {
                                     $_POST["celular_tercero"],
                                     $_POST["correo_tercero"],
                                     $_POST["direccion_tercero"],
-                                    $_POST["ciudad_tercero"],
-                                    $_POST["estado_tercero"]
+                                    $_POST["ciudad_tercero"]
                                 );        
         
         if( $resp != 0 ){
@@ -103,8 +102,7 @@ class TercerosControlador extends ControllerBase {
                                     $_POST["celular_tercero"],
                                     $_POST["correo_tercero"],
                                     $_POST["direccion_tercero"],
-                                    $_POST["ciudad_tercero"],
-                                    $_POST["estado_tercero"]
+                                    $_POST["ciudad_tercero"]
                                 );        
       
         if( $resp != 0 ){

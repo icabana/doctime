@@ -1,5 +1,10 @@
 <script type="text/javascript">
+
   function editar_rol() {
+
+    if(!validar_requeridos()){
+        return 0;
+    }
 
     var datos = $('#formRoles').serialize();
 
@@ -19,7 +24,7 @@
       mensaje_alertas("success", "Rol Editado Exitosamente", "center");
       cargar_roles();
     } else {
-      mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
+      mensaje_alertas("error", "No se modificaron los datos del formulario", "center");
     }
 
   }
@@ -53,10 +58,10 @@ $froms = new Formularios();
 
               <div class="card-body">
                 <div class="form-group">
-                  <label>Nombre del Rol</label>
+                  <label>Nombre del Rol<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" 
-                        value="<?php echo $datos['nombre_rol']; ?>">
+                  <input type="text" class="form-control requerido" id="nombre_rol" name="nombre_rol" 
+                        value="<?php echo utf8_encode($datos['nombre_rol']); ?>">
                 </div>
               </div>
 

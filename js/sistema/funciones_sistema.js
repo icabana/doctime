@@ -14,8 +14,9 @@ function limpiar_cuerpo() {
 }
 
 function validar_requeridos() {
+
     var error = 0;
-    $('.requerido').each(function (i, elem) {
+    $('.requerido').each(function (i, elem) {        
         if ($(elem).val() == '') {
             $(elem).css({ 'border': '1px solid red' });
             error++;
@@ -23,9 +24,10 @@ function validar_requeridos() {
             $(elem).css({ 'border': '0px' });
         }
     });
+    
     if (error > 0) {
         mensaje_alertas("error", "Debe rellenar los campos requeridos", "center");
-        return 0;
+        return false;
     }
 
     return 1;

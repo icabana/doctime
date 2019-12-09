@@ -19,7 +19,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.asunto_entrante,
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
-                    entrantes.observaciones_entrante,
+                    
                     entrantes.estado_entrante,
 
                     empleados.id_empleado, 
@@ -31,7 +31,7 @@ class EntrantesModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.cuidad_empleado,
+                    empleados.ciudad_empleado,
 
                     terceros.id_tercero, 
                     terceros.documento_tercero, 
@@ -42,10 +42,7 @@ class EntrantesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero,
-
-                    tiposradicado.id_tiporadicado,
-                    tiposradicado.id_tiporadicado,
+                    terceros.ciudad_tercero,
 
                     estados.id_estado,
                     estados.nombre_estado
@@ -53,9 +50,9 @@ class EntrantesModel extends ModelBase {
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado
-                            left join tiposradicado ON entrantes.tiporadicado_entrante = tiposradicado.id_tiporadicado
+                            
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
-                            left join estados ON entrantes.estado_entrante = estados.id_estados";
+                            left join estados ON entrantes.estado_entrante = estados.id_estado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -79,7 +76,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.asunto_entrante,
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
-                    entrantes.observaciones_entrante,
+                    
                     entrantes.estado_entrante,
 
                     empleados.id_empleado, 
@@ -125,6 +122,7 @@ class EntrantesModel extends ModelBase {
     }
     
     function insertar(      
+                        $consecutivo_entrante,
                         $numero_entrante,
                         $remitente_entrante,
                         $enviadopor_entrante,
@@ -138,11 +136,11 @@ class EntrantesModel extends ModelBase {
                         $asunto_entrante,
                         $tiporadicado_entrante,
                         $responsable_entrante,
-                        $observaciones_entrante,
-                        $estado_entrante
+                        $observaciones_entrante
                     ){
                 
         $query = "INSERT INTO entrantes (
+                                consecutivo_entrante,
                                 numero_entrante,
                                 remitente_entrante,
                                 enviadopor_entrante,
@@ -155,11 +153,10 @@ class EntrantesModel extends ModelBase {
                                 descripcionfolios_entrante,
                                 asunto_entrante,
                                 tiporadicado_entrante,
-                                responsable_entrante,
-                                observaciones_entrante,
-                                estado_entrante
+                                responsable_entrante
                             )
                             VALUES(
+                                '".$consecutivo_entrante."',
                                 '".$numero_entrante."',
                                 '".$remitente_entrante."',
                                 '".$enviadopor_entrante."',
@@ -172,12 +169,10 @@ class EntrantesModel extends ModelBase {
                                 '".$descripcionfolios_entrante."',
                                 '".$asunto_entrante."',
                                 '".$tiporadicado_entrante."',
-                                '".$responsable_entrante."',
-                                '".$observaciones_entrante."',
-                                '".$estado_entrante."'
+                                '".$responsable_entrante."'
                             );";
        
-        return $this->crear_ultimo_id($query);       
+       return $this->crear_ultimo_id($query);
         
     }
     
@@ -196,7 +191,6 @@ class EntrantesModel extends ModelBase {
                     $asunto_entrante,
                     $tiporadicado_entrante,
                     $responsable_entrante,
-                    $observaciones_entrante,
                     $estado_entrante
                 ) {
         
@@ -215,7 +209,6 @@ class EntrantesModel extends ModelBase {
                         asunto_entrante = '". $asunto_entrante ."',
                         tiporadicado_entrante = '". $tiporadicado_entrante ."',
                         responsable_entrante = '". $responsable_entrante ."',
-                        observaciones_entrante = '". $observaciones_entrante ."',
                         estado_entrante = '". $estado_entrante ."'
 
                     WHERE id_entrante = '" . $id_entrante . "'";
@@ -224,16 +217,50 @@ class EntrantesModel extends ModelBase {
        
     }
     
-    function eliminar($id_entrante) {
+    function eliminar($radicados) {
         
-        $query = "DELETE FROM entrantes WHERE id_entrante = '". $id_entrante ."'";        
+        $query = "DELETE FROM entrantes WHERE id_entrante IN (". $radicados .")";        
         $this->modificarRegistros($query);
-
+        
     }
 
 
 
     /// CONSULTAS EXTRAS
+
+    function buscarRemitente() {
+        
+        $query = "select terceros.nombre_tercero
+                
+                  from terceros";
+        
+        $consulta = $this->consulta($query);
+               
+    }
+
+    function buscarDestinatario() {
+        
+        $query = "select CONCAT(empleados.nombres_empleado, ' ', empleados.apellidos_empleado) 
+                
+                  from terceros";
+        
+        $consulta = $this->consulta($query);
+               
+    }
+
+    function getConsecutivo() {
+        
+        $query = "select max(entrantes.consecutivo) as consecutivo
+                
+                    from entrantes";
+        
+        $consulta = $this->consulta($query);
+
+        if(isset($consulta[0]['consecutivo'])){
+            return $consulta[0]['consecutivo'];
+        }
+               
+    }
 
     function getNumeroEntrantes() {
         

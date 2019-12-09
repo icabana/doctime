@@ -49,12 +49,12 @@
 
             <div class="card-body">
               <div class="form-group">
-                  <label>Codigo</label>
+                  <label>Codigo de la serie</label>
                   <input type="text" class="form-control" id="codigo_serie" name="codigo_serie">
               </div>
 
               <div class="form-group">
-                <label>Nombre del Serie</label>
+                <label>Nombre de la Serie</label>
                 <input type="text" class="form-control" id="nombre_serie" name="nombre_serie">
               </div>
             </div>

@@ -40,7 +40,7 @@
 
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Registrar Empleado</h3>
+        <h3 class="card-title">Crear Nuevo Radicado de Salida</h3>
       </div>
 
       <form autocomplete="on" id="formEmpleados" method="post">

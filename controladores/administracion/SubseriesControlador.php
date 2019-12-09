@@ -20,6 +20,17 @@ class SubseriesControlador extends ControllerBase {
 
         $series = $SeriesModel->getTodos();
 
+        $this->model->cargar("DisposicionesModel.php", "configuracion");
+        $DisposicionesModel = new DisposicionesModel();
+
+        $disposiciones = $DisposicionesModel->getTodos();
+
+        $this->model->cargar("SoportesModel.php", "configuracion");
+        $SoportesModel = new SoportesModel();
+
+        $soportes = $SoportesModel->getTodos();
+
+
         include 'vistas/administracion/subseries/insertar.php';
         
     }
@@ -36,6 +47,16 @@ class SubseriesControlador extends ControllerBase {
         
         $datos = $SubseriesModel->getDatos($_POST['id_subserie']);
             
+        $this->model->cargar("DisposicionesModel.php", "configuracion");
+        $DisposicionesModel = new DisposicionesModel();
+
+        $disposiciones = $DisposicionesModel->getTodos();
+
+        $this->model->cargar("SoportesModel.php", "configuracion");
+        $SoportesModel = new SoportesModel();
+
+        $soportes = $SoportesModel->getTodos();
+
         include 'vistas/administracion/subseries/editar.php';
                
     }
@@ -49,8 +70,8 @@ class SubseriesControlador extends ControllerBase {
                                     $_POST['serie_subserie'],
                                     $_POST['codigo_subserie'],
                                     $_POST['nombre_subserie'],
-                                    $_POST['ag_subserie'],
-                                    $_POST['ac_subserie'],
+                                    $_POST['tiempogestion_subserie'],
+                                    $_POST['tiempocentral_subserie'],
                                     $_POST['soporte_subserie'],
                                     $_POST['disposicion_subserie']
                                 );        
@@ -73,8 +94,8 @@ class SubseriesControlador extends ControllerBase {
                                     $_POST['serie_subserie'],
                                     $_POST['codigo_subserie'],
                                     $_POST['nombre_subserie'],
-                                    $_POST['ag_subserie'],
-                                    $_POST['ac_subserie'],
+                                    $_POST['tiempogestion_subserie'],
+                                    $_POST['tiempocentral_subserie'],
                                     $_POST['soporte_subserie'],
                                     $_POST['disposicion_subserie']
                                 );        

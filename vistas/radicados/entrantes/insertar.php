@@ -1,36 +1,72 @@
 <script type="text/javascript">
-
   function insertar_entrante() {
 
-      var datos = $('#formEntrantes').serialize();
+    if(!validar_requeridos()){
+        return 0;
+    }
 
-      ejecutarAccion(
-        'radicados',
-        'Entrantes',
-        'insertar',
-        datos,
-        'insertar_entrante2(data)'
-      );
+    var datos = $('#formEntrantes').serialize();
+
+    ejecutarAccion(
+      'radicados',
+      'Entrantes',
+      'insertar',
+      datos,
+      'insertar_entrante2(data)'
+    );
 
   }
 
   function insertar_entrante2(data) {
 
-      if (data == 1) {
-        mensaje_alertas("success", "Entrante Registrado Exitosamente", "center");
-        cargar_entrantes();
-      } else {
-        mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
-      }
+    if (data == 1) {
+      mensaje_alertas("success", "Radicado Registrado con Exito", "center");
+      cargar_entrantes();
+    } else {
+      mensaje_alertas("error", "Error al registrar radicado", "center");
+    }
 
   }
+
+  
+function buscar_remitente(texto) {
+
+  if(texto.length < 3) {
+
+    $('#vista_remitentes').hide();
+
+  } else {
+
+      ejecutarAccion("radicados", "Entrantes", "buscarRemitente", "texto="+texto, 
+      "$('#vista_remitentes').show(); $('#vista_remitentes').html(data);");
+
+  }
+
+}
+
+  
+function buscar_destinatario(texto) {
+
+  if(texto.length < 3) {
+
+    $('#vista_destinatarios').hide();
+
+  } else {
+
+      ejecutarAccion("radicados", "Entrantes", "buscarDestinatario", "texto="+texto, 
+      "$('#vista_destinatarios').show(); $('#vista_destinatarios').html(data);");
+
+  }
+
+}
+
+
 </script>
 
 
 <?php
-    $froms = new Formularios();
+$froms = new Formularios();
 ?>
-
 
 
 <div class="box box-default">
@@ -42,7 +78,7 @@
         <h3 class="card-title">Crear Nuevo Radicado de Entrada</h3>
       </div>
 
-      <form autocomplete="on" id="formEmpleados" method="post">
+      <form autocomplete="on" id="formEntrantes" method="post">
 
         <div class="card-body">
 
@@ -55,8 +91,7 @@
                 <ul class="nav nav-pills ml-auto p-2">
                   <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Datos de Usuario</a></li>
-
+             
                 </ul>
 
                 <div class="tab-content">
@@ -65,83 +100,109 @@
 
                       <div class="col-md-3">
 
-                      <label>Remitente</label>
-                      <input type="text" class="form-control" id="nombre_entrante" name="nombre_entrante">
+                        <label>No. de Radicado<span style="color:red">*</span></label>
+                        <input type="text" readonly class="form-control requerido" id="numero_entrante" 
+                        name="numero_entrante" onkeypress="return no_numeros(event)" 
+                        value="<?php echo $numero_entrante; ?>">
 
                       </div>
 
                       <div class="col-md-3">
-                        <label>Documento</label>
-                        <input type="text" class="form-control" id="documento_empleado" name="documento_empleado">
+                        <label>Fecha Radicado<span style="color:red">*</span></label>
+                        <input type="date" class="form-control requerido" id="fecharadicado_entrante" 
+                        name="fecharadicado_entrante">
                       </div>
 
-                     
+                      <div class="col-md-3">
+                        <label>Fecha Recibido<span style="color:red">*</span></label>
+                        <input type="date" class="form-control requerido" id="fecharecibido_entrante" 
+                        name="fecharecibido_entrante">
+                      </div>
 
-                      <div class="col-md-6"></div>
+                      <div class="col-md-3">
+                        <label>Tipo de Radicado<span style="color:red">*</span></label>
+                        <?php
+                          echo $froms->Lista_Desplegable(
+                            $tiposradicado,
+                            'nombre_tiporadicado',
+                            'id_tiporadicado',
+                            'tiporadicado_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                        ?>
+                      </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <label>Remitente<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="remitente_entrante" 
+                        name="remitente_entrante"  onkeyup="buscar_remitente(this.value); return false;">
+                        <div id="vista_remitentes"></div>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label>Enviado Por<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="enviadopor_entrante" 
+                        name="enviadopor_entrante">
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>Destinatario<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="destinatario_entrante" 
+                        name="destinario_entrante" onkeyup="buscar_destinatario(this.value); return false;">
+                        <div id="vista_destinatarios"></div>
+                      </div>
 
                     </div>
 
                     <br>
 
-
-
-
-
                     <div class="row">
 
-                      <div class="col-md-6">
-                        <label>Nombres</label>
-                        <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado">
+                      <div class="col-md-12">
+                        <label>Asunto<span style="color:red">*</span></label>
+                        <textarea class="form-control requerido" rows="3" id="asunto_entrante" 
+                        name="asunto_entrante"></textarea>
                       </div>
-
-
-                      <div class="col-md-6">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado">
-                      </div>
-
 
                     </div>
+
+
                   </div>
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_2">
 
+                    <div class="row">
 
-                  <div class="row">
-                    <div class="col-md-2">
-                      <label>Celular</label>
-                      <input type="text" class="form-control" id="celular_empleado" name="celular_empleado">
-                    </div>
-
-                    <div class="col-md-2">
-                      <label>Tel&eacute;fono</label>
-                      <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
-                    </div>
-
-                   
-                      <div class="col-md-4">
-                        <label>Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado">
+                      <div class="col-md-3">
+                        <label>Prioridad</label>
+                        <input type="text" class="form-control" id="prioridad_entrante" 
+                        name="prioridad_entrante">
                       </div>
 
-                      <div class="col-md-4">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado">
+
+                      <div class="col-md-3">
+                        <label>Fecha de Respuesta</label>
+                        <input type="date" class="form-control" id="fechamaxima_entrante" 
+                        name="fechamaxima_entrante">
                       </div>
-                      </div>
 
-<br>
 
-                      <div class="row">
-                      <div class="col-md-2">
-                        <label>Sexo</label>
-
+                      <div class="col-md-3">
+                        <label>Responsable<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
-                          $sexos,
-                          'nombre_sexo',
-                          'id_sexo',
-                          'sexo_empleado',
+                          $empleados,
+                          'nombre_empleado',
+                          'id_empleado',
+                          'responsable_entrante',
                           '',
                           '',
                           ''
@@ -149,75 +210,41 @@
                         ?>
                       </div>
 
-                      <div class="col-md-2">
-                        <label>Estado Civil</label>
-
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $estadoscivil,
-                          'nombre_estadocivil',
-                          'id_estadocivil',
-                          'estadocivil_empleado',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
 
                       <div class="col-md-3">
-                        <label>Fecha de Nacimiento</label>
-
-                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" >
+                        <label>N&uacute;mero de Folios</label>
+                        <input  onkeypress="return no_numeros(event)" type="text" class="form-control" 
+                        id="numerofolios_entrante" name="numerofolios_entrante">
                       </div>
 
-                      <div class="col-md-3">
-                        <label>Lugar de Nacimiento</label>
-
-                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado">
-                      </div>
-                    </div>
                     </div>
 
-
-
-                  <div style="padding: 20px;" class="tab-pane" id="tab_3">
+                    <br>
 
                     <div class="row">
-                    <div class="col-md-3">
-                      <label>Nombre de Usuario</label>
-                      <input type="text" class="form-control" id="celular_empleado" name="celular_empleado">
-                    </div>
 
-                    <div class="col-md-3">
-                      <label>Contrase&ntilde;a</label>
-                      <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
-                    </div>
 
-                    <div class="col-md-3">
-                        <label>Estado</label>
 
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $estados,
-                          'nombre_estado',
-                          'id_estado',
-                          'estado_empleado',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
+                      <div class="col-md-12">
+                        <label>Descripci&oacute;n de los folios</label>
+                        <textarea class="form-control" rows="3" id="descripcionfolios_entrante" 
+                        name="descripcionfolios_entrante"></textarea>
                       </div>
-              
+
                     </div>
+
+
                   </div>
+
+
+
+                  
                 </div>
               </div>
             </div>
           </div>
-          <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
+          <button onclick="cargar_entrantes();" class="btn btn-danger">Cancelar</button>
+          <button onclick="insertar_entrante(); return false;" class="btn btn-success">Guardar</button>
 
         </div>
 

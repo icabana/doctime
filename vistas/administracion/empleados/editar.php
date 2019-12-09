@@ -2,6 +2,10 @@
 
   function editar_empleado() {
 
+      if(!validar_requeridos()){
+          return 0;
+      }
+
       var datos = $('#formEmpleados').serialize();
 
       ejecutarAccion(
@@ -15,15 +19,16 @@
   }
 
   function editar_empleado2(data) {
-
+alert(data);
       if (data == 1) {
         mensaje_alertas("success", "Empleado Editado Exitosamente", "center");
         cargar_empleados();
       } else {
-        mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
+        mensaje_alertas("error", "El Documento o Correo ya se encuentra registrado", "center");
       }
 
   }
+
 
 </script>
 
@@ -41,6 +46,9 @@ $froms = new Formularios();
       </div>
 
       <form autocomplete="on" id="formEmpleados" method="post">
+
+        <input type="hidden" class="form-control requerido" id="id_empleado" 
+        name="id_empleado" value="<?php echo $datos['id_empleado']; ?>" >
 
         <div class="card-body">
 
@@ -63,14 +71,14 @@ $froms = new Formularios();
 
                       <div class="col-md-3">
 
-                        <label>Tipo de Documento</label>
+                        <label>Tipo de Documento<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposdocumento,
                           'nombre_tipodocumento',
                           'id_tipodocumento',
                           'tipodocumento_empleado',
-                          $datos['tipodocumento_usuario'],
+                          $datos['tipodocumento_empleado'],
                           '',
                           ''
                         );
@@ -79,40 +87,63 @@ $froms = new Formularios();
                       </div>
 
                       <div class="col-md-3">
-                        <label>Documento</label>
-                        <input type="text" class="form-control" id="documento_empleado" name="documento_empleado" 
-                        value="<?php echo $datos['documento_empleado']; ?>" >
+                        <label>Documento<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="documento_empleado" 
+                        name="documento_empleado" value="<?php echo $datos['documento_empleado']; ?>" >
                       </div>
 
-                     
+                      
+                      <div class="col-md-6">
+                        <label>Dependencia<span style="color:red">*</span></label>
 
-                      <div class="col-md-6"></div>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $dependencias,
+                          'nombre_dependencia',
+                          'id_dependencia',
+                          'dependencia_empleado',
+                          $datos['dependencia_empleado'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+
 
                     </div>
 
                     <br>
 
-
-
-
-
                     <div class="row">
 
                       <div class="col-md-6">
-                        <label>Nombres</label>
-                        <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado"
-                        value="<?php echo $datos['nombres_empleado']; ?>">
+                        <label>Nombres<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="nombres_empleado" 
+                        name="nombres_empleado" value="<?php echo $datos['nombres_empleado']; ?>">
                       </div>
 
 
                       <div class="col-md-6">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado"
-                        value="<?php echo $datos['apellidos_empleado']; ?>">
+                        <label>Apellidos<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="apellidos_empleado" 
+                        name="apellidos_empleado" value="<?php echo $datos['apellidos_empleado']; ?>">
                       </div>
 
 
                     </div>
+
+                    
+                    <br>                        
+                        <div class="row">
+    
+                          <div class="col-md-6">
+                            <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
+                            <input type="text" class="form-control requerido" id="correo_empleado"  
+                            name="correo_empleado" value="<?php echo $datos['correo_empleado']; ?>">
+                          </div>
+    
+                        </div>
+                        
                   </div>
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_2">
@@ -145,7 +176,7 @@ $froms = new Formularios();
                       </div>
                       </div>
 
-<br>
+                        <br>
 
                       <div class="row">
                       <div class="col-md-2">
@@ -157,7 +188,7 @@ $froms = new Formularios();
                           'nombre_sexo',
                           'id_sexo',
                           'sexo_empleado',
-                          $datos['sexo_usuario'],
+                          $datos['sexo_empleado'],
                           '',
                           ''
                         );
@@ -173,7 +204,7 @@ $froms = new Formularios();
                           'nombre_estadocivil',
                           'id_estadocivil',
                           'estadocivil_empleado',
-                          $datos['estadocivil_usuario'],
+                          $datos['estadocivil_empleado'],
                           '',
                           ''
                         );
@@ -183,32 +214,35 @@ $froms = new Formularios();
                       <div class="col-md-3">
                         <label>Fecha de Nacimiento</label>
 
-                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado"
-                         value="<?php echo $datos['fechanacimiento_empleado']; ?>">
+                        <input type="date" class="form-control" id="fechanacimiento_empleado" 
+                          name="fechanacimiento_empleado" value="<?php echo $datos['fechanacimiento_empleado']; ?>">
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-5">
                         <label>Lugar de Nacimiento</label>
 
-                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado"
-                         value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                        <input type="text" class="form-control" id="lugarnacimiento_empleado" 
+                        name="lugarnacimiento_empleado" value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
                       </div>
                     </div>
                     </div>
-
 
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_3">
 
                     <div class="row">
                     <div class="col-md-3">
-                      <label>Nombre de Usuario</label>
-                      <input type="text" class="form-control" id="celular_empleado" name="usuario_empleado">
+                      <label>Nombre de Usuario<span style="color:red">*</span></label>
+                      <input readonly type="text" class="form-control requerido" id="celular_empleado" 
+                      name="usuario_empleado" value="<?php echo $datos_usuario['nick_usuario']; ?>">
                     </div>
 
                     <div class="col-md-3">
-                      <label>Contrase&ntilde;a</label>
-                      <input type="text" class="form-control" id="telefono_empleado" name="password_empleado">
+                      <label>Contrase&ntilde;a<span style="color:red">*</span></label>
+                      <input type="hidden" id="password2_empleado" name="password2_empleado" 
+                          value="<?php echo $datos['password_usuario']; ?>">
+                      <input readonly type="password" class="form-control requerido" id="password_empleado"
+                       name="password_empleado" value="<?php echo $datos_usuario['password_usuario']; ?>">
                     </div>
 
                     <div class="col-md-3">
@@ -234,7 +268,7 @@ $froms = new Formularios();
             </div>
           </div>
           <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
+          <button onclick="editar_empleado(); return false;" class="btn btn-success">Guardar</button>
 
         </div>
 

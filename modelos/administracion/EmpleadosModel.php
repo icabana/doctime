@@ -8,8 +8,10 @@ class EmpleadosModel extends ModelBase {
                     empleados.id_empleado, 
                     empleados.dependencia_empleado, 
                     empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
                     empleados.nombres_empleado, 
                     empleados.apellidos_empleado, 
+                    concat( empleados.nombres_empleado,' ',empleados.apellidos_empleado) as nombre_empleado,
                     empleados.telefono_empleado, 
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
@@ -19,12 +21,15 @@ class EmpleadosModel extends ModelBase {
                     empleados.estadocivil_empleado,
                     empleados.fechanacimiento_empleado,
                     empleados.lugarnacimiento_empleado,
-                    empleados.estado_empleado,
+                    empleados.usuario_empleado,
 
-                    tiposdocumento.codigo_tipodocumento
+                    tiposdocumento.codigo_tipodocumento,
+
+                    dependencias.nombre_dependencia
                 
-                    from empleados left join 
-                            tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento";
+                    from empleados 
+                    left join tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
+                    left join dependencias on empleados.dependencia_empleado = dependencias.id_dependencia";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -49,7 +54,7 @@ class EmpleadosModel extends ModelBase {
                     empleados.estadocivil_empleado,
                     empleados.fechanacimiento_empleado,
                     empleados.lugarnacimiento_empleado,
-                    empleados.estado_empleado,
+                    empleados.usuario_empleado,
 
                     tiposdocumento.codigo_tipodocumento
                 
@@ -63,6 +68,39 @@ class EmpleadosModel extends ModelBase {
         
     }
     
+    function existeDocumento($documento_empleado) {
+       
+        $query = "select count(empleados.documento_empleado) as cantidad                
+                  from empleados
+                  where empleados.documento_empleado = '".$documento_empleado."'";
+        
+        $consulta = $this->consulta($query);
+        
+        if($consulta[0]['cantidad']){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
+    
+    function existeCorreo($correo_empleado) {
+       
+        $query = "select count(empleados.correo_empleado) as cantidad                
+                  from empleados
+                  where empleados.correo_empleado = '".$correo_empleado."'";
+        
+        $consulta = $this->consulta($query);
+        
+        if($consulta[0]['cantidad']){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
     function insertar(                               
                     $documento_empleado, 
                     $dependencia_empleado, 
@@ -78,7 +116,7 @@ class EmpleadosModel extends ModelBase {
                     $estadocivil_empleado,
                     $fechanacimiento_empleado,
                     $lugarnacimiento_empleado,
-                    $estado_empleado
+                    $usuario_empleado
                     ){
                 
         $query = "INSERT INTO empleados (
@@ -96,7 +134,7 @@ class EmpleadosModel extends ModelBase {
                                 estadocivil_empleado,
                                 fechanacimiento_empleado,
                                 lugarnacimiento_empleado,
-                                estado_empleado
+                                usuario_empleado
                             )
                             VALUES(
                                 '".$documento_empleado."',
@@ -113,7 +151,7 @@ class EmpleadosModel extends ModelBase {
                                 '".$estadocivil_empleado."',
                                 '".$fechanacimiento_empleado."',
                                 '".$lugarnacimiento_empleado."',
-                                '".$estado_empleado."'
+                                '".$usuario_empleado."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -135,8 +173,7 @@ class EmpleadosModel extends ModelBase {
                     $sexo_empleado,
                     $estadocivil_empleado,
                     $fechanacimiento_empleado,
-                    $lugarnacimiento_empleado,
-                    $estado_empleado
+                    $lugarnacimiento_empleado
                 ) {
         
         $query = "  UPDATE empleados 
@@ -154,8 +191,7 @@ class EmpleadosModel extends ModelBase {
                         sexo_empleado = '". $sexo_empleado ."',
                         estadocivil_empleado = '". $estadocivil_empleado ."',
                         fechanacimiento_empleado = '". $fechanacimiento_empleado ."',
-                        lugarnacimiento_empleado = '". $lugarnacimiento_empleado ."',
-                        estado_empleado = '". $estado_empleado ."'
+                        lugarnacimiento_empleado = '". $lugarnacimiento_empleado ."'
 
                     WHERE id_empleado = '" . $id_empleado . "'";
        

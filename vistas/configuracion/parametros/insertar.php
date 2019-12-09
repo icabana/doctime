@@ -2,6 +2,10 @@
 
   function insertar_parametro() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
       var datos = $('#formParametros').serialize();
 
       ejecutarAccion(
@@ -49,12 +53,12 @@
 
             <div class="card-body">
               <div class="form-group">
-                <label>Nombre del Par&aacute;metro</label>
-                <input type="text" class="form-control" id="nombre_parametro" name="nombre_parametro">
+                <label>Nombre del Par&aacute;metro<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_parametro" name="nombre_parametro">
               </div>
               <div class="form-group">
-                <label>Valor</label>
-                <input type="text" class="form-control" id="valor_parametro" name="valor_parametro">
+                <label>Valor<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="valor_parametro" name="valor_parametro">
               </div>
             </div>
 

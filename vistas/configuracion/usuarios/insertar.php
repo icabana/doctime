@@ -2,6 +2,10 @@
 
   function insertar_usuario() {
 
+      if(!validar_requeridos()){
+          return 0;
+      }
+
       var datos = $('#formUsuarios').serialize();
 
       ejecutarAccion(
@@ -48,17 +52,17 @@
           <form autocomplete="on" id="formUsuarios" method="post">
             <div class="card-body">
               <div class="form-group">
-                <label>Nick</label>
+                <label>Nick<span style="color:red">*</span></label>
                 <input type="text" class="form-control" id="nick_usuario" name="nick_usuario">
               </div>
               <div class="form-group">
-                <label>Password</label>
+                <label>Password<span style="color:red">*</span></label>
                 <input type="password" class="form-control" id="password_usuario"
                       name="password_usuario">
               </div>
 
               <div class="form-group">
-                <label>Rol</label>
+                <label>Rol<span style="color:red">*</span></label>
                 <?php
                 echo $froms->Lista_Desplegable(
                         $roles,

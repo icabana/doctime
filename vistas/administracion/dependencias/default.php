@@ -26,7 +26,7 @@
 
     function eliminar_dependencia(id_dependencia) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_dependencia2(" + id_dependencia + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar la dependencia?", "eliminar_dependencia2(" + id_dependencia + "); ");
 
     }
 
@@ -37,14 +37,10 @@
             'Dependencias',
             'eliminar',
             "id_dependencia=" + id_dependencia,
-            ' mensaje_alertas("success", "Dependencia Eliminado con Éxito", "center"); cargar_dependencias();'
+            ' mensaje_alertas("success", "Dependencia Eliminada con Éxito", "center"); cargar_dependencias();'
         );
 
     }
-
-    $(document).ready(function() {
-        CrearTabla('tabla_dependencias');
-    });
 </script>
 
 <div class="row">
@@ -73,7 +69,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="tabla_dependencias" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th style='background-color:lavender'>C&Oacute;DIGO</th>

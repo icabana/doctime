@@ -2,6 +2,11 @@
 
   function insertar_tipodocumental() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
+
       var datos = $('#formTiposdocumentales').serialize();
 
       ejecutarAccion(
@@ -49,8 +54,8 @@
 
             <div class="card-body">
               <div class="form-group">
-                <label>Tipo Documental</label>
-                <input type="text" class="form-control" id="nombre_tipodocumental" name="nombre_tipodocumental">
+                <label>Tipo Documental<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_tipodocumental" name="nombre_tipodocumental">
               </div>
             </div>
 

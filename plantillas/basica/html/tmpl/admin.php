@@ -26,7 +26,26 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">  
 
-  
+
+  <script>
+
+  function nuevo_radicado_entrante() {
+
+    abrirVentanaContenedor(
+        'radicados', 'Entrantes', 'nuevo', '', ''
+    );
+
+  }
+
+  function nuevo_radicado_saliente() {
+
+    abrirVentanaContenedor(
+        'radicados', 'Salientes', 'nuevo', '', ''
+    );
+
+  }
+
+    </script>
 
   <!--MODULOS DEL SISTEMA-->  
   <script language="JavaScript" type='text/javascript' src='js/modulos/configuracion.js'></script> 
@@ -36,20 +55,30 @@
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
   <?php
-      /*              
+                    
     include("modelos/radicados/EntrantesModel.php");
     $EntrantesModel = new EntrantesModel();   
-    /*
-    $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
-    $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
-    $numero_entrantes_finalizados = $EntrantesModel->getNumeroEntrantesFinalizados();
-    $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados()();
 
     include("modelos/radicados/SalientesModel.php");
     $SalientesModel = new SalientesModel();   
     
-    $numero_salientes = $SalientesModel->getNumeroSalientes();
+    include("modelos/radicados/CarpetasModel.php");
+    $CarpetasModel = new CarpetasModel();   
+    
+    if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
+        $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
+        $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
+        $numero_entrantes_finalizados = $EntrantesModel->getNumeroEntrantesFinalizados();
+        $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados();  
+        $numero_salientes = $SalientesModel->getNumeroSalientes();
+        $carpetas = $CarpetasModel->getTodos();
+    }
 
+    if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+
+    }
+    
+ 
 ?>
     
     
@@ -67,17 +96,12 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Nueva Entrada</a>
+      <a onclick="nuevo_radicado_entrante();" href="#" class="nav-link">Nuevo Radicado de Entrada</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Nueva Salida</a>
+        <a onclick="nuevo_radicado_saliente();" href="#" class="nav-link">Nuevo Radicado de Salida</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-          Seleccionar Año 
-          <select>
-              <option></option>
-          </select>
-      </li>
+      
     </ul>
 
 
@@ -98,8 +122,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="<?php echo $this->ruta(); ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a class="brand-link">
+      <img src="<?php echo $this->ruta(); ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" 
+      class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">
         <img src="<?php echo $this->ruta(); ?>dist/img/logo.png"  style="opacity: .8">
@@ -111,11 +136,28 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo $this->ruta(); ?>dist/img/user2-160x160.png" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo $this->ruta(); ?>dist/img/user2-160x160.png" class="img-circle elevation-2" 
+          alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['nombre']; ?></a>
-        </div>
+        <center>
+          <a href="#" class="d-block"><?php echo $_SESSION['nick_usuario']. 
+          " <br> <b>Rol:</b> ".$_SESSION['nombre_rol'].""; ?></a>
+        </center>
+
+
+
+        <li class="nav-item d-none d-sm-inline-block">
+      <a href="#" class="nav-link">Seleccionar A&ntilde;o
+          <select  class="form-control" name="ano_seleccionado" id="ano_seleccionado">
+              <option>2019</option>
+              <option>2020</option>
+              <option>2021</option>
+              <option>2022</option>
+          </select>
+          </a>
+      </li>
+      </div>
       </div>
 
       <!-- Sidebar Menu -->
@@ -129,7 +171,7 @@
             if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
           ?>
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i onclick="cargar_usuarios();" class="nav-icon fas fa-copy"></i>
               <p>
@@ -164,6 +206,22 @@
                   <p>Radicados Archivados</p>
                 </a>
               </li>
+         
+              <?php
+                foreach($carpetas as $carpeta){
+              ?>
+              <li class="nav-item">
+                <a  href="#" onclick="cargar_entrantes_carpeta(<?php $carpeta['id_carpeta']; ?>);" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><?php echo $carpeta['nombre_carpeta']; ?></p>
+                </a>
+              </li>
+              <?php
+                }
+              ?>
+
+
+
             </ul>
           </li>
 
@@ -178,7 +236,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            
+         
+            <li class="nav-item">
+                <a  href="#" onclick="cargar_carpetas();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Carpetas</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="#" onclick="cargar_usuarios();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -197,6 +262,7 @@
                   <p>Parametros</p>
                 </a>
               </li>
+             
             </ul>
           </li>
           
@@ -207,7 +273,7 @@
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Administraci&oacute;n
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -223,6 +289,14 @@
                 <a href="#" onclick="cargar_empleados();"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleados </p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_terceros();"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terceros </p>
                 </a>
               </li>
               </ul>
@@ -257,15 +331,15 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Estadisticas
-                <i class="right fas fa-angle-left"></i>
+                Informes Radicados
+                <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="radicados_usuarios();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados por usuarios </p>
+                  <p>Por Usuarios </p>
                 </a>
               </li>
             </ul>
@@ -273,7 +347,7 @@
               <li class="nav-item">
                 <a href="#" onclick="radicados_dependencias();"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados por dependencia </p>
+                  <p>Por Dependencia </p>
                 </a>
               </li>
               </ul>
@@ -289,7 +363,7 @@
               <li class="nav-item">
                 <a href="#" onclick="radicados_trd();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados por TRD </p>
+                  <p>Por TRD </p>
                 </a>
               </li>
             </ul>
@@ -330,6 +404,13 @@
                 <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados Finalizados</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a  href="#" onclick="cargar_carpetas();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Carpetas</p>
                 </a>
               </li>
 
@@ -416,33 +497,11 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Entrantes (Todos)</span>
+                <span class="info-box-text">Radicados Entrantes</span>
                 <span class="info-box-number">
                   <?php //echo $numero_entrantes; ?>
                 </span>
               </div>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Radicados Entrantes (Activos)</span>
-                <span class="info-box-number">
-                  <?php //echo $numero_entrantes_activos; ?>
-                </span>
-              </div>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Radicados Entrantes (Finalizados)</span>
-                <span class="info-box-number">
-                  <?php //echo $numero_entrantes_finalizados; ?>
-                </span>
-              </div>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Radicados Entrantes (Archivados)</span>
-                <span class="info-box-number">
-                  <?php //echo $numero_entrantes_archivados; ?>
-                </span>
-              </div>
-
 
               <!-- /.info-box-content -->
             </div>
@@ -454,7 +513,7 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Salientes</span>
+                <span class="info-box-text">Radicados Activos</span>
                 <span class="info-box-number">
                 <?php //echo $numero_salientes; ?>
                 </span>
@@ -473,7 +532,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
+                <span class="info-box-text">Radicados Finalizados</span>
                 <span class="info-box-number">760</span>
               </div>
               <!-- /.info-box-content -->
@@ -486,7 +545,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
+                <span class="info-box-text">Radicados Salientes</span>
                 <span class="info-box-number">2,000</span>
               </div>
               <!-- /.info-box-content -->
@@ -590,10 +649,10 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2020 <a target='_blank' href="https://setpsantamarta.gov.co/">SETP Santa Marta S.A.S.</a>.</strong>
+    <strong>Copyright &copy; 2020 <a target='_blank' href="https://setpsantamarta.gov.co/">SETP Santa Marta S.A.S.</a></strong>
     Todos los derechos Reservados.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.1
+      <b>Version</b> 2.0.
     </div>
   </footer>
 
