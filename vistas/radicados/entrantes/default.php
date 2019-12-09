@@ -20,6 +20,138 @@
 
     }
 
+    function mover_carpeta0() {
+
+        var cont = 0;
+
+        $("input[name=check_radicados]:checked").each(
+            function(){
+                cont++;
+            }
+        );
+
+        if(cont == 0){
+          mensaje_alertas("error", "Debe seleccionar algún registro");
+          return 0;
+        }
+
+    }
+
+
+    function mover_carpeta() {
+
+        ejecutarAccion(
+          'radicados',
+          'Entrantes',
+          'mover',
+          'carpeta='+$("#carpeta_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
+          'mover_carpeta2(data)'
+        );
+
+    }
+
+    function mover_carpeta2(data) {
+
+        if (data == 1) {
+          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+          cargar_entrantes();
+        } else {
+          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
+        }
+
+    } 
+
+
+
+    function cambiar_responsable0() {
+
+        var cont = 0;
+
+        $("input[name=check_radicados]:checked").each(
+            function(){
+                cont++;
+            }
+        );
+
+        if(cont == 0){
+          mensaje_alertas("error", "Debe seleccionar algún registro");
+          return 0;
+        }
+
+    }
+
+    function cambiar_responsable() {
+
+        if(!validar_requeridos()){
+            return 0;
+        }
+
+        ejecutarAccion(
+          'radicados',
+          'Entrantes',
+          'cambiar',
+          'responsable_entrante='+$("#responsable_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
+          'cambiar_responsable2(data)'
+        );
+
+    }
+
+    function cambiar_responsable2(data) {
+
+        if (data == 1) {
+          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+        } else {
+          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
+        }
+
+    } 
+
+
+    function nueva_bitacora0() {
+
+        var cont = 0;
+
+        $("input[name=check_radicados]:checked").each(
+            function(){
+                cont++;
+            }
+        );
+
+        if(cont == 0){
+          mensaje_alertas("error", "Debe seleccionar algún registro");
+          return 0;
+        }
+
+    }
+
+    function nueva_bitacora() {
+
+        if(!validar_requeridos()){
+            return 0;
+        }
+
+        ejecutarAccion(
+          'radicados',
+          'Entrantes',
+          'nueva',
+          'bitacora_entrante='+$("#bitacora_entrante").val()+'&id_entrante='+$("#id_entrante").val(),
+          'nueva_bitacora2(data)'
+        );
+
+    }
+
+    function nueva_bitacora2(data) {
+
+        if (data == 1) {
+          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+        } else {
+          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
+        }
+
+    } 
+
+
+
     function seleccionar_check() {
    
       var cont = 0;
@@ -117,6 +249,7 @@
                   <button title="Eliminar Radicado" onclick="eliminar_entrante();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
                   <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
                   <button  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
+                  <button  data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
                 </div>
                
 
@@ -218,12 +351,17 @@
 </div>
 
 
+
+
+
+
+////////////////////////////////
 <!-- Modal 1-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Enviar a Carpeta:</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Mover a Carpeta:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -245,7 +383,7 @@
         </div>
       </div>
       <div class="modal-footer">        
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button onclick="mover_carpeta();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>
@@ -281,7 +419,32 @@
         </div>
       </div>
       <div class="modal-footer">        
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button onclick="cambiar_responsable();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal 3-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Nueva Bitacora:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Agregar Bitacora</label>
+          <textarea id="bitacora_entrante" name="bitacora_entrante" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="nueva_bitacora();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>

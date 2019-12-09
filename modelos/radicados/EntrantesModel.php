@@ -19,6 +19,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.asunto_entrante,
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
+                    entrantes.carpeta_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -51,12 +52,106 @@ class EntrantesModel extends ModelBase {
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
-                            left join estados ON entrantes.estado_entrante = estados.id_estado";
+                            left join estados ON entrantes.estado_entrante = estados.id_estado
+                            
+                    where entrantes.carpeta_entrante IS NULL";
         
         $consulta = $this->consulta($query);
         return $consulta;       
                
     }  
+
+
+    function getTrazabilidad($entrante_trazabilidad) {
+        
+        $query = "select 
+                    trazabilidad.id_trazabilidad, 
+                    trazabilidad.entrante_trazabilidad,
+                    trazabilidad.accion_trazabilidad,
+                    trazabilidad.usuario_trazabilidad,
+                    trazabilidad.fecha_trazabilidad,
+
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado
+                
+                    from trazabilidad 
+                            left join empleados ON trazabilidad.usuario_trazabilidad = empleados.id_empleado
+                            
+                    where entrantes.entrante_trazabilidad = '".$entrante_trazabilidad."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    }  
+
+
+
+    function getTodosPorCarpeta($carpeta_entrante) {
+        
+        $query = "select 
+                    entrantes.id_entrante, 
+                    entrantes.numero_entrante,
+                    entrantes.remitente_entrante,
+                    entrantes.enviadopor_entrante,
+                    entrantes.destinatario_entrante,
+                    entrantes.fecharadicado_entrante,
+                    entrantes.fecharecibido_entrante,
+                    entrantes.fechamaxima_entrante,
+                    entrantes.prioridad_entrante,
+                    entrantes.numerofolios_entrante,
+                    entrantes.descripcionfolios_entrante,
+                    entrantes.asunto_entrante,
+                    entrantes.tiporadicado_entrante,
+                    entrantes.responsable_entrante,
+                    entrantes.carpeta_entrante,
+                    
+                    entrantes.estado_entrante,
+
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
+
+                    terceros.id_tercero, 
+                    terceros.documento_tercero, 
+                    terceros.tipodocumento_tercero, 
+                    terceros.nombre_tercero,  
+                    terceros.telefono_tercero, 
+                    terceros.celular_tercero, 
+                    terceros.correo_tercero, 
+                    terceros.direccion_tercero, 
+                    terceros.ciudad_tercero,
+
+                    estados.id_estado,
+                    estados.nombre_estado
+                
+                    from entrantes 
+                            left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
+                            left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado
+                            
+                            left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
+                            left join estados ON entrantes.estado_entrante = estados.id_estado
+                            
+                    where entrantes.carpeta_entrante = '".$carpeta_entrante."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    }
 
     function getDatos($id_entrante) {
        
@@ -75,6 +170,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.asunto_entrante,
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
+                    entrantes.carpeta_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -214,7 +310,40 @@ class EntrantesModel extends ModelBase {
         return $this->modificarRegistros($query);
        
     }
+
+
+    function mover(
+                $id_entrante, 
+                $carpeta_entrante
+    ) {
+
+        $query = "  UPDATE entrantes 
+
+                SET carpeta_entrante = '". $carpeta_entrante ."'
+
+                WHERE id_entrante = '" . $id_entrante . "'";
+
+        return $this->modificarRegistros($query);
+
+    }
+
     
+    function cambiar(
+                $id_entrante, 
+                $responsable_entrante
+    ) {
+
+        $query = "  UPDATE entrantes 
+
+                SET responsable_entrante = '". $responsable_entrante ."'
+
+                WHERE id_entrante = '" . $id_entrante . "'";
+
+        return $this->modificarRegistros($query);
+
+    }
+    
+        
     function eliminar($radicados) {
         
         $query = "DELETE FROM entrantes WHERE id_entrante IN (". $radicados .")";        
@@ -357,6 +486,31 @@ class EntrantesModel extends ModelBase {
         return $consulta;       
                
     }
+
+
+    function insertar_trazabilidad(
+            $entrante_trazabilidad,
+            $accion_trazabilidad
+    ){
+
+        $query = "INSERT INTO trazabilidad_entrantes (
+                entrante_trazabilidad,
+                accion_trazabilidad,
+                fecha_entrante,
+                usuario_entrante
+            )
+            VALUES(
+                '".$entrante_trazabilidad."',
+                '".utf8_decode($accion_trazabilidad)."',
+                '".date('Y-m-d H:i:s')."',
+                '".$_SESSION['id_usuario']."'
+            );";
+
+        return $this->crear_ultimo_id($query);
+
+    }
+
+
 
 }
 

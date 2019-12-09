@@ -28,56 +28,56 @@
 
   }
 
-  
-function buscar_remitente(texto) {
+    
+  function buscar_remitente(texto) {
 
-  if(texto.length < 3) {
+    if(texto.length < 3) {
 
-    $('#vista_remitentes').hide();
+      $('#vista_remitentes').hide();
 
-  } else {
+    } else {
 
-      ejecutarAccion("radicados", "Entrantes", "buscarRemitente", "texto="+texto, 
-      "$('#vista_remitentes').show(); $('#vista_remitentes').html(data);");
+        ejecutarAccion("radicados", "Entrantes", "buscarRemitente", "texto="+texto, 
+        "$('#vista_remitentes').show(); $('#vista_remitentes').html(data);");
 
-  }
-
-}
-
-  
-function buscar_destinatario(texto) {
-
-  if(texto.length < 3) {
-
-    $('#vista_destinatarios').hide();
-
-  } else {
-
-      ejecutarAccion("radicados", "Entrantes", "buscarDestinatario", "texto="+texto, 
-      "$('#vista_destinatarios').show(); $('#vista_destinatarios').html(data);");
+    }
 
   }
 
-}
+    
+  function buscar_destinatario(texto) {
+
+    if(texto.length < 3) {
+
+      $('#vista_destinatarios').hide();
+
+    } else {
+
+        ejecutarAccion("radicados", "Entrantes", "buscarDestinatario", "texto="+texto, 
+        "$('#vista_destinatarios').show(); $('#vista_destinatarios').html(data);");
+
+    }
+
+  }
 
 
-function seleccionar_remitente(id_remitente, nombre_remitente){
+  function seleccionar_remitente(id_remitente, nombre_remitente){
 
-    $("#remitente_entrante").val(id_remitente);
-    $("#remitente_entrante2").val(nombre_remitente);
+      $("#remitente_entrante").val(id_remitente);
+      $("#remitente_entrante2").val(nombre_remitente);
 
-    $('#vista_remitentes').hide();
+      $('#vista_remitentes').hide();
 
-}	
+  }	
 
-function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario){
+  function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario){
 
-    $("#destinatario_entrante").val(id_destinatario);
-    $("#destinatario_entrante2").val(nombre_destinatario+' '+apellidos_destinatario);
+      $("#destinatario_entrante").val(id_destinatario);
+      $("#destinatario_entrante2").val(nombre_destinatario+' '+apellidos_destinatario);
 
-    $('#vista_destinatarios').hide();
+      $('#vista_destinatarios').hide();
 
-}	
+  }	
 
 
 
@@ -107,11 +107,13 @@ $froms = new Formularios();
               <!-- Custom Tabs -->
               <div class="card">
 
-
                 <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
-             
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a>
+                  </li>             
                 </ul>
 
                 <div class="tab-content">
@@ -247,8 +249,6 @@ $froms = new Formularios();
 
                     <div class="row">
 
-
-
                       <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
                         <textarea class="form-control" rows="3" id="descripcionfolios_entrante" 
@@ -257,10 +257,7 @@ $froms = new Formularios();
 
                     </div>
 
-
                   </div>
-
-
 
                   
                 </div>

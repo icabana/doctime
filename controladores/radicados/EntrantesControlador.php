@@ -77,7 +77,14 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("EntrantesModel.php");
         $EntrantesModel = new EntrantesModel();         
         $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
-            
+
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+        $this->model->cargar("DocumentosModel.php", "configuracion");
+        $DocumentosModel = new DocumentosModel();         
+        
+        $documentos = $soportes = $DocumentosModel->getTodos($datos['id_entrante']);
+        
         include 'vistas/radicados/entrantes/editar.php';
                
     }
@@ -128,12 +135,12 @@ print_r($terceros);
 
         $tabla_empleados = "<table id='tabla_empleados'  class='table table-hover'>
 
-    <thead>
-        <tr>     
-            <th><center>NOMBRE</center></th> 
-        </tr>
-        </thead>
-    <tbody>";
+        <thead>
+            <tr>     
+                <th><center>NOMBRE</center></th> 
+            </tr>
+            </thead>
+        <tbody>";
 
         foreach ($empleados as $clave => $valor) {
 
@@ -147,7 +154,7 @@ print_r($terceros);
 
        $tabla_empleados .= "
 
-</tbody></table>";
+        </tbody></table>";
 
         echo $tabla_empleados;
 
@@ -188,9 +195,18 @@ print_r($terceros);
                                 );        
         
         if( $resp != 0 ){
+            
+            $EntrantesModel->insertar_trazabilidad(
+                $resp,
+                "Se registró el Radicado No. ".$numero_entrante
+            );    
+
             echo 1;
+
         }else{
+
             echo 0;			
+
         }      
         
     }
@@ -220,6 +236,12 @@ print_r($terceros);
                                 );        
       
         if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $resp,
+                "Se modificó la información del radicado"
+            );  
+
              echo 1;             
         }else{
             echo 0;		
@@ -227,6 +249,67 @@ print_r($terceros);
         
     }    
         
+
+    public function mover() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->mover(
+                                    $_POST["id_entrante"], 
+                                    $_POST["carpeta_entrante"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se movió el radicado de carpeta"
+            ); 
+
+             echo 1;             
+        }else{
+            echo 0;		
+        }
+        
+    }    
+
+    public function cambiar() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->cambiar(
+                                    $_POST["id_entrante"], 
+                                    $_POST["responsable_entrante"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se cambió el responsable del radicado"
+            ); 
+
+             echo 1;             
+        }else{
+            echo 0;		
+        }
+        
+    }    
+
+    public function nueva() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();            
+    
+        $EntrantesModel->insertar_trazabilidad(
+            $_POST["id_entrante"],
+            $_POST["bitacora_entrante"]
+        ); 
+        
+    }    
+
     public function eliminar() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
