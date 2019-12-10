@@ -31,15 +31,15 @@ $tabla_documentos = "
 
           }                 
               
-          $icono_archivo = '<img src="imagenes/iconos/pdf.png">';
+          $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/pdf.png">';
           if($extension == "pdf"){
-              $icono_archivo = '<img src="imagenes/iconos/pdf.png">';
+              $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/pdf.png">';
           }
           if($extension == "doc" || $extension == "docx"){
-              $icono_archivo = '<img src="imagenes/iconos/word.png">';
+              $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/word.png">';
           }
           if($extension == "xls" || $extension == "xlsx"){
-              $icono_archivo = '<img src="imagenes/iconos/excel.png"';
+              $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/excel.png"';
           }
           
 
@@ -79,8 +79,8 @@ $tabla_documentos = "
       <a href="#modal_documentos">
           <ul class="mailbox-attachments clearfix">
               <li>
-                  <span class="mailbox-attachment-icon"><i class="glyphicon glyphicon-plus"></i></span>
-                  <div style="background-color:#04B45F" class="mailbox-attachment-info"><center>AÑADIR DOCUMENTO</center>
+                  <span class="mailbox-attachment-icon"><img data-toggle="modal" data-target="#exampleModal4"  width="100px" height="100px" src="imagenes/iconos/nuevo.png"></span>
+                  <div ><center>AÑADIR DOCUMENTO</center>
                     <span class="mailbox-attachment-size">
                   </div>
               </li>
@@ -95,30 +95,6 @@ $tabla_documentos = "
     $tabla_documentos .= "</form></div></div></div>";
   
       
-  /////////////////////////////////
 
-  $tabla_documentos .= '
-    <div class="modal fade" id="modal_nuevo_documento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Registrar Nuevo Documento:</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <div class="col-md-12">
-            <div class="form-group">
-            <label>Nombre del Documento: </label>
-            <input type="text" class="form-control pull-right requerido" id="documento_modal" name="documento_modal">
-        </div>  
-          </div>
-        </div>
-        <div class="modal-footer">        
-        <button  data-remodal-action="cancel" onclick="insertar_documento_modal(); return false;" class="btn btn-block btn-primary btn-lg remodal-confirm">GUARDAR</button></div>
-        </div>
-      </div>
-    </div>';
     
 ?>

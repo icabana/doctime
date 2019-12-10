@@ -58,6 +58,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();
         $max_consecutivo = $EntrantesModel->getConsecutivo() + 1;
@@ -94,6 +98,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+
         $this->model->cargar("EntrantesModel.php");
         $EntrantesModel = new EntrantesModel();         
         $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
@@ -115,7 +123,7 @@ class EntrantesControlador extends ControllerBase {
         $TercerosModel = new TercerosModel();
 
         $terceros = $TercerosModel->getTercerosLIKE($_POST['texto']);
-print_r($terceros);
+
         $tabla_terceros = "<table id='tabla_terceros'  class='table table-hover'>
 
     <thead>
@@ -127,10 +135,8 @@ print_r($terceros);
 
         foreach ($terceros as $clave => $valor) {
 
-            $tabla_terceros .= "<tr onclick='seleccionar_tercero(" . $valor['ID_TERCERO'] . ", \"" . ($valor['NOMBRES_TERCERO']) . "\");'>";  
-
-            $tabla_terceros .= "<td><strong>" . utf8_encode($valor['NOMBRE_TERCERO']) . "</strong></td>";
-
+            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . ($valor['nombre_tercero']) . "\");'>";  
+            $tabla_terceros .= "<td><strong>" . utf8_encode($valor['nombre_tercero']) . "</strong></td>";
             $tabla_terceros .= "</tr>";
 
         }
@@ -163,10 +169,8 @@ print_r($terceros);
 
         foreach ($empleados as $clave => $valor) {
 
-            $tabla_empleados .= "<tr onclick='seleccionar_empleado(" . $valor['ID_EMPLEADO'] . ", \"" . ($valor['NOMBRES_EMPLEADO']) . "\", \"" . (utf8_encode($valor['APELLIDOS_EMPLEADO'])) . "\");'>";  
-
-            $tabla_empleados .= "<td><strong>" . utf8_encode($valor['NOMBRES_EMPLEADO'])." ".(utf8_encode($valor['APELLIDOS_EMPLEADO'])) . "</strong></td>";
-
+            $tabla_empleados .= "<tr onclick='seleccionar_destinatario(" . $valor['id_empleado'] . ", \"" . utf8_encode($valor['nombres_empleado']) . "\", \"" . utf8_encode($valor['apellidos_empleado']) . "\");'>";  
+            $tabla_empleados .= "<td><strong>" . utf8_encode($valor['nombres_empleado'])." ".utf8_encode($valor['apellidos_empleado']) . "</strong></td>";
             $tabla_empleados .= "</tr>";
 
         }
@@ -292,6 +296,33 @@ print_r($terceros);
         }
         
     }    
+
+
+    public function nuevoDocumento() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->nuevoDocumento(
+                                    $_POST["id_entrante"], 
+                                    $_POST["documento"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se agregó un nuevo documento"
+            ); 
+
+             echo 1; 
+
+        }else{
+            echo 0;		
+        }
+        
+    }    
+
 
     public function cambiar() {
         

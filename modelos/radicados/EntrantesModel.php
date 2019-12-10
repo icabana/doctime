@@ -332,6 +332,22 @@ class EntrantesModel extends ModelBase {
 
     }
 
+
+
+    function nuevoDocumento(
+        $entrante_documento, 
+        $nombre_documento
+    ) {
+
+        $query = "  INSERT INTO documentos(entrante_documento, nombre_documento)
+
+                VALUES('". $entrante_documento ."', '". $nombre_documento ."')";
+
+        return $this->modificarRegistros($query);
+
+    }
+
+
     function mover_default(
                 $radicados, 
                 $carpeta_entrante

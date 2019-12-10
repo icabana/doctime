@@ -285,9 +285,6 @@ function enviar_bandeja_entrante2() {
 
 }
 
-
-
-
 </script>
 
 <?php
