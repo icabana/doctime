@@ -74,27 +74,6 @@
     } 
 
 
-
-    function cambiar_responsable0() {
-
-        var cont = 0;
-
-        $("input[name=check_radicados]:checked").each(
-            function(){
-                cont++;
-            }
-        );
-
-        if(cont == 0){
-          mensaje_alertas("error", "Debe seleccionar algún registro");
-          return 0;
-        }
-
-        cambiar_responsable();
-
-    }
-
-
     function nueva_bitacora0() {
 
         var cont = 0;
@@ -308,6 +287,7 @@ function enviar_bandeja_saliente2() {
                             <th style='background-color:lavender'></th>
                             <th style='background-color:lavender'>No. Radicado</th>
                             <th style='background-color:lavender; '>Remitente</th>
+                            <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
                             <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
@@ -353,9 +333,17 @@ function enviar_bandeja_saliente2() {
 
                     <td class="mailbox-name">
                         <a href="read-mail.html">
-                            <?php echo $saliente['nombre_tercero'] ?>
+                            <?php echo utf8_encode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']); ?>
                         </a>
                     </td>
+                    
+                    <td class="mailbox-name">
+                        <a href="read-mail.html">
+                            <?php echo utf8_encode($entrante['nombre_tercero']); ?>
+                        </a>
+                    </td>
+                    
+
                     <td class="mailbox-subject">
                         <?php echo substr($saliente['asunto_saliente'], 0, 35)."..."; ?>
                     </td>

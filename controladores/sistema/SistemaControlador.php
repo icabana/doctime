@@ -11,6 +11,7 @@ class SistemaControlador extends ControllerBase {
         $UsuariosModel = new UsuariosModel();                
 
         $usuario = $UsuariosModel->validar($nick, $password);
+        
 
         if ( is_array( $usuario ) ) {
 
@@ -21,6 +22,9 @@ class SistemaControlador extends ControllerBase {
 
             $_SESSION['carpetas'] = $CarpetasModel->getCarpetasPorUsuario($usuario['id_usuario']);
 
+            $empleados = $UsuariosModel->getTodosUsuariosEmpleados();
+
+            $_SESSION['id_empleado'] = $usuario['id_empleado'];
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nick_usuario'] = $usuario['nick_usuario'];
             $_SESSION['rol'] = $usuario['id_rol'];

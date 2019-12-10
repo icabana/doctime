@@ -113,8 +113,6 @@
 
   function mover_carpeta() {
 
-    $('#exampleModal').modal('hide');
-
     ejecutarAccion(
       'radicados',
       'Entrantes',
@@ -138,8 +136,6 @@
 
 
   function nuevo_documento() {
-
-    $('#exampleModal4').modal('hide');
 
       ejecutarAccion(
           'radicados',
@@ -171,8 +167,6 @@
       return 0;
     }
 
-    $('#exampleModal2').modal('hide');
-
     ejecutarAccion(
       'radicados',
       'Entrantes',
@@ -200,8 +194,6 @@
     if (!validar_requeridos()) {
       return 0;
     }
-
-    $('#exampleModal3').modal('hide');
 
     ejecutarAccion(
       'radicados',
@@ -248,7 +240,6 @@ $froms = new Formularios();
         <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i onclick="seleccionar_check(); return false;" class="far fa-square"></i>
         </button>
         <div class="btn-group ">
-          <button title="Eliminar Radicado" onclick="eliminar_entrante();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
           <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
           <button data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
           <button data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
@@ -505,8 +496,7 @@ $froms = new Formularios();
               </div>
             </div>
           </div>
-          <button onclick="cargar_entrantes();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_entrante(); return false;" class="btn btn-success">Guardar</button>
+        
 
         </div>
 

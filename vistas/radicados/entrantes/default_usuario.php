@@ -13,7 +13,7 @@
         abrirVentanaContenedor(
             'radicados',
             'Entrantes',
-            'editar',
+            'editarUsuario',
             'id_entrante=' + id_entrante,
             ''
         );
@@ -41,8 +41,6 @@
 
 
     function mover_carpeta() {
-
-      $('#exampleModal').modal('hide');
 
       var radicados = "";
 
@@ -97,8 +95,6 @@
     }
 
     function cambiar_responsable() {
-
-      $('#exampleModal2').modal('hide');
         
       var radicados = "";
 
@@ -156,8 +152,6 @@
         return 0;
       }
        
-      $('#exampleModal3').modal('hide');
-
       var radicados = "";
 
       $("input[name=check_radicados]:checked").each(
@@ -326,8 +320,7 @@ function enviar_bandeja_entrante2() {
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i onclick="seleccionar_check(); return false;" class="far fa-square"></i>
                 </button>
                 <div class="btn-group ">
-                  <button title="Eliminar Radicado" onclick="eliminar_entrante();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                  <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                   <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
                   <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
                   <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
@@ -348,7 +341,6 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender'></th>
                             <th style='background-color:lavender'>No. Radicado</th>
                             <th style='background-color:lavender; '>Remitente</th>
-                            <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
                             <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
@@ -359,13 +351,14 @@ function enviar_bandeja_entrante2() {
 
                   <?php
 
+$fechas = new Fechas();
                     foreach($entrantes as $entrante){
 
 
                         $id_check = "check".$entrante['id_entrante'];                        
                   
                         $fecha_actual = date("Y-m-d");
-                        $dias = $this->fechas->diasEntreFechas($fecha_actual, $entrante['fecharadicado_entrante']);
+                        $dias = $fechas->diasEntreFechas($fecha_actual, $entrante['fecharadicado_entrante']);
 
                         if($dias == 0){
                            $dia = "Hoy";
@@ -394,15 +387,9 @@ function enviar_bandeja_entrante2() {
 
                     <td class="mailbox-name">
                         <a href="read-mail.html">
-                            <?php echo utf8_encode($entrante['nombre_tercero']); ?>
+                            <?php echo $entrante['nombre_tercero'] ?>
                         </a>
                     </td>
-                    <td class="mailbox-name">
-                        <a href="read-mail.html">
-                            <?php echo utf8_encode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']); ?>
-                        </a>
-                    </td>
-
                     <td class="mailbox-subject">
                         <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
                     </td>

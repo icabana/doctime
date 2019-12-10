@@ -21,6 +21,25 @@ class EntrantesControlador extends ControllerBase {
     }    
 
     
+    public function indexUsuario() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosUsuario();
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default_usuario.php';
+                        
+    }    
+
+
     public function index_carpeta() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
@@ -113,6 +132,43 @@ class EntrantesControlador extends ControllerBase {
         $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
         
         include 'vistas/radicados/entrantes/editar.php';
+               
+    }
+
+         
+    public function editarUsuario(){
+    
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();   
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+
+        $this->model->cargar("EntrantesModel.php");
+        $EntrantesModel = new EntrantesModel();         
+        $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
+
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+        $this->model->cargar("DocumentosModel.php", "configuracion");
+        $DocumentosModel = new DocumentosModel();   
+        $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
+        
+        include 'vistas/radicados/entrantes/editar_usuario.php';
                
     }
 

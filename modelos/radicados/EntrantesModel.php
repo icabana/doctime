@@ -62,6 +62,66 @@ class EntrantesModel extends ModelBase {
     }  
 
 
+    function getTodosUsuario() {
+        
+        $query = "select 
+                    entrantes.id_entrante, 
+                    entrantes.numero_entrante,
+                    entrantes.remitente_entrante,
+                    entrantes.enviadopor_entrante,
+                    entrantes.destinatario_entrante,
+                    entrantes.fecharadicado_entrante,
+                    entrantes.fecharecibido_entrante,
+                    entrantes.fechamaxima_entrante,
+                    entrantes.prioridad_entrante,
+                    entrantes.numerofolios_entrante,
+                    entrantes.descripcionfolios_entrante,
+                    entrantes.asunto_entrante,
+                    entrantes.tiporadicado_entrante,
+                    entrantes.responsable_entrante,
+                    entrantes.carpeta_entrante,
+                    
+                    entrantes.estado_entrante,
+
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
+
+                    terceros.id_tercero, 
+                    terceros.documento_tercero, 
+                    terceros.tipodocumento_tercero, 
+                    terceros.nombre_tercero,  
+                    terceros.telefono_tercero, 
+                    terceros.celular_tercero, 
+                    terceros.correo_tercero, 
+                    terceros.direccion_tercero, 
+                    terceros.ciudad_tercero,
+
+                    estados.id_estado,
+                    estados.nombre_estado
+                
+                    from entrantes 
+                            left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
+                            left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado                            
+                            left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
+                            left join estados ON entrantes.estado_entrante = estados.id_estado
+                            
+                    where (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0) and 
+                    entrantes.responsable_entrante = '".$_SESSION['id_empleado']."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    } 
+
+
     function getTrazabilidad($radicado_trazabilidad) {
         
         $query = "select 
@@ -503,14 +563,12 @@ class EntrantesModel extends ModelBase {
         
         $query = "select count(entrantes.id_entrante) as numero
                 
-                    from entrantes 
-                    
-                    where ano_entrante = '".$_SESSION['ano']."'";
+                    from entrantes";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
             return $consulta[0]['numero'];
-        }       
+        }
                
     }  
 
@@ -520,7 +578,7 @@ class EntrantesModel extends ModelBase {
                 
                     from entrantes 
                     
-                    where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '1'";
+                    where estado_radicado = '1'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
@@ -535,7 +593,7 @@ class EntrantesModel extends ModelBase {
                 
                     from entrantes 
                     
-                    where ano_entrante = '".$_SESSION['ano']."' and estado_entante = '2'";
+                    where estado_entante = '2'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){

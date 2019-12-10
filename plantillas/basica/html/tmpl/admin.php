@@ -52,6 +52,7 @@
   <script language="JavaScript" type='text/javascript' src='js/modulos/administracion.js'></script> 
   <script language="JavaScript" type='text/javascript' src='js/modulos/archivos.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/radicados.js'></script>  
+  <script language="JavaScript" type='text/javascript' src='js/modulos/estadisticas.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
     
   <?php
@@ -64,7 +65,7 @@
     
     include("modelos/radicados/CarpetasModel.php");
     $CarpetasModel = new CarpetasModel();   
-    
+  
     if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
         $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
         $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
@@ -141,7 +142,7 @@
         </div>
         <div class="info">
         <center>
-          <a href="#" class="d-block"><?php echo $_SESSION['nick_usuario']. 
+          <a href="#" class="d-block"><?php echo $_SESSION['nick_usuario']."---".$_SESSION['id_empleado'].
           " <br> <b>Rol:</b> ".$_SESSION['nombre_rol'].""; ?></a>
         </center>
 
@@ -173,7 +174,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i onclick="cargar_usuarios();" class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Radicados
                 <i class="fas fa-angle-right right"></i>
@@ -339,7 +340,7 @@
               <li class="nav-item">
                 <a href="#" onclick="radicados_responsable();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Por Usuarios </p>
+                  <p>Por Empleados </p>
                 </a>
               </li>
             </ul>
@@ -375,11 +376,11 @@
             if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
           ?>
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Carpetas
+                Radicados
                 <i class="fas fa-angle-right right"></i>
                 
               </p>
@@ -387,25 +388,13 @@
             <ul class="nav nav-treeview">
             
               <li class="nav-item">
-                <a href="#" onclick="cargar_entrantes_activos();" class="nav-link">
+                <a href="#" onclick="cargar_entrantes_usuario();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados Activos</p>
+                  <p>Bandeja de Entrada</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados Finalizados</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a  href="#" onclick="cargar_carpetas();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Carpetas</p>
-                </a>
-              </li>
-
+             
+         
               <?php
                 foreach($carpetas as $carpeta){
               ?>
@@ -420,8 +409,8 @@
               ?>
 
 
-            </ul>
 
+            </ul>
           </li>
 
 
@@ -491,7 +480,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes</span>
                 <span class="info-box-number">
-                  <?php //echo $numero_entrantes; ?>
+                  <?php echo $numero_entrantes; ?>
                 </span>
               </div>
 
@@ -507,7 +496,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Activos</span>
                 <span class="info-box-number">
-                <?php //echo $numero_salientes; ?>
+                <?php echo $numero_entrantes_activos; ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -525,7 +514,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Finalizados</span>
-                <span class="info-box-number">760</span>
+                <?php echo $numero_entrantes_finalizados; ?>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -555,73 +544,12 @@
 
 
       <?php
-          if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
-      ?>
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+          if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){     
 
-              <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
-                <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+            $entrantes = $EntrantesModel->getTodosUsuario();
 
-              <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div> <!-- ./col -->
-        </div>
-        <?php
+            include("vistas/radicados/entrantes/default_usuario.php");
+     
           }
         ?>
 
