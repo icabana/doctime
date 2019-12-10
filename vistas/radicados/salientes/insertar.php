@@ -1,37 +1,91 @@
 <script type="text/javascript">
-
   function insertar_saliente() {
 
-      var datos = $('#formSalientes').serialize();
+    if (!validar_requeridos()) {
+      return 0;
+    }
 
-      ejecutarAccion(
-        'radicados',
-        'Salientes',
-        'insertar',
-        datos,
-        'insertar_saliente2(data)'
-      );
+    var datos = $('#formSalientes').serialize();
+
+    ejecutarAccion(
+      'radicados',
+      'Salientes',
+      'insertar',
+      datos,
+      'insertar_saliente2(data)'
+    );
 
   }
 
   function insertar_saliente2(data) {
 
-      if (data == 1) {
-        mensaje_alertas("success", "Saliente Registrado Exitosamente", "center");
-        cargar_salientes();
-      } else {
-        mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
-      }
+    if (data == 1) {
+      mensaje_alertas("success", "Radicado Registrado con Exito", "center");
+      cargar_salientes();
+    } else {
+      mensaje_alertas("error", "Error al registrar radicado", "center");
+    }
+
+  }
+
+
+  function buscar_remitente(texto) {
+
+    if (texto.length < 3) {
+
+      $('#vista_remitentes').hide();
+
+    } else {
+
+      ejecutarAccion("radicados", "Salientes", "buscarRemitente", "texto=" + texto,
+        "$('#vista_remitentes').show(); $('#vista_remitentes').html(data);");
+
+    }
+
+  }
+
+
+  function buscar_destinatario(texto) {
+
+    if (texto.length < 3) {
+
+      $('#vista_destinatarios').hide();
+
+    } else {
+
+      ejecutarAccion("radicados", "Salientes", "buscarDestinatario", "texto=" + texto,
+        "$('#vista_destinatarios').show(); $('#vista_destinatarios').html(data);");
+
+    }
+
+  }
+
+
+  function seleccionar_remitente(id_remitente, nombre_remitente) {
+
+    $("#remitente_saliente").val(id_remitente);
+    $("#remitente_saliente2").val(nombre_remitente);
+
+    $('#vista_remitentes').hide();
+
+  }
+
+  function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
+
+    var nombre_destinatario = nombres_destinatario + ' ' + apellidos_destinatario;
+
+    $("#destinatario_saliente").val(id_destinatario);
+    $("#destinatario_saliente2").val(nombre_destinatario);
+
+    $('#vista_destinatarios').hide();
 
   }
 </script>
 
 
 <?php
-    $froms = new Formularios();
+$froms = new Formularios();
 ?>
-
-
 
 
 <div class="box box-default">
@@ -43,7 +97,7 @@
         <h3 class="card-title">Crear Nuevo Radicado de Salida</h3>
       </div>
 
-      <form autocomplete="on" id="formEmpleados" method="post">
+      <form autocomplete="on" id="formSalientes" method="post">
 
         <div class="card-body">
 
@@ -52,12 +106,13 @@
               <!-- Custom Tabs -->
               <div class="card">
 
-
                 <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Datos de Usuario</a></li>
-
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a>
+                  </li>
                 </ul>
 
                 <div class="tab-content">
@@ -66,169 +121,104 @@
 
                       <div class="col-md-3">
 
-                        <label>Tipo de Documento</label>
+                        <label>No. de Radicado<span style="color:red">*</span></label>
+                        <input type="text" readonly class="form-control requerido" id="numero_saliente" name="numero_saliente" onkeypress="return no_numeros(event)" value="<?php echo $numero_saliente; ?>">
+
+                      </div>
+
+                      <div class="col-md-3">
+                        <label>Fecha Radicado<span style="color:red">*</span></label>
+                        <input type="date" class="form-control requerido" id="fecharadicado_saliente" name="fecharadicado_saliente">
+                      </div>
+                    
+
+                      <div class="col-md-3">
+                        <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
-                          $tiposdocumento,
-                          'nombre_tipodocumento',
-                          'id_tipodocumento',
-                          'tipodocumento_empleado',
+                          $tiposradicado,
+                          'nombre_tiporadicado',
+                          'id_tiporadicado',
+                          'tiporadicado_saliente',
                           '',
                           '',
                           ''
                         );
                         ?>
+                      </div>
+                    </div>
 
+                    <br>
+
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <label>Remitente<span style="color:red">*</span></label>
+                        <input type="text" class="requerido" id="remitente_saliente" name="remitente_saliente">
+                        <input type="text" class="form-control requerido" id="remitente_saliente2" name="remitente_saliente2" onkeyup="buscar_remitente(this.value); return false;">
+                        <div id="vista_remitentes"></div>
                       </div>
 
-                      <div class="col-md-3">
-                        <label>Documento</label>
-                        <input type="text" class="form-control" id="documento_empleado" name="documento_empleado">
+
+                      <div class="col-md-4">
+                        <label>Enviado Por<span style="color:red">*</span></label>
+                        <input type="text" class="form-control requerido" id="enviadopor_saliente" name="enviadopor_saliente">
                       </div>
 
-                     
-
-                      <div class="col-md-6"></div>
+                      <div class="col-md-4">
+                        <label>Destinatario<span style="color:red">*</span></label>
+                        <input type="text" class="requerido" id="destinatario_saliente" name="destinario_saliente">
+                        <input type="text" class="form-control requerido" id="destinatario_saliente2" name="destinario_saliente2" onkeyup="buscar_destinatario(this.value); return false;">
+                        <div id="vista_destinatarios"></div>
+                      </div>
 
                     </div>
 
                     <br>
 
-
-
-
-
                     <div class="row">
 
-                      <div class="col-md-6">
-                        <label>Nombres</label>
-                        <input type="text" class="form-control" id="nombres_empleado" name="nombres_empleado">
+                      <div class="col-md-12">
+                        <label>Asunto<span style="color:red">*</span></label>
+                        <textarea class="form-control requerido" rows="3" id="asunto_saliente" name="asunto_saliente"></textarea>
                       </div>
-
-
-                      <div class="col-md-6">
-                        <label>Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos_empleado" name="apellidos_empleado">
-                      </div>
-
 
                     </div>
+
+
                   </div>
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_2">
 
-
-                  <div class="row">
-                    <div class="col-md-2">
-                      <label>Celular</label>
-                      <input type="text" class="form-control" id="celular_empleado" name="celular_empleado">
-                    </div>
-
-                    <div class="col-md-2">
-                      <label>Tel&eacute;fono</label>
-                      <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
-                    </div>
-
-                   
-                      <div class="col-md-4">
-                        <label>Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado">
-                      </div>
-
-                      <div class="col-md-4">
-                        <label>Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado">
-                      </div>
-                      </div>
-
-<br>
-
-                      <div class="row">
-                      <div class="col-md-2">
-                        <label>Sexo</label>
-
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $sexos,
-                          'nombre_sexo',
-                          'id_sexo',
-                          'sexo_empleado',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-
-                      <div class="col-md-2">
-                        <label>Estado Civil</label>
-
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $estadoscivil,
-                          'nombre_estadocivil',
-                          'id_estadocivil',
-                          'estadocivil_empleado',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
+                    <div class="row">
 
                       <div class="col-md-3">
-                        <label>Fecha de Nacimiento</label>
-
-                        <input type="text" class="form-control" id="fechanacimiento_empleado" name="fechanacimiento_empleado" >
+                        <label>N&uacute;mero de Folios</label>
+                        <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente">
                       </div>
 
-                      <div class="col-md-3">
-                        <label>Lugar de Nacimiento</label>
-
-                        <input type="text" class="form-control" id="lugarnacimiento_empleado" name="lugarnacimiento_empleado">
-                      </div>
-                    </div>
                     </div>
 
-
-
-                  <div style="padding: 20px;" class="tab-pane" id="tab_3">
+                    <br>
 
                     <div class="row">
-                    <div class="col-md-3">
-                      <label>Nombre de Usuario</label>
-                      <input type="text" class="form-control" id="celular_empleado" name="celular_empleado">
-                    </div>
 
-                    <div class="col-md-3">
-                      <label>Contrase&ntilde;a</label>
-                      <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label>Estado</label>
-
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $estados,
-                          'nombre_estado',
-                          'id_estado',
-                          'estado_empleado',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
+                      <div class="col-md-12">
+                        <label>Descripci&oacute;n de los folios</label>
+                        <textarea class="form-control" rows="3" id="descripcionfolios_saliente" name="descripcionfolios_saliente"></textarea>
                       </div>
-              
+
                     </div>
+
                   </div>
+
+
                 </div>
               </div>
             </div>
           </div>
-          <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
+          <button onclick="cargar_salientes();" class="btn btn-danger">Cancelar</button>
+          <button onclick="insertar_saliente(); return false;" class="btn btn-success">Guardar</button>
 
         </div>
 
@@ -236,11 +226,3 @@
 
     </div>
   </div>
-
-
-
-
-
-
-
-

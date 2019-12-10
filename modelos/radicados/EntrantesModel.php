@@ -610,7 +610,7 @@ class EntrantesModel extends ModelBase {
                 usuario_trazabilidad
             )
             VALUES(
-                '".$radicado_trazabilidad_entrantes."',
+                '".$radicado_trazabilidad."',
                 '".utf8_decode($accion_trazabilidad)."',
                 '".date('Y-m-d H:i:s')."',
                 '".$_SESSION['id_usuario']."'

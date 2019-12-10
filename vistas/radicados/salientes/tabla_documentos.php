@@ -14,7 +14,7 @@ $tabla_documentos = "
 
     foreach ($documentos as $clave => $valor) {
         
-      $path = 'archivos/uploads/entrantes/'.$id_entrante;
+      $path = 'archivos/uploads/salientes/'.$id_saliente;
 
       if(file_exists($path)){
           

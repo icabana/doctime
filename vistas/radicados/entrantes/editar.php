@@ -150,8 +150,8 @@
     function nuevo_documento2(data) {
 
       if (data == 1) {
-          mensaje_alertas("success", "Nuevo Documento registrado", "center");
-          cargar_entrantes();
+        //mensaje_alertas("success", "Nuevo Documento registrado", "center");
+        //cargar_entrantes();
       } else {
           mensaje_alertas("error", "Error al crear nuevo documento", "center");
       }
