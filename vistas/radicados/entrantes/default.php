@@ -35,6 +35,8 @@
           return 0;
         }
 
+        mover_carpeta();
+
     }
 
 
@@ -54,7 +56,7 @@
         'radicados',
         'Entrantes',
         'mover_default',
-        'carpeta='+$("#carpeta_entrante").val()+'&radicados='+radicados,
+        'carpeta_entrante='+$("#carpeta_entrante").val()+'&radicados='+radicados,
         'mover_carpeta2(data)'
       );
 
@@ -88,6 +90,8 @@
           return 0;
         }
 
+        cambiar_responsable();
+
     }
 
     function cambiar_responsable() {
@@ -99,6 +103,8 @@
               radicados += $(this).val()+",";
           }
       );
+
+      radicados += '0';
 
       ejecutarAccion(
         'radicados',
@@ -113,9 +119,10 @@
     function cambiar_responsable2(data) {
 
         if (data == 1) {
-          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+          mensaje_alertas("success", "Cambio de Responsable Exitoso", "center");
+          cargar_entrantes();
         } else {
-          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
+          mensaje_alertas("error", "Error al cambiar de Responsable", "center");
         }
 
     } 
@@ -152,6 +159,8 @@
               radicados += $(this).val()+",";
           }
       );
+
+      radicados += '0';
 
         ejecutarAccion(
           'radicados',
@@ -234,6 +243,51 @@
 
     }
 
+
+    
+    function enviar_bandeja_entrante() {
+
+      var cont = 0;
+
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              cont++;
+          }
+      );
+
+      if(cont == 0){
+        mensaje_alertas("error", "Debe seleccionar algún registro");
+      }else{
+        mensaje_confirmar("¿Está seguro de enviar a la Bandeja de Entrada?", "enviar_bandeja_entrante2(); ");
+      }
+
+  }
+
+function enviar_bandeja_entrante2() {
+
+    var radicados = "";
+
+    $("input[name=check_radicados]:checked").each(
+        function(){
+            radicados += $(this).val()+",";
+        }
+    );
+
+    radicados += '0';
+
+    ejecutarAccion(
+        'radicados',
+        'Entrantes',
+        'enviarBandejaEntrante',
+        "radicados=" + radicados,
+        ' mensaje_alertas("success", "Enviado a la bandeja de entrada", "center"); cargar_entrantes();'
+    );
+
+}
+
+
+
+
 </script>
 
 <?php
@@ -270,14 +324,14 @@
                 </button>
                 <div class="btn-group ">
                   <button title="Eliminar Radicado" onclick="eliminar_entrante();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                  <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                  <button  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
-                  <button  data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
+                  <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                  <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                  <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
+                  <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
                 </div>
                
-
                 <!-- /.btn-group -->
-                <button onclick="cargar_entrantes();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                <button title="Actualizar Lista de Radicados" onclick="cargar_entrantes();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                 
                 <!-- /.float-right -->
               </div>
@@ -348,7 +402,7 @@
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 
                     <?php
-                    echo "<td><a href='#'><i onclick='editar_entrante(" . $items['id_entrante'] . ");' 
+                    echo "<td><a href='#'><i onclick='editar_entrante(" . $entrante['id_entrante'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
                       ?>
 
@@ -378,7 +432,6 @@
 
 
 
-////////////////////////////////
 <!-- Modal 1-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -406,7 +459,7 @@
         </div>
       </div>
       <div class="modal-footer">        
-        <button onclick="mover_carpeta();" type="button" class="btn btn-primary">Aceptar</button>
+        <button onclick="mover_carpeta0();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>
@@ -467,7 +520,7 @@
         </div>
       </div>
       <div class="modal-footer">        
-        <button onclick="nueva_bitacora();" type="button" class="btn btn-primary">Aceptar</button>
+        <button data-dismiss="modal" onclick="nueva_bitacora();" type="button" class="btn btn-primary close">Aceptar</button>
       </div>
     </div>
   </div>

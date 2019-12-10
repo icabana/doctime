@@ -19,7 +19,27 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default.php';
                         
     }    
+
     
+    public function index_carpeta() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosPorCarpeta($_POST['id_carpeta']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+
     public function nuevo(){
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
@@ -81,9 +101,8 @@ class EntrantesControlador extends ControllerBase {
         $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
 
         $this->model->cargar("DocumentosModel.php", "configuracion");
-        $DocumentosModel = new DocumentosModel();         
-        
-        $documentos = $soportes = $DocumentosModel->getTodos($datos['id_entrante']);
+        $DocumentosModel = new DocumentosModel();   
+        $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
         
         include 'vistas/radicados/entrantes/editar.php';
                
@@ -324,10 +343,18 @@ print_r($terceros);
       
         if( $resp != 0 ){
 
-            $EntrantesModel->insertar_trazabilidad(
-                $_POST["id_entrante"],
-                "Se movió el radicado de carpeta"
-            ); 
+            
+            $array_radicados = explode(",", $_POST['radicados']);
+
+            foreach($array_radicados as $array){
+
+                if($array[0] != 0){
+                    $EntrantesModel->insertar_trazabilidad(
+                        $array[0],
+                        "Se movió el radicado de carpeta"
+                    ); 
+                }
+            }
 
              echo 1;             
         }else{
@@ -348,10 +375,18 @@ print_r($terceros);
       
         if( $resp != 0 ){
 
-            $EntrantesModel->insertar_trazabilidad(
-                $_POST["id_entrante"],
-                "Se cambió el responsable del radicado"
-            ); 
+            
+            $array_radicados = explode(",", $_POST['radicados']);
+
+            foreach($array_radicados as $array){
+
+                if($array[0] != 0){
+                    $EntrantesModel->insertar_trazabilidad(
+                        $array[0],
+                        "Se movió el radicado de carpeta"
+                    ); 
+                }
+            }
 
              echo 1;    
 
@@ -372,10 +407,14 @@ print_r($terceros);
 
         foreach($array_radicados as $array){
     
-            $EntrantesModel->insertar_trazabilidad(
-                $array[0],
-                $_POST["bitacora_entrante"]
-            ); 
+            if($array[0] != 0){
+
+                $EntrantesModel->insertar_trazabilidad(
+                    $array[0],
+                    $_POST["bitacora_entrante"]
+                ); 
+                
+            }
 
         }
         
@@ -388,6 +427,34 @@ print_r($terceros);
         $EntrantesModel = new EntrantesModel();
         
         $EntrantesModel->eliminar($_POST["radicados"]);
+        
+        echo "1";        
+        
+    }
+   
+
+    public function enviarBandejaEntrante() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        
+        $EntrantesModel->enviarBandejaEntrante($_POST["radicados"]);
+
+        
+        $array_radicados = explode(",", $_POST['radicados']);
+
+        foreach($array_radicados as $array){
+    
+            if($array[0] != 0){
+
+                $EntrantesModel->insertar_trazabilidad(
+                    $array[0],
+                    "Enviado a la Bandeja de Entrada"
+                ); 
+                
+            }
+
+        }
         
         echo "1";        
         

@@ -265,7 +265,7 @@ $froms = new Formularios();
                   <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Documentos</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Trazabilidad</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Trazabilidad</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -276,20 +276,20 @@ $froms = new Formularios();
 
                         <label>No. de Radicado<span style="color:red">*</span></label>
                         <input type="text" class="form-control radicado" id="numero_entrante" name="numero_entrante"
-                        onkeypress="return no_numeros(event)" value="<?php echo $datos['numero_empleado']; ?>">
+                        onkeypress="return no_numeros(event)" value="<?php echo $datos['numero_entrante']; ?>">
 
                       </div>
 
                       <div class="col-md-3">
                         <label>Fecha Radicado<span style="color:red">*</span></label>
-                        <input type="text" class="form-control radicado" id="fecharadicado_entrante" name="fecharadicado_entrante"
-                        value="<?php echo $datos['fecharadicao_empleado']; ?>">
+                        <input type="date" class="form-control radicado" id="fecharadicado_entrante" name="fecharadicado_entrante"
+                        value="<?php echo $datos['fecharadicado_entrante']; ?>">
                       </div>
 
                       <div class="col-md-3">
                         <label>Fecha Recibido<span style="color:red">*</span></label>
-                        <input type="text" class="form-control radicado" id="fecharecibido_entrante" name="fecharecibido_entrante"
-                        value="<?php echo $datos['fecharecibido_empleado']; ?>">
+                        <input type="date" class="form-control radicado" id="fecharecibido_entrante" name="fecharecibido_entrante"
+                        value="<?php echo $datos['fecharecibido_entrante']; ?>">
                       </div>
 
                       <div class="col-md-3">
@@ -314,10 +314,10 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
-                        <input type="hidden" class="requerido" id="remitente_entrante" 
-                        name="remitente_entrante">
+                        <input type="hidden" class="requerido" id="remitente_entrante" name="remitente_entrante"
+                        value="<?php echo $datos['remitente_entrante']; ?>" >
                         <input type="text" class="form-control requerido" id="remitente_entrante2" name="remitente_entrante2"
-                        value="<?php echo $datos['remitente_empleado']; ?>" 
+                        value="<?php echo $datos['nombre_tercero']; ?>" 
                         onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
@@ -331,10 +331,10 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
-                        <input type="hidden" class="requerido" id="destinatario_entrante" 
-                        name="destinario_entrante">
+                        <input type="hidden" class="requerido" id="destinatario_entrante" name="destinario_entrante"
+                        value="<?php echo $datos['destinatario_entrante']; ?>">
                         <input type="text" class="form-control requerido" id="destinatario_entrante2" name="destinario_entrante2"
-                        value="<?php echo $datos['destinatario_entrante']; ?>"
+                        value="<?php echo $datos['nombres_empleado']." ".$datos['apellidos_empleado']; ?>"
                         onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
@@ -369,7 +369,7 @@ $froms = new Formularios();
 
                       <div class="col-md-3">
                         <label>Fecha de Respuesta</label>
-                        <input type="text" class="form-control" id="fechamaxima_entrante" name="fechamaxima_entrante"
+                        <input type="date" class="form-control" id="fechamaxima_entrante" name="fechamaxima_entrante"
                         value="<?php echo $datos['fechamaxima_entrante']; ?>">
                       </div>
 
@@ -393,7 +393,7 @@ $froms = new Formularios();
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>
                         <input type="text" class="form-control" id="numerofolios_entrante" name="numerofolios_entrante"
-                        value="<?php echo $datos['numerofolios_empleado']; ?>" onkeypress="return no_numeros(event)">
+                        value="<?php echo $datos['numerofolios_entrante']; ?>" onkeypress="return no_numeros(event)">
                       </div>
 
                     </div>
@@ -407,7 +407,7 @@ $froms = new Formularios();
                       <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
                         <textarea class="form-control" rows="3" id="descripcionfolios_entrante" name="descipcionfolios_entrante">
-                        <?php echo $datos['descripcionfolios_empleado']; ?>  
+                        <?php echo $datos['descripcionfolios_entrante']; ?>  
                       </textarea>
                         
                       </div>
@@ -428,8 +428,8 @@ $froms = new Formularios();
                           
                           <?php
                             $id_entrante = $datos['id_entrante'];
-                            require_once 'tabla_soportes.php';
-                            echo $tabla_soportes;
+                            require_once 'tabla_documentos.php';
+                            echo $tabla_documentos;
                           ?>
                           
                       </div>
@@ -437,7 +437,7 @@ $froms = new Formularios();
                 </div>
 
 
-                <div style="padding: 20px;" class="tab-pane" id="tab_3">
+                <div style="padding: 20px;" class="tab-pane" id="tab_4">
 
                   <h3>Trazabilidad</h3>
                           
@@ -446,7 +446,7 @@ $froms = new Formularios();
                       <table id="tabla_trazabilidad" class="table table-hover table-striped">
                       <thead>
                           <tr>
-                              <th style='background-color:lavender'></th>
+                              <th style='background-color:lavender'>No.</th>
                               <th style='background-color:lavender'>Acci&oacute;n</th>                            
                               <th style='background-color:lavender; '>Usuario</th>
                               <th style='background-color:lavender; '>Fecha</th>
@@ -455,16 +455,21 @@ $froms = new Formularios();
                 <tbody>
 
                 <?php
+
+                $cont = 1;
                         foreach ($trazabilidad as $NM => $items) {
 
                             echo "<tr>";
 
+                            echo "<td>" . $cont . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['accion_trazabilidad'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']." ".$items['apellidos_empleado'])) . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_entrante']." ".$items['apellidos_entrante'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['fecha_trazabilidad'])) . "</td>";
 
 
                             echo "</tr>";
+
+                            $cont++;
                         }
                         ?>
                   
@@ -499,7 +504,7 @@ $froms = new Formularios();
 
 
 
-////////////////////////////////
+
 <!-- Modal 1-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -551,9 +556,9 @@ $froms = new Formularios();
           <label>Seleccionar Responsable</label>
           <?php
             echo $froms->Lista_Desplegable(
-              $empleados,
-              'nombre_empleado',
-              'id_empleado',
+              $entrantes,
+              'nombre_entrante',
+              'id_entrante',
               'responsable_entrante',
               '',
               '',

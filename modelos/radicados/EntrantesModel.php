@@ -54,7 +54,7 @@ class EntrantesModel extends ModelBase {
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estados ON entrantes.estado_entrante = estados.id_estado
                             
-                    where entrantes.carpeta_entrante IS NULL";
+                    where entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -62,14 +62,14 @@ class EntrantesModel extends ModelBase {
     }  
 
 
-    function getTrazabilidad($entrante_trazabilidad) {
+    function getTrazabilidad($radicado_trazabilidad) {
         
         $query = "select 
-                    trazabilidad.id_trazabilidad, 
-                    trazabilidad.entrante_trazabilidad,
-                    trazabilidad.accion_trazabilidad,
-                    trazabilidad.usuario_trazabilidad,
-                    trazabilidad.fecha_trazabilidad,
+                    trazabilidad_entrantes.id_trazabilidad, 
+                    trazabilidad_entrantes.radicado_trazabilidad,
+                    trazabilidad_entrantes.accion_trazabilidad,
+                    trazabilidad_entrantes.usuario_trazabilidad,
+                    trazabilidad_entrantes.fecha_trazabilidad,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -80,12 +80,17 @@ class EntrantesModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.ciudad_empleado
+                    empleados.ciudad_empleado,
+
+                    usuarios.id_usuario,
+                    usuarios.nick_usuario
                 
-                    from trazabilidad 
-                            left join empleados ON trazabilidad.usuario_trazabilidad = empleados.id_empleado
+                    from trazabilidad_entrantes
+                            left join usuarios ON trazabilidad_entrantes.usuario_trazabilidad = usuarios.id_usuario
                             
-                    where entrantes.entrante_trazabilidad = '".$entrante_trazabilidad."'";
+                            left join empleados ON empleados.usuario_empleado = usuarios.id_usuario
+                            
+                    where trazabilidad_entrantes.radicado_trazabilidad = '".$radicado_trazabilidad."'";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -183,7 +188,7 @@ class EntrantesModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.cuidad_empleado,
+                    empleados.ciudad_empleado,
 
                     terceros.id_tercero, 
                     terceros.documento_tercero, 
@@ -193,7 +198,7 @@ class EntrantesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.cuidad_tercero,
+                    terceros.ciudad_tercero,
 
                     tiposradicado.id_tiporadicado,
                     tiposradicado.id_tiporadicado,
@@ -206,7 +211,7 @@ class EntrantesModel extends ModelBase {
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado
                             left join tiposradicado ON entrantes.tiporadicado_entrante = tiposradicado.id_tiporadicado
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
-                            left join estados ON entrantes.estado_entrante = estados.id_estados
+                            left join estados ON entrantes.estado_entrante = estados.id_estado
 
                     where entrantes.id_entrante='".$id_entrante."'";
         
@@ -379,6 +384,14 @@ class EntrantesModel extends ModelBase {
     function eliminar($radicados) {
         
         $query = "DELETE FROM entrantes WHERE id_entrante IN (". $radicados .")";        
+        $this->modificarRegistros($query);
+        
+    }
+    
+        
+    function enviarBandejaEntrante($radicados) {
+        
+        $query = "UPDATE entrantes SET carpeta_entrante = '' WHERE id_entrante IN (". $radicados .")";        
         $this->modificarRegistros($query);
         
     }
@@ -570,18 +583,18 @@ class EntrantesModel extends ModelBase {
 
 
     function insertar_trazabilidad(
-            $entrante_trazabilidad,
+            $radicado_trazabilidad,
             $accion_trazabilidad
     ){
 
         $query = "INSERT INTO trazabilidad_entrantes (
-                entrante_trazabilidad,
+                radicado_trazabilidad,
                 accion_trazabilidad,
-                fecha_entrante,
-                usuario_entrante
+                fecha_trazabilidad,
+                usuario_trazabilidad
             )
             VALUES(
-                '".$entrante_trazabilidad."',
+                '".$radicado_trazabilidad_entrantes."',
                 '".utf8_decode($accion_trazabilidad)."',
                 '".date('Y-m-d H:i:s')."',
                 '".$_SESSION['id_usuario']."'

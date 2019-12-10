@@ -31,14 +31,15 @@ $tabla_documentos = "
 
           }                 
               
+          $icono_archivo = '<img src="imagenes/iconos/pdf.png">';
           if($extension == "pdf"){
-              $icono_archivo = "fa fa-file-pdf-o";
+              $icono_archivo = '<img src="imagenes/iconos/pdf.png">';
           }
           if($extension == "doc" || $extension == "docx"){
-              $icono_archivo = "fa fa-file-word-o";
+              $icono_archivo = '<img src="imagenes/iconos/word.png">';
           }
           if($extension == "xls" || $extension == "xlsx"){
-              $icono_archivo = "fa fa-file-excel-o";
+              $icono_archivo = '<img src="imagenes/iconos/excel.png"';
           }
           
 
@@ -46,12 +47,12 @@ $tabla_documentos = "
             <ul class="mailbox-attachments clearfix">
               <li>
               <a target="_blank"  href="'.$path."/".$nombre_archivo.'">
-                <span class="mailbox-attachment-icon"><i class="'.$icono_archivo.'"></i></span>
+                <span class="mailbox-attachment-icon">'.$icono_archivo.'</span>
                 <div class="mailbox-attachment-info">
-                  <a target="_blank" href="'.$path."/".$nombre_archivo.'" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '.utf8_encode(substr($nombre_archivo,0,22)).'</a>
+                  <a target="_blank" href="'.$path."/".$nombre_archivo.'" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '.utf8_encode(substr( $valor['nombre_documento'],0,22)).'</a>
                   <span class="mailbox-attachment-size">
                       <a href="#"  onclick="abrir_upload_archivo('.$valor["id_documento"].', \''.$valor["nombre_documento"].'\'); return false;">Reemplazar Archivo</a>
-                    <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                    <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-download"></i></a>
                     </a>
                   </span>
                 </div>
@@ -111,14 +112,13 @@ $tabla_documentos = "
             <div class="form-group">
             <label>Nombre del Documento: </label>
             <input type="text" class="form-control pull-right requerido" id="documento_modal" name="documento_modal">
-      </div>  
+        </div>  
           </div>
         </div>
         <div class="modal-footer">        
         <button  data-remodal-action="cancel" onclick="insertar_documento_modal(); return false;" class="btn btn-block btn-primary btn-lg remodal-confirm">GUARDAR</button></div>
         </div>
       </div>
-    </div>
     </div>';
     
 ?>
