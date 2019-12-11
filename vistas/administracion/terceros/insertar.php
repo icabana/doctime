@@ -92,7 +92,7 @@ $froms = new Formularios();
 
                 <div class="col-md-6">
                   <label>Nombre del Tercero<span style="color:red">*</span></label>
-                  <input type="text" class="form-control requerido" id="nombres_tercero" name="nombres_tercero">
+                  <input type="text" class="form-control requerido" id="nombre_tercero" name="nombre_tercero">
                 </div>
 
 

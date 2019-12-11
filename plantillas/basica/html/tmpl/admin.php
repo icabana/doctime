@@ -220,7 +220,7 @@
               <li class="nav-item">
                 <a  href="#" onclick="cargar_entrantes_carpeta(<?php echo $carpeta['id_carpeta']; ?>);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p><?php echo $carpeta['nombre_carpeta']; ?></p>
+                  <p><?php echo utf8_encode($carpeta['nombre_carpeta']); ?></p>
                 </a>
               </li>
               <?php

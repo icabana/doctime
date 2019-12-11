@@ -58,7 +58,7 @@ class CarpetasModel extends ModelBase {
                             )
                             VALUES(
                                 '".$_SESSION['ID_USUARIO']."',
-                                '".$nombre_carpeta."'
+                                '".utf8_decode($nombre_carpeta)."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -72,7 +72,7 @@ class CarpetasModel extends ModelBase {
         
         $query = "  UPDATE carpetas 
 
-                    SET nombre_carpeta = '". $nombre_carpeta ."'
+                    SET nombre_carpeta = '". utf8_decode($nombre_carpeta) ."'
 
                     WHERE id_carpeta = '" . $id_carpeta . "'";
        
