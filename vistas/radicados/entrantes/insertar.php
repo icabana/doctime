@@ -19,8 +19,7 @@
 
   function insertar_entrante2(data) {
 
-    if (data != 0) {
-      
+    if (data != 0) {      
       
       abrirVentanaContenedor(
             'radicados',

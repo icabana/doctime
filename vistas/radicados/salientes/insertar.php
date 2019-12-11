@@ -19,9 +19,16 @@
 
   function insertar_saliente2(data) {
 
-    if (data == 1) {
-      mensaje_alertas("success", "Radicado Registrado con Exito", "center");
-      cargar_salientes();
+    if (data != 0) {      
+      
+      abrirVentanaContenedor(
+            'radicados',
+            'Salientes',
+            'editar',
+            'id_saliente=' + data,
+            ""
+        );
+
     } else {
       mensaje_alertas("error", "Error al registrar radicado", "center");
     }
@@ -61,7 +68,10 @@
   }
 
 
-  function seleccionar_remitente(id_remitente, nombre_remitente) {
+  function seleccionar_destinatario(id_remitente, nombres_remitente, apellidos_remitente) {
+
+
+    var nombre_remitente = nombres_remitente + ' ' + apellidos_remitente;
 
     $("#remitente_saliente").val(id_remitente);
     $("#remitente_saliente2").val(nombre_remitente);
@@ -70,9 +80,8 @@
 
   }
 
-  function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
+  function seleccionar_remitente(id_destinatario, nombre_destinatario) {
 
-    var nombre_destinatario = nombres_destinatario + ' ' + apellidos_destinatario;
 
     $("#destinatario_saliente").val(id_destinatario);
     $("#destinatario_saliente2").val(nombre_destinatario);
@@ -94,7 +103,7 @@ $froms = new Formularios();
 
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Crear Nuevo Radicado de Salida</h3>
+        <h3 class="card-title">Crear Nuevo Radicado de Entrada</h3>
       </div>
 
       <form autocomplete="on" id="formSalientes" method="post">
@@ -128,10 +137,11 @@ $froms = new Formularios();
 
                       <div class="col-md-3">
                         <label>Fecha Radicado<span style="color:red">*</span></label>
-                        <input type="date" class="form-control requerido" id="fecharadicado_saliente" name="fecharadicado_saliente">
+                        <input type="date" class="form-control requerido" id="fecharadicado_saliente" 
+                        name="fecharadicado_saliente" value="<?php echo date("Y-m-d"); ?>">
                       </div>
-                    
 
+                    
                       <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <?php
@@ -154,21 +164,16 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
-                        <input type="text" class="requerido" id="remitente_saliente" name="remitente_saliente">
+                        <input type="hidden" class="requerido" id="remitente_saliente" name="remitente_saliente">
                         <input type="text" class="form-control requerido" id="remitente_saliente2" name="remitente_saliente2" onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
 
 
                       <div class="col-md-4">
-                        <label>Enviado Por<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="enviadopor_saliente" name="enviadopor_saliente">
-                      </div>
-
-                      <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
-                        <input type="text" class="requerido" id="destinatario_saliente" name="destinario_saliente">
-                        <input type="text" class="form-control requerido" id="destinatario_saliente2" name="destinario_saliente2" onkeyup="buscar_destinatario(this.value); return false;">
+                        <input type="hidden" class="requerido" id="destinatario_saliente" name="destinatario_saliente">
+                        <input type="text"  class="form-control requerido" id="destinatario_saliente2" name="destinario_saliente2" onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
 
@@ -191,6 +196,8 @@ $froms = new Formularios();
                   <div style="padding: 20px;" class="tab-pane" id="tab_2">
 
                     <div class="row">
+                    
+
 
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>

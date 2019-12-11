@@ -15,7 +15,7 @@
             'Salientes',
             'editar',
             'id_saliente=' + id_saliente,
-            ''
+            "SubirArchivos('fileUpload_nuevo');"
         );
 
     }
@@ -41,6 +41,8 @@
 
 
     function mover_carpeta() {
+
+      $('#exampleModal').modal('hide');
 
       var radicados = "";
 
@@ -74,6 +76,113 @@
     } 
 
 
+
+    function cambiar_responsable0() {
+
+        var cont = 0;
+
+        $("input[name=check_radicados]:checked").each(
+            function(){
+                cont++;
+            }
+        );
+
+        if(cont == 0){
+          mensaje_alertas("error", "Debe seleccionar algún registro");
+          return 0;
+        }
+
+        cambiar_responsable();
+
+    }
+
+    function cambiar_responsable() {
+
+      $('#exampleModal2').modal('hide');
+        
+      var radicados = "";
+
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              radicados += $(this).val()+",";
+          }
+      );
+
+      radicados += '0';
+
+      ejecutarAccion(
+        'radicados',
+        'Salientes',
+        'cambiar_default',
+        'responsable_saliente='+$("#responsable_saliente").val()+'&radicados='+radicados,
+        'cambiar_responsable2(data)'
+      );
+
+    }
+
+    function cambiar_responsable2(data) {
+
+        
+          mensaje_alertas("success", "Ajuste Exitoso", "center");
+       
+
+    } 
+
+
+
+  function cambiar_estado0() {
+
+    var cont = 0;
+
+    $("input[name=check_radicados]:checked").each(
+        function(){
+            cont++;
+    }
+  );
+
+if(cont == 0){
+  mensaje_alertas("error", "Debe seleccionar algún registro");
+  return 0;
+}
+
+cambiar_estado();
+
+}
+
+function cambiar_estado() {
+
+$('#exampleModal7').modal('hide');
+
+var radicados = "";
+
+$("input[name=check_radicados]:checked").each(
+  function(){
+      radicados += $(this).val()+",";
+  }
+);
+
+radicados += '0';
+
+ejecutarAccion(
+'radicados',
+'Salientes',
+'cambiarestado_default',
+'estado_saliente='+$("#estado_saliente").val()+'&radicados='+radicados,
+'cambiar_estado2(data)'
+);
+
+}
+
+function cambiar_estado2(data) {
+
+  cargar_salientes();
+  mensaje_alertas("success", "Ajuste Exitoso", "center");
+
+
+} 
+
+
+
     function nueva_bitacora0() {
 
         var cont = 0;
@@ -89,6 +198,8 @@
           return 0;
         }
 
+        nueva_bitacora();
+
     }
 
     function nueva_bitacora() {
@@ -98,6 +209,8 @@
         return 0;
       }
        
+      $('#exampleModal3').modal('hide');
+
       var radicados = "";
 
       $("input[name=check_radicados]:checked").each(
@@ -120,11 +233,7 @@
 
     function nueva_bitacora2(data) {
 
-        if (data == 1) {
-          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-        } else {
-          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
-        }
+       mensaje_alertas("success", "Bitacora registrada Exitosamente", "center");       
 
     } 
 
@@ -267,10 +376,8 @@ function enviar_bandeja_saliente2() {
                 </button>
                 <div class="btn-group ">
                   <button title="Eliminar Radicado" onclick="eliminar_saliente();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                  <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                  <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_saliente();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                  <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
-                </div>
+                   <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
+                  </div>
                
                 <!-- /.btn-group -->
                 <button title="Actualizar Lista de Radicados" onclick="cargar_salientes();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
@@ -326,26 +433,24 @@ function enviar_bandeja_saliente2() {
                     </td>
                     
                     <td class="mailbox-star">
-                        <a href="read-mail.html">
+                        
                             <?php echo $saliente['numero_saliente'] ?>
-                        </a>
+                        
                     </td>
 
                     <td class="mailbox-name">
-                        <a href="read-mail.html">
-                            <?php echo utf8_encode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']); ?>
-                        </a>
+                        
+                            <?php echo utf8_encode($saliente['nombre_tercero']); ?>
+                        
                     </td>
-                    
                     <td class="mailbox-name">
-                        <a href="read-mail.html">
-                            <?php echo utf8_encode($entrante['nombre_tercero']); ?>
-                        </a>
+                        
+                            <?php echo utf8_encode($saliente['nombres_empleado']." ".$saliente['apellidos_empleado']); ?>
+                        
                     </td>
-                    
 
                     <td class="mailbox-subject">
-                        <?php echo substr($saliente['asunto_saliente'], 0, 35)."..."; ?>
+                        <?php echo utf8_encode(substr($saliente['asunto_saliente'], 0, 35))."..."; ?>
                     </td>
                     <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
 
@@ -419,6 +524,41 @@ function enviar_bandeja_saliente2() {
 
 
 
+<!-- Modal 2-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar de Responsable:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Seleccionar Responsable</label>
+          <?php
+            echo $froms->Lista_Desplegable(
+              $empleados,
+              'nombre_empleado',
+              'id_empleado',
+              'responsable_saliente',
+              '',
+              '',
+              ''
+            );
+          ?>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="cambiar_responsable0();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Modal 3-->
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -432,11 +572,47 @@ function enviar_bandeja_saliente2() {
       <div class="modal-body">
       <div class="col-md-12">
           <label>Agregar Bitacora</label>
-          <textarea id="bitacora_saliente" name="bitacora_saliente" rows="4"></textarea>
+          <textarea class="form-control" id="bitacora_saliente" cols="32"  name="bitacora_saliente" rows="4"></textarea>
         </div>
       </div>
       <div class="modal-footer">        
-        <button data-dismiss="modal" onclick="nueva_bitacora();" type="button" class="btn btn-primary close">Aceptar</button>
+        <button onclick="nueva_bitacora0();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal 7-->
+<div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Estado:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Seleccionar Estado: </label>
+          <?php
+            echo $froms->Lista_Desplegable(
+              $estadosradicado,
+              'nombre_estado',
+              'id_estado',
+              'estado_saliente',
+              '',
+              '',
+              ''
+            );
+          ?>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="cambiar_estado0();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>

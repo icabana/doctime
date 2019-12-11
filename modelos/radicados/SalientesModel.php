@@ -8,16 +8,12 @@ class SalientesModel extends ModelBase {
                     salientes.id_saliente, 
                     salientes.numero_saliente,
                     salientes.remitente_saliente,
-                    salientes.enviadopor_saliente,
                     salientes.destinatario_saliente,
                     salientes.fecharadicado_saliente,
                     salientes.numerofolios_saliente,
                     salientes.descripcionfolios_saliente,
                     salientes.asunto_saliente,
                     salientes.tiporadicado_saliente,
-                    salientes.carpeta_saliente,
-                    
-                    salientes.estado_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -38,22 +34,18 @@ class SalientesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.ciudad_tercero,
-
-                    estados.id_estado,
-                    estados.nombre_estado
+                    terceros.ciudad_tercero
                 
                     from salientes 
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado
-                            left join estados ON salientes.estado_saliente = estados.id_estado
-                            
-                    where salientes.carpeta_saliente IS NULL or salientes.carpeta_saliente = 0";
+                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
                
     }  
+
+
 
 
     function getTrazabilidad($radicado_trazabilidad) {
@@ -74,17 +66,14 @@ class SalientesModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.ciudad_empleado,
-
-                    usuarios.id_usuario,
-                    usuarios.nick_usuario
+                    empleados.ciudad_empleado
                 
                     from trazabilidad_salientes
-                            left join usuarios ON trazabilidad_salientes.usuario_trazabilidad = usuarios.id_usuario
+                            left join empleados ON trazabilidad_salientes.usuario_trazabilidad = empleados.id_empleado
                             
-                            left join empleados ON empleados.usuario_empleado = usuarios.id_usuario
-                            
-                    where trazabilidad_salientes.radicado_trazabilidad = '".$radicado_trazabilidad."'";
+                    where trazabilidad_salientes.radicado_trazabilidad = '".$radicado_trazabilidad."'
+                    
+                    order by trazabilidad_salientes.fecha_trazabilidad";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -93,104 +82,48 @@ class SalientesModel extends ModelBase {
 
 
 
-    function getTodosPorCarpeta($carpeta_saliente) {
-        
-        $query = "select 
-        salientes.id_saliente, 
-        salientes.numero_saliente,
-        salientes.remitente_saliente,
-        salientes.enviadopor_saliente,
-        salientes.destinatario_saliente,
-        salientes.fecharadicado_saliente,
-        salientes.numerofolios_saliente,
-        salientes.descripcionfolios_saliente,
-        salientes.asunto_saliente,
-        salientes.tiporadicado_saliente,
-        salientes.carpeta_saliente,
-        
-        salientes.estado_saliente,
-
-        empleados.id_empleado, 
-        empleados.documento_empleado, 
-        empleados.tipodocumento_empleado, 
-        empleados.nombres_empleado, 
-        empleados.apellidos_empleado, 
-        empleados.telefono_empleado, 
-        empleados.celular_empleado, 
-        empleados.correo_empleado, 
-        empleados.direccion_empleado, 
-        empleados.ciudad_empleado,
-
-        terceros.id_tercero, 
-        terceros.documento_tercero, 
-        terceros.tipodocumento_tercero, 
-        terceros.nombre_tercero,  
-        terceros.telefono_tercero, 
-        terceros.celular_tercero, 
-        terceros.correo_tercero, 
-        terceros.direccion_tercero, 
-        terceros.ciudad_tercero,
-
-        estados.id_estado,
-        estados.nombre_estado
-    
-        from salientes 
-                left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                left join empleados ON salientes.remitente_saliente = empleados.id_empleado
-                left join estados ON salientes.estado_saliente = estados.id_estado
-                            
-                    where salientes.carpeta_saliente = '".$carpeta_saliente."'";
-        
-        $consulta = $this->consulta($query);
-        return $consulta;       
-               
-    }
 
     function getDatos($id_saliente) {
        
         $query = "select 
-        salientes.id_saliente, 
-        salientes.numero_saliente,
-        salientes.remitente_saliente,
-        salientes.enviadopor_saliente,
-        salientes.destinatario_saliente,
-        salientes.fecharadicado_saliente,
-        salientes.numerofolios_saliente,
-        salientes.descripcionfolios_saliente,
-        salientes.asunto_saliente,
-        salientes.tiporadicado_saliente,
-        salientes.carpeta_saliente,
-        
-        salientes.estado_saliente,
+                    salientes.id_saliente, 
+                    salientes.numero_saliente,
+                    salientes.remitente_saliente,
+                    salientes.destinatario_saliente,
+                    salientes.fecharadicado_saliente,
+                    salientes.numerofolios_saliente,
+                    salientes.descripcionfolios_saliente,
+                    salientes.asunto_saliente,
+                    salientes.tiporadicado_saliente,
 
-        empleados.id_empleado, 
-        empleados.documento_empleado, 
-        empleados.tipodocumento_empleado, 
-        empleados.nombres_empleado, 
-        empleados.apellidos_empleado, 
-        empleados.telefono_empleado, 
-        empleados.celular_empleado, 
-        empleados.correo_empleado, 
-        empleados.direccion_empleado, 
-        empleados.ciudad_empleado,
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
 
-        terceros.id_tercero, 
-        terceros.documento_tercero, 
-        terceros.tipodocumento_tercero, 
-        terceros.nombre_tercero,  
-        terceros.telefono_tercero, 
-        terceros.celular_tercero, 
-        terceros.correo_tercero, 
-        terceros.direccion_tercero, 
-        terceros.ciudad_tercero,
+                    terceros.id_tercero, 
+                    terceros.documento_tercero, 
+                    terceros.tipodocumento_tercero, 
+                    terceros.nombre_tercero,
+                    terceros.telefono_tercero, 
+                    terceros.celular_tercero, 
+                    terceros.correo_tercero, 
+                    terceros.direccion_tercero, 
+                    terceros.ciudad_tercero,
 
-        estados.id_estado,
-        estados.nombre_estado
-    
-        from salientes 
-                left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                left join empleados ON salientes.remitente_saliente = empleados.id_empleado
-                left join estados ON salientes.estado_saliente = estados.id_estado
+                    tiposradicado.id_tiporadicado,
+                    tiposradicado.id_tiporadicado
+                
+                    from salientes 
+                            left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
+                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado
+                            left join tiposradicado ON salientes.tiporadicado_saliente = tiposradicado.id_tiporadicado
 
                     where salientes.id_saliente='".$id_saliente."'";
         
@@ -206,6 +139,7 @@ class SalientesModel extends ModelBase {
                         $enviadopor_saliente,
                         $destinatario_saliente,
                         $fecharadicado_saliente,
+                        $prioridad_saliente,
                         $numerofolios_saliente,
                         $descripcionfolios_saliente,
                         $asunto_saliente,
@@ -216,7 +150,6 @@ class SalientesModel extends ModelBase {
                                 consecutivo_saliente,
                                 numero_saliente,
                                 remitente_saliente,
-                                enviadopor_saliente,
                                 destinatario_saliente,
                                 fecharadicado_saliente,
                                 numerofolios_saliente,
@@ -228,45 +161,39 @@ class SalientesModel extends ModelBase {
                                 '".$consecutivo_saliente."',
                                 '".$numero_saliente."',
                                 '".$remitente_saliente."',
-                                '".$enviadopor_saliente."',
                                 '".$destinatario_saliente."',
                                 '".$fecharadicado_saliente."',
                                 '".$numerofolios_saliente."',
-                                '".$descripcionfolios_saliente."',
-                                '".$asunto_saliente."',
+                                '".utf8_decode($descripcionfolios_saliente)."',
+                                '".utf8_decode($asunto_saliente)."',
                                 '".$tiporadicado_saliente."'
                             );";
        
+        
        return $this->crear_ultimo_id($query);
         
     }
     
     function editar(
                     $id_saliente, 
-                    $numero_saliente,
                     $remitente_saliente,
-                    $enviadopor_saliente,
                     $destinatario_saliente,
                     $fecharadicado_saliente,
                     $numerofolios_saliente,
                     $descripcionfolios_saliente,
                     $asunto_saliente,
-                    $tiporadicado_saliente,
-                    $estado_saliente
+                    $tiporadicado_saliente
                 ) {
         
         $query = "  UPDATE salientes 
 
-                    SET numero_saliente = '". $numero_saliente ."',
-                        remitente_saliente = '". $remitente_saliente ."',
-                        enviadopor_saliente = '". $enviadopor_saliente ."',
+                    SET remitente_saliente = '". $remitente_saliente ."',
                         destinatario_saliente = '". $destinatario_saliente ."',
                         fecharadicado_saliente = '". $fecharadicado_saliente ."',
                         numerofolios_saliente = '". $numerofolios_saliente ."',
-                        descripcionfolios_saliente = '". $descripcionfolios_saliente ."',
-                        asunto_saliente = '". $asunto_saliente ."',
-                        tiporadicado_saliente = '". $tiporadicado_saliente ."',
-                        estado_saliente = '". $estado_saliente ."'
+                        descripcionfolios_saliente = '". utf8_decode($descripcionfolios_saliente) ."',
+                        asunto_saliente = '". utf8_decode($asunto_saliente) ."',
+                        tiporadicado_saliente = '". $tiporadicado_saliente ."'
 
                     WHERE id_saliente = '" . $id_saliente . "'";
        
@@ -297,7 +224,7 @@ class SalientesModel extends ModelBase {
         $nombre_documento
     ) {
 
-        $query = "  INSERT INTO documentos(saliente_documento, nombre_documento)
+        $query = "  INSERT INTO documentos_salientes(saliente_documento, nombre_documento)
 
                 VALUES('". $saliente_documento ."', '". $nombre_documento ."')";
 
@@ -321,10 +248,56 @@ class SalientesModel extends ModelBase {
 
     }
 
-        
+    
+    function cambiar(
+                $id_saliente, 
+                $responsable_saliente
+    ) {
+
+        $query = "  UPDATE salientes 
+
+                SET responsable_saliente = '". $responsable_saliente ."'
+
+                WHERE id_saliente = '" . $id_saliente . "'";
+
+        return $this->modificarRegistros($query);
+
+    }
+    
 
     
+    function cambiar_default(
+                $radicados, 
+                $responsable_saliente
+    ) {
+
+        $query = "UPDATE salientes 
+
+                    SET responsable_saliente = '". $responsable_saliente ."'
+
+                    WHERE id_saliente in (" . $radicados . ")";
+
+        return $this->modificarRegistros($query);
+
+    }
+    
         
+    
+    function cambiarestado_default(
+        $radicados, 
+        $estado_saliente
+) {
+
+$query = "UPDATE salientes 
+
+            SET estado_saliente = '". $estado_saliente ."'
+
+            WHERE id_saliente in (" . $radicados . ")";
+
+return $this->modificarRegistros($query);
+
+}
+
     function eliminar($radicados) {
         
         $query = "DELETE FROM salientes WHERE id_saliente IN (". $radicados .")";        
@@ -344,7 +317,7 @@ class SalientesModel extends ModelBase {
 
     /// CONSULTAS EXTRAS
 
-    function buscarDestinatario() {
+    function buscarRemitente() {
         
         $query = "select terceros.nombre_tercero
                 
@@ -354,7 +327,7 @@ class SalientesModel extends ModelBase {
                
     }
 
-    function buscarRemitente() {
+    function buscarDestinatario() {
         
         $query = "select CONCAT(empleados.nombres_empleado, ' ', empleados.apellidos_empleado) 
                 
@@ -366,7 +339,7 @@ class SalientesModel extends ModelBase {
 
     function getConsecutivo() {
         
-        $query = "select max(salientes.consecutivo) as consecutivo
+        $query = "select max(salientes.consecutivo_saliente) as consecutivo
                 
                     from salientes";
         
@@ -379,18 +352,64 @@ class SalientesModel extends ModelBase {
     }
     
 
-    function getNumeroSalientes() {
+    function getNumeroRadicadosPorResponsable($responsable_saliente) {
         
         $query = "select count(salientes.id_saliente) as numero
                 
                     from salientes 
                     
-                    where ano_saliente = '".$_SESSION['ano']."'";
+                    where responsable_saliente = '".$responsable_saliente."'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
             return $consulta[0]['numero'];
         }       
+               
+    }  
+
+
+    function getNumeroRadicadosPorDependencia($dependencia_saliente) {
+        
+        $query = "select count(salientes.id_saliente) as numero
+                
+                    from salientes 
+                    
+                    where dependencia_saliente = '".$dependencia_saliente."'";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
+               
+    }  
+
+
+    function getNumeroRadicadosPorTiporadicado($tiporadicado_saliente) {
+        
+        $query = "select count(salientes.id_saliente) as numero
+                
+                    from salientes 
+                    
+                    where tiporadicado_saliente = '".$tiporadicado_saliente."'";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }       
+               
+    }
+
+
+    function getNumeroSalientes() {
+        
+        $query = "select count(salientes.id_saliente) as numero
+                
+                    from salientes";
+        
+        $consulta = $this->consulta($query);
+        if(isset($consulta[0]['numero'])){
+            return $consulta[0]['numero'];
+        }
                
     }  
 
@@ -400,7 +419,7 @@ class SalientesModel extends ModelBase {
                 
                     from salientes 
                     
-                    where ano_saliente = '".$_SESSION['ano']."' and estado_radicado = '1'";
+                    where estado_radicado = '1'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
@@ -415,7 +434,7 @@ class SalientesModel extends ModelBase {
                 
                     from salientes 
                     
-                    where ano_saliente = '".$_SESSION['ano']."' and estado_entante = '2'";
+                    where estado_entante = '2'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
@@ -493,7 +512,7 @@ class SalientesModel extends ModelBase {
                 '".$radicado_trazabilidad."',
                 '".utf8_decode($accion_trazabilidad)."',
                 '".date('Y-m-d H:i:s')."',
-                '".$_SESSION['id_usuario']."'
+                '".$_SESSION['id_empleado']."'
             );";
 
         return $this->crear_ultimo_id($query);

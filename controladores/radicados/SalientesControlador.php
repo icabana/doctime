@@ -8,28 +8,9 @@ class SalientesControlador extends ControllerBase {
         $SalientesModel = new SalientesModel();
         $salientes = $SalientesModel->getTodos();
 
-        $this->model->cargar("CarpetasModel.php", "radicados");
-        $CarpetasModel = new CarpetasModel();
-        $carpetas = $CarpetasModel->getTodos();
-
-        $this->model->cargar("EmpleadosModel.php", "administracion");
-        $EmpleadosModel = new EmpleadosModel();
-        $empleados = $EmpleadosModel->getTodos();
-
-        include 'vistas/radicados/salientes/default.php';
-                        
-    }    
-
-    
-    public function index_carpeta() {
-        
-        $this->model->cargar("SalientesModel.php", "radicados");
-        $SalientesModel = new SalientesModel();
-        $salientes = $SalientesModel->getTodosPorCarpeta($_POST['id_carpeta']);
-
-        $this->model->cargar("CarpetasModel.php", "radicados");
-        $CarpetasModel = new CarpetasModel();
-        $carpetas = $CarpetasModel->getTodos();
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
@@ -54,14 +35,6 @@ class SalientesControlador extends ControllerBase {
         $TiposradicadoModel = new TiposradicadoModel();
         $tiposradicado = $TiposradicadoModel->getTodos();
 
-        $this->model->cargar("EstadosModel.php", "configuracion");
-        $EstadosModel = new EstadosModel();
-        $estados = $EstadosModel->getTodos();
-
-        $this->model->cargar("PrioridadesModel.php", "configuracion");
-        $PrioridadesModel = new PrioridadesModel();
-        $prioridades = $PrioridadesModel->getTodos();
-
         $this->model->cargar("SalientesModel.php", "radicados");
         $SalientesModel = new SalientesModel();
         $max_consecutivo = $SalientesModel->getConsecutivo() + 1;
@@ -74,13 +47,61 @@ class SalientesControlador extends ControllerBase {
         $consecutivo = $consecutivo2.$max_consecutivo;
         $numero_saliente = date("Ymd").$consecutivo;
 
-
         include 'vistas/radicados/salientes/insertar.php';
         
     }
 
          
     public function editar(){
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();   
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        $this->model->cargar("SalientesModel.php");
+        $SalientesModel = new SalientesModel();         
+        $datos = $SalientesModel->getDatos($_POST['id_saliente']);
+
+        $trazabilidad = $SalientesModel->getTrazabilidad($_POST['id_saliente']);
+
+        $this->model->cargar("DocumentosSalientesModel.php", "configuracion");
+        $DocumentosSalientesModel = new DocumentosSalientesModel();   
+        $documentos  = $DocumentosSalientesModel->getTodos($_POST['id_saliente']);
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/salientes/editar.php';
+               
+    }
+         
+    public function editarArchivo(){
+
+        include 'vistas/radicados/salientes/archivo.php';
+               
+    }
+         
+    public function actualizarUpload(){
+
+        
+        $this->model->cargar("DocumentosSalientesModel.php", "configuracion");
+        $DocumentosSalientesModel = new DocumentosSalientesModel();   
+        $documentos  = $DocumentosSalientesModel->getTodos($_POST['id_saliente']);
+
+
+        $id_saliente = $_POST['id_saliente'];
+        include 'vistas/radicados/salientes/tabla_documentos.php';
+        echo $tabla_documentos;
+               
+    }
+
+         
+    public function editarUsuario(){
     
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
@@ -108,16 +129,16 @@ class SalientesControlador extends ControllerBase {
 
         $trazabilidad = $SalientesModel->getTrazabilidad($_POST['id_saliente']);
 
-        $this->model->cargar("DocumentosModel.php", "configuracion");
-        $DocumentosModel = new DocumentosModel();   
-        $documentos  = $DocumentosModel->getTodos($_POST['id_saliente']);
+        $this->model->cargar("DocumentosSalientesModel.php", "configuracion");
+        $DocumentosSalientesModel = new DocumentosSalientesModel();   
+        $documentos  = $DocumentosSalientesModel->getTodos($_POST['id_saliente']);
         
-        include 'vistas/radicados/salientes/editar.php';
+        include 'vistas/radicados/salientes/editar_usuario.php';
                
     }
 
     
-    public function buscarRemitente() {
+    public function buscarDestinatario() {
 
         $this->model->cargar("TercerosModel.php", "administracion");
         $TercerosModel = new TercerosModel();
@@ -135,7 +156,7 @@ class SalientesControlador extends ControllerBase {
 
         foreach ($terceros as $clave => $valor) {
 
-            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . ($valor['nombre_tercero']) . "\");'>";  
+            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . (utf8_encode($valor['nombre_tercero'])) . "\");'>";  
             $tabla_terceros .= "<td><strong>" . utf8_encode($valor['nombre_tercero']) . "</strong></td>";
             $tabla_terceros .= "</tr>";
 
@@ -151,7 +172,7 @@ class SalientesControlador extends ControllerBase {
 
       
     
-    public function buscarDestinatario() {
+    public function buscarRemitente() {
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
@@ -199,32 +220,30 @@ class SalientesControlador extends ControllerBase {
         $consecutivo = $consecutivo2.$max_consecutivo;
         $numero_saliente = date("Ymd").$consecutivo;
         
-        $resp = $SalientesModel->insertar(
+       $resp = $SalientesModel->insertar(
                                     $max_consecutivo,
                                     $numero_saliente,
                                     $_POST["remitente_saliente"],
                                     $_POST["enviadopor_saliente"],
                                     $_POST["destinatario_saliente"],
                                     $_POST["fecharadicado_saliente"],
-                                    $_POST["fecharecibido_saliente"],
-                                    $_POST["fechamaxima_saliente"],
                                     $_POST["prioridad_saliente"],
                                     $_POST["numerofolios_saliente"],
                                     $_POST["descripcionfolios_saliente"],
                                     $_POST["asunto_saliente"],
-                                    $_POST["tiporadicado_saliente"],
-                                    $_POST["responsable_saliente"],
-                                    $_POST["observaciones_saliente"]
+                                    $_POST["tiporadicado_saliente"]
                                 );        
         
         if( $resp != 0 ){
             
+            mkdir('archivos/uploads/salientes/'.$resp);
+
             $SalientesModel->insertar_trazabilidad(
                 $resp,
-                "Se registró el Radicado No. ".$numero_saliente
+                "Registró el Radicado No. ".$numero_saliente
             );    
 
-            echo 1;
+            echo $resp;
 
         }else{
 
@@ -241,28 +260,20 @@ class SalientesControlador extends ControllerBase {
             
         $resp = $SalientesModel->editar(
                                     $_POST["id_saliente"], 
-                                    $_POST["numero_saliente"],
                                     $_POST["remitente_saliente"],
-                                    $_POST["enviadopor_saliente"],
                                     $_POST["destinatario_saliente"],
                                     $_POST["fecharadicado_saliente"],
-                                    $_POST["fecharecibido_saliente"],
-                                    $_POST["fechamaxima_saliente"],
-                                    $_POST["prioridad_saliente"],
                                     $_POST["numerofolios_saliente"],
                                     $_POST["descripcionfolios_saliente"],
                                     $_POST["asunto_saliente"],
-                                    $_POST["tiporadicado_saliente"],
-                                    $_POST["responsable_saliente"],
-                                    $_POST["observaciones_saliente"],
-                                    $_POST["estado_saliente"]
+                                    $_POST["tiporadicado_saliente"]
                                 );        
       
         if( $resp != 0 ){
 
             $SalientesModel->insertar_trazabilidad(
-                $resp,
-                "Se modificó la información del radicado"
+                $_POST["id_saliente"],
+                "Modificó la información del radicado"
             );  
 
              echo 1;             
@@ -287,7 +298,7 @@ class SalientesControlador extends ControllerBase {
 
             $SalientesModel->insertar_trazabilidad(
                 $_POST["id_saliente"],
-                "Se movió el radicado de carpeta"
+                "Movió el radicado de carpeta"
             ); 
 
              echo 1;             
@@ -312,7 +323,7 @@ class SalientesControlador extends ControllerBase {
 
             $SalientesModel->insertar_trazabilidad(
                 $_POST["id_saliente"],
-                "Se agregó un nuevo documento"
+                "Agregó un nuevo documento"
             ); 
 
              echo 1; 
@@ -334,17 +345,13 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["responsable_saliente"]
                                 );        
       
-        if( $resp != 0 ){
+       
 
             $SalientesModel->insertar_trazabilidad(
                 $_POST["id_saliente"],
-                "Se cambió el responsable del radicado"
+                "Cambió el responsable del radicado"
             ); 
 
-             echo 1;             
-        }else{
-            echo 0;		
-        }
         
     }    
 
@@ -355,7 +362,7 @@ class SalientesControlador extends ControllerBase {
     
         $SalientesModel->insertar_trazabilidad(
             $_POST["id_saliente"],
-            $_POST["bitacora_saliente"]
+            $_POST["bitacora_saliente_editar"]
         ); 
         
     }    
@@ -373,7 +380,6 @@ class SalientesControlador extends ControllerBase {
                                 );        
       
         if( $resp != 0 ){
-
             
             $array_radicados = explode(",", $_POST['radicados']);
 
@@ -382,7 +388,7 @@ class SalientesControlador extends ControllerBase {
                 if($array[0] != 0){
                     $SalientesModel->insertar_trazabilidad(
                         $array[0],
-                        "Se movió el radicado de carpeta"
+                        "Movió el radicado de carpeta"
                     ); 
                 }
             }
@@ -403,10 +409,8 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["radicados"], 
                                     $_POST["responsable_saliente"]
                                 );        
-      
-        if( $resp != 0 ){
 
-            
+                   
             $array_radicados = explode(",", $_POST['radicados']);
 
             foreach($array_radicados as $array){
@@ -414,20 +418,76 @@ class SalientesControlador extends ControllerBase {
                 if($array[0] != 0){
                     $SalientesModel->insertar_trazabilidad(
                         $array[0],
-                        "Se movió el radicado de carpeta"
+                        "Se modificó el responsable del Radicado"
                     ); 
                 }
             }
 
              echo 1;    
 
-        }else{
-
-            echo 0;		
-
-        }
+       
         
     }    
+
+
+    public function cambiarestado_default() {
+        
+        $this->model->cargar("SalientesModel.php", 'radicados');
+        $SalientesModel = new SalientesModel();
+            
+        $resp = $SalientesModel->cambiarestado_default(
+                                    $_POST["radicados"], 
+                                    $_POST["estado_saliente"]
+                                );        
+
+                   
+            $array_radicados = explode(",", $_POST['radicados']);
+
+            foreach($array_radicados as $array){
+
+                if($array[0] != 0){
+                    $SalientesModel->insertar_trazabilidad(
+                        $array[0],
+                        "Se modificó el estado del Radicado"
+                    ); 
+                }
+            }
+
+             echo 1;    
+
+       
+        
+    }    
+
+
+    public function cambiarestado() {
+        
+        $this->model->cargar("SalientesModel.php", 'radicados');
+        $SalientesModel = new SalientesModel();
+            
+        $resp = $SalientesModel->cambiarestado_default(
+                                    $_POST["radicados"], 
+                                    $_POST["estado_saliente"]
+                                );        
+
+                   
+        $array_radicados = explode(",", $_POST['radicados']);
+
+        foreach($array_radicados as $array){
+
+            if($array[0] != 0){
+                $SalientesModel->insertar_trazabilidad(
+                    $array[0],
+                    "Se modificó el estado del Radicado"
+                ); 
+            }
+        }
+
+            echo 1;    
+        
+    }    
+
+
 
     public function nueva_default() {
         
@@ -480,7 +540,7 @@ class SalientesControlador extends ControllerBase {
 
                 $SalientesModel->insertar_trazabilidad(
                     $array[0],
-                    "Enviado a la Bandeja de Entrada"
+                    "Envió el radicado nuevamente a la Bandeja de Entrada"
                 ); 
                 
             }

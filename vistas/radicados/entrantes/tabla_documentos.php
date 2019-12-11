@@ -68,11 +68,11 @@ $tabla_documentos = "
             <ul class="mailbox-attachments clearfix">
               <li>
               <a target="_blank" >
-              <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#"  data-toggle="modal" data-target="#exampleModal5"  ><span class="mailbox-attachment-icon"><i class="fa fa-upload"></i></span></a>
+              <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#"  data-toggle="modal" data-target="#exampleModal5_editar_entrante"  ><span class="mailbox-attachment-icon"><i class="fa fa-upload"></i></span></a>
                 <div class="mailbox-attachment-info">
                 <i class="fa fa-paperclip"></i> '.utf8_encode(substr( $valor['nombre_documento'],0,22)).'
                   <span class="mailbox-attachment-size">
-                      <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#" data-toggle="modal" data-target="#exampleModal5" >Adjuntar Archivo</a>
+                      <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#" data-toggle="modal" data-target="#exampleModal5_editar_entrante" >Adjuntar Archivo</a>
                     <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-upload"></i></a>
                     </a>
                   </span>
@@ -96,10 +96,10 @@ $tabla_documentos = "
 
     <div class="col-md-3">
     
-      <a href="#modal_documentos">
+      <a href="#">
           <ul class="mailbox-attachments clearfix">
               <li>
-                  <span class="mailbox-attachment-icon"><img data-toggle="modal" data-target="#exampleModal4"  width="100px" height="100px" src="imagenes/iconos/nuevo.png"></span>
+                  <span class="mailbox-attachment-icon"><img data-toggle="modal" data-target="#exampleModal4_editar_entrante"  width="100px" height="100px" src="imagenes/iconos/nuevo.png"></span>
                   <div ><center>AÑADIR DOCUMENTO</center>
                     <span class="mailbox-attachment-size">
                   </div>
@@ -108,7 +108,7 @@ $tabla_documentos = "
       </a>
     </div>';
 
-    $ver_upload = "  <a href='#' title='SUBIR ARCHIVO' onclick='abrir_upload_archivo(".$valor["id_documento"].", \"".utf8_encode($valor["nombre_documento"])."\"); return false;'><img alt='' src='imagenes/botones/subir.png' width='26px'  /></a>   ";
+  //  $ver_upload = "  <a href='#' title='SUBIR ARCHIVO' onclick='abrir_upload_archivo(".$valor["id_documento"].", \"".utf8_encode($valor["nombre_documento"])."\"); return false;'><img alt='' src='imagenes/botones/subir.png' width='26px'  /></a>   ";
 
     $tabla_documentos .= "</div";    
                     

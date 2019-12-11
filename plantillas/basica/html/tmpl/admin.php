@@ -150,7 +150,7 @@
         </div>
         <div class="info">
         <center>
-          <a href="#" class="d-block"><?php echo $_SESSION['nick_usuario']."---".$_SESSION['id_empleado'].
+          <a href="#" class="d-block"><?php echo $_SESSION['nick_usuario'].
           " <br> <b>Rol:</b> ".$_SESSION['nombre_rol'].""; ?></a>
         </center>
 
@@ -184,7 +184,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Radicados
+                Radicados Entrantes
                 <i class="fas fa-angle-right right"></i>
                 
               </p>
@@ -194,23 +194,21 @@
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados de Entrada</p>
+                  <p>Radicados Activos</p>
                 </a>
               </li>
+         
+            
               <li class="nav-item">
-                <a href="#" onclick="cargar_salientes();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Radicados de Salida</p>
-                </a>
-              </li>                      
-              <li class="nav-item">
-                <a href="#" onclick="cargar_finalizados();" class="nav-link">
+                <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados Finalizados</p>
                 </a>
               </li>
+         
+            
               <li class="nav-item">
-                <a href="#" onclick="cargar_archivados();" class="nav-link">
+                <a href="#" onclick="cargar_entrantes_archivados();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados Archivados</p>
                 </a>
@@ -231,6 +229,28 @@
 
 
 
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Radicados Salientes
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              
+              <li class="nav-item">
+                <a href="#" onclick="cargar_salientes();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados de Salida</p>
+                </a>
+              </li>                      
+             
             </ul>
           </li>
 

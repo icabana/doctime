@@ -6,11 +6,64 @@ class EntrantesControlador extends ControllerBase {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();
-        $entrantes = $EntrantesModel->getTodos();
+        $entrantes = $EntrantesModel->getTodosActivos();
 
         $this->model->cargar("CarpetasModel.php", "radicados");
         $CarpetasModel = new CarpetasModel();
         $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+
+    public function indexFinalizados() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosFinalizados();
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+
+    public function indexArchivados() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosArchivados();
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
@@ -35,6 +88,10 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
         include 'vistas/radicados/entrantes/default_usuario.php';
                         
     }    
@@ -53,6 +110,10 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
 
         include 'vistas/radicados/entrantes/default.php';
                         
@@ -121,7 +182,17 @@ class EntrantesControlador extends ControllerBase {
         $EntrantesModel = new EntrantesModel();         
         $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
 
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+        
         $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
 
         $this->model->cargar("DocumentosModel.php", "configuracion");
         $DocumentosModel = new DocumentosModel();   
@@ -332,14 +403,13 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["asunto_entrante"],
                                     $_POST["tiporadicado_entrante"],
                                     $_POST["responsable_entrante"],
-                                    $_POST["observaciones_entrante"],
-                                    $_POST["estado_entrante"]
+                                    $_POST["observaciones_entrante"]
                                 );        
       
         if( $resp != 0 ){
 
             $EntrantesModel->insertar_trazabilidad(
-                $resp,
+                $_POST["id_entrante"],
                 "Modificó la información del radicado"
             );  
 
@@ -412,17 +482,13 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["responsable_entrante"]
                                 );        
       
-        if( $resp != 0 ){
+       
 
             $EntrantesModel->insertar_trazabilidad(
                 $_POST["id_entrante"],
                 "Cambió el responsable del radicado"
             ); 
 
-             echo 1;             
-        }else{
-            echo 0;		
-        }
         
     }    
 
@@ -433,7 +499,7 @@ class EntrantesControlador extends ControllerBase {
     
         $EntrantesModel->insertar_trazabilidad(
             $_POST["id_entrante"],
-            $_POST["bitacora_entrante"]
+            $_POST["bitacora_entrante_editar"]
         ); 
         
     }    
@@ -480,10 +546,8 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["radicados"], 
                                     $_POST["responsable_entrante"]
                                 );        
-      
-        if( $resp != 0 ){
 
-            
+                   
             $array_radicados = explode(",", $_POST['radicados']);
 
             foreach($array_radicados as $array){
@@ -491,20 +555,76 @@ class EntrantesControlador extends ControllerBase {
                 if($array[0] != 0){
                     $EntrantesModel->insertar_trazabilidad(
                         $array[0],
-                        "Movió el radicado de carpeta"
+                        "Se modificó el responsable del Radicado"
                     ); 
                 }
             }
 
              echo 1;    
 
-        }else{
-
-            echo 0;		
-
-        }
+       
         
     }    
+
+
+    public function cambiarestado_default() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->cambiarestado_default(
+                                    $_POST["radicados"], 
+                                    $_POST["estado_entrante"]
+                                );        
+
+                   
+            $array_radicados = explode(",", $_POST['radicados']);
+
+            foreach($array_radicados as $array){
+
+                if($array[0] != 0){
+                    $EntrantesModel->insertar_trazabilidad(
+                        $array[0],
+                        "Se modificó el estado del Radicado"
+                    ); 
+                }
+            }
+
+             echo 1;    
+
+       
+        
+    }    
+
+
+    public function cambiarestado() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->cambiarestado_default(
+                                    $_POST["radicados"], 
+                                    $_POST["estado_entrante"]
+                                );        
+
+                   
+        $array_radicados = explode(",", $_POST['radicados']);
+
+        foreach($array_radicados as $array){
+
+            if($array[0] != 0){
+                $EntrantesModel->insertar_trazabilidad(
+                    $array[0],
+                    "Se modificó el estado del Radicado"
+                ); 
+            }
+        }
+
+            echo 1;    
+        
+    }    
+
+
 
     public function nueva_default() {
         

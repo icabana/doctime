@@ -4,12 +4,12 @@ class EstadosradicadoModel extends ModelBase {
 
     function getTodos(){
         
-        $query = "select    estadosradicado.id_estado, 
-                            estadosradicado.nombre_estado
+        $query = "select    estadosradicados.id_estado, 
+                            estadosradicados.nombre_estado
             	                 
-                        from estadosradicado
+                        from estadosradicados
                         
-                        ORDER BY estadosradicado.nombre_estado";
+                        ORDER BY estadosradicados.nombre_estado";
 
         $consulta = $this->consulta($query);
         return $consulta;
@@ -18,14 +18,14 @@ class EstadosradicadoModel extends ModelBase {
     
     function getDatos($id_estado){
         
-        $query = "select    estadosradicado.id_estado, 
-                            estadosradicado.nombre_estado
+        $query = "select    estadosradicados.id_estado, 
+                            estadosradicados.nombre_estado
             	                 
-                        from estadosradicado
+                        from estadosradicados
                              
-                        where estadosradicado.id_estado = '".$id_estado."'
+                        where estadosradicados.id_estado = '".$id_estado."'
                         
-                        ORDER BY estadosradicado.nombre_estado";
+                        ORDER BY estadosradicados.nombre_estado";
         
         $consulta = $this->consulta($query);
         

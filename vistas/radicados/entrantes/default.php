@@ -122,14 +122,65 @@
 
     function cambiar_responsable2(data) {
 
-        if (data == 1) {
-          mensaje_alertas("success", "Cambio de Responsable Exitoso", "center");
-          cargar_entrantes();
-        } else {
-          mensaje_alertas("error", "Error al cambiar de Responsable", "center");
-        }
+        
+          mensaje_alertas("success", "Ajuste Exitoso", "center");
+       
 
     } 
+
+
+
+  function cambiar_estado0() {
+
+    var cont = 0;
+
+    $("input[name=check_radicados]:checked").each(
+        function(){
+            cont++;
+    }
+  );
+
+if(cont == 0){
+  mensaje_alertas("error", "Debe seleccionar algún registro");
+  return 0;
+}
+
+cambiar_estado();
+
+}
+
+function cambiar_estado() {
+
+$('#exampleModal7').modal('hide');
+
+var radicados = "";
+
+$("input[name=check_radicados]:checked").each(
+  function(){
+      radicados += $(this).val()+",";
+  }
+);
+
+radicados += '0';
+
+ejecutarAccion(
+'radicados',
+'Entrantes',
+'cambiarestado_default',
+'estado_entrante='+$("#estado_entrante").val()+'&radicados='+radicados,
+'cambiar_estado2(data)'
+);
+
+}
+
+function cambiar_estado2(data) {
+
+  cargar_entrantes();
+  mensaje_alertas("success", "Ajuste Exitoso", "center");
+
+
+} 
+
 
 
     function nueva_bitacora0() {
@@ -182,11 +233,7 @@
 
     function nueva_bitacora2(data) {
 
-        if (data == 1) {
-          mensaje_alertas("success", "Bitacora registrada Exitosamente", "center");
-        } else {
-          mensaje_alertas("error", "Error al registrar bitacora", "center");
-        }
+       mensaje_alertas("success", "Bitacora registrada Exitosamente", "center");       
 
     } 
 
@@ -333,6 +380,7 @@ function enviar_bandeja_entrante2() {
                   <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
                   <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
+                  <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
                 </div>
                
                 <!-- /.btn-group -->
@@ -528,13 +576,48 @@ function enviar_bandeja_entrante2() {
       <div class="modal-body">
       <div class="col-md-12">
           <label>Agregar Bitacora</label>
-          <textarea class="form-control" id="bitacora_entrante" name="bitacora_entrante" rows="4"></textarea>
+          <textarea class="form-control" id="bitacora_entrante" cols="32"  name="bitacora_entrante" rows="4"></textarea>
         </div>
       </div>
       <div class="modal-footer">        
         <button onclick="nueva_bitacora0();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
       
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal 7-->
+<div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Estado:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Seleccionar Estado: </label>
+          <?php
+            echo $froms->Lista_Desplegable(
+              $estadosradicado,
+              'nombre_estado',
+              'id_estado',
+              'estado_entrante',
+              '',
+              '',
+              ''
+            );
+          ?>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="cambiar_estado0();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
     </div>
   </div>
 </div>

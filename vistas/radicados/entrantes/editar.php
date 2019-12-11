@@ -111,7 +111,7 @@
 
 
 
-  function mover_carpeta() {
+  function mover_carpeta_editar() {
 
     $('#exampleModal').modal('hide');
 
@@ -119,8 +119,8 @@
       'radicados',
       'Entrantes',
       'mover',
-      'carpeta=' + $("#carpeta_entrante").val() + '&id_entrante=' + $("#id_entrante").val(),
-      'mover_carpeta2(data)'
+      'carpeta_entrante=' + $("#carpeta_entrante_editar").val() + '&id_entrante=' + $("#id_entrante").val(),
+      'mover_carpeta_editar2(data)'
     );
 
   }
@@ -135,7 +135,7 @@
 
     $('form#form_upload').submit();
 
-    $('#exampleModal5').modal('hide');
+    $('#exampleModal5_editar_entrante').modal('hide');
      $('.modal-backdrop fade show').remove();
    
      actualizar_vista_soportes();
@@ -160,7 +160,7 @@
 
   
 
-  function mover_carpeta2(data) {
+  function mover_carpeta_editar2(data) {
 
     if (data == 1) {
       mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
@@ -174,7 +174,7 @@
 
   function nuevo_documento() {
 
-    $('#exampleModal4').modal('hide');
+    $('#exampleModal4_editar_entrante').modal('hide');
 
       ejecutarAccion(
           'radicados',
@@ -200,65 +200,122 @@
 
 
 
+function cambiar_estado_editar() {
 
-  function cambiar_responsable() {
+    $('#exampleModal7_editar').modal('hide');
 
-    if (!validar_requeridos()) {
-      return 0;
-    }
 
-    $('#exampleModal2').modal('hide');
+    ejecutarAccion(
+      'radicados',
+      'Entrantes',
+      'cambiarestado',
+      'estado_entrante='+$("#estado_entrante_editar").val()+'&radicados='+$("#id_entrante").val(),
+      'cambiar_estado2_editar(data)'
+    );
+
+}
+
+function cambiar_estado2_editar(data) {
+
+    cargar_entrantes();
+    mensaje_alertas("success", "Ajuste Exitoso", "center");
+
+
+} 
+
+
+
+
+
+  function cambiar_responsable_editar() {
+
+    $('#exampleModal2_editar').modal('hide');
 
     ejecutarAccion(
       'radicados',
       'Entrantes',
       'cambiar',
-      'responsable_entrante=' + $("#responsable_entrante").val() + '&id_entrante=' + $("#id_entrante").val(),
-      'cambiar_responsable2(data)'
+      'responsable_entrante=' + $("#responsable_entrante_editar").val() + '&id_entrante=' + $("#id_entrante").val(),
+      'cambiar_responsable_editar2(data)'
     );
 
   }
 
-  function cambiar_responsable2(data) {
-
-    if (data == 1) {
-      mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-    } else {
-      mensaje_alertas("error", "Error al cambiar de carpeta", "center");
-    }
+  function cambiar_responsable_editar2(data) {
+    cargar_entrantes();
+    mensaje_alertas("success", "Ajuste Exitoso", "center");
 
   }
 
 
 
-  function nueva_bitacora() {
+  function nueva_bitacora_editar() {
 
-    if (!validar_requeridos()) {
+    if ($("#bitacora_entrante_editar").val() == "") {
+      mensaje_alertas("error", "Debe ingresar una bitacora", "center");
       return 0;
     }
 
-    $('#exampleModal3').modal('hide');
+    $('#exampleModal3_editar').modal('hide');
 
     ejecutarAccion(
       'radicados',
       'Entrantes',
       'nueva',
-      'bitacora_entrante=' + $("#bitacora_entrante").val() + '&id_entrante=' + $("#id_entrante").val(),
-      'nueva_bitacora2(data)'
+      'bitacora_entrante_editar=' + $("#bitacora_entrante_editar").val() + '&id_entrante=' + $("#id_entrante").val(),
+      'nueva_bitacora_editar2(data)'
     );
 
   }
 
 
-  function nueva_bitacora2(data) {
+  function nueva_bitacora_editar2(data) {
 
-    if (data == 1) {
       mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-    } else {
-      mensaje_alertas("error", "Error al cambiar de carpeta", "center");
-    }
-
+   
   }
+
+
+
+    
+  function enviar_bandeja_entrante_editar() {
+
+
+  mensaje_confirmar("¿Está seguro de enviar a la Bandeja de Entrada?", "enviar_bandeja_entrante_editar2(); ");
+
+
+}
+
+function enviar_bandeja_entrante_editar2() {
+
+
+  ejecutarAccion(
+    'radicados',
+    'Entrantes',
+    'enviarBandejaEntrante',
+    "radicados=" + $("#id_entrante").val(),
+    ' mensaje_alertas("success", "Enviado a la bandeja de entrada", "center"); cargar_entrantes();'
+  );
+
+}
+
+  function eliminar_entrante_editar() {
+
+mensaje_confirmar("¿Está seguro de eliminar el radicado?", "eliminar_entrante_editar2(); ");
+
+}
+
+function eliminar_entrante_editar2() {
+
+ejecutarAccion(
+    'radicados',
+    'Entrantes',
+    'eliminar',
+    "radicados=" + $("#id_entrante").val(),
+    ' mensaje_alertas("success", "Carpeta Eliminada con Éxito", "center"); cargar_entrantes();'
+);
+
+}
 
 
 </script>
@@ -281,18 +338,17 @@ $froms = new Formularios();
 
       <div class="mailbox-controls">
         <!-- Check all button -->
-        <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i onclick="seleccionar_check(); return false;" class="far fa-square"></i>
-        </button>
+      
         <div class="btn-group ">
-          <button title="Eliminar Radicado" onclick="eliminar_entrante();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+          <button title="Eliminar Radicado" onclick="eliminar_entrante_editar();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
           <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-          <button data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
-          <button data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
+          <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante_editar();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+        
+          <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
+          <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
+          <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
         </div>
 
-
-        <!-- /.btn-group -->
-        <button onclick="cargar_entrantes();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
 
         <!-- /.float-right -->
       </div>
@@ -323,8 +379,8 @@ $froms = new Formularios();
                       <div class="col-md-3">
 
                         <label>No. de Radicado<span style="color:red">*</span></label>
-                        <input type="text" class="form-control radicado" id="numero_entrante" name="numero_entrante" 
-                        onkeypress="return no_numeros(event)" value="<?php echo $datos['numero_entrante']; ?>">
+                        <input readonly type="text" class="form-control radicado" id="numero_entrante" name="numero_entrante" 
+                        value="<?php echo $datos['numero_entrante']; ?>">
 
                       </div>
 
@@ -576,7 +632,7 @@ $froms = new Formularios();
               $carpetas,
               'nombre_carpeta',
               'id_carpeta',
-              'carpeta_entrante',
+              'carpeta_entrante_editar',
               '',
               '',
               ''
@@ -585,7 +641,7 @@ $froms = new Formularios();
           </div>
         </div>
         <div class="modal-footer">
-          <button onclick="mover_carpeta();" type="button" class="btn btn-primary">Aceptar</button>
+          <button onclick="mover_carpeta_editar();" type="button" class="btn btn-primary">Aceptar</button>
         </div>
       </div>
     </div>
@@ -595,7 +651,7 @@ $froms = new Formularios();
 
 
   <!-- Modal 2-->
-  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal2_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -612,7 +668,7 @@ $froms = new Formularios();
               $empleados,
               'nombre_empleado',
               'id_empleado',
-              'responsable_entrante',
+              'responsable_entrante_editar',
               '',
               '',
               ''
@@ -621,7 +677,7 @@ $froms = new Formularios();
           </div>
         </div>
         <div class="modal-footer">
-          <button onclick="cambiar_responsable();" type="button" class="btn btn-primary">Aceptar</button>
+          <button onclick="cambiar_responsable_editar();" type="button" class="btn btn-primary">Aceptar</button>
         </div>
       </div>
     </div>
@@ -630,7 +686,7 @@ $froms = new Formularios();
 
 
   <!-- Modal 3-->
-  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal3_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -642,22 +698,22 @@ $froms = new Formularios();
         <div class="modal-body">
           <div class="col-md-12">
             <label>Agregar Bitacora</label>
-            <textarea id="bitacora_entrante" name="bitacora_entrante" rows="4"></textarea>
+            <textarea id="bitacora_entrante_editar" name="bitacora_entrante_editar" cols="32" rows="4"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button onclick="nueva_bitacora();" type="button" class="btn btn-primary">Aceptar</button>
+          <button onclick="nueva_bitacora_editar();" type="button" class="btn btn-primary">Aceptar</button>
         </div>
       </div>
     </div>
   </div>
 
     <!-- Modal 4-->
-  <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModal4" aria-hidden="true">
+  <div class="modal fade" id="exampleModal4_editar_entrante" tabindex="-1" role="dialog" aria-labelledby="exampleModal4_editar_entrante" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal4">Registrar Nueva Documento</h5>
+        <h5 class="modal-title" id="exampleModal4_editar_entrante">Registrar Nuevo Documento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -677,11 +733,11 @@ $froms = new Formularios();
 
 
     <!-- Modal 5-->
-    <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModal4" aria-hidden="true">
+    <div class="modal fade" id="exampleModal5_editar_entrante" tabindex="-1" role="dialog" aria-labelledby="exampleModal5_editar_entrante" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal4">Adjuntar Documento</h5>
+        <h5 class="modal-title" id="exampleModal5_editar_entrante">Adjuntar Documento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -716,6 +772,43 @@ $froms = new Formularios();
       </div>
       <div class="modal-footer">
         <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal 7-->
+<div class="modal fade" id="exampleModal7_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Estado:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Seleccionar Estado: </label>
+          <?php
+            echo $froms->Lista_Desplegable(
+              $estadosradicado,
+              'nombre_estado',
+              'id_estado',
+              'estado_entrante_editar',
+              '',
+              '',
+              ''
+            );
+          ?>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="cambiar_estado_editar();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>
