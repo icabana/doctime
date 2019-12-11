@@ -14,7 +14,7 @@ $tabla_documentos = "
 
     foreach ($documentos as $clave => $valor) {
         
-      $path = 'archivos/uploads/entrantes/'.$id_entrante;
+      $path = 'archivos/uploads/entrantes/'.$id_entrante.'/'.$valor['nombre_documento'];
 
       if(file_exists($path)){
           
@@ -62,6 +62,26 @@ $tabla_documentos = "
 
           $ver_upload = "<a href='#' title='ELIMINAR ARCHIVO' onclick='eliminar_archivo(".$valor["id_documento"].", \"".$valor["nombre_documento"]."\", ".$id_contrato_documento.", \"".$ruta_archivo."\"); return false;'><img alt='' src='imagenes/botones/eliminar.png' width='37px'  /></a>   ";
 
+        }else{
+          
+          $tabla_documentos .= ' <div class="col-md-3">
+            <ul class="mailbox-attachments clearfix">
+              <li>
+              <a target="_blank" >
+              <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#"  data-toggle="modal" data-target="#exampleModal5"  ><span class="mailbox-attachment-icon"><i class="fa fa-upload"></i></span></a>
+                <div class="mailbox-attachment-info">
+                <i class="fa fa-paperclip"></i> '.utf8_encode(substr( $valor['nombre_documento'],0,22)).'
+                  <span class="mailbox-attachment-size">
+                      <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#" data-toggle="modal" data-target="#exampleModal5" >Adjuntar Archivo</a>
+                    <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-upload"></i></a>
+                    </a>
+                  </span>
+                </div>
+              </li>
+
+            </ul> </div>';
+
+          $ver_upload = "<a href='#' title='ELIMINAR ARCHIVO' onclick='eliminar_archivo(".$valor["id_documento"].", \"".$valor["nombre_documento"]."\", ".$id_contrato_documento.", \"".$ruta_archivo."\"); return false;'><img alt='' src='imagenes/botones/eliminar.png' width='37px'  /></a>   ";
         }
 
         $contador ++;

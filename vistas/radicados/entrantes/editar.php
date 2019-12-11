@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  function insertar_entrante() {
+  function editar_entrante() {
 
     if (!validar_requeridos()) {
       return 0;
@@ -10,14 +10,14 @@
     ejecutarAccion(
       'radicados',
       'Entrantes',
-      'insertar',
+      'guardar',
       datos,
-      'insertar_entrante2(data)'
+      'editar_entrante2(data)'
     );
 
   }
 
-  function insertar_entrante2(data) {
+  function editar_entrante2(data) {
 
     if (data == 1) {
       mensaje_alertas("success", "Entrante Registrado Exitosamente", "center");
@@ -72,7 +72,7 @@
   function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
 
       $("#destinatario_entrante").val(id_destinatario);
-      $("#destinatario_entrante2").val(nombre_destinatario + ' ' + apellidos_destinatario);
+      $("#destinatario_entrante2").val(nombres_destinatario + ' ' + apellidos_destinatario);
 
       $('#vista_destinatarios').hide();
 
@@ -125,6 +125,41 @@
 
   }
 
+  function modificar_nombre_archivo(documento_soporte) {
+
+      $('#documento_soporte').val(documento_soporte);
+
+  }
+
+  function actualizar_upload_archivo() {
+
+    $('form#form_upload').submit();
+
+    $('#exampleModal5').modal('hide');
+     $('.modal-backdrop fade show').remove();
+   
+     actualizar_vista_soportes();
+
+  }
+
+  function actualizar_vista_soportes() {
+
+
+    ejecutarAccion(
+        'radicados',
+        'Entrantes',
+        'actualizarUpload',
+        'id_entrante='+$("#id_entrante").val(),
+        "$('#vista_soportes').html(data); "
+
+    );
+   
+    
+
+  }
+
+  
+
   function mover_carpeta2(data) {
 
     if (data == 1) {
@@ -154,6 +189,7 @@
     function nuevo_documento2(data) {
 
       if (data == 1) {
+        actualizar_vista_soportes();
         //mensaje_alertas("success", "Nuevo Documento registrado", "center");
         //cargar_entrantes();
       } else {
@@ -328,8 +364,8 @@ $froms = new Formularios();
                         <label>Remitente<span style="color:red">*</span></label>
                         <input type="hidden" class="requerido" id="remitente_entrante" name="remitente_entrante" 
                         value="<?php echo $datos['remitente_entrante']; ?>">
-                        <input type="text" class="form-control requerido" id="remitente_entrante2" 
-                        name="remitente_entrante2" value="<?php echo $datos['nombre_tercero']; ?>" 
+                        <input type="text"  class="form-control requerido" id="remitente_entrante2" 
+                        name="remitente_entrante2" value="<?php echo utf8_encode($datos['nombre_tercero']); ?>" 
                         onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
@@ -338,16 +374,16 @@ $froms = new Formularios();
                       <div class="col-md-4">
                         <label>Enviado Por<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="enviadopor_entrante" 
-                        name="enviadopor_entrante" value="<?php echo $datos['enviadopor_entrante']; ?>">
+                        name="enviadopor_entrante" value="<?php echo utf8_encode($datos['enviadopor_entrante']); ?>">
                       </div>
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
-                        <input type="hidden" class="requerido" id="destinatario_entrante" name="destinario_entrante" 
+                        <input type="hidden" class="requerido" id="destinatario_entrante" name="destinatario_entrante" 
                         value="<?php echo $datos['destinatario_entrante']; ?>">
-                        <input type="text" class="form-control requerido" id="destinatario_entrante2" 
+                        <input type="text"  class="form-control requerido" id="destinatario_entrante2" 
                         name="destinario_entrante2" 
-                        value="<?php echo $datos['nombres_empleado'] . " " . $datos['apellidos_empleado']; ?>" 
+                        value="<?php echo utf8_encode($datos['nombres_empleado'] . " " . $datos['apellidos_empleado']); ?>" 
                         onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
@@ -361,7 +397,7 @@ $froms = new Formularios();
                       <div class="col-md-12">
                         <label>Asunto<span style="color:red">*</span></label>
                         <textarea class="form-control radicado" rows="3" id="asunto_entrante" 
-                        name="asunto_entrante"><?php echo $datos['asunto_entrante']; ?></textarea
+                        name="asunto_entrante"><?php echo utf8_encode($datos['asunto_entrante']); ?></textarea
                         value="">
                       </div>
 
@@ -377,15 +413,15 @@ $froms = new Formularios();
                       <div class="col-md-3">
                         <label>Prioridad</label>
                         <?php
-                        echo $froms->Lista_Desplegable(
-                          $empleados,
-                          'nombre_prioridad',
-                          'id_prioridad',
-                          'prioridad_entrante',
-                          $datos['prioridad_entrante'],
-                          '',
-                          ''
-                        );
+                          echo $froms->Lista_Desplegable(
+                            $prioridades,
+                            'nombre_prioridad',
+                            'id_prioridad',
+                            'prioridad_entrante',
+                            $datos['prioridad_entrante'],
+                            '',
+                            ''
+                          );
                         ?>
                      
                       </div>
@@ -402,9 +438,9 @@ $froms = new Formularios();
                         <label>Responsable<span style="color:red">*</span></label>
                         <?php
                             echo $froms->Lista_Desplegable(
-                              $responsables,
-                              'nombre_responsable',
-                              'id_responsable',
+                              $empleados,
+                              'nombre_empleado',
+                              'id_empleado',
                               'responsable_entrante',
                               $datos['responsable_entrante'],
                               '',
@@ -429,9 +465,7 @@ $froms = new Formularios();
                       <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
                         <textarea class="form-control" rows="3" id="descripcionfolios_entrante" 
-                        name="descipcionfolios_entrante">
-                        <?php echo $datos['descripcionfolios_entrante']; ?>  
-                      </textarea>
+                        name="descripcionfolios_entrante"><?php echo utf8_encode($datos['descripcionfolios_entrante']); ?></textarea>
 
                       </div>
 
@@ -460,14 +494,14 @@ $froms = new Formularios();
 
                     <h3>Trazabilidad</h3>
 
-                    <div id="vista_soportes">
+                    <div id="vista_trazabilidad">
 
                       <table id="tabla_trazabilidad" class="table table-hover table-striped">
                         <thead>
                           <tr>
                             <th style='background-color:lavender'>No.</th>
-                            <th style='background-color:lavender'>Acci&oacute;n</th>
                             <th style='background-color:lavender; '>Usuario</th>
+                            <th style='background-color:lavender'>Acci&oacute;n</th>
                             <th style='background-color:lavender; '>Fecha</th>
                           </tr>
                         </thead>
@@ -481,8 +515,8 @@ $froms = new Formularios();
                             echo "<tr>";
 
                             echo "<td>" . $cont . "</td>";
+                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado'] . " " . $items['apellidos_empleado'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['accion_trazabilidad'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_entrante'] . " " . $items['apellidos_entrante'])) . "</td>";
                             echo "<td>" . utf8_encode(strtolower($items['fecha_trazabilidad'])) . "</td>";
 
 
@@ -506,7 +540,7 @@ $froms = new Formularios();
             </div>
           </div>
           <button onclick="cargar_entrantes();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_entrante(); return false;" class="btn btn-success">Guardar</button>
+          <button onclick="editar_entrante(); return false;" class="btn btn-success">Guardar</button>
 
         </div>
 
@@ -575,9 +609,9 @@ $froms = new Formularios();
             <label>Seleccionar Responsable</label>
             <?php
             echo $froms->Lista_Desplegable(
-              $entrantes,
-              'nombre_entrante',
-              'id_entrante',
+              $empleados,
+              'nombre_empleado',
+              'id_empleado',
               'responsable_entrante',
               '',
               '',
@@ -633,6 +667,52 @@ $froms = new Formularios();
           <label>Agregar Documento</label>
           <input type="text" class="form-control" id="documento" name="documento">
         </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Modal 5-->
+    <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModal4" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal4">Adjuntar Documento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      
+
+
+      <div class="col-xs-3">                           
+                   
+            <div id="main_container">
+
+                <form id="form_upload" target="_blank" action="libs/uploads/upload_nuevo.php" method="post" enctype="multipart/form-data" >
+
+                    <input  type="file" name="userfile" class="fileUpload_nu0evo" multiple /><br> 
+
+                     <input type="hidden" id="id_entrante" name="id_entrante"  value="<?php echo $datos['id_entrante']; ?>" >
+                 
+                     <input type="hidden" id="documento_soporte" name="documento_soporte" >
+                     
+
+                    &nbsp;&nbsp; &nbsp;&nbsp;<button onclick="actualizar_upload_archivo();" class="btn btn-block btn-primary btn-lg" id="px-submit" type="button" >Subir Archivo</button>
+
+                </form>
+
+            </div> 
+       
+    </div>
+
+
       </div>
       <div class="modal-footer">
         <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>

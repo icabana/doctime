@@ -15,7 +15,7 @@
             'Entrantes',
             'editar',
             'id_entrante=' + id_entrante,
-            ''
+            "SubirArchivos('fileUpload_nuevo');"
         );
 
     }
@@ -147,6 +147,8 @@
           return 0;
         }
 
+        nueva_bitacora();
+
     }
 
     function nueva_bitacora() {
@@ -181,9 +183,9 @@
     function nueva_bitacora2(data) {
 
         if (data == 1) {
-          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+          mensaje_alertas("success", "Bitacora registrada Exitosamente", "center");
         } else {
-          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
+          mensaje_alertas("error", "Error al registrar bitacora", "center");
         }
 
     } 
@@ -387,24 +389,24 @@ function enviar_bandeja_entrante2() {
                     </td>
                     
                     <td class="mailbox-star">
-                        <a href="read-mail.html">
+                        
                             <?php echo $entrante['numero_entrante'] ?>
-                        </a>
+                        
                     </td>
 
                     <td class="mailbox-name">
-                        <a href="read-mail.html">
+                        
                             <?php echo utf8_encode($entrante['nombre_tercero']); ?>
-                        </a>
+                        
                     </td>
                     <td class="mailbox-name">
-                        <a href="read-mail.html">
+                        
                             <?php echo utf8_encode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']); ?>
-                        </a>
+                        
                     </td>
 
                     <td class="mailbox-subject">
-                        <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
+                        <?php echo utf8_encode(substr($entrante['asunto_entrante'], 0, 35))."..."; ?>
                     </td>
                     <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
 
@@ -505,7 +507,7 @@ function enviar_bandeja_entrante2() {
         </div>
       </div>
       <div class="modal-footer">        
-        <button onclick="cambiar_responsable();" type="button" class="btn btn-primary">Aceptar</button>
+        <button onclick="cambiar_responsable0();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>
@@ -526,12 +528,13 @@ function enviar_bandeja_entrante2() {
       <div class="modal-body">
       <div class="col-md-12">
           <label>Agregar Bitacora</label>
-          <textarea id="bitacora_entrante" name="bitacora_entrante" rows="4"></textarea>
+          <textarea class="form-control" id="bitacora_entrante" name="bitacora_entrante" rows="4"></textarea>
         </div>
       </div>
       <div class="modal-footer">        
-        <button data-dismiss="modal" onclick="nueva_bitacora();" type="button" class="btn btn-primary close">Aceptar</button>
+        <button onclick="nueva_bitacora0();" type="button" class="btn btn-primary">Aceptar</button>
       </div>
+      
     </div>
   </div>
 </div>

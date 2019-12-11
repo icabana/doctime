@@ -140,17 +140,14 @@ class EntrantesModel extends ModelBase {
                     empleados.celular_empleado, 
                     empleados.correo_empleado, 
                     empleados.direccion_empleado, 
-                    empleados.ciudad_empleado,
-
-                    usuarios.id_usuario,
-                    usuarios.nick_usuario
+                    empleados.ciudad_empleado
                 
                     from trazabilidad_entrantes
-                            left join usuarios ON trazabilidad_entrantes.usuario_trazabilidad = usuarios.id_usuario
+                            left join empleados ON trazabilidad_entrantes.usuario_trazabilidad = empleados.id_empleado
                             
-                            left join empleados ON empleados.usuario_empleado = usuarios.id_usuario
-                            
-                    where trazabilidad_entrantes.radicado_trazabilidad = '".$radicado_trazabilidad."'";
+                    where trazabilidad_entrantes.radicado_trazabilidad = '".$radicado_trazabilidad."'
+                    
+                    order by trazabilidad_entrantes.fecha_trazabilidad";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -318,15 +315,15 @@ class EntrantesModel extends ModelBase {
                                 '".$consecutivo_entrante."',
                                 '".$numero_entrante."',
                                 '".$remitente_entrante."',
-                                '".$enviadopor_entrante."',
+                                '".utf8_decode($enviadopor_entrante)."',
                                 '".$destinatario_entrante."',
                                 '".$fecharadicado_entrante."',
                                 '".$fecharecibido_entrante."',
                                 '".$fechamaxima_entrante."',
                                 '".$prioridad_entrante."',
                                 '".$numerofolios_entrante."',
-                                '".$descripcionfolios_entrante."',
-                                '".$asunto_entrante."',
+                                '".utf8_decode($descripcionfolios_entrante)."',
+                                '".utf8_decode($asunto_entrante)."',
                                 '".$tiporadicado_entrante."',
                                 '".$responsable_entrante."'
                             );";
@@ -357,15 +354,15 @@ class EntrantesModel extends ModelBase {
 
                     SET numero_entrante = '". $numero_entrante ."',
                         remitente_entrante = '". $remitente_entrante ."',
-                        enviadopor_entrante = '". $enviadopor_entrante ."',
+                        enviadopor_entrante = '". utf8_decode($enviadopor_entrante) ."',
                         destinatario_entrante = '". $destinatario_entrante ."',
                         fecharadicado_entrante = '". $fecharadicado_entrante ."',
                         fecharecibido_entrante = '". $fecharecibido_entrante ."',
                         fechamaxima_entrante = '". $fechamaxima_entrante ."',
                         prioridad_entrante = '". $prioridad_entrante ."',
                         numerofolios_entrante = '". $numerofolios_entrante ."',
-                        descripcionfolios_entrante = '". $descripcionfolios_entrante ."',
-                        asunto_entrante = '". $asunto_entrante ."',
+                        descripcionfolios_entrante = '". utf8_decode($descripcionfolios_entrante) ."',
+                        asunto_entrante = '". utf8_decode($asunto_entrante) ."',
                         tiporadicado_entrante = '". $tiporadicado_entrante ."',
                         responsable_entrante = '". $responsable_entrante ."',
                         estado_entrante = '". $estado_entrante ."'
@@ -498,7 +495,7 @@ class EntrantesModel extends ModelBase {
 
     function getConsecutivo() {
         
-        $query = "select max(entrantes.consecutivo) as consecutivo
+        $query = "select max(entrantes.consecutivo_entrante) as consecutivo
                 
                     from entrantes";
         
@@ -671,7 +668,7 @@ class EntrantesModel extends ModelBase {
                 '".$radicado_trazabilidad."',
                 '".utf8_decode($accion_trazabilidad)."',
                 '".date('Y-m-d H:i:s')."',
-                '".$_SESSION['id_usuario']."'
+                '".$_SESSION['id_empleado']."'
             );";
 
         return $this->crear_ultimo_id($query);

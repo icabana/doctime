@@ -117,6 +117,7 @@ function formatoNumerico() {
 }
 
 function SubirArchivos(clase_elemento) {
+    
     $('.' + clase_elemento).fileUploader();
 }
 

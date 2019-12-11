@@ -104,12 +104,12 @@ class TercerosModel extends ModelBase {
                             VALUES(
                                 '".$documento_tercero."',
                                 '".$tipodocumento_tercero."',
-                                '".$nombre_tercero."',
+                                '".utf8_decode($nombre_tercero)."',
                                 '".$telefono_tercero."',
                                 '".$celular_tercero."',
                                 '".$correo_tercero."',
-                                '".$direccion_tercero."',
-                                '".$ciudad_tercero."'
+                                '".utf8_decode($direccion_tercero)."',
+                                '".utf8_decode($ciudad_tercero)."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -132,12 +132,12 @@ class TercerosModel extends ModelBase {
         
                     SET documento_tercero = '". $documento_tercero ."',
                         tipodocumento_tercero = '". $tipodocumento_tercero ."',
-                        nombre_tercero = '". $nombre_tercero ."',
+                        nombre_tercero = '". utf8_decode($nombre_tercero) ."',
                         telefono_tercero = '". $telefono_tercero ."',
                         celular_tercero = '". $celular_tercero ."',
                         correo_tercero = '". $correo_tercero ."',
-                        direccion_tercero = '". $direccion_tercero ."',
-                        ciudad_tercero = '". $ciudad_tercero ."'
+                        direccion_tercero = '". utf8_decode($direccion_tercero) ."',
+                        ciudad_tercero = '". utf8_decode($ciudad_tercero) ."'
 
                     WHERE id_tercero = '" . $id_tercero . "'";
        

@@ -175,17 +175,17 @@ class EmpleadosModel extends ModelBase {
                                 '".$documento_empleado."',
                                 '".$dependencia_empleado."',
                                 '".$tipodocumento_empleado."',
-                                '".$nombres_empleado."',
-                                '".$apellidos_empleado."',
+                                '".utf8_decode($nombres_empleado)."',
+                                '".utf8_decode($apellidos_empleado)."',
                                 '".$telefono_empleado."',
                                 '".$celular_empleado."',
                                 '".$correo_empleado."',
-                                '".$direccion_empleado."',
-                                '".$ciudad_empleado."',
+                                '".utf8_decode($direccion_empleado)."',
+                                '".utf8_decode($ciudad_empleado)."',
                                 '".$sexo_empleado."',
                                 '".$estadocivil_empleado."',
                                 '".$fechanacimiento_empleado."',
-                                '".$lugarnacimiento_empleado."',
+                                '".utf8_decode($lugarnacimiento_empleado)."',
                                 '".$usuario_empleado."'
                             );";
        
@@ -216,17 +216,17 @@ class EmpleadosModel extends ModelBase {
                     SET documento_empleado = '". $documento_empleado ."',
                         dependencia_empleado = '". $dependencia_empleado ."',
                         tipodocumento_empleado = '". $tipodocumento_empleado ."',
-                        nombres_empleado = '". $nombres_empleado ."',
-                        apellidos_empleado = '". $apellidos_empleado ."',
+                        nombres_empleado = '". utf8_decode($nombres_empleado) ."',
+                        apellidos_empleado = '". utf8_decode($apellidos_empleado) ."',
                         telefono_empleado = '". $telefono_empleado ."',
                         celular_empleado = '". $celular_empleado ."',
                         correo_empleado = '". $correo_empleado ."',
-                        direccion_empleado = '". $direccion_empleado ."',
-                        ciudad_empleado = '". $ciudad_empleado ."',
+                        direccion_empleado = '". utf8_decode($direccion_empleado) ."',
+                        ciudad_empleado = '". utf8_decode($ciudad_empleado) ."',
                         sexo_empleado = '". $sexo_empleado ."',
                         estadocivil_empleado = '". $estadocivil_empleado ."',
                         fechanacimiento_empleado = '". $fechanacimiento_empleado ."',
-                        lugarnacimiento_empleado = '". $lugarnacimiento_empleado ."'
+                        lugarnacimiento_empleado = '". utf8_decode($lugarnacimiento_empleado) ."'
 
                     WHERE id_empleado = '" . $id_empleado . "'";
        

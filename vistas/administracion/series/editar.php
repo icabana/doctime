@@ -63,7 +63,7 @@ $froms = new Formularios();
                   <label>Nombre de la Serie</label>
 
                   <input type="text" class="form-control" id="nombre_serie" name="nombre_serie" 
-                        value="<?php echo $datos['nombre_serie']; ?>">
+                        value="<?php echo utf8_encode($datos['nombre_serie']); ?>">
                 </div>
               </div>
 

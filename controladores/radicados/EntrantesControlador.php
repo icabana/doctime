@@ -100,10 +100,6 @@ class EntrantesControlador extends ControllerBase {
 
          
     public function editar(){
-    
-        $this->model->cargar("EmpleadosModel.php", "administracion");
-        $EmpleadosModel = new EmpleadosModel();
-        $empleados = $EmpleadosModel->getTodos();
 
         $this->model->cargar("TercerosModel.php", "administracion");
         $TercerosModel = new TercerosModel();
@@ -130,8 +126,32 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("DocumentosModel.php", "configuracion");
         $DocumentosModel = new DocumentosModel();   
         $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
-        
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
         include 'vistas/radicados/entrantes/editar.php';
+               
+    }
+         
+    public function editarArchivo(){
+
+        include 'vistas/radicados/entrantes/archivo.php';
+               
+    }
+         
+    public function actualizarUpload(){
+
+        
+        $this->model->cargar("DocumentosModel.php", "configuracion");
+        $DocumentosModel = new DocumentosModel();   
+        $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
+
+
+        $id_entrante = $_POST['id_entrante'];
+        include 'vistas/radicados/entrantes/tabla_documentos.php';
+        echo $tabla_documentos;
                
     }
 
@@ -191,7 +211,7 @@ class EntrantesControlador extends ControllerBase {
 
         foreach ($terceros as $clave => $valor) {
 
-            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . ($valor['nombre_tercero']) . "\");'>";  
+            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . (utf8_encode($valor['nombre_tercero'])) . "\");'>";  
             $tabla_terceros .= "<td><strong>" . utf8_encode($valor['nombre_tercero']) . "</strong></td>";
             $tabla_terceros .= "</tr>";
 
@@ -275,12 +295,14 @@ class EntrantesControlador extends ControllerBase {
         
         if( $resp != 0 ){
             
+            mkdir('archivos/uploads/entrantes/'.$resp);
+
             $EntrantesModel->insertar_trazabilidad(
                 $resp,
-                "Se registró el Radicado No. ".$numero_entrante
+                "Registró el Radicado No. ".$numero_entrante
             );    
 
-            echo 1;
+            echo $resp;
 
         }else{
 
@@ -318,7 +340,7 @@ class EntrantesControlador extends ControllerBase {
 
             $EntrantesModel->insertar_trazabilidad(
                 $resp,
-                "Se modificó la información del radicado"
+                "Modificó la información del radicado"
             );  
 
              echo 1;             
@@ -343,7 +365,7 @@ class EntrantesControlador extends ControllerBase {
 
             $EntrantesModel->insertar_trazabilidad(
                 $_POST["id_entrante"],
-                "Se movió el radicado de carpeta"
+                "Movió el radicado de carpeta"
             ); 
 
              echo 1;             
@@ -368,7 +390,7 @@ class EntrantesControlador extends ControllerBase {
 
             $EntrantesModel->insertar_trazabilidad(
                 $_POST["id_entrante"],
-                "Se agregó un nuevo documento"
+                "Agregó un nuevo documento"
             ); 
 
              echo 1; 
@@ -394,7 +416,7 @@ class EntrantesControlador extends ControllerBase {
 
             $EntrantesModel->insertar_trazabilidad(
                 $_POST["id_entrante"],
-                "Se cambió el responsable del radicado"
+                "Cambió el responsable del radicado"
             ); 
 
              echo 1;             
@@ -429,7 +451,6 @@ class EntrantesControlador extends ControllerBase {
                                 );        
       
         if( $resp != 0 ){
-
             
             $array_radicados = explode(",", $_POST['radicados']);
 
@@ -438,7 +459,7 @@ class EntrantesControlador extends ControllerBase {
                 if($array[0] != 0){
                     $EntrantesModel->insertar_trazabilidad(
                         $array[0],
-                        "Se movió el radicado de carpeta"
+                        "Movió el radicado de carpeta"
                     ); 
                 }
             }
@@ -470,7 +491,7 @@ class EntrantesControlador extends ControllerBase {
                 if($array[0] != 0){
                     $EntrantesModel->insertar_trazabilidad(
                         $array[0],
-                        "Se movió el radicado de carpeta"
+                        "Movió el radicado de carpeta"
                     ); 
                 }
             }
@@ -536,7 +557,7 @@ class EntrantesControlador extends ControllerBase {
 
                 $EntrantesModel->insertar_trazabilidad(
                     $array[0],
-                    "Enviado a la Bandeja de Entrada"
+                    "Envió el radicado nuevamente a la Bandeja de Entrada"
                 ); 
                 
             }

@@ -9,7 +9,7 @@ class PrioridadesModel extends ModelBase {
             	                 
                         from prioridades
                         
-                        ORDER BY prioridades.nombre_prioridad";
+                        ORDER BY prioridades.id_prioridad";
 
         $consulta = $this->consulta($query);
         return $consulta;
@@ -25,7 +25,7 @@ class PrioridadesModel extends ModelBase {
                              
                         where prioridades.id_prioridad = '".$id_prioridad."'
                         
-                        ORDER BY prioridades.nombre_prioridad";
+                        ORDER BY prioridades.id_prioridad";
         
         $consulta = $this->consulta($query);
         

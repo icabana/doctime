@@ -51,8 +51,8 @@ class DependenciasModel extends ModelBase {
                                 jefe_dependencia
                             )
                             VALUES(
-                                '".$codigo_dependencia."',
-                                '".$nombre_dependencia."',
+                                '".utf8_decode($codigo_dependencia)."',
+                                '".utf8_decode($nombre_dependencia)."',
                                 '".$jefe_dependencia."'
                             );";
        
@@ -69,9 +69,9 @@ class DependenciasModel extends ModelBase {
         
         $query = "  UPDATE dependencias 
 
-                    SET codigo_dependencia = '". $codigo_dependencia ."',
-                        nombre_dependencia = '". $nombre_dependencia ."',
-                        jefe_dependencia = '". $jefe_dependencia ."'
+                    SET codigo_dependencia = '". utf8_decode($codigo_dependencia) ."',
+                        nombre_dependencia = '". utf8_decode($nombre_dependencia) ."',
+                        jefe_dependencia = '". utf8_decode($jefe_dependencia) ."'
                         
                     WHERE id_dependencia = '" . $id_dependencia . "'";
        

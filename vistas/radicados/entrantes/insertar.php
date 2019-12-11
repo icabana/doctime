@@ -19,9 +19,17 @@
 
   function insertar_entrante2(data) {
 
-    if (data == 1) {
-      mensaje_alertas("success", "Radicado Registrado con Exito", "center");
-      cargar_entrantes();
+    if (data != 0) {
+      
+      
+      abrirVentanaContenedor(
+            'radicados',
+            'Entrantes',
+            'editar',
+            'id_entrante=' + data,
+            ""
+        );
+
     } else {
       mensaje_alertas("error", "Error al registrar radicado", "center");
     }
@@ -128,12 +136,14 @@ $froms = new Formularios();
 
                       <div class="col-md-3">
                         <label>Fecha Radicado<span style="color:red">*</span></label>
-                        <input type="date" class="form-control requerido" id="fecharadicado_entrante" name="fecharadicado_entrante">
+                        <input type="date" class="form-control requerido" id="fecharadicado_entrante" 
+                        name="fecharadicado_entrante" value="<?php echo date("Y-m-d"); ?>">
                       </div>
 
                       <div class="col-md-3">
                         <label>Fecha Recibido<span style="color:red">*</span></label>
-                        <input type="date" class="form-control requerido" id="fecharecibido_entrante" name="fecharecibido_entrante">
+                        <input type="date" class="form-control requerido" id="fecharecibido_entrante" 
+                        name="fecharecibido_entrante" value="<?php echo date("Y-m-d"); ?>">
                       </div>
 
                       <div class="col-md-3">
@@ -158,7 +168,7 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
-                        <input type="text" class="requerido" id="remitente_entrante" name="remitente_entrante">
+                        <input type="hidden" class="requerido" id="remitente_entrante" name="remitente_entrante">
                         <input type="text" class="form-control requerido" id="remitente_entrante2" name="remitente_entrante2" onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
@@ -171,8 +181,8 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
-                        <input type="text" class="requerido" id="destinatario_entrante" name="destinario_entrante">
-                        <input type="text" class="form-control requerido" id="destinatario_entrante2" name="destinario_entrante2" onkeyup="buscar_destinatario(this.value); return false;">
+                        <input type="hidden" class="requerido" id="destinatario_entrante" name="destinatario_entrante">
+                        <input type="text"  class="form-control requerido" id="destinatario_entrante2" name="destinario_entrante2" onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
 
@@ -200,7 +210,7 @@ $froms = new Formularios();
                         <label>Prioridad</label>
                         <?php
                         echo $froms->Lista_Desplegable(
-                          $empleados,
+                          $prioridades,
                           'nombre_prioridad',
                           'id_prioridad',
                           'prioridad_entrante',

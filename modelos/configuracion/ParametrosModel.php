@@ -58,8 +58,8 @@ class ParametrosModel extends ModelBase {
                         valor_parametro
                     )
                     VALUES(
-                        '".$nombre_parametro."',
-                        '".$valor_parametro."'
+                        '".utf8_decode($nombre_parametro)."',
+                        '".utf8_decode($valor_parametro)."'
                     );";
 
         return $this->crear_ultimo_id($query);       

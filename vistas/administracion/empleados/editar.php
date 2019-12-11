@@ -119,14 +119,14 @@ $froms = new Formularios();
                       <div class="col-md-6">
                         <label>Nombres<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="nombres_empleado" 
-                        name="nombres_empleado" value="<?php echo $datos['nombres_empleado']; ?>">
+                        name="nombres_empleado" value="<?php echo utf8_encode($datos['nombres_empleado']); ?>">
                       </div>
 
 
                       <div class="col-md-6">
                         <label>Apellidos<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="apellidos_empleado" 
-                        name="apellidos_empleado" value="<?php echo $datos['apellidos_empleado']; ?>">
+                        name="apellidos_empleado" value="<?php echo utf8_encode($datos['apellidos_empleado']); ?>">
                       </div>
 
 
@@ -166,13 +166,13 @@ $froms = new Formularios();
                       <div class="col-md-4">
                         <label>Direcci&oacute;n</label>
                         <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado"
-                        value="<?php echo $datos['direccion_empleado']; ?>">
+                        value="<?php echo utf8_encode($datos['direccion_empleado']); ?>">
                       </div>
 
                       <div class="col-md-4">
                         <label>Ciudad</label>
                         <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado"
-                        value="<?php echo $datos['ciudad_empleado']; ?>">
+                        value="<?php echo utf8_encode($datos['ciudad_empleado']); ?>">
                       </div>
                       </div>
 
@@ -222,7 +222,7 @@ $froms = new Formularios();
                         <label>Lugar de Nacimiento</label>
 
                         <input type="text" class="form-control" id="lugarnacimiento_empleado" 
-                        name="lugarnacimiento_empleado" value="<?php echo $datos['lugarnacimiento_empleado']; ?>">
+                        name="lugarnacimiento_empleado" value="<?php echo utf8_encode($datos['lugarnacimiento_empleado']); ?>">
                       </div>
                     </div>
                     </div>

@@ -38,7 +38,7 @@ class RolesModel extends ModelBase {
                                 nombre_rol
                             )
                             VALUES(
-                                '".$nombre_rol."'
+                                '".utf8_decode($nombre_rol)."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -50,7 +50,7 @@ class RolesModel extends ModelBase {
                     $nombre_rol
                 ) {
         
-        $query = "  UPDATE roles SET nombre_rol = '". $nombre_rol ."'           
+        $query = "  UPDATE roles SET nombre_rol = '". utf8_decode($nombre_rol) ."'           
                     WHERE id_rol = '" . $id_rol . "'";
        
         return $this->modificarRegistros($query);

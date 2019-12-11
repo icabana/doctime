@@ -99,22 +99,10 @@ $froms = new Formularios();
 
                 <div class="col-md-6">
                   <label>Nombre del Tecero<span style="color:red">*</span></label>
-                  <input type="text" class="form-control requerido" id="nombres_tercero" name="nombres_tercero"
-                  value="<?php echo $datos['nombres_tercero']; ?>">
+                  <input type="text" class="form-control requerido" id="nombre_tercero" name="nombre_tercero"
+                  value="<?php echo $datos['nombre_tercero']; ?>">
                 </div>
 
-
-                <div class="col-md-6">               
-                </div>
-
-
-              </div>
-
-              
-              <br>
-
-
-              <div class="row">
 
                 <div class="col-md-6">
                   <label>Direcci&oacute;n</label>
@@ -122,32 +110,30 @@ $froms = new Formularios();
                   value="<?php echo $datos['direccion_tercero']; ?>">
                 </div>
 
+</div>
+<br>
+<div class="row">
 
-                <div class="col-md-6">
-                  <label>Ciudad</label>
-                  <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero"
-                  value="<?php echo $datos['ciudad_tercero']; ?>">
-                </div>
+                
 
-              </div>
-
-              
-              <br>
-
-
-              <div class="row">
-
-                <div class="col-md-4">
+            
+                <div class="col-md-3">
                   <label>Celular</label>
                   <input type="text" class="form-control" id="celular_tercero" name="celular_tercero"
                   value="<?php echo $datos['celular_tercero']; ?>">
                 </div>
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label>Tel&eacute;fono</label>
                   <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero"
                   value="<?php echo $datos['telefono_tercero']; ?>">
+                </div>
+
+                <div class="col-md-6">
+                  <label>Ciudad</label>
+                  <input type="text" class="form-control" id="ciudad_tercero" name="ciudad_tercero"
+                  value="<?php echo $datos['ciudad_tercero']; ?>">
                 </div>
 
               </div>

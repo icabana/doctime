@@ -67,7 +67,7 @@ $froms = new Formularios();
                   <label>Nombre de la Dependencia<span style="color:red">*</span></label>
 
                   <input type="text" class="form-control requerido" id="nombre_dependencia" name="nombre_dependencia" 
-                        value="<?php echo $datos['nombre_dependencia']; ?>">
+                        value="<?php echo utf8_encode($datos['nombre_dependencia']); ?>">
                 </div>
 
                 <div class="form-group">

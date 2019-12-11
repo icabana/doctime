@@ -315,7 +315,7 @@ $froms = new Formularios();
                         <input type="hidden" class="requerido" id="remitente_saliente" name="remitente_saliente" 
                         value="<?php echo $datos['remitente_saliente']; ?>">
                         <input type="text" class="form-control requerido" id="remitente_saliente2" 
-                        name="remitente_saliente2" value="<?php echo $datos['nombre_tercero']; ?>" 
+                        name="remitente_saliente2" value="<?php echo utf8_encode($datos['nombre_tercero']); ?>" 
                         onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
@@ -324,7 +324,7 @@ $froms = new Formularios();
                       <div class="col-md-4">
                         <label>Enviado Por<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="enviadopor_saliente" 
-                        name="enviadopor_saliente" value="<?php echo $datos['enviadopor_saliente']; ?>">
+                        name="enviadopor_saliente" value="<?php echo utf8_encode($datos['enviadopor_saliente']); ?>">
                       </div>
 
                       <div class="col-md-4">
@@ -333,7 +333,7 @@ $froms = new Formularios();
                         value="<?php echo $datos['destinatario_saliente']; ?>">
                         <input type="text" class="form-control requerido" id="destinatario_saliente2" 
                         name="destinario_saliente2" 
-                        value="<?php echo $datos['nombres_empleado'] . " " . $datos['apellidos_empleado']; ?>" 
+                        value="<?php echo utf8_encode($datos['nombres_empleado'] . " " . $datos['apellidos_empleado']); ?>" 
                         onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
@@ -347,7 +347,7 @@ $froms = new Formularios();
                       <div class="col-md-12">
                         <label>Asunto<span style="color:red">*</span></label>
                         <textarea class="form-control radicado" rows="3" id="asunto_saliente" 
-                        name="asunto_saliente"><?php echo $datos['asunto_saliente']; ?></textarea
+                        name="asunto_saliente"><?php echo utf8_encode($datos['asunto_saliente']); ?></textarea
                         value="">
                       </div>
 
@@ -377,7 +377,7 @@ $froms = new Formularios();
                         <label>Descripci&oacute;n de los folios</label>
                         <textarea class="form-control" rows="3" id="descripcionfolios_saliente" 
                         name="descipcionfolios_saliente">
-                        <?php echo $datos['descripcionfolios_saliente']; ?>  
+                        <?php echo utf8_encode($datos['descripcionfolios_saliente']); ?>  
                       </textarea>
 
                       </div>

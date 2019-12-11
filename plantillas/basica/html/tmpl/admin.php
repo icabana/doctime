@@ -8,13 +8,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>plugins/fontawesome-free/css/all.min.css">
+  <!-- jQuery UI 1.11.4 -->
   
+  
+  <script src="<?php echo $this->ruta(); ?>plugins/jquery/jquery-2.1.4.min.js"></script>
+  
+      <!--ARCHIVOS CSS LIBRERIAS -->
+      <link rel="stylesheet" type="text/css" href="<?php echo $this->ruta(); ?>css/jquery-ui/jquery-ui-1.9.0.custom.min.css" />      
+      
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>plugins/jqvmap/jqvmap.min.css">
+  
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo $this->ruta(); ?>dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
@@ -614,6 +622,9 @@
 <script src="<?php echo $this->ruta(); ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo $this->ruta(); ?>dist/js/demo.js"></script>
+
+
+
 <script type='text/javascript' src='js/sistema/funciones_sistema.js'></script>      
 <!-- DataTables -->
 
@@ -622,5 +633,9 @@
     
 <script src="<?php echo $this->ruta(); ?>plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo $this->ruta(); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+
+<script type="text/javascript" src="js/plugins/uploads/jquery.fileUploader.js"></script> 
+
 </body>
 </html>
