@@ -282,8 +282,8 @@ class EntrantesControlador extends ControllerBase {
 
         foreach ($terceros as $clave => $valor) {
 
-            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . (utf8_encode($valor['nombre_tercero'])) . "\");'>";  
-            $tabla_terceros .= "<td><strong>" . utf8_encode($valor['nombre_tercero']) . "</strong></td>";
+            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . ($valor['nombre_tercero']) . "\");'>";  
+            $tabla_terceros .= "<td><strong>" . $valor['nombre_tercero'] . "</strong></td>";
             $tabla_terceros .= "</tr>";
 
         }
@@ -316,8 +316,8 @@ class EntrantesControlador extends ControllerBase {
 
         foreach ($empleados as $clave => $valor) {
 
-            $tabla_empleados .= "<tr onclick='seleccionar_destinatario(" . $valor['id_empleado'] . ", \"" . utf8_encode($valor['nombres_empleado']) . "\", \"" . utf8_encode($valor['apellidos_empleado']) . "\");'>";  
-            $tabla_empleados .= "<td><strong>" . utf8_encode($valor['nombres_empleado'])." ".utf8_encode($valor['apellidos_empleado']) . "</strong></td>";
+            $tabla_empleados .= "<tr onclick='seleccionar_destinatario(" . $valor['id_empleado'] . ", \"" . $valor['nombres_empleado'] . "\", \"" . $valor['apellidos_empleado'] . "\");'>";  
+            $tabla_empleados .= "<td><strong>" . $valor['nombres_empleado']." ".$valor['apellidos_empleado'] . "</strong></td>";
             $tabla_empleados .= "</tr>";
 
         }

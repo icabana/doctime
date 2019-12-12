@@ -22,7 +22,7 @@ class DocumentosSalientesModel extends ModelBase {
     function agregarDocumento($nombre_documento, $saliente_documento){
           
         $query = "INSERT INTO documentos_salientes (nombre_documento, saliente_documento)
-                  VALUES ('".utf8_decode($nombre_documento)."','".$saliente_documento."');";
+                  VALUES ('".$nombre_documento."','".$saliente_documento."');";
                 
         return $this->crear_ultimo_id($query);
         

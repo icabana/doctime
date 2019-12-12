@@ -26,7 +26,7 @@
 
     function eliminar_serie(id_serie) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_serie2(" + id_serie + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar la Serie Documental?", "eliminar_serie2(" + id_serie + "); ");
 
     }
 
@@ -84,8 +84,8 @@
 
                         echo "<tr>";
 
-                        echo "<td>" . utf8_encode(strtolower($items['codigo_serie'])) . "</td>";
-                        echo "<td>" . utf8_encode(strtolower($items['nombre_serie'])) . "</td>";
+                        echo "<td>" . $items['codigo_serie'] . "</td>";
+                        echo "<td>" . $items['nombre_serie'] . "</td>";
 
                         echo "<td><a href='#'><i onclick='editar_serie(" . $items['id_serie'] . ");' 
                                 class='fas fa-edit'></i></a></td>";

@@ -496,15 +496,15 @@ class EntrantesModel extends ModelBase {
                                 '".$consecutivo_entrante."',
                                 '".$numero_entrante."',
                                 '".$remitente_entrante."',
-                                '".utf8_decode($enviadopor_entrante)."',
+                                '".$enviadopor_entrante."',
                                 '".$destinatario_entrante."',
                                 '".$fecharadicado_entrante."',
                                 '".$fecharecibido_entrante."',
                                 '".$fechamaxima_entrante."',
                                 '".$prioridad_entrante."',
                                 '".$numerofolios_entrante."',
-                                '".utf8_decode($descripcionfolios_entrante)."',
-                                '".utf8_decode($asunto_entrante)."',
+                                '".$descripcionfolios_entrante."',
+                                '".$asunto_entrante."',
                                 '".$tiporadicado_entrante."',
                                 '".$responsable_entrante."'
                             );";
@@ -534,15 +534,15 @@ class EntrantesModel extends ModelBase {
 
                     SET numero_entrante = '". $numero_entrante ."',
                         remitente_entrante = '". $remitente_entrante ."',
-                        enviadopor_entrante = '". utf8_decode($enviadopor_entrante) ."',
+                        enviadopor_entrante = '". $enviadopor_entrante ."',
                         destinatario_entrante = '". $destinatario_entrante ."',
                         fecharadicado_entrante = '". $fecharadicado_entrante ."',
                         fecharecibido_entrante = '". $fecharecibido_entrante ."',
                         fechamaxima_entrante = '". $fechamaxima_entrante ."',
                         prioridad_entrante = '". $prioridad_entrante ."',
                         numerofolios_entrante = '". $numerofolios_entrante ."',
-                        descripcionfolios_entrante = '". utf8_decode($descripcionfolios_entrante) ."',
-                        asunto_entrante = '". utf8_decode($asunto_entrante) ."',
+                        descripcionfolios_entrante = '". $descripcionfolios_entrante ."',
+                        asunto_entrante = '". $asunto_entrante ."',
                         tiporadicado_entrante = '". $tiporadicado_entrante ."',
                         responsable_entrante = '". $responsable_entrante ."'
 
@@ -861,7 +861,7 @@ return $this->modificarRegistros($query);
             )
             VALUES(
                 '".$radicado_trazabilidad."',
-                '".utf8_decode($accion_trazabilidad)."',
+                '".$accion_trazabilidad."',
                 '".date('Y-m-d H:i:s')."',
                 '".$_SESSION['id_empleado']."'
             );";

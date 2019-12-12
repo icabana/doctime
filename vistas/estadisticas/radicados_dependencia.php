@@ -37,7 +37,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_dependencia'])) . "</td>";
+                            echo "<td>" . strtolower($items['nombre_dependencia']) . "</td>";
                            
                             echo "<td>" . $numero . "</td>";
 

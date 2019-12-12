@@ -61,7 +61,7 @@ $froms = new Formularios();
                   <label>Nombre del Carpeta<span style="color:red">*</span></label>
 
                   <input type="text" class="form-control requerido" id="nombre_carpeta" name="nombre_carpeta" 
-                        value="<?php echo utf8_encode($datos['nombre_carpeta']); ?>">
+                        value="<?php echo $datos['nombre_carpeta']; ?>">
                 </div>
               </div>
 

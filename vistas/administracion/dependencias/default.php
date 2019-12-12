@@ -85,9 +85,9 @@
 
                         echo "<tr>";
 
-                        echo "<td>" . utf8_encode(strtolower($items['codigo_dependencia'])) . "</td>";
-                        echo "<td>" . utf8_encode(strtolower($items['nombre_dependencia'])) . "</td>";
-                        echo "<td>" . utf8_encode(strtolower($items['nombre_jefe'])) . "</td>";                            
+                        echo "<td>" . $items['codigo_dependencia'] . "</td>";
+                        echo "<td>" . $items['nombre_dependencia'] . "</td>";
+                        echo "<td>" . $items['nombre_jefe'] . "</td>";                            
 
                         echo "<td><a href='#'><i onclick='editar_dependencia(" . $items['id_dependencia'] . ");' 
                                 class='fas fa-edit'></i></a></td>";

@@ -38,7 +38,7 @@ class TiposradicadoModel extends ModelBase {
                                 nombre_tiporadicado
                             )
                             VALUES(
-                                '".utf8_decode($nombre_tiporadicado)."'
+                                '".$nombre_tiporadicado."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -52,7 +52,7 @@ class TiposradicadoModel extends ModelBase {
         
         $query = "  UPDATE tiposradicado 
 
-                    SET nombre_tiporadicado = '". utf8_decode($nombre_tiporadicado) ."'
+                    SET nombre_tiporadicado = '". $nombre_tiporadicado ."'
                         
                     WHERE id_tiporadicado = '" . $id_tiporadicado . "'";
        

@@ -83,7 +83,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tipoarchivo'])) . "</td>";
+                            echo "<td>" . $items['nombre_tipoarchivo'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_tipoarchivo(" . $items['id_tipoarchivo'] . ");' 

@@ -83,9 +83,9 @@
 
                             echo "<tr>";
                             
-                            echo "<td>" . utf8_encode(strtoupper($items['codigo_tipodocumento'])." ".strtolower($items['documento_empleado'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_dependencia'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_empleado']."  ".$items['apellidos_empleado'])) . "</td>";
+                            echo "<td>" . $items['codigo_tipodocumento']." ".$items['documento_empleado'] . "</td>";
+                            echo "<td>" . $items['nombre_dependencia'] . "</td>";
+                            echo "<td>" . $items['nombres_empleado']."  ".$items['apellidos_empleado'] . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

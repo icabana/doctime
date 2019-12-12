@@ -246,7 +246,8 @@ $froms = new Formularios();
 
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>
-                        <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_entrante" name="numerofolios_entrante">
+                        <input onkeypress="return no_numeros(event)" type="text" class="form-control"
+                         id="numerofolios_entrante" name="numerofolios_entrante">
                       </div>
 
                     </div>
@@ -257,7 +258,8 @@ $froms = new Formularios();
 
                       <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
-                        <textarea class="form-control" rows="3" id="descripcionfolios_entrante" name="descripcionfolios_entrante"></textarea>
+                        <textarea class="form-control" rows="3" id="descripcionfolios_entrante"
+                         name="descripcionfolios_entrante"></textarea>
                       </div>
 
                     </div>

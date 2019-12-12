@@ -38,7 +38,7 @@ class TiposdocumentalesModel extends ModelBase {
                                 nombre_tipodocumental
                             )
                             VALUES(
-                                '".utf8_decode($nombre_tipodocumental)."'
+                                '".$nombre_tipodocumental."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -51,7 +51,7 @@ class TiposdocumentalesModel extends ModelBase {
                 ) {
         
         $query = "  UPDATE tiposdocumentales 
-                    SET nombre_tipodocumental = '". utf8_decode($nombre_tipodocumental) ."'           
+                    SET nombre_tipodocumental = '". $nombre_tipodocumental ."'           
                     WHERE id_tipodocumental = '" . $id_tipodocumental . "'";
        
         return $this->modificarRegistros($query);

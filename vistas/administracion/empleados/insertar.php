@@ -175,12 +175,14 @@ $froms = new Formularios();
                     <div class="row">
                       <div class="col-md-2">
                         <label>Celular</label>
-                        <input type="text" class="form-control" id="celular_empleado" name="celular_empleado">
+                        <input type="text" class="form-control" id="celular_empleado" name="celular_empleado"
+                        onkeypress="return no_numeros(event)">
                       </div>
 
                       <div class="col-md-2">
                         <label>Tel&eacute;fono</label>
-                        <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado">
+                        <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado"
+                        onkeypress="return no_numeros(event)">
                       </div>
 
 

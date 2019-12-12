@@ -21,9 +21,9 @@ class ListaDesplegable {
 	
 	private function opcion_lista_desplegable($texto, $valor, $sel){
 		if( $sel == $valor ) {
-			return sprintf($this->html_option_lista_desplegable, $valor, $this->selecionado, utf8_encode($texto) );
+			return sprintf($this->html_option_lista_desplegable, $valor, $this->selecionado, $texto );
 		}else{ 
-			return sprintf($this->html_option_lista_desplegable, $valor, '',   utf8_encode($texto)  );
+			return sprintf($this->html_option_lista_desplegable, $valor, '',   $texto  );
 		}	
 		return '';
 	}

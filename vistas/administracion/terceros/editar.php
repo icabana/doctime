@@ -120,14 +120,14 @@ $froms = new Formularios();
                 <div class="col-md-3">
                   <label>Celular</label>
                   <input type="text" class="form-control" id="celular_tercero" name="celular_tercero"
-                  value="<?php echo $datos['celular_tercero']; ?>">
+                  value="<?php echo $datos['celular_tercero']; ?>" onkeypress="return no_numeros(event)">
                 </div>
 
 
                 <div class="col-md-3">
                   <label>Tel&eacute;fono</label>
                   <input type="text" class="form-control" id="telefono_tercero" name="telefono_tercero"
-                  value="<?php echo $datos['telefono_tercero']; ?>">
+                  value="<?php echo $datos['telefono_tercero']; ?>" onkeypress="return no_numeros(event)">
                 </div>
 
                 <div class="col-md-6">

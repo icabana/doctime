@@ -79,7 +79,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tiporadicado'])) . "</td>";
+                            echo "<td>" . $items['nombre_tiporadicado'] . "</td>";
                             
 
                             echo "<td><a href='#'><i onclick='editar_tiporadicado(" . $items['id_tiporadicado'] . ");' 

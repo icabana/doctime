@@ -440,17 +440,17 @@ function enviar_bandeja_saliente2() {
 
                     <td class="mailbox-name">
                         
-                            <?php echo utf8_encode($saliente['nombre_tercero']); ?>
+                            <?php echo $saliente['nombre_tercero']; ?>
                         
                     </td>
                     <td class="mailbox-name">
                         
-                            <?php echo utf8_encode($saliente['nombres_empleado']." ".$saliente['apellidos_empleado']); ?>
+                            <?php echo $saliente['nombres_empleado']." ".$saliente['apellidos_empleado']; ?>
                         
                     </td>
 
                     <td class="mailbox-subject">
-                        <?php echo utf8_encode(substr($saliente['asunto_saliente'], 0, 35))."..."; ?>
+                        <?php echo substr($saliente['asunto_saliente'], 0, 35)."..."; ?>
                     </td>
                     <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
 

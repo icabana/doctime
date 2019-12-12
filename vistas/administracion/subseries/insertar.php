@@ -73,12 +73,14 @@
               <div class="row">
               <div class="col-md-3">
                 <label>Años Archivo Gestion</label>
-                <input type="text" class="form-control" id="tiempogestion_subserie" name="tiempogestion_subserie">
+                <input type="text" class="form-control" id="tiempogestion_subserie" name="tiempogestion_subserie"
+                onkeypress="return no_numeros(event)">
               </div>
 
               <div class="col-md-3">
                 <label>Años Archivo Central</label>
-                <input type="text" class="form-control" id="tiempocentral_subserie" name="tiempocentral_subserie">
+                <input type="text" class="form-control" id="tiempocentral_subserie" name="tiempocentral_subserie"
+                onkeypress="return no_numeros(event)">
               </div>
               
               <div class="col-md-6">

@@ -68,8 +68,8 @@ class SubseriesModel extends ModelBase {
                             )
                             VALUES(
                                 '".$serie_subserie."',
-                                '".utf8_decode($codigo_subserie)."',
-                                '".utf8_decode($nombre_subserie)."',
+                                '".$codigo_subserie."',
+                                '".$nombre_subserie."',
                                 '".$tiempogestion_subserie."',
                                 '".$tiempocentral_subserie."',
                                 '".$soporte_subserie."',
@@ -94,8 +94,8 @@ class SubseriesModel extends ModelBase {
         $query = "  UPDATE subseries 
 
                     SET serie_subserie = '". $serie_subserie ."',    
-                        codigo_subserie = '". utf8_decode($codigo_subserie) ."',  
-                        nombre_subserie = '". utf8_decode($nombre_subserie) ."',  
+                        codigo_subserie = '". $codigo_subserie ."',  
+                        nombre_subserie = '". $nombre_subserie ."',  
                         tiempogestion_subserie = '". $tiempogestion_subserie ."',  
                         tiempocentral_subserie = '". $tiempocentral_subserie ."',  
                         soporte_subserie = '". $soporte_subserie ."',  

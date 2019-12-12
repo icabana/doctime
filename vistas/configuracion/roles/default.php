@@ -78,7 +78,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_rol'])) . "</td>";
+                            echo "<td>" . $items['nombre_rol'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_rol(" . $items['id_rol'] . ");' 

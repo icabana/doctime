@@ -61,7 +61,7 @@ $froms = new Formularios();
                   <label>Nombre del Rol<span style="color:red">*</span></label>
 
                   <input type="text" class="form-control requerido" id="nombre_rol" name="nombre_rol" 
-                        value="<?php echo utf8_encode($datos['nombre_rol']); ?>">
+                        value="<?php echo $datos['nombre_rol']; ?>">
                 </div>
               </div>
 

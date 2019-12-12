@@ -2,6 +2,10 @@
 
   function insertar_serie() {
 
+    if (!validar_requeridos()) {
+      return 0;
+    }
+
       var datos = $('#formSeries').serialize();
 
       ejecutarAccion(
@@ -49,13 +53,13 @@
 
             <div class="card-body">
               <div class="form-group">
-                  <label>Codigo de la serie</label>
-                  <input type="text" class="form-control" id="codigo_serie" name="codigo_serie">
+                  <label>Codigo de la serie<span style="color:red">*</span></label>
+                  <input type="text" class="form-control requerido" id="codigo_serie" name="codigo_serie">
               </div>
 
               <div class="form-group">
-                <label>Nombre de la Serie</label>
-                <input type="text" class="form-control" id="nombre_serie" name="nombre_serie">
+                <label>Nombre de la Serie<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_serie" name="nombre_serie">
               </div>
             </div>
 

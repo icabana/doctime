@@ -400,9 +400,9 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
-                            <th style='background-color:lavender; '></th>
-                            <th style='background-color:lavender; '></th>                            
-                            <th style='background-color:lavender; width:15px'></th>
+                            <th style='background-color:lavender; width:20px '></th>
+                            <th style='background-color:lavender; width:20px '></th>                            
+                            <th style='background-color:lavender; width:20px'></th>
                         </tr>
                     </thead>
                 <tbody>
@@ -444,19 +444,27 @@ function enviar_bandeja_entrante2() {
 
                     <td class="mailbox-name">
                         
-                            <?php echo utf8_encode($entrante['nombre_tercero']); ?>
+                            <?php echo $entrante['nombre_tercero']; ?>
                         
                     </td>
                     <td class="mailbox-name">
                         
-                            <?php echo utf8_encode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']); ?>
+                            <?php echo $entrante['nombres_empleado']." ".$entrante['apellidos_empleado']; ?>
                         
                     </td>
 
                     <td class="mailbox-subject">
-                        <?php echo utf8_encode(substr($entrante['asunto_entrante'], 0, 35))."..."; ?>
+                        <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
                     </td>
-                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+
+                    <?php
+                        $adjuntos = 0;
+                        if($entrante['numerofolios_entrante'] != "" && $entrante['numerofolios_entrante'] != 0){
+                            $adjuntos = $entrante['numerofolios_entrante'];
+                        }
+                    ?>    
+
+                    <td class="mailbox-attachment"><?php echo $adjuntos." ";  ?><i class="fas fa-paperclip"></i></td>
 
 
                     <td class="mailbox-date"><?php echo $dia; ?></td>

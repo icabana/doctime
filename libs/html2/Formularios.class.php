@@ -14,7 +14,7 @@ class Formularios{
 	    $Lista = new ListaDesplegable();
             
         return $Lista->crear(
-            $datos, utf8_encode($campoTexto), $campoValor, 
+            $datos, $campoTexto, $campoValor, 
             $id_lista, $option, 
             $onclick, $onchange, 
             $estilo, $multiple,$textoDefecto

@@ -79,9 +79,9 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['codigo_serie']." - ".$items['nombre_serie'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['codigo_subserie'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_subserie'])) . "</td>";
+                            echo "<td>" . $items['codigo_serie']." - ".$items['nombre_serie'] . "</td>";
+                            echo "<td>" . $items['codigo_subserie'] . "</td>";
+                            echo "<td>" . $items['nombre_subserie'] . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_subserie(" . $items['id_subserie'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

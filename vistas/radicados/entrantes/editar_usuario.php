@@ -472,9 +472,9 @@ $froms = new Formularios();
                             echo "<tr>";
 
                             echo "<td>" . $cont . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['accion_trazabilidad'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombres_entrante'] . " " . $items['apellidos_entrante'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['fecha_trazabilidad'])) . "</td>";
+                            echo "<td>" . strtolower($items['accion_trazabilidad']) . "</td>";
+                            echo "<td>" . strtolower($items['nombres_entrante'] . " " . $items['apellidos_entrante'])) . "</td>";
+                            echo "<td>" . strtolower($items['fecha_trazabilidad']) . "</td>";
 
 
                             echo "</tr>";

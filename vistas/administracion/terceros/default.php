@@ -82,9 +82,9 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['codigo_tipodocumento']." ".$items['documento_tercero'])) . "</td>";
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tercero'])) . "</td>";                            
-                            echo "<td>" . utf8_encode(strtolower($items['direccion_tercero']." ".$items['ciudad_tercero'])) . "</td>";
+                            echo "<td>" . $items['codigo_tipodocumento']." ".$items['documento_tercero'] . "</td>";
+                            echo "<td>" . $items['nombre_tercero'] . "</td>";                            
+                            echo "<td>" . $items['direccion_tercero']." ".$items['ciudad_tercero'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_tercero(" . $items['id_tercero'] . ");' 

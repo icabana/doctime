@@ -63,7 +63,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nick_usuario'])) . "</td>";
+                            echo "<td>" . $items['nick_usuario'] . "</td>";
 
                             if ($items['estado_usuario'] == '1') {
                                 echo "<td>Activo</td>";
@@ -71,7 +71,7 @@
                                 echo "<td>Inactivo</td>";
                             }
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_rol'])) . "</td>";
+                            echo "<td>" . $items['nombre_rol'] . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_usuario(" . $items['id_usuario'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

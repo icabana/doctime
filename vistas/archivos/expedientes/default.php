@@ -83,7 +83,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_expediente'])) . "</td>";
+                            echo "<td>" . $items['nombre_expediente'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_expediente(" . $items['id_expediente'] . ");' 

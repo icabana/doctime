@@ -49,7 +49,7 @@ $tabla_documentos = "
               <a target="_blank"  href="'.$path."/".$nombre_archivo.'">
                 <span class="mailbox-attachment-icon">'.$icono_archivo.'</span>
                 <div class="mailbox-attachment-info">
-                  <a target="_blank" href="'.$path."/".$nombre_archivo.'" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '.utf8_encode(substr( $valor['nombre_documento'],0,22)).'</a>
+                  <a target="_blank" href="'.$path."/".$nombre_archivo.'" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '.substr( $valor['nombre_documento'],0,22).'</a>
                   <span class="mailbox-attachment-size">
                       <a href="#"  onclick="abrir_upload_archivo('.$valor["id_documento"].', \''.$valor["nombre_documento"].'\'); return false;">Reemplazar Archivo</a>
                     <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-download"></i></a>
@@ -70,7 +70,7 @@ $tabla_documentos = "
               <a target="_blank" >
               <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#"  data-toggle="modal" data-target="#exampleModal5_editar_entrante"  ><span class="mailbox-attachment-icon"><i class="fa fa-upload"></i></span></a>
                 <div class="mailbox-attachment-info">
-                <i class="fa fa-paperclip"></i> '.utf8_encode(substr( $valor['nombre_documento'],0,22)).'
+                <i class="fa fa-paperclip"></i> '.substr( $valor['nombre_documento'],0,22).'
                   <span class="mailbox-attachment-size">
                       <a onclick="modificar_nombre_archivo(\''.$valor["nombre_documento"].'\'); return false;" href="#" data-toggle="modal" data-target="#exampleModal5_editar_entrante" >Adjuntar Archivo</a>
                     <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-upload"></i></a>
@@ -107,8 +107,6 @@ $tabla_documentos = "
           </ul>
       </a>
     </div>';
-
-  //  $ver_upload = "  <a href='#' title='SUBIR ARCHIVO' onclick='abrir_upload_archivo(".$valor["id_documento"].", \"".utf8_encode($valor["nombre_documento"])."\"); return false;'><img alt='' src='imagenes/botones/subir.png' width='26px'  /></a>   ";
 
     $tabla_documentos .= "</div";    
                     

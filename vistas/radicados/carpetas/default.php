@@ -83,7 +83,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_carpeta'])) . "</td>";
+                            echo "<td>" . $items['nombre_carpeta'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_carpeta(" . $items['id_carpeta'] . ");' 

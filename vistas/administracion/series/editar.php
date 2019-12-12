@@ -1,6 +1,10 @@
 <script type="text/javascript">
   function editar_serie() {
 
+    if (!validar_requeridos()) {
+      return 0;
+    }
+
     var datos = $('#formSeries').serialize();
 
     ejecutarAccion(
@@ -53,17 +57,17 @@ $froms = new Formularios();
               <div class="card-body">
 
               <div class="form-group">
-                  <label>C&oacute;digo de la Serie</label>
+                  <label>C&oacute;digo de la Serie<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="codigo_serie" name="codigo_serie" 
+                  <input type="text" class="form-control requerido" id="codigo_serie" name="codigo_serie" 
                         value="<?php echo $datos['codigo_serie']; ?>">
                 </div>
 
                 <div class="form-group">
-                  <label>Nombre de la Serie</label>
+                  <label>Nombre de la Serie<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="nombre_serie" name="nombre_serie" 
-                        value="<?php echo utf8_encode($datos['nombre_serie']); ?>">
+                  <input type="text" class="form-control requerido" id="nombre_serie" name="nombre_serie" 
+                        value="<?php echo $datos['nombre_serie']; ?>">
                 </div>
               </div>
 

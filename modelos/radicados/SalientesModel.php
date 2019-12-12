@@ -164,8 +164,8 @@ class SalientesModel extends ModelBase {
                                 '".$destinatario_saliente."',
                                 '".$fecharadicado_saliente."',
                                 '".$numerofolios_saliente."',
-                                '".utf8_decode($descripcionfolios_saliente)."',
-                                '".utf8_decode($asunto_saliente)."',
+                                '".$descripcionfolios_saliente."',
+                                '".$asunto_saliente."',
                                 '".$tiporadicado_saliente."'
                             );";
        
@@ -191,8 +191,8 @@ class SalientesModel extends ModelBase {
                         destinatario_saliente = '". $destinatario_saliente ."',
                         fecharadicado_saliente = '". $fecharadicado_saliente ."',
                         numerofolios_saliente = '". $numerofolios_saliente ."',
-                        descripcionfolios_saliente = '". utf8_decode($descripcionfolios_saliente) ."',
-                        asunto_saliente = '". utf8_decode($asunto_saliente) ."',
+                        descripcionfolios_saliente = '". $descripcionfolios_saliente ."',
+                        asunto_saliente = '". $asunto_saliente ."',
                         tiporadicado_saliente = '". $tiporadicado_saliente ."'
 
                     WHERE id_saliente = '" . $id_saliente . "'";
@@ -510,7 +510,7 @@ return $this->modificarRegistros($query);
             )
             VALUES(
                 '".$radicado_trazabilidad."',
-                '".utf8_decode($accion_trazabilidad)."',
+                '".$accion_trazabilidad."',
                 '".date('Y-m-d H:i:s')."',
                 '".$_SESSION['id_empleado']."'
             );";

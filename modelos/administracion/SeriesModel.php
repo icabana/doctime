@@ -42,8 +42,8 @@ class SeriesModel extends ModelBase {
                                 nombre_serie
                             )
                             VALUES(
-                                '".utf8_decode($codigo_serie)."',
-                                '".utf8_decode($nombre_serie)."'
+                                '".$codigo_serie."',
+                                '".$nombre_serie."'
                             );";
        
         return $this->crear_ultimo_id($query);       
@@ -56,8 +56,8 @@ class SeriesModel extends ModelBase {
                     $nombre_serie
                 ) {
         
-        $query = "  UPDATE series SET   codigo_serie = '". utf8_decode($codigo_serie) ."', 
-                                      nombre_serie = '". utf8_decode($nombre_serie) ."'           
+        $query = "  UPDATE series SET   codigo_serie = '". $codigo_serie ."', 
+                                      nombre_serie = '". $nombre_serie ."'           
                     WHERE id_serie = '" . $id_serie . "'";
        
         return $this->modificarRegistros($query);

@@ -38,7 +38,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tiporadicado'])) . "</td>";
+                            echo "<td>" . strtolower($items['nombre_tiporadicado']) . "</td>";
                            
                             echo "<td>" . $numero . "</td>";
 

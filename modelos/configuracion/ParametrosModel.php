@@ -58,8 +58,8 @@ class ParametrosModel extends ModelBase {
                         valor_parametro
                     )
                     VALUES(
-                        '".utf8_decode($nombre_parametro)."',
-                        '".utf8_decode($valor_parametro)."'
+                        '".$nombre_parametro."',
+                        '".$valor_parametro."'
                     );";
 
         return $this->crear_ultimo_id($query);       
@@ -71,8 +71,8 @@ class ParametrosModel extends ModelBase {
         
         $query = "  UPDATE parametros             
 
-                    SET nombre_parametro = '".utf8_decode($nombre_parametro)."', 
-                        valor_parametro = '".utf8_decode($valor_parametro)."' 
+                    SET nombre_parametro = '".$nombre_parametro."', 
+                        valor_parametro = '".$valor_parametro."' 
 
                     WHERE id_parametro = '".$id_parametro."'";
                 

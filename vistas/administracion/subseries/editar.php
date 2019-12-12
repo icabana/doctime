@@ -63,13 +63,13 @@ $froms = new Formularios();
               <div class="col-md-6">
                 <label>C&oacute;digo de la Subserie<span style="color:red">*</span></label>
                 <input type="text" class="form-control requerido" id="codigo_subserie" name="codigo_subserie"
-                value="<?php echo utf8_encode($datos['codigo_subserie']); ?>">
+                value="<?php echo $datos['codigo_subserie']; ?>">
               </div>
 
               <div class="col-md-6">
                 <label>Nombre del Subserie<span style="color:red">*</span></label>
                 <input type="text" class="form-control requerido" id="nombre_subserie" name="nombre_subserie"
-                value="<?php echo utf8_encode($datos['nombre_subserie']); ?>">
+                value="<?php echo $datos['nombre_subserie']; ?>">
               </div>
               </div>
 
@@ -79,13 +79,13 @@ $froms = new Formularios();
               <div class="col-md-3">
                 <label>Años Archivo Gestion</label>
                 <input type="text" class="form-control" id="tiempogestion_subserie" name="tiempogestion_subserie"
-                value="<?php echo $datos['tiempogestion_subserie']; ?>">
+                value="<?php echo $datos['tiempogestion_subserie']; ?>" onkeypress="return no_numeros(event)">
               </div>
 
               <div class="col-md-3">
                 <label>Años Archivo Central</label>
                 <input type="text" class="form-control" id="tiempocentral_subserie" name="tiempocentral_subserie"
-                value="<?php echo $datos['tiempocentral_subserie']; ?>">
+                value="<?php echo $datos['tiempocentral_subserie']; ?>" onkeypress="return no_numeros(event)">
               </div>
               
               <div class="col-md-6">

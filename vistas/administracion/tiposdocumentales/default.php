@@ -22,7 +22,7 @@
 
     function eliminar_tipodocumental(id_tipodocumental) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tipodocumental2(" + id_tipodocumental + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar el el tipo Documental?", "eliminar_tipodocumental2(" + id_tipodocumental + "); ");
 
     }
 
@@ -80,7 +80,7 @@
 
                             echo "<tr>";
 
-                            echo "<td>" . utf8_encode(strtolower($items['nombre_tipodocumental'])) . "</td>";
+                            echo "<td>" . $items['nombre_tipodocumental'] . "</td>";
 
 
                             echo "<td><a href='#'><i onclick='editar_tipodocumental(" . $items['id_tipodocumental'] . ");' 
