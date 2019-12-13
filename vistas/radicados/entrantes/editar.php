@@ -269,11 +269,23 @@ function cambiar_estado2_editar(data) {
 
 
   function nueva_bitacora_editar2(data) {
-
-      mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+    actualizar_vista_trazabilidad();
+      mensaje_alertas("success", "Bitacora almacenada con Exito", "center");
    
   }
 
+
+  function actualizar_vista_trazabilidad() {
+
+        ejecutarAccion(
+            'radicados',
+            'Entrantes',
+            'actualizarTrazabilidad',
+            'id_entrante='+$("#id_entrante").val(),
+            "$('#vista_trazabilidad').html(data); "
+
+        );
+  }
 
 
     
@@ -551,38 +563,9 @@ $froms = new Formularios();
 
                     <div id="vista_trazabilidad">
 
-                      <table id="tabla_trazabilidad" class="table table-hover table-striped">
-                        <thead>
-                          <tr>
-                            <th style='background-color:lavender'>No.</th>
-                            <th style='background-color:lavender; '>Usuario</th>
-                            <th style='background-color:lavender'>Acci&oacute;n</th>
-                            <th style='background-color:lavender; '>Fecha</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-
-                          <?php
-
-                          $cont = 1;
-                          foreach ($trazabilidad as $NM => $items) {
-
-                            echo "<tr>";
-
-                            echo "<td>" . $cont . "</td>";
-                            echo "<td>" . strtolower($items['nombres_empleado'] . " " . $items['apellidos_empleado']) . "</td>";
-                            echo "<td>" . strtolower($items['accion_trazabilidad']) . "</td>";
-                            echo "<td>" . strtolower($items['fecha_trazabilidad']) . "</td>";
-
-
-                            echo "</tr>";
-
-                            $cont++;
-                          }
-                          ?>
-
-                        </tbody>
-                      </table>
+                      <?php
+                          include("tabla_trazabilidad.php");
+                      ?>
 
                     </div>
 
@@ -696,8 +679,8 @@ $froms = new Formularios();
         </div>
         <div class="modal-body">
           <div class="col-md-12">
-            <label>Agregar Bitacora</label>
-            <textarea id="bitacora_entrante_editar" name="bitacora_entrante_editar" cols="32" rows="4"></textarea>
+            <label>Agregar Bitacora</label><br>
+            <textarea id="bitacora_entrante_editar" name="bitacora_entrante_editar" cols="60" rows="4"></textarea>
           </div>
         </div>
         <div class="modal-footer">

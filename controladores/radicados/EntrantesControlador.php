@@ -279,13 +279,13 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("EntrantesModel.php");
         $EntrantesModel = new EntrantesModel();         
         $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
-
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
 
         $this->model->cargar("CarpetasModel.php", "radicados");
         $CarpetasModel = new CarpetasModel();
         $carpetas = $CarpetasModel->getTodos();
         
-        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+      
 
 
         $this->model->cargar("EstadosradicadoModel.php", "configuracion");
@@ -321,6 +321,17 @@ class EntrantesControlador extends ControllerBase {
         $id_entrante = $_POST['id_entrante'];
         include 'vistas/radicados/entrantes/tabla_documentos.php';
         echo $tabla_documentos;
+               
+    }
+ 
+    public function actualizarTrazabilidad(){
+
+        $this->model->cargar("EntrantesModel.php");
+        $EntrantesModel = new EntrantesModel();         
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+        include 'vistas/radicados/entrantes/tabla_trazabilidad.php';
+        echo $tabla_trazabilidad;
                
     }
 

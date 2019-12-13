@@ -184,12 +184,8 @@
 
     function nueva_bitacora2(data) {
 
-        if (data == 1) {
-          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-        } else {
-          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
-        }
-
+       mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
+       
     } 
 
 

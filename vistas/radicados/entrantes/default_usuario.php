@@ -155,8 +155,6 @@
 
     function nueva_bitacora() {
 
-   
-
       if($("#bitacora_entrante").val() == ""){
         mensaje_alertas("error", "Debe escribir alguna bitacora", "center");
         return 0;
@@ -184,12 +182,8 @@
 
     function nueva_bitacora2(data) {
 
-        if (data == 1) {
-          mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-        } else {
-          mensaje_alertas("error", "Error al cambiar de carpeta", "center");
-        }
-
+          mensaje_alertas("success", "Bitacora agregada con Exitoso", "center");
+        
     } 
 
 
