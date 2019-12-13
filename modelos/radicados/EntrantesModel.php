@@ -511,7 +511,7 @@ class EntrantesModel extends ModelBase {
                             
                     where trazabilidad_entrantes.radicado_trazabilidad = '".$radicado_trazabilidad."'
                     
-                    order by trazabilidad_entrantes.fecha_trazabilidad";
+                    order by trazabilidad_entrantes.fecha_trazabilidad desc";
         
         $consulta = $this->consulta($query);
         return $consulta;       

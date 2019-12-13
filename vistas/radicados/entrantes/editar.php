@@ -19,12 +19,9 @@
 
   function editar_entrante2(data) {
 
-    if (data == 1) {
       mensaje_alertas("success", "Entrante Registrado Exitosamente", "center");
       cargar_entrantes();
-    } else {
-      mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
-    }
+   
 
   }
 

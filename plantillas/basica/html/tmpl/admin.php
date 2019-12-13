@@ -69,7 +69,11 @@
     $EntrantesModel = new EntrantesModel();   
 
     include("modelos/radicados/SalientesModel.php");
-    $SalientesModel = new SalientesModel();   
+    $SalientesModel = new SalientesModel();    
+    
+    include("modelos/administracion/EmpleadosModel.php");
+    $EmpleadosModel = new EmpleadosModel();   
+    
     
     include("modelos/radicados/CarpetasModel.php");
     $CarpetasModel = new CarpetasModel();   
@@ -84,6 +88,8 @@
     }
 
     if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+
+        $empleados = $EmpleadosModel->getTodos();
       $carpetas = $CarpetasModel->getTodos();
     }
     
@@ -164,16 +170,7 @@
 
 
 
-        <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Seleccionar A&ntilde;o
-          <select  class="form-control" name="ano_seleccionado" id="ano_seleccionado">
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-          </select>
-          </a>
-      </li>
+   
       </div>
       </div>
 
@@ -469,6 +466,8 @@
       <?php
           if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
       ?>
+
+        <br> <br> <br>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">

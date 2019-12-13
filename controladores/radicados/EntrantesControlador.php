@@ -331,6 +331,11 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+        
         $this->model->cargar("TercerosModel.php", "administracion");
         $TercerosModel = new TercerosModel();
         $terceros = $TercerosModel->getTodos();   

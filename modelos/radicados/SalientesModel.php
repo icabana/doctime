@@ -73,7 +73,7 @@ class SalientesModel extends ModelBase {
                             
                     where trazabilidad_salientes.radicado_trazabilidad = '".$radicado_trazabilidad."'
                     
-                    order by trazabilidad_salientes.fecha_trazabilidad";
+                    order by trazabilidad_salientes.fecha_trazabilidad desc";
         
         $consulta = $this->consulta($query);
         return $consulta;       

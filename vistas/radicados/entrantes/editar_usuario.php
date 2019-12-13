@@ -296,7 +296,7 @@ function enviar_bandeja_entrante_editar2() {
     'Entrantes',
     'enviarBandejaEntrante',
     "radicados=" + $("#id_entrante").val(),
-    ' mensaje_alertas("success", "Enviado a la bandeja de entrada", "center"); cargar_entrantes();'
+    ' mensaje_alertas("success", "Enviado a la bandeja de entrada", "center"); cargar_entrantes_usuario();'
   );
 
 }
