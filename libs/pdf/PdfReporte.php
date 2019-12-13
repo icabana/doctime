@@ -47,7 +47,7 @@ for($i=0;$i<count($data);$i++)
 
 $nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
 
-$h=4*$nb;
+$h=7*$nb;
 
 //Issue a page break first if needed
 
@@ -75,7 +75,7 @@ $this->Rect($x,$y,$w,$h,$style);
 
 //Print the text
 
-$this->MultiCell($w,4,$data[$i],'LTR',$a,$fill);
+$this->MultiCell($w,5,$data[$i],'LTR',$a,$fill);
 
 //Put the position to the right of the cell
 
@@ -207,13 +207,26 @@ return $nl;
                          
 	    $params = Parametros::singleton();
 	    $this->SetFont('Arial','B',10);
-	             
-                        
-	    $this->Image('imagenes/logos/logo.jpg',21,9,12,19);
+	 
             
-            //$this->Image('imagenes/iconos/sistema/logo_50.jpg',320,9,17,17);
+            $this->Cell( 0, 7,utf8_decode("ALCALDÍA DE ARACATACA - MAGDALENA"),0,1,'C');
+    
+            $this->Cell( 0, 7,utf8_decode("OFICINA DE CONTRATACIÓN"),0,1,'C');
+            
+            $this->Cell( 0, 7,utf8_decode("REPORTE DE CONTRATOS"),0,1,'C');
+            
+                         
+	    $this->Image('imagenes/logos/logo.jpg',24,9,35,21);
+            
 	   
 
+            $this->Line(17, 8, 340, 8);
+            $this->Line(17, 32, 340, 32);    
+            
+            $this->Line(17, 8, 17, 32);
+            $this->Line(340, 8, 340, 32);
+             
+            $this->Line(55, 8, 55, 32);
         
             
     $this->Ln();
@@ -222,7 +235,35 @@ return $nl;
 	}
 	
 	function Footer(){
+		$params = Parametros::singleton();
 		
+	  	       $this->SetY(-23);
+$this->SetFont('Arial','I',7);
+
+
+ $this->Cell(0,6, utf8_decode("Por Un Aracataca Líder en Gestión"),0,1,'C');
+
+
+$y = $this->GetY();
+
+ $this->line('50', $y, '300', $y);
+
+
+
+
+	    $this->SetFont('Arial','B',7);
+
+            
+            $datos_contacto = utf8_decode("Teléfono: (57) (5) 4270727 Fax:(57) (5) 4270727 - Alcaldía Municipal de Aracataca Magdalena: 4271518 - Dirección: Calle 9 No 4A-32 Aracataca-Magdalena");
+            
+            $this->Cell(0,4, $datos_contacto,0,1,'C');
+
+
+	    $this->SetFont('Arial','B',7);
+
+            $datos_contacto2 = utf8_decode("Correo electrónico: contactenos@aracataca-magdalena.gov.co - Horario de atención: Lunes A Viernes De 8 A.M a 12 P.M y de 2 P.M a 6 P.M");
+            
+            $this->Cell(0,4, $datos_contacto2,0,0,'C');
 
 
 	}   

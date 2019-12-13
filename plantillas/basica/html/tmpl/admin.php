@@ -384,7 +384,7 @@
                   <p>Por Dependencia </p>
                 </a>
               </li>
-              </ul>            
+            </ul>            
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="radicados_tiporadicado();" class="nav-link">
@@ -392,13 +392,8 @@
                   <p>Por Tipo de Radicado </p>
                 </a>
               </li>
-            </ul>
-           
+            </ul>           
           </li>
-
-
-
-
           
 
           <li class="nav-item has-treeview">
@@ -413,15 +408,11 @@
               <li class="nav-item">
                 <a href="#" onclick="cargarReportes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ver Reporte</p>
+                  <p>Radicados de Entrada</p>
                 </a>
               </li>
-            </ul>
-           
-           
+            </ul>    
           </li>
-
-
 
 
          <?php
@@ -429,15 +420,10 @@
          ?>
 
 
-
-
-
-
           <?php
             if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
           ?>
 
-       
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes_usuario();" class="nav-link">

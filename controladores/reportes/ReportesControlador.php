@@ -38,10 +38,12 @@ class ReportesControlador extends ControllerBase {
     
     public function generarReporteEntrantes(){
          
-        $this->model->cargar("EntrantesModel.php", "entrantes");
+        $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
         
-        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['modalidad']);
+        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha(
+            $_POST['estado'], $_POST['fecha1'], $_POST['fecha2']
+        );
                  
         include("vistas/reportes/pdf_reporte.php");   
        
@@ -56,7 +58,7 @@ class ReportesControlador extends ControllerBase {
     
     public function generarReporteEntrantesExcel(){
          
-        $this->model->cargar("EntrantesModel.php", "entrantes");
+        $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
         
         $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['modalidad']);
@@ -139,10 +141,10 @@ class ReportesControlador extends ControllerBase {
     
     public function cargarReporte(){
          
-        $this->model->cargar("EntrantesModel.php", "entrantes");
+        $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
         
-        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['modalidad']);
+        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2']);
               
         include 'vistas/reportes/tabla_entrantes.php';
           

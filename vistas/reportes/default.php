@@ -3,9 +3,11 @@
 function generar_reporte_entrantes(){
   
     ejecutarAccion(
-    
-            'reportes', 'Reportes', 'generarReporteEntrantes', "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val()+"&modalidad="+$("#modalidad_reporte").val(), "cargarVisorPDF(data); " 
-        
+      'reportes', 
+      'Reportes', 
+      'generarReporteEntrantes',
+      "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val(), 
+      "cargarVisorPDF(data); "
     );
      
 }
@@ -13,19 +15,23 @@ function generar_reporte_entrantes(){
 function generar_reporte_entrantes_excel(){
   
     ejecutarAccion(
-            
-            'reportes', 'Reportes', 'generarReporteEntrantesExcel', "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val()+"&modalidad="+$("#modalidad_reporte").val(), "$('#salida_reporte_excel').html(data);" 
-        
+      'reportes', 
+      'Reportes', 
+      'generarReporteEntrantesExcel', 
+      "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val(), 
+      "$('#salida_reporte_excel').html(data);"         
     );
      
 }
   
 function cargarReporte(){
-    
+ 
     ejecutarAccion(
-            
-            'reportes', 'Reportes', 'cargarReporte', "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val()+"&modalidad="+$("#modalidad_reporte").val(), "$('#tabla_entrantes_reportes').html(data);" 
-        
+      'reportes',
+      'Reportes',
+      'cargarReporte',
+      "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val(), 
+      "$('#tabla_entrantes_reportes').html(data);"    
     );
      
 }
@@ -33,8 +39,6 @@ function cargarReporte(){
 
 $( document ).ready(function() {
        
-  crearDatePickerfull('#fecha1_reporte');
-  crearDatePickerfull('#fecha2_reporte');
   CrearTabla('tabla_entrantes');
   
 });
@@ -88,9 +92,7 @@ $( document ).ready(function() {
                   
                    
                 <div class="col-md-3">
-                
-                     
-                  
+                                   
                       <button onclick="generar_reporte_entrantes(); return false;" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                       
                   <!-- /.description-block -->
