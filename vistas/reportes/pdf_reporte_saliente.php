@@ -1,6 +1,6 @@
 <?php
        
-    $this->pdf = new PdfReportes(L, 'mm', 'legal');
+    $this->pdf = new PdfReportesSalientes(L, 'mm', 'legal');
 		
     $this->pdf->SetCreator('ISMAEL CABANA');
     $this->pdf->SetAuthor('ISMAEL CABANA');
@@ -13,23 +13,23 @@
 
     $anchos = array('5', '10', '25','35','45', '55', '65', '115', '30');
     
-    $this->pdf->SetMargins("15","10","15");
+    $this->pdf->SetMargins("30","10","30");
     
     
     $this->pdf->AddPage();
     
       
-        $this->pdf->SetWidths(array(30,35,54,54,54,70,25));
+        $this->pdf->SetWidths(array(40,45,64,64,80));
 
-    $this->pdf->SetAligns(array('L','L','L','L','L','L'));
+    $this->pdf->SetAligns(array('L','L','L','L','L'));
 
      $this->pdf->SetFont('Arial','B',9);
 
-        $this->pdf->Cell(30, 10, 'No. de Radicado',1,0, "C", 1);  
-        $this->pdf->Cell(35, 10, 'Fecha de Radicado',1,0, "C", 1);
-        $this->pdf->Cell(54, 10, 'Remitente',1,0, "C", 1);
-        $this->pdf->Cell(54, 10, 'Destinatario',1,0, "C", 1);
-        $this->pdf->Cell(70, 10, 'Asunto',1,0, "C", 1);
+        $this->pdf->Cell(40, 10, 'No. de Radicado',1,0, "C", 1);  
+        $this->pdf->Cell(45, 10, 'Fecha de Radicado',1,0, "C", 1);
+        $this->pdf->Cell(64, 10, 'Remitente',1,0, "C", 1);
+        $this->pdf->Cell(64, 10, 'Destinatario',1,0, "C", 1);
+        $this->pdf->Cell(80, 10, 'Asunto',1,1, "C", 1);
 
        $this->pdf->SetFont('Arial','',9);
                           

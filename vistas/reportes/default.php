@@ -93,7 +93,7 @@ function cargarReporte(){
                 </div>
                 <div class="col-md-3">
                 
-                      <button onclick="generar_reporte_entrantes_excel();" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate Excel</button>
+                      <button onclick="generar_reporte_entrantes_excel();" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Excel</button>
                    
                      <div id="salida_reporte_excel"></div>
                   <!-- /.description-block -->

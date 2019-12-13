@@ -6,7 +6,7 @@ function generar_reporte_salientes(){
       'reportes', 
       'Reportes', 
       'generarReporteSalientes',
-      "fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val(), 
+      "fecha1="+$("#fecha1_reporte_saliente").val()+"&fecha2="+$("#fecha2_reporte_saliente").val(), 
       "cargarVisorPDF(data); "
     );
      
@@ -18,14 +18,14 @@ function generar_reporte_salientes_excel(){
       'reportes', 
       'Reportes', 
       'generarReporteSalientesExcel', 
-      "estado="+$("#estado_reporte").val()+"&fecha1="+$("#fecha1_reporte").val()+"&fecha2="+$("#fecha2_reporte").val(), 
-      "$('#salida_reporte_excel').html(data);"         
+      "fecha1="+$("#fecha1_reporte_saliente").val()+"&fecha2="+$("#fecha2_reporte_saliente").val(), 
+      "$('#salida_reporte_excel_salientes').html(data);"         
     );
      
 }
   
 function cargarReporteSaliente(){
- 
+
     ejecutarAccion(
       'reportes',
       'Reportes',
@@ -65,17 +65,16 @@ function cargarReporteSaliente(){
                 </div>
                   
                    
-                <div class="col-md-3">
-                                   
+                <div class="col-md-3">                                   
                       <button onclick="generar_reporte_salientes(); return false;" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                       
                   <!-- /.description-block -->
                 </div>
                 <div class="col-md-3">
                 
-                      <button onclick="generar_reporte_salientes_excel();" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate Excel</button>
+                      <button onclick="generar_reporte_salientes_excel();" class="btn btn-success pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Excel</button>
                    
-                     <div id="salida_reporte_excel"></div>
+                     <div id="salida_reporte_excel_salientes"></div>
                   <!-- /.description-block -->
                 </div>
   

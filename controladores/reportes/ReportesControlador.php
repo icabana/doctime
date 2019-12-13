@@ -90,12 +90,28 @@ class ReportesControlador extends ControllerBase {
         
         $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['modalidad']);
       
-        include("vistas/reportes/reporte_excel.php");        
+        include("vistas/reportes/reporte_excel_entrantes.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
+        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_entrantes.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
           
     }
     
+    
+    public function generarReporteSalientesExcel(){
+         
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();     
+        
+        $salientes = $SalientesModel->getSalientesPorEstadoyFecha(
+            $_POST['fecha1'], 
+            $_POST['fecha2']
+        );
+      
+        include("vistas/reportes/reporte_excel_salientes.php");        
+           
+        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_salientes.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
+          
+    }
     
     
     
@@ -185,7 +201,7 @@ class ReportesControlador extends ControllerBase {
         
         $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2']);
               
-        include 'vistas/reportes/tabla_entrantes.php';
+        include 'vistas/reportes/tabla_salientes.php';
           
     }
     

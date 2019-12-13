@@ -52,51 +52,51 @@ class SalientesModel extends ModelBase {
         $consulta_fecha = "";
         
        if($fecha1 != "" && $fecha2 != ""){           
-           $consulta_fecha = "and salientes.fecharadicado_saliente BETWEEN '".$fecha1."' AND  '".$fecha2."'" ;
+           $consulta_fecha = " and salientes.fecharadicado_saliente BETWEEN '".$fecha1."' AND  '".$fecha2."'" ;
         }else{           
            $consulta_fecha = " " ;           
-       }
-             
+       }             
                
-     $query = " salientes.id_saliente, 
-                salientes.numero_saliente,
-                salientes.remitente_saliente,
-                salientes.destinatario_saliente,
-                salientes.fecharadicado_saliente,
-                salientes.numerofolios_saliente,
-                salientes.descripcionfolios_saliente,
-                salientes.asunto_saliente,
-                salientes.tiporadicado_saliente,
+        $query = " select 
+                    salientes.id_saliente, 
+                    salientes.numero_saliente,
+                    salientes.remitente_saliente,
+                    salientes.destinatario_saliente,
+                    salientes.fecharadicado_saliente,
+                    salientes.numerofolios_saliente,
+                    salientes.descripcionfolios_saliente,
+                    salientes.asunto_saliente,
+                    salientes.tiporadicado_saliente,
 
-                empleados.id_empleado, 
-                empleados.documento_empleado, 
-                empleados.tipodocumento_empleado, 
-                empleados.nombres_empleado, 
-                empleados.apellidos_empleado, 
-                empleados.telefono_empleado, 
-                empleados.celular_empleado, 
-                empleados.correo_empleado, 
-                empleados.direccion_empleado, 
-                empleados.ciudad_empleado,
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
 
-                terceros.id_tercero, 
-                terceros.documento_tercero, 
-                terceros.tipodocumento_tercero, 
-                terceros.nombre_tercero,  
-                terceros.telefono_tercero, 
-                terceros.celular_tercero, 
-                terceros.correo_tercero, 
-                terceros.direccion_tercero, 
-                terceros.ciudad_tercero
-            
-                from salientes 
-                    left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                    left join empleados ON salientes.remitente_saliente = empleados.id_empleado
-
-                where salientes.id_saliente != '' ".$consulta_fecha;
+                    terceros.id_tercero, 
+                    terceros.documento_tercero, 
+                    terceros.tipodocumento_tercero, 
+                    terceros.nombre_tercero,  
+                    terceros.telefono_tercero, 
+                    terceros.celular_tercero, 
+                    terceros.correo_tercero, 
+                    terceros.direccion_tercero, 
+                    terceros.ciudad_tercero
+                
+                    from salientes 
+                            left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
+                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado
+                        
+                     where salientes.id_saliente != '' ".$consulta_fecha;
         
-                $consulta = $this->consulta($query);
-               return $consulta;       
+        $consulta = $this->consulta($query);
+        return $consulta;       
                
     }
 
