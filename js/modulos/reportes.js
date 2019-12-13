@@ -32,7 +32,7 @@ function cargarReportesSalida(){
 
 
 
-function cargarReportesContratistas(){
+function cargarReportesEmpleados(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -44,11 +44,11 @@ function cargarReportesContratistas(){
     
    abrirVentanaContenedorTabla(
               'tabla_entrantes',
-            'reportes', 'Reportes', 'cargarTablaReportesContratistas', '',"validar_sesion();")
+            'reportes', 'Reportes', 'cargarTablaReportesEmpleados', '',"validar_sesion();")
         
 }
 
-function cargarReportesEmpresas(){
+function cargarReportesTerceros(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -60,6 +60,6 @@ function cargarReportesEmpresas(){
     
     abrirVentanaContenedorTabla(
               'tabla_entrantes',
-            'reportes', 'Reportes', 'cargarTablaReportesEmpresas', '',"validar_sesion();")
+            'reportes', 'Reportes', 'cargarTablaReportesTerceros', '',"validar_sesion();")
         
 }

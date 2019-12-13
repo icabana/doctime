@@ -420,6 +420,20 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="#" onclick="cargarReportesEmpleados();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Empleados</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargarReportesTerceros();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Terceros</p>
+                </a>
+              </li>
+
 
             </ul>    
           </li>

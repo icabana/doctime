@@ -25,14 +25,14 @@ class ReportesControlador extends ControllerBase {
                         
     }   
     
-    public function cargarTablaReportesContratistas() {
+    public function cargarTablaReportesEmpleados() {
         
-        $this->model->cargar("ContratistasModel.php", "configuracion");
-        $ContratistasModel = new ContratistasModel();
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
 
-        $contratistas = $ContratistasModel->getTodosContratistas();
+        $empleados = $EmpleadosModel->getTodos();
         
-        include 'vistas/reportes/default_contratistas.php';
+        include 'vistas/reportes/default_empleados.php';
                         
     }   
     
@@ -115,16 +115,16 @@ class ReportesControlador extends ControllerBase {
     
     
     
-    public function generarReporteContratistas(){
+    public function generarReporteEmpleados(){
          
-        $this->model->cargar("ContratistasModel.php", "configuracion");
-        $ContratistasModel = new ContratistasModel();
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
 
-        $contratistas = $ContratistasModel->getTodosContratistas();
+        $empleados = $EmpleadosModel->getTodosEmpleados();
                  
-        include("vistas/reportes/pdf_reporte_contratistas.php");   
+        include("vistas/reportes/pdf_reporte_empleados.php");   
        
-        $dirPdf = "archivos/reportes/pdf_reporte_contratistas.pdf";
+        $dirPdf = "archivos/reportes/pdf_reporte_empleados.pdf";
 
         $this->pdf->Output(''.$dirPdf.'');
 
@@ -132,17 +132,18 @@ class ReportesControlador extends ControllerBase {
         
     }
     
-    
-    public function generarReporteContratistasExcel(){
-         
-        $this->model->cargar("ContratistasModel.php", "configuracion");
-        $ContratistasModel = new ContratistasModel();
 
-        $contratistas = $ContratistasModel->getTodosContratistas();
+    
+    public function generarReporteEmpleadosExcel(){
+         
+        $this->model->cargar("EmpleadosModel.php", "configuracion");
+        $EmpleadosModel = new EmpleadosModel();
+
+        $empleados = $EmpleadosModel->getTodosEmpleados();
       
-        include("vistas/reportes/reporte_excel_contratistas.php");        
+        include("vistas/reportes/reporte_excel_empleados.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_contratistas.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
+        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_empleados.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
           
     }
     
