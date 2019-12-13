@@ -9,7 +9,8 @@ class CarpetasModel extends ModelBase {
                     carpetas.usuario_carpeta,
                     carpetas.nombre_carpeta
                 
-                    from carpetas";
+                    from carpetas
+                    where carpetas.usuario_carpeta = '".$_SESSION['id_usuario']."'";
         
         $consulta = $this->consulta($query);
         return $consulta;       

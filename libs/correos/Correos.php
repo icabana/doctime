@@ -8,14 +8,14 @@ class Correos extends PHPMailer{
 		$params = Parametros::singleton();
 		                
                 $this->IsSMTP();
-                $this->SMTPSecure = 'ssl';
+                $this->SMTPSecure = 'tls';
                 $this->Host = 'smtp.gmail.com';
                 $this->SMTPAuth= true;
-                $this->Port = 25;                 
-	        $this->From = "sistema.viceinvestigacion@gmail.com";
+                $this->Port = 465;                 
+	        $this->From = "ismael.cabana@gmail.com";
                 $this->FromName = utf8_decode("SIVI");
-                 $this->Username = "sistema.viceinvestigacion@gmail.com";
-                $this->Password = "Ismael777880428";
+                 $this->Username = "ismael.cabana@gmail.com";
+                $this->Password = "L0g1nT1m301012020*";
 	    	$this->AltBody = "Enfocados en la Calidad";
                
 	    }

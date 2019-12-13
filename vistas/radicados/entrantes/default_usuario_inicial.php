@@ -295,6 +295,10 @@ function enviar_bandeja_entrante2() {
 
 }
 
+$(document).ready(function() {
+        CrearTabla('tabla_entrantes');
+});
+
 </script>
 
 <?php

@@ -12,7 +12,7 @@
       'Entrantes',
       'insertar',
       datos,
-      'insertar_entrante2(data)'
+      'alert(data); insertar_entrante2(data)'
     );
 
   }

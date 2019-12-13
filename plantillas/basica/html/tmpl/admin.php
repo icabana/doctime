@@ -84,7 +84,7 @@
     }
 
     if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
-
+      $carpetas = $CarpetasModel->getTodos();
     }
     
  
@@ -104,12 +104,20 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
+
+      <?php
+            if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
+          ?>
       <li class="nav-item d-none d-sm-inline-block">
       <a onclick="nuevo_radicado_entrante();" href="#" class="nav-link">Nuevo Radicado de Entrada</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a onclick="nuevo_radicado_saliente();" href="#" class="nav-link">Nuevo Radicado de Salida</a>
       </li>
+
+      <?php
+            }   
+                      ?>
       
     </ul>
 
@@ -404,16 +412,7 @@
             if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
           ?>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Radicados
-                <i class="fas fa-angle-right right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+       
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes_usuario();" class="nav-link">
@@ -427,7 +426,7 @@
                 foreach($carpetas as $carpeta){
               ?>
               <li class="nav-item">
-                <a  href="#" onclick="cargar_entrantes_carpeta(<?php echo $carpeta['id_carpeta']; ?>);" class="nav-link">
+                <a  href="#" onclick="cargar_entrantes_carpeta_usuarios(<?php echo $carpeta['id_carpeta']; ?>);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p><?php echo $carpeta['nombre_carpeta']; ?></p>
                 </a>
@@ -436,31 +435,14 @@
                 }
               ?>
 
-
-
-            </ul>
-          </li>
-
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Configuraci&oacute;n
-                <i class="fas fa-angle-right right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_carpetas();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Carpetas</p>
+                  <p>Nueva Carpeta</p>
                 </a>
               </li>
-            </ul>
-          </li>
+         
 
 
           <?php
@@ -479,18 +461,7 @@
     
     <!-- Main content -->
     <section id="cuerpo"  class="content">
-      <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Estad&iacute;sticas</h1>
-          </div><!-- /.col -->
-         
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+   
 
 
 
@@ -576,7 +547,7 @@
 
             $entrantes = $EntrantesModel->getTodosUsuario();
 
-            include("vistas/radicados/entrantes/default_usuario.php");
+            include("vistas/radicados/entrantes/default_usuario_inicial.php");
      
           }
         ?>

@@ -22,7 +22,7 @@
 
     if (data == 1) {
       mensaje_alertas("success", "Carpeta Editado Exitosamente", "center");
-      cargar_carpetas();
+      location.reload();
     } else {
       mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
     }

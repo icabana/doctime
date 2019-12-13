@@ -195,6 +195,29 @@ class EntrantesControlador extends ControllerBase {
     }    
 
 
+
+    public function index_carpeta_usuarios() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosPorCarpeta($_POST['id_carpeta']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default_usuario.php';
+                        
+    }    
+
     public function nuevo(){
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
@@ -447,6 +470,39 @@ class EntrantesControlador extends ControllerBase {
                 $resp,
                 "Registró el Radicado No. ".$numero_entrante
             );    
+
+            $radicado = $EntrantesModel->getDatos($resp);
+
+            
+            $mensaje = "Se le ha asignado un nuevo radicado, el cual se detalla a continuación: <br><br>";             
+
+
+
+            $mensaje .= "Radicado No.: ". $radicado['numero_radicado']."<br>";
+            $mensaje .= "Remitente: ".$radicado['nombre_tercero']."<br>";
+            $mensaje .= "Destinatario: ". $radicado['nombres_empleado']." ".$radicado['apellidos_empleado']."<br>";
+         
+            
+            $mensaje .= "<br><br><br><br>"; 
+
+          
+
+            
+            $mensaje .= "<center>Sistema Estratégico de Transporte Público de Santa Marta S.A.S.</center><br>";      
+            $mensaje .= "<center>PBX. (57-5) 4317777 </center><br>";      
+            $mensaje .= "<center>Cl. 24 No. 3-99, Edificio Banco de Bogotá – Oficina 1202</center><br>";      
+            $mensaje .= "<center>www.setpsantamarta.gov.co</center><br>";    
+
+
+
+            $correo1 = "icabana@solati.com.co";
+            $nombre1 = "Ismael";
+
+
+
+            //echo $this->EnviarCorreo($mensaje, $asunto, $correo1, $nombre1);
+            
+  
 
             echo $resp;
 
@@ -763,5 +819,29 @@ class EntrantesControlador extends ControllerBase {
         
     }
    
+
+    
+    function EnviarCorreo($mensaje, $asunto, $correo1='', $nombre1=''){
+                         
+        $mails = new Correos();
+        
+        if($correo1 != ""){
+            $mails->AddBCC( $correo1, $nombre1 );        
+        }
+           
+                        
+        $mails->Subject = $asunto;          
+        $mails->Body = $mensaje;              
+                 
+        $enviado = $mails->Send();         
+            
+        if($enviado){
+            echo   "EL MENSAJE FUE ENVIADO ".$mails->ErrorInfo;                     
+        }else{
+            echo "NO FUE POSIBLE ENVIAR EL MENSAJE ".$mails->ErrorInfo;             
+        }  
+        
+    }
+
              
  }
