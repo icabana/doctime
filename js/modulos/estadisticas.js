@@ -15,7 +15,7 @@ function radicados_responsable(){
 }
 
 
-function radicados_dependencia(){
+function radicados_dependencias(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();

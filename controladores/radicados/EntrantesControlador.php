@@ -26,6 +26,81 @@ class EntrantesControlador extends ControllerBase {
     }    
 
 
+    
+    public function verRadicadosResponsable() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->verRadicadosResponsable($_POST['id_responsable']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+    
+    
+    public function verRadicadosDependencia() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->verRadicadosDependencia($_POST['id_dependencia']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+    
+    
+    public function verRadicadosTipoRadicado() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->verRadicadosTipoRadicado($_POST['id_tiporadicado']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default.php';
+                        
+    }    
+
+
     public function indexFinalizados() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");

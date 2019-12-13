@@ -134,6 +134,9 @@
   function actualizar_upload_archivo() {
 
     $('form#form_upload').submit();
+    
+    window.open('','_parent',''); 
+   window.close(); 
 
     $('#exampleModal5_editar_entrante').modal('hide');
      $('.modal-backdrop fade show').remove();
@@ -153,8 +156,7 @@
         "$('#vista_soportes').html(data); "
 
     );
-   
-    
+ 
 
   }
 
