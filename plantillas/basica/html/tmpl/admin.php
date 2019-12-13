@@ -396,6 +396,34 @@
            
           </li>
 
+
+
+
+          
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Resportes
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargarReportes();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Reporte</p>
+                </a>
+              </li>
+            </ul>
+           
+           
+          </li>
+
+
+
+
          <?php
             }
          ?>
