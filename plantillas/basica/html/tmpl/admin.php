@@ -405,12 +405,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <a href="#" onclick="cargarReportes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Entrada</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargarReportesSalida();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados de Salida</p>
+                </a>
+              </li>
+
+
             </ul>    
           </li>
 

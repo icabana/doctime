@@ -1,5 +1,5 @@
 <?php
-class PdfReportes extends FPDF{
+class PdfReportesSalientes extends FPDF{
 
     var $widths;
 
@@ -210,7 +210,7 @@ return $nl;
             
             $this->Cell( 0, 7,utf8_decode("SISTEMA ESTRATÉGICO DE TRANSPORTE PÚBLICO"),0,1,'C');    
             $this->Cell( 0, 7,utf8_decode("SANTA MARTA - MAGDALENA"),0,1,'C');            
-            $this->Cell( 0, 7,utf8_decode("REPORTE DE RADICADOS DE ENTRADA"),0,1,'C');
+            $this->Cell( 0, 7,utf8_decode("REPORTE DE RADICADOS DE SALIDA"),0,1,'C');
                          
 	    	$this->Image('imagenes/logos/logo.jpg',22,13,35,16);           
 	   
@@ -232,27 +232,20 @@ return $nl;
 	function Footer(){
 		$params = Parametros::singleton();
 		
-	  	       $this->SetY(-23);
-$this->SetFont('Arial','I',7);
+	  	$this->SetY(-23);
+        $this->SetFont('Arial','I',7);
 
+        $this->Cell(0,6, utf8_decode("Equidad para todos. Primero los niños y las niñas."),0,1,'C');
 
- $this->Cell(0,6, utf8_decode("Equidad para todos. Primero los niños y las niñas."),0,1,'C');
+        $y = $this->GetY();
 
-
-$y = $this->GetY();
-
- $this->line('50', $y, '300', $y);
-
-
-
+        $this->line('50', $y, '300', $y);
 
 	    $this->SetFont('Arial','B',7);
-
             
             $datos_contacto = utf8_decode("Teléfono: (+57) 5 4317777 - Fax: (+57) 5 4317777 - Dirección: Calle 24 No. 3 - 99 Torre Empresarial 4.24 oficina 1202 Santa Marta - Magdalena");
             
             $this->Cell(0,4, $datos_contacto,0,1,'C');
-
 
 	    $this->SetFont('Arial','B',7);
 

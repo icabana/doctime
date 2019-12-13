@@ -37,12 +37,6 @@ function cargarReporte(){
 }
   
 
-$( document ).ready(function() {
-       
-  CrearTabla('tabla_entrantes');
-  
-});
-
 </script>   
 
 
@@ -63,7 +57,7 @@ $( document ).ready(function() {
                 
                 <div class="col-sm-3 border-right">
                   <div class="description-block">
-                      <h5 class="description-header">Estado del Entrante</h5>
+                      <h5 class="description-header">Seleccionar Estado</h5>
                     <span class="description-text">
                         <select onchange="cargarReporte(); return false;" class="form-control" id="estado_reporte" name="estado_reporte">
                             <option value="TODOS">TODOS</option>
@@ -113,14 +107,17 @@ $( document ).ready(function() {
           <!-- /.widget-user -->
         </div> 
 
+
+<div class="table-responsive mailbox-messages" style="padding: 16px">
 <div  class="row" style="padding: 16px" id="tabla_entrantes_reportes">
-                
+               
+ 
                 <?php
                 
                     include 'vistas/reportes/tabla_entrantes.php';
                 
                 ?>
-                
+                  </div>
          </div>
 
 

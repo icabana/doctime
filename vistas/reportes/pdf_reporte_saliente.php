@@ -28,25 +28,21 @@
         $this->pdf->Cell(30, 10, 'No. de Radicado',1,0, "C", 1);  
         $this->pdf->Cell(35, 10, 'Fecha de Radicado',1,0, "C", 1);
         $this->pdf->Cell(54, 10, 'Remitente',1,0, "C", 1);
-        $this->pdf->Cell(54, 10, 'Enviado Por',1,0, "C", 1);
         $this->pdf->Cell(54, 10, 'Destinatario',1,0, "C", 1);
         $this->pdf->Cell(70, 10, 'Asunto',1,0, "C", 1);
-        $this->pdf->Cell(25, 10, 'Estado',1,1, "C", 1);
 
        $this->pdf->SetFont('Arial','',9);
                           
           
-     foreach ($entrantes as $entrante){
+     foreach ($salientes as $saliente){
              
         $this->pdf->Row(
             array(                 
-                $entrante['numero_entrante'],
-                $entrante['fecharadicado_entrante'],
-                utf8_decode($entrante['nombre_tercero']),
-                utf8_decode($entrante['enviadopor_entrante']),
-                utf8_decode($entrante['nombres_empleado']." ".$entrante['apellidos_empleado']),
-                utf8_decode($entrante['asunto_entrante']),
-                $entrante['nombre_estado']   
+                $saliente['numero_saliente'],
+                $saliente['fecharadicado_saliente'],
+                utf8_decode($saliente['nombre_tercero']),
+                utf8_decode($saliente['nombres_empleado']." ".$saliente['apellidos_empleado']),
+                utf8_decode($saliente['asunto_saliente'])
             )
         );
         

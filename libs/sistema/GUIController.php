@@ -40,6 +40,7 @@ class GUIController
         require 'libs/pdf/fpdf/PdfTirillas.php'; //de Documentos
 
         require 'libs/pdf/PdfReporte.php'; //de Reportes
+        require 'libs/pdf/PdfReporteSalientes.php'; //de Reportes
 
         //SE CARGAN LIBRERIAS DE CORREO
         require 'libs/correos/phpmailer/class.phpmailer.php'; //de Correos Electronicos

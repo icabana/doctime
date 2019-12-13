@@ -12,6 +12,18 @@ class ReportesControlador extends ControllerBase {
         include 'vistas/reportes/default.php';
                         
     }   
+
+     
+    public function cargarTablaReportesSalida() {
+        
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();
+
+        $salientes = $SalientesModel->getTodosTodos();
+        
+        include 'vistas/reportes/default_salida.php';
+                        
+    }   
     
     public function cargarTablaReportesContratistas() {
         
@@ -55,6 +67,21 @@ class ReportesControlador extends ControllerBase {
         
     }
     
+    public function generarReporteSalientes(){
+         
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();     
+        
+        $salientes = $SalientesModel->getSalientesPorEstadoyFecha(
+            $_POST['fecha1'], $_POST['fecha2']
+        );
+                 
+        include("vistas/reportes/pdf_reporte_saliente.php");          
+        $dirPdf = "archivos/reportes/pdf_reporte_saliente.pdf";
+        $this->pdf->Output(''.$dirPdf.'');
+        echo "urlRuta=".$dirPdf;
+        
+    }
     
     public function generarReporteEntrantesExcel(){
          
@@ -145,6 +172,18 @@ class ReportesControlador extends ControllerBase {
         $EntrantesModel = new EntrantesModel();     
         
         $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2']);
+              
+        include 'vistas/reportes/tabla_entrantes.php';
+          
+    }
+    
+    
+    public function cargarReporteSaliente(){
+         
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();     
+        
+        $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2']);
               
         include 'vistas/reportes/tabla_entrantes.php';
           
