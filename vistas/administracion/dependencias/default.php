@@ -43,8 +43,8 @@
     }
 </script>
 
-<div class="row">
 
+<div class="row">
 
 <div style="padding:25px" class="box-body table-responsive no-padding">
 

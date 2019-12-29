@@ -400,21 +400,21 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Resportes
+                Reportes
                 <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="#" onclick="cargarReportes();" class="nav-link">
+                <a href="#" onclick="cargar_reporte_entrantes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Entrada</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="#" onclick="cargarReportesSalida();" class="nav-link">
+                <a href="#" onclick="cargar_reporte_salientes();" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Radicados de Salida</p>
                 </a>

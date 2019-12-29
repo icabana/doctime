@@ -2,14 +2,14 @@
 
 class ReportesControlador extends ControllerBase {
     
-    public function cargarTablaReportes() {
+    public function cargarEntrantes() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();
 
         $entrantes = $EntrantesModel->getTodosTodos();
         
-        include 'vistas/reportes/default.php';
+        include 'vistas/reportes/entrantes.php';
                         
     }   
 

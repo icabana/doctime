@@ -1,4 +1,4 @@
-function cargarReportes(){
+function cargar_reporte_entrantes(){
 
   $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
   $('.ui-widget').remove();
@@ -10,11 +10,11 @@ function cargarReportes(){
   
   abrirVentanaContenedorTabla(
       'tabla_reportes',
-      'reportes', 'Reportes', 'cargarTablaReportes', '');    
+      'reportes', 'Reportes', 'cargarEntrantes', '');    
       
 }
 
-function cargarReportesSalida(){
+function cargar_reporte_salientes(){
 
   $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
   $('.ui-widget').remove();

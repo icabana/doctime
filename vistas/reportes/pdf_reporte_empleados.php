@@ -1,6 +1,6 @@
 <?php
        
-    $this->pdf = new PdfReporteEmpleados(L, 'mm', 'legal');
+    $this->pdf = new PdfReportes('L', 'mm', 'legal');
 		
     $this->pdf->SetCreator('ISMAEL CABANA');
     $this->pdf->SetAuthor('ISMAEL CABANA');
@@ -47,7 +47,7 @@ $cont = 1;
                 $empleado['nombres_empleado']." ".$empleado['apellidos_empleado'],
                 $empleado['nombre_tipodocumento']." ".$empleado['documento_empleado'],                
                 $empleado['telefono_empleado'],
-                $empleado['correo_empleado']
+                $empleado['correo_empleado'],
                 $empleado['direccion_empleado'],
                 $empleado['ciudad_empleado']
             )
