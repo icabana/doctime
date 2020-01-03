@@ -2,6 +2,8 @@
 
 class EntrantesControlador extends ControllerBase {
 
+
+
     public function index() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
@@ -16,7 +18,6 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
-
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
@@ -27,6 +28,7 @@ class EntrantesControlador extends ControllerBase {
 
 
     
+
     public function verRadicadosResponsable() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
@@ -41,7 +43,6 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
-
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
@@ -49,6 +50,8 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default.php';
                         
     }    
+
+
 
     
     
@@ -66,7 +69,6 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
-
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
@@ -74,6 +76,8 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default.php';
                         
     }    
+
+
 
     
     
@@ -101,6 +105,9 @@ class EntrantesControlador extends ControllerBase {
     }    
 
 
+
+
+
     public function indexFinalizados() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
@@ -115,7 +122,6 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
-
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
@@ -123,6 +129,9 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default.php';
                         
     }    
+
+
+
 
 
     public function indexArchivados() {
@@ -139,7 +148,6 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
-
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
@@ -147,6 +155,9 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default.php';
                         
     }    
+
+
+
 
     
     public function indexUsuario() {
@@ -170,6 +181,9 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default_usuario.php';
                         
     }    
+
+
+
 
 
     public function index_carpeta() {
@@ -196,6 +210,8 @@ class EntrantesControlador extends ControllerBase {
 
 
 
+
+
     public function index_carpeta_usuarios() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
@@ -217,6 +233,10 @@ class EntrantesControlador extends ControllerBase {
         include 'vistas/radicados/entrantes/default_usuario.php';
                         
     }    
+
+
+
+
 
     public function nuevo(){
 
@@ -258,6 +278,9 @@ class EntrantesControlador extends ControllerBase {
     }
 
          
+    
+    
+    
     public function editar(){
 
         $this->model->cargar("TercerosModel.php", "administracion");
@@ -284,9 +307,6 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("CarpetasModel.php", "radicados");
         $CarpetasModel = new CarpetasModel();
         $carpetas = $CarpetasModel->getTodos();
-        
-      
-
 
         $this->model->cargar("EstadosradicadoModel.php", "configuracion");
         $EstadosradicadoModel = new EstadosradicadoModel();
@@ -304,12 +324,19 @@ class EntrantesControlador extends ControllerBase {
                
     }
          
+
+
+
+
     public function editarArchivo(){
 
         include 'vistas/radicados/entrantes/archivo.php';
                
     }
-         
+    
+    
+
+
     public function actualizarUpload(){
 
         
@@ -324,6 +351,9 @@ class EntrantesControlador extends ControllerBase {
                
     }
  
+
+
+
     public function actualizarTrazabilidad(){
 
         $this->model->cargar("EntrantesModel.php");
@@ -335,7 +365,9 @@ class EntrantesControlador extends ControllerBase {
                
     }
 
-         
+    
+    
+
     public function editarUsuario(){
     
         $this->model->cargar("EmpleadosModel.php", "administracion");
@@ -378,6 +410,9 @@ class EntrantesControlador extends ControllerBase {
     }
 
     
+
+
+
     public function buscarRemitente() {
 
         $this->model->cargar("TercerosModel.php", "administracion");
@@ -387,12 +422,12 @@ class EntrantesControlador extends ControllerBase {
 
         $tabla_terceros = "<table id='tabla_terceros'  class='table table-hover'>
 
-    <thead>
-        <tr>     
-            <th><center>NOMBRE</center></th> 
-        </tr>
-        </thead>
-    <tbody>";
+            <thead>
+                <tr>     
+                    <th><center>NOMBRE</center></th> 
+                </tr>
+                </thead>
+            <tbody>";
 
         foreach ($terceros as $clave => $valor) {
 
@@ -404,12 +439,14 @@ class EntrantesControlador extends ControllerBase {
 
        $tabla_terceros .= "
 
-</tbody></table>";
+            </tbody></table>";
 
         echo $tabla_terceros;
 
-      }
+    }
 
+
+    
       
     
     public function buscarDestinatario() {

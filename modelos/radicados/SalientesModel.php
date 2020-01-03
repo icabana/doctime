@@ -502,8 +502,7 @@ return $this->modificarRegistros($query);
 
     function getNumeroSalientes() {
         
-        $query = "select count(salientes.id_saliente) as numero
-                
+        $query = "select count(salientes.id_saliente) as numero                
                     from salientes";
         
         $consulta = $this->consulta($query);

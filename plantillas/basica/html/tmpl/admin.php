@@ -74,6 +74,11 @@
     include("modelos/administracion/EmpleadosModel.php");
     $EmpleadosModel = new EmpleadosModel();   
     
+    include("modelos/administracion/TercerosModel.php");
+    $TercerosModel = new TercerosModel();   
+    
+    include("modelos/administracion/DependenciasModel.php");
+    $DependenciasModel = new DependenciasModel();   
     
     include("modelos/radicados/CarpetasModel.php");
     $CarpetasModel = new CarpetasModel();   
@@ -85,12 +90,16 @@
         $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados();  
         $numero_salientes = $SalientesModel->getNumeroSalientes();
         $carpetas = $CarpetasModel->getTodos();
+        $empleados = count($EmpleadosModel->getTodos());
+        $terceros = count($TercerosModel->getTodos());
+        $dependencias = count($DependenciasModel->getTodos());
     }
 
     if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
 
         $empleados = $EmpleadosModel->getTodos();
-      $carpetas = $CarpetasModel->getTodos();
+        $carpetas = $CarpetasModel->getTodos();
+
     }
     
  
@@ -123,7 +132,7 @@
 
       <?php
             }   
-                      ?>
+      ?>
       
     </ul>
 
@@ -550,7 +559,9 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Finalizados</span>
+                <span class="info-box-number">
                 <?php echo $numero_entrantes_finalizados; ?>
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -562,8 +573,8 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Salientes</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-text">Radicados Archivados</span>
+                <span class="info-box-number"><?php echo $numero_entrantes_archivados; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -572,6 +583,79 @@
           <!-- /.col -->
         </div> <!-- ./col -->
         </div>
+
+        <br> 
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Radicados Salientes</span>
+                <span class="info-box-number">
+                  <?php echo $numero_salientes; ?>
+                </span>
+              </div>
+
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Dependencias</span>
+                <span class="info-box-number">
+                <?php echo $dependencias; ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+
+                <span class="info-box-text">Empleados</span>
+                <span class="info-box-number">
+                <?php echo $empleados; ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Terceros</span>
+                <span class="info-box-number"><?php echo $terceros; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div> <!-- ./col -->
+        </div>
+
+
         <?php
           }
         ?>

@@ -188,7 +188,13 @@ class ReportesControlador extends ControllerBase {
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
         
-        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2']);
+        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha(
+                            $_POST['estado'], 
+                            $_POST['fecha1'], 
+                            $_POST['fecha2'],
+                            $_POST['remitente'],
+                            $_POST['destinatario']
+                        );
               
         include 'vistas/reportes/tabla_entrantes.php';
           

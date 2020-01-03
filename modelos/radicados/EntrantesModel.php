@@ -423,7 +423,7 @@ class EntrantesModel extends ModelBase {
 
 
 
-    function getEntrantesPorEstadoyFecha($estado_entrante, $fecha1, $fecha2) {
+    function getEntrantesPorEstadoyFecha($estado_entrante, $fecha1, $fecha2, $remitente, $destinatario) {
         
         $consulta_fecha = "";
         
@@ -439,6 +439,18 @@ class EntrantesModel extends ModelBase {
            $consulta_estado = " " ;           
        }else{           
            $consulta_estado =  " and entrantes.estado_entrante = '".$estado_entrante."' ";           
+       }
+        
+       if($remitente == "" || $remitente == "TODOS"){           
+           $consulta_remitente = " " ;           
+       }else{           
+           $consulta_remitente =  " and entrantes.remitente_entrante = '".$remitente."' ";           
+       }
+        
+       if($destinatario == "" || $destinatario == "TODOS"){
+           $consulta_destinatario = " " ;           
+       }else{           
+           $consulta_destinatario =  " and entrantes.destinatario_entrante = '".$destinatario."' ";           
        }
                
      $query = "select 
@@ -491,7 +503,7 @@ class EntrantesModel extends ModelBase {
              left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
              left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
 
-                where entrantes.id_entrante != '' ".$consulta_estado.$consulta_fecha;
+                where entrantes.id_entrante != '' ".$consulta_estado.$consulta_fecha.$consulta_remitente.$consulta_destinatario;
         
                 $consulta = $this->consulta($query);
                return $consulta;       
@@ -1086,7 +1098,7 @@ return $this->modificarRegistros($query);
                 
                     from entrantes 
                     
-                    where estado_radicado = '1'";
+                    where estado_entrante = '1'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
@@ -1101,7 +1113,7 @@ return $this->modificarRegistros($query);
                 
                     from entrantes 
                     
-                    where estado_entante = '2'";
+                    where estado_entrante = '2'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
@@ -1116,7 +1128,7 @@ return $this->modificarRegistros($query);
                 
                     from entrantes 
                     
-                    where ano_entrante = '".$_SESSION['ano']."' and estado_radicado = '3'";
+                    where estado_entrante = '3'";
         
         $consulta = $this->consulta($query);
         if(isset($consulta[0]['numero'])){
