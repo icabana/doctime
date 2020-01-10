@@ -99,13 +99,10 @@ $this->excel->setActiveSheetIndex(0);
 
 // Save Excel 2007 file
 
-
-
-
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-$objWriter->save(str_replace('.php', '.xls', __FILE__));
+$objWriter->save($ruta);
 $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 

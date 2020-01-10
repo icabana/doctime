@@ -10,7 +10,9 @@
           'generarReporteEntrantes',
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
-          "&fecha2="+$("#fecha2_reporte").val(), 
+          "&fecha2="+$("#fecha2_reporte").val()+ 
+          "&remitente="+$("#remitente_entrante_reporte").val()+ 
+          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
           "cargarVisorPDF(data); "
         );
         
@@ -26,8 +28,10 @@
           'generarReporteEntrantesExcel', 
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
-          "&fecha2="+$("#fecha2_reporte").val(), 
-          "$('#salida_reporte_excel').html(data);"         
+          "&fecha2="+$("#fecha2_reporte").val()+ 
+          "&remitente="+$("#remitente_entrante_reporte").val()+ 
+          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          "location.href = data"         
         );
         
     }
@@ -98,7 +102,7 @@
               "Entrantes", 
               "buscarDestinatario",
               "texto=" + texto,
-              "$('#vista_destinatarios_reporte').show(); $('#vista_destinatarios_reporte').html(data);");
+              "$('#vista_destinatario_entrante_reporte').show(); $('#vista_destinatario_entrante_reporte').html(data);");
 
         }
 
@@ -129,7 +133,7 @@
         $("#destinatario_entrante_reporte2").val(nombre_destinatario);
         cargarReporte();
 
-        $('#vista_desstinatario_entrante_reporte').hide();
+        $('#vista_destinatario_entrante_reporte').hide();
 
     }
 
@@ -215,7 +219,7 @@
           
           <div class="col-sm-3 border-right">
           <div class="description-block">
-              <h5 class="description-header">Fecha Inicial</h5>
+              <h5 class="description-header">Fecha Inicial<?php echo $_SESSION['ruta_absoluta']; ?></h5>
               <span class="description-text">
                   <input onchange="cargarReporte(); return false;" type="date" class="form-control" id="fecha1_reporte" name="fecha1_reporte">
               </span>
@@ -263,7 +267,7 @@
               name="destinatario_entrante_reporte">
             <input type="text"  class="form-control requerido" id="destinatario_entrante_reporte2" 
             name="destinatario_entrante_reporte2" onkeyup="buscar_destinatario_entrante_reporte(this.value); return false;">
-            <div id="vista_destinatarios_reporte"></div>
+            <div id="vista_destinatario_entrante_reporte"></div>
           </div>
 
 

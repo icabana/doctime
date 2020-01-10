@@ -255,14 +255,28 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("EstadosModel.php", "configuracion");
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodos();
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodos();
 
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
         $prioridades = $PrioridadesModel->getTodos();
 
+        
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();
         $max_consecutivo = $EntrantesModel->getConsecutivo() + 1;
+
 
         $cantidad = strlen($max_consecutivo);
         for($i=$cantidad; $i<5; $i++){
@@ -271,7 +285,6 @@ class EntrantesControlador extends ControllerBase {
 
         $consecutivo = $consecutivo2.$max_consecutivo;
         $numero_entrante = date("Ymd").$consecutivo;
-
 
         include 'vistas/radicados/entrantes/insertar.php';
         
@@ -320,6 +333,18 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodos();
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodos();
+
         include 'vistas/radicados/entrantes/editar.php';
                
     }
@@ -338,12 +363,10 @@ class EntrantesControlador extends ControllerBase {
 
 
     public function actualizarUpload(){
-
         
         $this->model->cargar("DocumentosModel.php", "configuracion");
         $DocumentosModel = new DocumentosModel();   
         $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
-
 
         $id_entrante = $_POST['id_entrante'];
         include 'vistas/radicados/entrantes/tabla_documentos.php';
@@ -504,7 +527,6 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["enviadopor_entrante"],
                                     $_POST["destinatario_entrante"],
                                     $_POST["fecharadicado_entrante"],
-                                    $_POST["fecharecibido_entrante"],
                                     $_POST["fechamaxima_entrante"],
                                     $_POST["prioridad_entrante"],
                                     $_POST["numerofolios_entrante"],
@@ -512,7 +534,9 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["asunto_entrante"],
                                     $_POST["tiporadicado_entrante"],
                                     $_POST["responsable_entrante"],
-                                    $_POST["observaciones_entrante"]
+                                    $_POST["serie_entrante"],
+                                    $_POST["subserie_entrante"],
+                                    $_POST["tipodocumental_entrante"]
                                 );        
         
         if( $resp != 0 ){
@@ -579,7 +603,6 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["enviadopor_entrante"],
                                     $_POST["destinatario_entrante"],
                                     $_POST["fecharadicado_entrante"],
-                                    $_POST["fecharecibido_entrante"],
                                     $_POST["fechamaxima_entrante"],
                                     $_POST["prioridad_entrante"],
                                     $_POST["numerofolios_entrante"],

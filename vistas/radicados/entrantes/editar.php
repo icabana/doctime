@@ -402,12 +402,6 @@ $froms = new Formularios();
                       </div>
 
                       <div class="col-md-3">
-                        <label>Fecha Recibido<span style="color:red">*</span></label>
-                        <input type="date" class="form-control radicado" id="fecharecibido_entrante" 
-                        name="fecharecibido_entrante" value="<?php echo $datos['fecharecibido_entrante']; ?>">
-                      </div>
-
-                      <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
@@ -516,11 +510,63 @@ $froms = new Formularios();
                         ?>
                       </div>
 
-
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>
                         <input type="text" class="form-control" id="numerofolios_entrante" name="numerofolios_entrante"
                         value="<?php echo $datos['numerofolios_entrante']; ?>" onkeypress="return no_numeros(event)">
+                      </div>
+
+                    </div>
+
+                    <br>
+                    
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <label>Serie<span style="color:red">*</span></label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $series,
+                          'nombre_serie',
+                          'id_serie',
+                          'serie_entrante',
+                          $datos['serie_entrante'],
+                          '',
+                          ''
+                        );
+                        ?>
+
+                      </div>
+
+                      <div class="col-md-4">
+                        <label>Sub-Serie<span style="color:red">*</span></label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $subseries,
+                          'nombre_subserie',
+                          'id_subserie',
+                          'subserie_entrante',
+                          $datos['subserie_entrante'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <label>Tipo Documental<span style="color:red">*</span></label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $tiposdocumentales,
+                          'nombre_tipodocumental',
+                          'id_tipodocumental',
+                          'tipodocumental_entrante',
+                          $datos['tipodocumental_entrante'],
+                          '',
+                          ''
+                        );
+                        ?>
                       </div>
 
                     </div>

@@ -11,7 +11,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -20,6 +19,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -70,7 +72,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -79,6 +80,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -128,7 +132,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -137,6 +140,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -189,7 +195,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -198,6 +203,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -251,7 +259,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -260,6 +267,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -311,7 +321,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -320,6 +329,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -371,7 +383,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -380,6 +391,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -460,7 +474,6 @@ class EntrantesModel extends ModelBase {
             entrantes.enviadopor_entrante,
             entrantes.destinatario_entrante,
             entrantes.fecharadicado_entrante,
-            entrantes.fecharecibido_entrante,
             entrantes.fechamaxima_entrante,
             entrantes.prioridad_entrante,
             entrantes.numerofolios_entrante,
@@ -469,6 +482,9 @@ class EntrantesModel extends ModelBase {
             entrantes.tiporadicado_entrante,
             entrantes.responsable_entrante,
             entrantes.carpeta_entrante,
+            entrantes.serie_entrante,
+            entrantes.subserie_entrante,
+            entrantes.tipodocumental_entrante,
             
             entrantes.estado_entrante,
 
@@ -519,7 +535,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -528,6 +543,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -580,7 +598,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -589,6 +606,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -674,7 +694,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -683,6 +702,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -733,7 +755,6 @@ class EntrantesModel extends ModelBase {
                     entrantes.enviadopor_entrante,
                     entrantes.destinatario_entrante,
                     entrantes.fecharadicado_entrante,
-                    entrantes.fecharecibido_entrante,
                     entrantes.fechamaxima_entrante,
                     entrantes.prioridad_entrante,
                     entrantes.numerofolios_entrante,
@@ -742,6 +763,9 @@ class EntrantesModel extends ModelBase {
                     entrantes.tiporadicado_entrante,
                     entrantes.responsable_entrante,
                     entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -793,7 +817,6 @@ class EntrantesModel extends ModelBase {
                         $enviadopor_entrante,
                         $destinatario_entrante,
                         $fecharadicado_entrante,
-                        $fecharecibido_entrante,
                         $fechamaxima_entrante,
                         $prioridad_entrante,
                         $numerofolios_entrante,
@@ -801,7 +824,9 @@ class EntrantesModel extends ModelBase {
                         $asunto_entrante,
                         $tiporadicado_entrante,
                         $responsable_entrante,
-                        $observaciones_entrante
+                        $serie_entrante,
+                        $subserie_entrante,
+                        $tipodocumental_entrante
                     ){
                 
         $query = "INSERT INTO entrantes (
@@ -811,14 +836,16 @@ class EntrantesModel extends ModelBase {
                                 enviadopor_entrante,
                                 destinatario_entrante,
                                 fecharadicado_entrante,
-                                fecharecibido_entrante,
                                 fechamaxima_entrante,
                                 prioridad_entrante,
                                 numerofolios_entrante,
                                 descripcionfolios_entrante,
                                 asunto_entrante,
                                 tiporadicado_entrante,
-                                responsable_entrante
+                                responsable_entrante,
+                                serie_entrante,
+                                subserie_entrante,
+                                tipodocumental_entrante
                             )
                             VALUES(
                                 '".$consecutivo_entrante."',
@@ -827,14 +854,16 @@ class EntrantesModel extends ModelBase {
                                 '".$enviadopor_entrante."',
                                 '".$destinatario_entrante."',
                                 '".$fecharadicado_entrante."',
-                                '".$fecharecibido_entrante."',
                                 '".$fechamaxima_entrante."',
                                 '".$prioridad_entrante."',
                                 '".$numerofolios_entrante."',
                                 '".$descripcionfolios_entrante."',
                                 '".$asunto_entrante."',
                                 '".$tiporadicado_entrante."',
-                                '".$responsable_entrante."'
+                                '".$responsable_entrante."',
+                                '".$serie_entrante."',
+                                '".$subserie_entrante."',
+                                '".$tipodocumental_entrante."'
                             );";
        
        return $this->crear_ultimo_id($query);
@@ -848,14 +877,16 @@ class EntrantesModel extends ModelBase {
                     $enviadopor_entrante,
                     $destinatario_entrante,
                     $fecharadicado_entrante,
-                    $fecharecibido_entrante,
                     $fechamaxima_entrante,
                     $prioridad_entrante,
                     $numerofolios_entrante,
                     $descripcionfolios_entrante,
                     $asunto_entrante,
                     $tiporadicado_entrante,
-                    $responsable_entrante
+                    $responsable_entrante,
+                    $serie_entrante,
+                    $subserie_entrante,
+                    $tipodocumental_entrante
                 ) {
         
         $query = "  UPDATE entrantes 
@@ -865,14 +896,16 @@ class EntrantesModel extends ModelBase {
                         enviadopor_entrante = '". $enviadopor_entrante ."',
                         destinatario_entrante = '". $destinatario_entrante ."',
                         fecharadicado_entrante = '". $fecharadicado_entrante ."',
-                        fecharecibido_entrante = '". $fecharecibido_entrante ."',
                         fechamaxima_entrante = '". $fechamaxima_entrante ."',
                         prioridad_entrante = '". $prioridad_entrante ."',
                         numerofolios_entrante = '". $numerofolios_entrante ."',
                         descripcionfolios_entrante = '". $descripcionfolios_entrante ."',
                         asunto_entrante = '". $asunto_entrante ."',
                         tiporadicado_entrante = '". $tiporadicado_entrante ."',
-                        responsable_entrante = '". $responsable_entrante ."'
+                        responsable_entrante = '". $responsable_entrante ."',
+                        serie_entrante = '". $serie_entrante ."',
+                        subserie_entrante = '". $subserie_entrante ."',
+                        tipodocumental_entrante = '". $tipodocumental_entrante ."'
 
                     WHERE id_entrante = '" . $id_entrante . "'";
        

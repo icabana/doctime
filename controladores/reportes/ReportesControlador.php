@@ -54,7 +54,7 @@ class ReportesControlador extends ControllerBase {
         $EntrantesModel = new EntrantesModel();     
         
         $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha(
-            $_POST['estado'], $_POST['fecha1'], $_POST['fecha2']
+            $_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['remitente'], $_POST['destinatario']
         );
                  
         include("vistas/reportes/pdf_reporte.php");   
@@ -88,11 +88,21 @@ class ReportesControlador extends ControllerBase {
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
         
-        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha($_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['modalidad']);
+        $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha(
+                                            $_POST['estado'], 
+                                            $_POST['fecha1'], 
+                                            $_POST['fecha2'],
+                                            $_POST['remitente'],
+                                            $_POST['destinatario']
+                                        );
       
+      
+        $nombre_archivo = "entrada_".date('Y-m-d_H-i-s').".xls";        
+        $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
+
         include("vistas/reportes/reporte_excel_entrantes.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_entrantes.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
+        echo "archivos/reportes_excel/".$nombre_archivo;
           
     }
     

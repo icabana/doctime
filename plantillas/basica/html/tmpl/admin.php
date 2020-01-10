@@ -207,7 +207,7 @@
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-edit nav-icon"></i>
                   <p>Radicados Activos</p>
                 </a>
               </li>
@@ -215,7 +215,7 @@
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-folder nav-icon"></i>
                   <p>Radicados Finalizados</p>
                 </a>
               </li>
@@ -223,7 +223,7 @@
             
               <li class="nav-item">
                 <a href="#" onclick="cargar_entrantes_archivados();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-clone nav-icon"></i>
                   <p>Radicados Archivados</p>
                 </a>
               </li>
@@ -248,7 +248,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-file"></i>
               <p>
                 Radicados Salientes
                 <i class="fas fa-angle-right right"></i>
@@ -260,7 +260,7 @@
               
               <li class="nav-item">
                 <a href="#" onclick="cargar_salientes();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-edit nav-icon"></i>
                   <p>Radicados de Salida</p>
                 </a>
               </li>                      
@@ -271,7 +271,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Configuraci&oacute;n
                 <i class="fas fa-angle-right right"></i>
@@ -282,26 +282,26 @@
          
             <li class="nav-item">
                 <a  href="#" onclick="cargar_carpetas();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-folder nav-icon"></i>
                   <p>Carpetas</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="#" onclick="cargar_usuarios();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-user nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" onclick="cargar_roles();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-users nav-icon"></i>
                   <p>Roles</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a  href="#" onclick="cargar_parametros();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-cogs nav-icon"></i>
                   <p>Parametros</p>
                 </a>
               </li>
@@ -322,7 +322,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="cargar_dependencias();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-university nav-icon"></i>
                   <p>Dependencias </p>
                 </a>
               </li>
@@ -330,7 +330,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="cargar_empleados();"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user nav-icon"></i>
                   <p>Empleados </p>
                 </a>
               </li>
@@ -338,7 +338,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="cargar_terceros();"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-users nav-icon"></i>
                   <p>Terceros </p>
                 </a>
               </li>
@@ -346,7 +346,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#"  onclick="cargar_series();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-file-archive nav-icon"></i>
                   <p>Series </p>
                 </a>
               </li>
@@ -354,7 +354,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="cargar_subseries();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-file-archive nav-icon"></i>
                   <p>Subseries </p>
                 </a>
               </li>
@@ -362,7 +362,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="cargar_tiposdocumentales();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-file-archive nav-icon"></i>
                   <p>Tipos documentales </p>
                 </a>
               </li>
@@ -372,16 +372,16 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
+                <i class="nav-icon fas fa-chart-area"></i>
               <p>
-                Informes Radicados
+                Estad&iacute;sticas
                 <i class="right fas fa-angle-right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="radicados_responsable();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chart-area nav-icon"></i>
                   <p>Por Empleados </p>
                 </a>
               </li>
@@ -389,7 +389,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="radicados_dependencias();"  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chart-area nav-icon"></i>
                   <p>Por Dependencia </p>
                 </a>
               </li>
@@ -397,7 +397,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" onclick="radicados_tiporadicado();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chart-area nav-icon"></i>
                   <p>Por Tipo de Radicado </p>
                 </a>
               </li>
@@ -407,7 +407,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
+                <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 Reportes
                 <i class="right fas fa-angle-right"></i>
@@ -417,28 +417,28 @@
 
               <li class="nav-item">
                 <a href="#" onclick="cargar_reporte_entrantes();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-file-pdf nav-icon"></i>
                   <p>Radicados de Entrada</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="#" onclick="cargar_reporte_salientes();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Radicados de Salida</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="#" onclick="cargarReportesEmpleados();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="#" onclick="cargarReportesTerceros();" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Terceros</p>
                 </a>
               </li>
@@ -520,7 +520,7 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Entrantes</span>
@@ -536,7 +536,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-edit"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Activos</span>
@@ -555,7 +555,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-folder"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Finalizados</span>
@@ -570,7 +570,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-clone"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Archivados</span>
@@ -590,7 +590,7 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Radicados Salientes</span>
@@ -606,7 +606,7 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-university"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Dependencias</span>
@@ -625,7 +625,7 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
 
