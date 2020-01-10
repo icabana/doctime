@@ -130,9 +130,6 @@ $froms = new Formularios();
                           ''
                         );
                         ?>
-                      </div>
-
-
 
                     </div>
 

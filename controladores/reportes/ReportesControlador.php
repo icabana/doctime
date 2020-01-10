@@ -29,10 +29,18 @@ class ReportesControlador extends ControllerBase {
         
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
+        
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
 
         $empleados = $EmpleadosModel->getTodos();
-        
-        include 'vistas/reportes/default_empleados.php';
+        $dependencias = $DependenciasModel->getTodos();
+        $sexos = $SexosModel->getTodos();
+
+        include 'vistas/reportes/empleados.php';
                         
     }   
     
