@@ -93,7 +93,7 @@
     </div>
         <div id="div_reporte_tercero">
           <?php      
-              include 'vistas/reportes/tabla_terceros.php';      
+              include 'vistas/reportes/terceros/tabla_terceros.php';      
           ?> 
           </div> 
     </div>

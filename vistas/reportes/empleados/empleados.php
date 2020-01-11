@@ -144,7 +144,7 @@
     </div>
         <div id="div_reporte_empleado">
           <?php      
-              include 'vistas/reportes/tabla_empleados.php';      
+              include 'vistas/reportes/empleados/tabla_empleados.php';      
           ?> 
           </div> 
     </div>

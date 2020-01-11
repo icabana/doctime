@@ -278,7 +278,7 @@
     </div>
         <div id="div_reporte_entrante">
           <?php      
-              include 'vistas/reportes/tabla_entrantes.php';      
+              include 'vistas/reportes/entrantes/tabla_entrantes.php';      
           ?> 
           </div> 
     </div>

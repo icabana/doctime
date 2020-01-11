@@ -2,12 +2,12 @@
 
 
 
-    function generar_reporte_terceros(){
+    function generar_reporte_dependencias(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteTerceros',
+          'generarReporteDependencias',
           '',
           "cargarVisorPDF(data); "
         );
@@ -16,12 +16,12 @@
   
 
 
-    function generar_reporte_terceros_excel(){
+    function generar_reporte_dependencias_excel(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteTercerosExcel', 
+          'generarReporteDependenciasExcel', 
           '',
           "location.href = data"         
         );
@@ -55,19 +55,19 @@
 
 
             <div class="col-md-8">
-                <h4 style="color:grey">REPORTE DE TERCEROS</h4>
+                <h4 style="color:grey">REPORTE DE DEPENDENCIAS</h4>
             </div>
 
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_terceros(); return false;" class="btn btn-primary pull-right" 
-              style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+              <button onclick="generar_reporte_dependencias(); return false;" class="btn btn-primary pull-right" 
+              style="margin-right: 5px;"><i class="fa fa-download"></i> Generar PDF</button>
             </div>
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_terceros_excel();" class="btn btn-success pull-right" 
+              <button onclick="generar_reporte_dependencias_excel();" class="btn btn-success pull-right" 
               style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Excel</button>
             </div>
 
@@ -91,9 +91,9 @@
 
 
     </div>
-        <div id="div_reporte_tercero">
+        <div id="div_reporte_dependencia">
           <?php      
-              include 'vistas/reportes/tabla_terceros.php';      
+              include 'vistas/reportes/dependencias/tabla_dependencias.php';      
           ?> 
           </div> 
     </div>

@@ -24,47 +24,31 @@ $this->excel->getProperties()->setCreator("ViceInvestigacion")
 
 $this->excel->setActiveSheetIndex(0)
         
-->setCellValue('A1', 'REPORTE DE EMPRESAS');
+->setCellValue('A1', 'REPORTE DE TERCEROS');
                     
 
             $this->excel->setActiveSheetIndex(0)
             
             ->setCellValue('A1', 'No.')
 
-            ->setCellValue('B1', 'NOMBRE DE LA EMPRESA')
+            ->setCellValue('B1', 'NOMBRE DE LA DEPENDENCIAS')
                     
-            ->setCellValue('C1', 'NIT/CÉDULA')
-            
-            ->setCellValue('D1', 'DIRECCIÓN')
-            
-            ->setCellValue('E1', 'CIUDAD')
-
-            ->setCellValue('F1', 'TELÉFONO')
-            
-            ->setCellValue('G1', 'CORREO');
+            ->setCellValue('C1', 'NOMBRE DEL JEFE');
             
             $columna =2;
             
             $cont = 1;
             
-            foreach($empresas as $empresa){
+            foreach($dependencias as $dependencia){
                             
 
         $this->excel->setActiveSheetIndex(0)
 
              ->setCellValue('A'.$columna, $cont)
 
-             ->setCellValue('B'.$columna, $empresa['NOMBRE_EMPRESA'])
+             ->setCellValue('B'.$columna, $dependencia['nombre_dependencia'])
 
-             ->setCellValue('C'.$columna, $empresa['DOCUMENTO_EMPRESA'])
-                                
-             ->setCellValue('D'.$columna, $empresa['DIRECCION1_EMPRESA'])
-                
-             ->setCellValue('E'.$columna, $empresa['CIUDAD_EMPRESA'])
-                
-             ->setCellValue('F'.$columna, $empresa['TELEFONO_EMPRESA'])
-                
-             ->setCellValue('G'.$columna, $empresa['CORREO1_EMPRESA']);
+             ->setCellValue('C'.$columna, $dependencia['nombre_jefe']);
 
             $columna ++;
 
@@ -96,15 +80,11 @@ $styleArray_color = array(
         ),
     ),
 );
-  $this->excel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray_color);
+  $this->excel->getActiveSheet()->getStyle('A1:C1')->applyFromArray($styleArray_color);
 
   $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
   $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(35);
   $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(35);
-  $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(35);
-  $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(35);
-  $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(35);
-  $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(35);
     
 
 // Rename worksheet
@@ -115,18 +95,12 @@ $this->excel->setActiveSheetIndex(0);
 
 // Save Excel 2007 file
 
-$callStartTime = microtime(true);
-
-$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');
-$objWriter->save(str_replace('.php', '.xls', __FILE__));
-$callEndTime = microtime(true);
-$callTime = $callEndTime - $callStartTime;
 
 
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-$objWriter->save(str_replace('.php', '.xls', __FILE__));
+$objWriter->save($ruta);
 $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 

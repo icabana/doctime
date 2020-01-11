@@ -10,7 +10,7 @@ function cargar_reporte_entrantes(){
   
   abrirVentanaContenedorTabla(
       'tabla_reportes',
-      'reportes', 'Reportes', 'cargarEntrantes', '');    
+      'reportes', 'Entrantes', 'cargarEntrantes', '');    
       
 }
 
@@ -26,13 +26,13 @@ function cargar_reporte_salientes(){
   
   abrirVentanaContenedorTabla(
       'tabla_reportes',
-      'reportes', 'Reportes', 'cargarTablaReportesSalida', '');    
+      'reportes', 'Salientes', 'cargarSalientes', '');    
       
 }
 
 
 
-function cargarReportesEmpleados(){
+function cargar_reportes_empleados(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -43,12 +43,14 @@ function cargarReportesEmpleados(){
     limpiar_cuerpo();
     
    abrirVentanaContenedorTabla(
-              'tabla_entrantes',
-            'reportes', 'Reportes', 'cargarTablaReportesEmpleados', '',"validar_sesion();")
+              'tabla_empleados',
+            'reportes', 'Empleados', 'cargarEmpleados', '',"validar_sesion();")
         
 }
 
-function cargarReportesTerceros(){
+
+
+function cargar_reportes_terceros(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -59,7 +61,26 @@ function cargarReportesTerceros(){
     limpiar_cuerpo();
     
     abrirVentanaContenedorTabla(
-              'tabla_entrantes',
-            'reportes', 'Reportes', 'cargarTablaReportesTerceros', '',"validar_sesion();")
+              'tabla_terceros',
+            'reportes', 'Terceros', 'cargarTerceros', '',"validar_sesion();")
+        
+}
+
+
+
+function cargar_reportes_dependencias(){
+    
+    $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
+    $('.ui-widget').remove();
+    $('.elfinder-quicklook').remove();
+    $('.ui-draggable').remove();
+    $('.ui-resizable').remove();
+
+    limpiar_cuerpo();
+    
+    abrirVentanaContenedorTabla(
+        'tabla_dependencias',
+        'reportes', 'Dependencias', 'cargarDependencias', '',"validar_sesion();"
+    )
         
 }

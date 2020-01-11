@@ -430,21 +430,21 @@
               </li>
 
               <li class="nav-item">
-                <a href="#" onclick="cargarReportesEmpleados();" class="nav-link">
+                <a href="#" onclick="cargar_reporte_empleados();" class="nav-link">
                   <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="#" onclick="cargarReportesTerceros();" class="nav-link">
+                <a href="#" onclick="cargar_reporte_terceros();" class="nav-link">
                   <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Terceros</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="#" onclick="cargarReportesDependencias();" class="nav-link">
+                <a href="#" onclick="cargar_reporte_dependencias();" class="nav-link">
                   <i class="far fas fa-file-pdf nav-icon"></i>
                   <p>Dependencias</p>
                 </a>
