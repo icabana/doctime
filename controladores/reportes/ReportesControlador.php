@@ -21,7 +21,7 @@ class ReportesControlador extends ControllerBase {
 
         $salientes = $SalientesModel->getTodosTodos();
         
-        include 'vistas/reportes/default_salida.php';
+        include 'vistas/reportes/salientes.php';
                         
     }   
     
@@ -44,14 +44,14 @@ class ReportesControlador extends ControllerBase {
                         
     }   
     
-    public function cargarTablaReportesEmpresas() {
+    public function cargarTablaReportesTerceros() {
         
-        $this->model->cargar("EmpresasModel.php", "configuracion");
-        $EmpresasModel = new EmpresasModel();
-
-        $empresas = $EmpresasModel->getTodosEmpresas();
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
         
-        include 'vistas/reportes/default_empresas.php';
+        $terceros = $TercerosModel->getTodos();
+        
+        include 'vistas/reportes/terceros.php';
                         
     }   
     
@@ -133,12 +133,53 @@ class ReportesControlador extends ControllerBase {
     
     
     
+    public function generarReporteTerceros(){
+         
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+
+        $terceros = $TercerosModel->getTodos();
+                 
+        include("vistas/reportes/pdf_reporte_terceros.php");   
+       
+        $dirPdf = "archivos/reportes/pdf_reporte_terceros.pdf";
+
+        $this->pdf->Output(''.$dirPdf.'');
+
+        echo "urlRuta=".$dirPdf;
+        
+    }
+    
+
+    
+    public function generarReporteExcel(){
+         
+        $this->model->cargar("EmpleadosModel.php", "configuracion");
+        $EmpleadosModel = new EmpleadosModel();
+
+        $empleados = $EmpleadosModel->getFiltroEmpleados(
+            $_POST['dependencia'], 
+            $_POST['sexo']
+        );
+
+        include("vistas/reportes/reporte_excel_empleados.php");        
+           
+        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_empleados.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
+          
+    }
+    
+    
+    
     public function generarReporteEmpleados(){
          
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
 
-        $empleados = $EmpleadosModel->getTodosEmpleados();
+        $empleados = $EmpleadosModel->getFiltroEmpleados(
+            $_POST['dependencia'], 
+            $_POST['sexo']
+        );
+
                  
         include("vistas/reportes/pdf_reporte_empleados.php");   
        
@@ -154,54 +195,44 @@ class ReportesControlador extends ControllerBase {
     
     public function generarReporteEmpleadosExcel(){
          
-        $this->model->cargar("EmpleadosModel.php", "configuracion");
+        $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
 
-        $empleados = $EmpleadosModel->getTodosEmpleados();
-      
+        $empleados = $EmpleadosModel->getFiltroEmpleados(
+            $_POST['dependencia'], 
+            $_POST['sexo']
+        );
+
+       
+        $nombre_archivo = "empleados_".date('Y-m-d_H-i-s').".xls";        
+        $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
+
         include("vistas/reportes/reporte_excel_empleados.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_empleados.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
-          
+        echo "archivos/reportes_excel/".$nombre_archivo;
     }
     
     
-    
-    
-    
-    public function generarReporteEmpresas(){
+    public function generarReporteTercerosExcel(){
          
-        $this->model->cargar("EmpresasModel.php", "configuracion");
-        $EmpresasModel = new EmpresasModel();
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
 
-        $empresas = $EmpresasModel->getTodosEmpresas();
-                 
-        include("vistas/reportes/pdf_reporte_empresas.php");   
+        $terceros = $TercerosModel->getTodos();
        
-        $dirPdf = "archivos/reportes/pdf_reporte_empresas.pdf";
+        $nombre_archivo = "terceros_".date('Y-m-d_H-i-s').".xls";        
+        $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
 
-        $this->pdf->Output(''.$dirPdf.'');
-
-        echo "urlRuta=".$dirPdf;
-        
-    }
-    
-    
-    public function generarReporteEmpresasExcel(){
-         
-        $this->model->cargar("EmpresasModel.php", "configuracion");
-        $EmpresasModel = new EmpresasModel();
-
-        $empresas = $EmpresasModel->getTodosEmpresas();
-      
-        include("vistas/reportes/reporte_excel_empresas.php");        
+        include("vistas/reportes/reporte_excel_terceros.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_empresas.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
-          
+        echo "archivos/reportes_excel/".$nombre_archivo;
     }
     
     
-    public function cargarReporte(){
+    
+    
+    
+    public function cargarReporteEntrantes(){
          
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();     
@@ -227,6 +258,23 @@ class ReportesControlador extends ControllerBase {
         $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2']);
               
         include 'vistas/reportes/tabla_salientes.php';
+          
+    }
+    
+    
+    
+    
+    public function cargarReporteEmpleados(){
+         
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();     
+        
+        $empleados = $EmpleadosModel->getFiltroEmpleados(
+                            $_POST['dependencia'], 
+                            $_POST['sexo']
+                        );
+              
+        include 'vistas/reportes/tabla_empleados.php';
           
     }
     

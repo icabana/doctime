@@ -441,33 +441,33 @@ class EntrantesModel extends ModelBase {
         
         $consulta_fecha = "";
         
-       if($fecha1 != "" && $fecha2 != ""){           
-           $consulta_fecha = "and entrantes.fecharadicado_entrante BETWEEN '".$fecha1."' AND  '".$fecha2."'" ;
+        if($fecha1 != "" && $fecha2 != ""){           
+            $consulta_fecha = "and entrantes.fecharadicado_entrante BETWEEN '".$fecha1."' AND  '".$fecha2."'" ;
+            }else{           
+            $consulta_fecha = " " ;           
+        }
+        
+        $consulta_estado = "";
+            
+        if($estado_entrante == "" || $estado_entrante == "TODOS"){           
+            $consulta_estado = " " ;           
         }else{           
-           $consulta_fecha = " " ;           
-       }
-        
-       $consulta_estado = "";
-        
-       if($estado_entrante == "" || $estado_entrante == "TODOS"){           
-           $consulta_estado = " " ;           
-       }else{           
-           $consulta_estado =  " and entrantes.estado_entrante = '".$estado_entrante."' ";           
-       }
-        
-       if($remitente == "" || $remitente == "TODOS"){           
-           $consulta_remitente = " " ;           
-       }else{           
-           $consulta_remitente =  " and entrantes.remitente_entrante = '".$remitente."' ";           
-       }
-        
-       if($destinatario == "" || $destinatario == "TODOS"){
-           $consulta_destinatario = " " ;           
-       }else{           
-           $consulta_destinatario =  " and entrantes.destinatario_entrante = '".$destinatario."' ";           
-       }
+            $consulta_estado =  " and entrantes.estado_entrante = '".$estado_entrante."' ";           
+        }
+            
+        if($remitente == "" || $remitente == "TODOS"){           
+            $consulta_remitente = " " ;           
+        }else{           
+            $consulta_remitente =  " and entrantes.remitente_entrante = '".$remitente."' ";           
+        }
+            
+        if($destinatario == "" || $destinatario == "TODOS"){
+            $consulta_destinatario = " " ;           
+        }else{           
+            $consulta_destinatario =  " and entrantes.destinatario_entrante = '".$destinatario."' ";           
+        }
                
-     $query = "select 
+        $query = "select 
             entrantes.id_entrante, 
             entrantes.numero_entrante,
             entrantes.remitente_entrante,

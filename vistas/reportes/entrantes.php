@@ -43,7 +43,7 @@
         ejecutarAccion(
           'reportes',
           'Reportes',
-          'cargarReporte',
+          'cargarReporteEntrantes',
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 

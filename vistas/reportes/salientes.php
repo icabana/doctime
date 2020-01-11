@@ -2,17 +2,16 @@
 
 
 
-    function generar_reporte_entrantes(){
+    function generar_reporte_salientes(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteEntrantes',
-          "estado="+$("#estado_reporte").val()+
+          'generarReporteSalientes',
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          "&remitente="+$("#remitente_saliente_reporte").val()+ 
+          "&destinatario="+$("#destinatario_saliente_reporte").val(), 
           "cargarVisorPDF(data); "
         );
         
@@ -20,17 +19,16 @@
   
 
 
-    function generar_reporte_entrantes_excel(){
+    function generar_reporte_salientes_excel(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteEntrantesExcel', 
-          "estado="+$("#estado_reporte").val()+
+          'generarReporteSalientesExcel', 
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          "&remitente="+$("#remitente_saliente_reporte").val()+ 
+          "&destinatario="+$("#destinatario_saliente_reporte").val(), 
           "location.href = data"         
         );
         
@@ -44,12 +42,11 @@
           'reportes',
           'Reportes',
           'cargarReporte',
-          "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
-          "$('#div_reporte_entrante').html(data);"    
+          "&remitente="+$("#remitente_saliente_reporte").val()+ 
+          "&destinatario="+$("#destinatario_saliente_reporte").val(), 
+          "$('#div_reporte_saliente').html(data);"    
         );
         
     }
@@ -57,9 +54,9 @@
 
 
 
-    function buscar_remitente_entrante_reporte(texto) {
+    function buscar_remitente_saliente_reporte(texto) {
 
-      $('#vista_remitente_entrante_reporte').hide();
+      $('#vista_remitente_saliente_reporte').hide();
 
         if (texto.length == 0) {
 
@@ -68,17 +65,17 @@
         }
         if (texto.length < 3) {
 
-          $('#remitente_entrante_reporte').val("");  
+          $('#remitente_saliente_reporte').val("");  
           
 
         } else {
 
           ejecutarAccion(
             "radicados", 
-            "Entrantes",
+            "Salientes",
             "buscarRemitente", 
             "texto=" + texto,
-            "$('#vista_remitente_entrante_reporte').show(); $('#vista_remitente_entrante_reporte').html(data);"
+            "$('#vista_remitente_saliente_reporte').show(); $('#vista_remitente_saliente_reporte').html(data);"
           );
 
         }
@@ -88,21 +85,21 @@
 
 
 
-    function buscar_destinatario_entrante_reporte(texto) {
+    function buscar_destinatario_saliente_reporte(texto) {
 
         if (texto.length < 3) {
 
-          $('#destinatario_entrante_reporte').val("");
+          $('#destinatario_saliente_reporte').val("");
           $('#vista_destinatarios_reporte').hide();
 
         } else {
 
           ejecutarAccion(
               "radicados", 
-              "Entrantes", 
+              "Salientes", 
               "buscarDestinatario",
               "texto=" + texto,
-              "$('#vista_destinatario_entrante_reporte').show(); $('#vista_destinatario_entrante_reporte').html(data);");
+              "$('#vista_destinatario_saliente_reporte').show(); $('#vista_destinatario_saliente_reporte').html(data);");
 
         }
 
@@ -113,11 +110,11 @@
 
     function seleccionar_remitente(id_remitente, nombre_remitente) {
 
-        $("#remitente_entrante_reporte").val(id_remitente);
-        $("#remitente_entrante_reporte2").val(nombre_remitente);
+        $("#remitente_saliente_reporte").val(id_remitente);
+        $("#remitente_saliente_reporte2").val(nombre_remitente);
         
 
-        $('#vista_remitente_entrante_reporte').hide();
+        $('#vista_remitente_saliente_reporte').hide();
 
         cargarReporte();
 
@@ -129,11 +126,11 @@
 
         var nombre_destinatario = nombres_destinatario + ' ' + apellidos_destinatario;
 
-        $("#destinatario_entrante_reporte").val(id_destinatario);
-        $("#destinatario_entrante_reporte2").val(nombre_destinatario);
+        $("#destinatario_saliente_reporte").val(id_destinatario);
+        $("#destinatario_saliente_reporte2").val(nombre_destinatario);
         cargarReporte();
 
-        $('#vista_destinatario_entrante_reporte').hide();
+        $('#vista_destinatario_saliente_reporte').hide();
 
     }
 
@@ -160,19 +157,19 @@
 
 
             <div class="col-md-8">
-                <h4 style="color:grey">REPORTE DE RADICADOS DE ENTRADA</h4>
+                <h4 style="color:grey">REPORTE DE RADICADOS DE SALIDA</h4>
             </div>
 
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_entrantes(); return false;" class="btn btn-primary pull-right" 
-              style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+              <button onclick="generar_reporte_salientes(); return false;" class="btn btn-primary pull-right" 
+              style="margin-right: 5px;"><i class="fa fa-download"></i> Generar PDF</button>
             </div>
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_entrantes_excel();" class="btn btn-success pull-right" 
+              <button onclick="generar_reporte_salientes_excel();" class="btn btn-success pull-right" 
               style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Excel</button>
             </div>
 
@@ -189,32 +186,7 @@
 
     <div class="card-body">
       <div class="row">     
-        
-
-
       
-          <div class="col-sm-2 border-right">
-            <div class="description-block">
-
-
-              <h5 class="description-header">Seleccionar Estado</h5>
-
-
-              <select onchange="cargarReporte(); return false;" class="form-control" 
-                      id="estado_reporte" name="estado_reporte">
-
-                  <option value="TODOS">TODOS</option>
-                  <option value="1">ACTIVO</option>
-                  <option value="2">FINALIZADO</option>
-                  <option value="3">ARCHIVADO</option>
-
-              </select>
-
-
-            </div>
-          </div>
-
-
 
           
           <div class="col-sm-3 border-right">
@@ -243,17 +215,17 @@
 
 
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label>Remitente<span style="color:red">*</span></label>
 
-            <input type="hidden" class="requerido" id="remitente_entrante_reporte" 
-            name="remitente_entrante_reporte">
+            <input type="hidden" class="requerido" id="remitente_saliente_reporte" 
+            name="remitente_saliente_reporte">
 
-            <input type="text" class="form-control requerido" id="remitente_entrante_reporte2" 
-            name="remitente_entrante_reporte2"  onchange="cargarReporte(); return false;"
+            <input type="text" class="form-control requerido" id="remitente_saliente_reporte2" 
+            name="remitente_saliente_reporte2"  onchange="cargarReporte(); return false;"
 
-              onkeyup="buscar_remitente_entrante_reporte(this.value); return false;">
-            <div id="vista_remitente_entrante_reporte"></div>
+              onkeyup="buscar_remitente_saliente_reporte(this.value); return false;">
+            <div id="vista_remitente_saliente_reporte"></div>
           </div>
 
 
@@ -261,13 +233,13 @@
 
 
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label>Destinatario<span style="color:red">*</span></label>
-            <input type="hidden" class="requerido" id="destinatario_entrante_reporte"
-              name="destinatario_entrante_reporte">
-            <input type="text"  class="form-control requerido" id="destinatario_entrante_reporte2" 
-            name="destinatario_entrante_reporte2" onkeyup="buscar_destinatario_entrante_reporte(this.value); return false;">
-            <div id="vista_destinatario_entrante_reporte"></div>
+            <input type="hidden" class="requerido" id="destinatario_saliente_reporte"
+              name="destinatario_saliente_reporte">
+            <input type="text"  class="form-control requerido" id="destinatario_saliente_reporte2" 
+            name="destinatario_saliente_reporte2" onkeyup="buscar_destinatario_saliente_reporte(this.value); return false;">
+            <div id="vista_destinatario_saliente_reporte"></div>
           </div>
 
 
@@ -276,9 +248,9 @@
 
 
     </div>
-        <div id="div_reporte_entrante">
+        <div id="div_reporte_saliente">
           <?php      
-              include 'vistas/reportes/tabla_entrantes.php';      
+              include 'vistas/reportes/tabla_salientes.php';      
           ?> 
           </div> 
     </div>

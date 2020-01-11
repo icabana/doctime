@@ -443,6 +443,13 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="#" onclick="cargarReportesDependencias();" class="nav-link">
+                  <i class="far fas fa-file-pdf nav-icon"></i>
+                  <p>Dependencias</p>
+                </a>
+              </li>
+
 
             </ul>    
           </li>

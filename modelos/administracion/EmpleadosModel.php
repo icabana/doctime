@@ -103,6 +103,56 @@ class EmpleadosModel extends ModelBase {
         
     }
     
+
+    function getFiltroEmpleados($dependencia, $sexo) {
+       
+        $consulta_dependencia = "";
+        
+        if($dependencia != "TODOS"){           
+            $consulta_dependencia = "and empleados.dependencia_empleado = '".$dependencia."'" ;
+        }else{           
+            $consulta_dependencia = " " ;           
+        }
+       
+        $consulta_sexo = "";
+        
+        if($sexo != "TODOS"){           
+            $consulta_sexo = "and empleados.sexo_empleado = '".$sexo."'" ;
+        }else{           
+            $consulta_sexo = " " ;           
+        }
+
+        $query = "select 
+                    empleados.id_empleado, 
+                    empleados.dependencia_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado,
+                    empleados.sexo_empleado,
+                    empleados.estadocivil_empleado,
+                    empleados.fechanacimiento_empleado,
+                    empleados.lugarnacimiento_empleado,
+                    empleados.usuario_empleado,
+
+                    tiposdocumento.codigo_tipodocumento
+                
+                    from empleados left join 
+                            tiposdocumento on 
+                            empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
+
+                    where empleados.id_empleado != '' ".$consulta_dependencia.$consulta_sexo;
+        
+         $consulta = $this->consulta($query);
+        return $consulta;    
+        
+    }
+    
     function existeDocumento($documento_empleado) {
        
         $query = "select count(empleados.documento_empleado) as cantidad                

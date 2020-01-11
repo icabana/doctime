@@ -2,17 +2,14 @@
 
 
 
-    function generar_reporte_entrantes(){
+    function generar_reporte_empleados(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteEntrantes',
-          "estado="+$("#estado_reporte").val()+
-          "&fecha1="+$("#fecha1_reporte").val()+
-          "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          'generarReporteEmpleados',
+          "dependencia="+$("#dependencia_reporte").val()+
+          "&sexo="+$("#sexo_reporte").val(),
           "cargarVisorPDF(data); "
         );
         
@@ -20,17 +17,14 @@
   
 
 
-    function generar_reporte_entrantes_excel(){
+    function generar_reporte_empleados_excel(){
       
         ejecutarAccion(
           'reportes', 
           'Reportes', 
-          'generarReporteEntrantesExcel', 
-          "estado="+$("#estado_reporte").val()+
-          "&fecha1="+$("#fecha1_reporte").val()+
-          "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          'generarReporteEmpleadosExcel', 
+          "dependencia="+$("#dependencia_reporte").val()+
+          "&sexo="+$("#sexo_reporte").val(),
           "location.href = data"         
         );
         
@@ -38,103 +32,17 @@
 
 
       
-    function cargarReporte(){
+    function cargar_reporte_empleados(){
     
         ejecutarAccion(
           'reportes',
           'Reportes',
-          'cargarReporte',
-          "estado="+$("#estado_reporte").val()+
-          "&fecha1="+$("#fecha1_reporte").val()+
-          "&fecha2="+$("#fecha2_reporte").val()+ 
-          "&remitente="+$("#remitente_entrante_reporte").val()+ 
-          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
-          "$('#div_reporte_entrante').html(data);"    
+          'cargarReporteEmpleados',
+          "dependencia="+$("#dependencia_reporte").val()+
+          "&sexo="+$("#sexo_reporte").val(),
+          "$('#div_reporte_empleado').html(data);"    
         );
         
-    }
-
-
-
-
-    function buscar_remitente_entrante_reporte(texto) {
-
-      $('#vista_remitente_entrante_reporte').hide();
-
-        if (texto.length == 0) {
-
-            cargarReporte();
-
-        }
-        if (texto.length < 3) {
-
-          $('#remitente_entrante_reporte').val("");  
-          
-
-        } else {
-
-          ejecutarAccion(
-            "radicados", 
-            "Entrantes",
-            "buscarRemitente", 
-            "texto=" + texto,
-            "$('#vista_remitente_entrante_reporte').show(); $('#vista_remitente_entrante_reporte').html(data);"
-          );
-
-        }
-
-    }
-
-
-
-
-    function buscar_destinatario_entrante_reporte(texto) {
-
-        if (texto.length < 3) {
-
-          $('#destinatario_entrante_reporte').val("");
-          $('#vista_destinatarios_reporte').hide();
-
-        } else {
-
-          ejecutarAccion(
-              "radicados", 
-              "Entrantes", 
-              "buscarDestinatario",
-              "texto=" + texto,
-              "$('#vista_destinatario_entrante_reporte').show(); $('#vista_destinatario_entrante_reporte').html(data);");
-
-        }
-
-    }
-
-
-
-
-    function seleccionar_remitente(id_remitente, nombre_remitente) {
-
-        $("#remitente_entrante_reporte").val(id_remitente);
-        $("#remitente_entrante_reporte2").val(nombre_remitente);
-        
-
-        $('#vista_remitente_entrante_reporte').hide();
-
-        cargarReporte();
-
-    }
-
-
-
-    function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
-
-        var nombre_destinatario = nombres_destinatario + ' ' + apellidos_destinatario;
-
-        $("#destinatario_entrante_reporte").val(id_destinatario);
-        $("#destinatario_entrante_reporte2").val(nombre_destinatario);
-        cargarReporte();
-
-        $('#vista_destinatario_entrante_reporte').hide();
-
     }
 
 
@@ -170,13 +78,13 @@
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_entrantes(); return false;" class="btn btn-primary pull-right" 
+              <button onclick="generar_reporte_empleados(); return false;" class="btn btn-primary pull-right" 
               style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
             </div>
 
 
             <div class="col-md-2">
-              <button onclick="generar_reporte_entrantes_excel();" class="btn btn-success pull-right" 
+              <button onclick="generar_reporte_empleados_excel();" class="btn btn-success pull-right" 
               style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Excel</button>
             </div>
 
@@ -194,10 +102,8 @@
     <div class="card-body">
       <div class="row">     
         
-
-
       
-          <div class="col-md-4 ">
+          <div class="col-md-3">
 
               <label>Seleccionar Dependencia:</label>
 
@@ -209,12 +115,10 @@
                         'dependencia_reporte',
                         '',
                         '',
-                        ''
+                        'cargar_reporte_empleados()'
                     );
                 ?>
-
           </div>
-
 
 
           <div class="col-md-3">
@@ -227,7 +131,7 @@
                           'sexo_reporte',
                           '',
                           '',
-                          ''
+                          'cargar_reporte_empleados()'
                         );
                   ?>
           </div>
@@ -238,7 +142,7 @@
 
 
     </div>
-        <div id="div_reporte_entrante">
+        <div id="div_reporte_empleado">
           <?php      
               include 'vistas/reportes/tabla_empleados.php';      
           ?> 

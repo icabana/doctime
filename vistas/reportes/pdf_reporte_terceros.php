@@ -1,10 +1,10 @@
 <?php
        
-    $this->pdf = new PdfReportesEmpleados('L', 'mm', 'legal');
+    $this->pdf = new PdfReportesTerceros('L', 'mm', 'legal');
 		
     $this->pdf->SetCreator('ISMAEL CABANA');
     $this->pdf->SetAuthor('ISMAEL CABANA');
-    $this->pdf->SetTitle('REPORTE DE EMPLEADOS');
+    $this->pdf->SetTitle('REPORTE DE TERCEROS');
     $this->pdf->SetSubject('PRESUPUESTO DEL PROYECTO.');
     $this->pdf->AliasNbPages();
 
@@ -26,7 +26,7 @@
      $this->pdf->SetFont('Arial','B',9);
 
         $this->pdf->Cell(10, 10, utf8_decode('No.'),1,0, "C", 1);             
-        $this->pdf->Cell(70, 10, utf8_decode('Nombre del Empleado'),1,0, "C", 1);        
+        $this->pdf->Cell(70, 10, utf8_decode('Nombre del Tercero'),1,0, "C", 1);        
         $this->pdf->Cell(40, 10, utf8_decode('Documento'),1,0, "C", 1);             
         $this->pdf->Cell(40, 10, utf8_decode('Teléfono'),1,0, "C", 1);        
         $this->pdf->Cell(70, 10, utf8_decode('Correo'),1,0, "C", 1);           
@@ -39,17 +39,17 @@
      
 $cont = 1;     
      
-     foreach ($empleados as $empleado){
+     foreach ($terceros as $tercero){
                
         $this->pdf->Row(
             array(                 
                 $cont,
-                $empleado['nombres_empleado']." ".$empleado['apellidos_empleado'],
-                $empleado['nombre_tipodocumento']." ".$empleado['documento_empleado'],                
-                $empleado['telefono_empleado'],
-                $empleado['correo_empleado'],
-                $empleado['direccion_empleado'],
-                $empleado['ciudad_empleado']
+                $tercero['nombre_tercero'],
+                $tercero['nombre_tipodocumento']." ".$tercero['documento_tercero'],                
+                $tercero['telefono_tercero'],
+                $tercero['correo_tercero'],
+                $tercero['direccion_tercero'],
+                $tercero['ciudad_tercero']
             )
         );
         

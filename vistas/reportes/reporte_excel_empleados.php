@@ -24,14 +24,14 @@ $this->excel->getProperties()->setCreator("ViceInvestigacion")
 
 $this->excel->setActiveSheetIndex(0)
         
-->setCellValue('A1', 'REPORTE DE CONTRATISTAS');
+->setCellValue('A1', 'REPORTE DE EMPLEADOS');
                     
 
             $this->excel->setActiveSheetIndex(0)
             
             ->setCellValue('A1', 'No.')
 
-            ->setCellValue('B1', 'NOMBRE DEL CONTRATISTA')
+            ->setCellValue('B1', 'NOMBRE DEL EMPLEADO')
                     
             ->setCellValue('C1', 'NIT/CÉDULA')
             
@@ -47,26 +47,27 @@ $this->excel->setActiveSheetIndex(0)
             
             $cont = 1;
             
-            foreach($contratistas as $contratista){
+            foreach($empleados as $empleado){
                             
 
         $this->excel->setActiveSheetIndex(0)
 
              ->setCellValue('A'.$columna, $cont)
 
-             ->setCellValue('B'.$columna, $contratista['NOMBRE_CONTRATISTA'])
+             ->setCellValue('B'.$columna, $empleado['nombres_empleado']." ".$empleado['apellidos_empleado'])
 
-             ->setCellValue('C'.$columna, $contratista['DOCUMENTO_CONTRATISTA'])
+             ->setCellValue('C'.$columna, $empleado['documento_empleado'])
                                 
-             ->setCellValue('D'.$columna, $contratista['DIRECCION1_CONTRATISTA'])
+             ->setCellValue('D'.$columna, $empleado['direccion_empleado'])
                 
-             ->setCellValue('E'.$columna, $contratista['CIUDAD_CONTRATISTA'])
+             ->setCellValue('E'.$columna, $empleado['ciudad_empleado'])
                 
-             ->setCellValue('F'.$columna, $contratista['TELEFONO_CONTRATISTA'])
+             ->setCellValue('F'.$columna, $empleado['telefono_empleado'])
                 
-             ->setCellValue('G'.$columna, $contratista['CORREO1_CONTRATISTA']);
+             ->setCellValue('G'.$columna, $empleado['correo_empleado']);
 
             $columna ++;
+            $cont ++;
 
         }
 
@@ -98,7 +99,7 @@ $styleArray_color = array(
 );
   $this->excel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray_color);
 
-  $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
+  $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
   $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(35);
   $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(35);
   $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(35);
@@ -120,7 +121,7 @@ $this->excel->setActiveSheetIndex(0);
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-$objWriter->save(str_replace('.php', '.xls', __FILE__));
+$objWriter->save($ruta);
 $callEndTime = microtime(true);
 $callTime = $callEndTime - $callStartTime;
 
