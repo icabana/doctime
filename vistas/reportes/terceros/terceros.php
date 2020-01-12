@@ -6,7 +6,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Terceros', 
           'generarReporteTerceros',
           '',
           "cargarVisorPDF(data); "
@@ -20,7 +20,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Terceros', 
           'generarReporteTercerosExcel', 
           '',
           "location.href = data"         

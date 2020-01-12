@@ -1,64 +1,33 @@
 <script type="text/javascript">
 
-  function insertar_empleado() {
+  function insertar_remitente_entrante() {
 
-    if(!validar_requeridos()){
-        return 0;
-    }
+      var datos = $('#formTiposradicado_entrantes').serialize();
 
-    var datos = $('#formEmpleados').serialize();
-
-    ejecutarAccion(
-      'administracion',
-      'Empleados',
-      'insertar',
-      datos,
-      'insertar_empleado2(data)'
-    );
+      ejecutarAccion(
+        'administracion',
+        'Tiposradicado',
+        'insertarModal',
+        datos,
+        '$("#div_remitente_entrante").html(data); $("#modal_remitente").modal("hide");'
+      );
 
   }
-
-  function insertar_empleado2(data) {
-
-    if (data == 'error_documento') {
-      mensaje_alertas("error", "El Documento ya se encuentra registrado", "center");
-      return false;
-    } 
-    if (data == 'error_correo') {
-      mensaje_alertas("error", "El Correo ya se encuentra registrado", "center");
-      return false;
-    } 
-
-    if (data == 'error_nick') {
-      mensaje_alertas("error", "El Nick de Usuario ya se encuentra registrado", "center");
-      return false;
-    } 
-    
-    mensaje_alertas("success", "Empleado registrado correctamente", "center");
-    cargar_empleados();
-
-  }
-
+  
 </script>
 
 
-<?php
-$froms = new Formularios();
-?>
-
-
-<div class="box box-default">
-  <div style="padding: 25px" class="box-body">
-    <div class="card card-primary">
-
-
-
-
-
-      <div class="card-header">
-        <h3 class="card-title">Registrar Empleado</h3>
+<div class="modal fade" id="modal_remitentes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal_remitentes2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Remitente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
+      <div class="modal-body">
+     
 
 
       <form autocomplete="on" id="formEmpleados" method="post">
@@ -78,19 +47,19 @@ $froms = new Formularios();
                 <ul class="nav nav-pills ml-auto p-2">
 
                   <li class="nav-item">
-                    <a class="nav-link active" href="#tab_1" data-toggle="tab">
+                    <a class="nav-link active" href="#tab_1_modal" data-toggle="tab">
                       Informaci&oacute;n Principal
                     </a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="#tab_2" data-toggle="tab">
+                    <a class="nav-link" href="#tab_2_modal" data-toggle="tab">
                       Informaci&oacute;n Secundaria
                     </a>
                   </li>
                   
                   <li class="nav-item">
-                    <a class="nav-link" href="#tab_3" data-toggle="tab">
+                    <a class="nav-link" href="#tab_3_modal" data-toggle="tab">
                       Datos de Usuario
                     </a>
                   </li>
@@ -99,10 +68,10 @@ $froms = new Formularios();
                 </ul>
 
                 <div class="tab-content">
-                  <div style="padding: 20px;" class="tab-pane active" id="tab_1">
+                  <div style="padding: 20px;" class="tab-pane active" id="tab_1_modal">
                     <div class="row">
 
-                      <div class="col-md-3">
+                      <div class="col-md-6">
                         <label>Tipo de Documento<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
@@ -117,14 +86,21 @@ $froms = new Formularios();
                         ?>
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-6">
                         <label>Documento<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="documento_empleado" 
                         name="documento_empleado">
                       </div>
 
                       
-                      <div class="col-md-6">
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                      
+                      <div class="col-md-12">
                         <label>Dependencia<span style="color:red">*</span></label>
 
                         <?php
@@ -142,56 +118,70 @@ $froms = new Formularios();
                     </div>
                     </div>
 
+
                     <br>
 
 
                     <div class="row">
 
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <label>Nombres<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="nombres_empleado" 
                         name="nombres_empleado">
                       </div>
 
 
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <label>Apellidos<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="apellidos_empleado" 
                         name="apellidos_empleado">
                       </div>
 
 
-                      <div class="col-md-4">
+
+                    </div>
+
+                    <br>
+                    
+                    <div class="row">
+
+                      <div class="col-md-12">
                         <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="correo_empleado" 
                         name="correo_empleado">
                       </div>
 
                     </div>
+
                   </div>
 
-                  <div style="padding: 20px;" class="tab-pane" id="tab_2">
+                  <div style="padding: 20px;" class="tab-pane" id="tab_2_modal">
 
                     <div class="row">
-                      <div class="col-md-2">
+                      <div class="col-md-6">
                         <label>Celular</label>
                         <input type="text" class="form-control" id="celular_empleado" name="celular_empleado"
                         onkeypress="return no_numeros(event)">
                       </div>
 
-                      <div class="col-md-2">
+                      <div class="col-md-6">
                         <label>Tel&eacute;fono</label>
                         <input type="text" class="form-control" id="telefono_empleado" name="telefono_empleado"
                         onkeypress="return no_numeros(event)">
                       </div>
 
+                      </div>
 
-                      <div class="col-md-4">
+                        <br>
+
+                      <div class="row">
+
+                      <div class="col-md-6">
                         <label>Direcci&oacute;n</label>
                         <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado">
                       </div>
 
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <label>Ciudad</label>
                         <input type="text" class="form-control" id="ciudad_empleado" name="ciudad_empleado">
                       </div>
@@ -200,7 +190,7 @@ $froms = new Formularios();
                     <br>
 
                     <div class="row">
-                      <div class="col-md-2">
+                      <div class="col-md-6">
                         <label>Sexo</label>
 
                         <?php
@@ -216,7 +206,7 @@ $froms = new Formularios();
                         ?>
                       </div>
 
-                      <div class="col-md-2">
+                      <div class="col-md-6">
                         <label>Estado Civil</label>
 
                         <?php
@@ -231,15 +221,19 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
+                      </div>
 
-                      <div class="col-md-3">
+<br>
+
+<div class="row">
+                      <div class="col-md-6">
                         <label>Fecha de Nacimiento</label>
 
                         <input type="date" class="form-control" id="fechanacimiento_empleado" 
                         name="fechanacimiento_empleado">
                       </div>
 
-                      <div class="col-md-5">
+                      <div class="col-md-6">
                         <label>Lugar de Nacimiento</label>
 
                         <input type="text" class="form-control" id="lugarnacimiento_empleado" 
@@ -250,24 +244,27 @@ $froms = new Formularios();
 
 
 
-                  <div style="padding: 20px;" class="tab-pane" id="tab_3">
+                  <div style="padding: 20px;" class="tab-pane" id="tab_3_modal">
 
                     <div class="row">
-                      <div class="col-md-3">
+                      <div class="col-md-6">
                         <label>Nombre de Usuario<span style="color:red">*</span></label>
                         <input type="text" class="form-control requerido" id="usuario_empleado" 
                         name="usuario_empleado">
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-6">
                         <label>Contrase&ntilde;a<span style="color:red">*</span></label>
                         <input type="password" class="form-control requerido" id="password_empleado" 
                         name="password_empleado">
                       </div>
                       </div>
-                      <br>
-                      <div class="row">                      
-                      <div class="col-md-3">
+
+<br>
+
+<div class="row">
+
+   <div class="col-md-6">
                         <label>Rol<span style="color:red">*</span></label>
 
                         <?php
@@ -282,7 +279,8 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
-                      <div class="col-md-3">
+
+                      <div class="col-md-6">
                         <label>Estado<span style="color:red">*</span></label>
 
                         <?php
@@ -303,16 +301,7 @@ $froms = new Formularios();
                 </div>
               </div>
           
-              <div style="padding: 20px;" >
-              <div class="row">
-              <div class="col-md-3">
-          <button onclick="cargar_empleados();" class="btn btn-danger">Cancelar</button>
-          <button onclick="insertar_empleado(); return false;" class="btn btn-success">Guardar</button>
-          </div>
-          </div>
-          </div>
-
-
+             
 
 
         </div>
@@ -324,7 +313,11 @@ $froms = new Formularios();
 
 
 
-
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button onclick="insertar_remitente_entrante(); return false;" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>
+</div>

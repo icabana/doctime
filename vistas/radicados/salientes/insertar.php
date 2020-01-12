@@ -89,6 +89,35 @@
     $('#vista_destinatarios').hide();
 
   }
+
+  
+    
+  function cargar_subseries_salientes() {
+
+      ejecutarAccion(
+        'radicados',
+        'salientes',
+        'cargarSubseriesSalientes',
+        'id_serie_saliente='+$('#serie_saliente').val(),
+        "$('#div_subseries_salientes').html(data); cargar_tiposdocumentales_salientes()"
+      );
+
+  } 
+
+  function cargar_tiposdocumentales_salientes() {
+
+    ejecutarAccion(
+      'radicados',
+      'salientes',
+      'cargarTiposdocumentalesSalientes',
+      'id_subserie_saliente='+$('#subserie_saliente').val(),
+      "$('#div_tiposdocumentales_salientes').html(data);"
+    );
+
+  } 
+
+
+
 </script>
 
 
@@ -203,6 +232,61 @@ $froms = new Formularios();
                         <label>N&uacute;mero de Folios</label>
                         <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente">
                       </div>
+
+                      
+                      <div class="col-md-3">
+                        <label>Serie<span style="color:red">*</span></label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $series,
+                          'nombre_serie',
+                          'id_serie',
+                          'serie_saliente',
+                          '',
+                          '',
+                          'cargar_subseries_salientes()'
+                        );
+                        ?>
+
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label>Sub-Serie<span style="color:red">*</span></label>
+                        <div id="div_subseries_salientes">
+                          <?php
+                            echo $froms->Lista_Desplegable(
+                              $subseries,
+                              'nombre_subserie',
+                              'id_subserie',
+                              'subserie_saliente',
+                              '',
+                              '',
+                              'cargar_tiposdocumentales_salientes()'
+                            );
+                          ?>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label>Tipo Documental<span style="color:red">*</span></label>
+                        <div id="div_tiposdocumentales_salientes">
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $tiposdocumentales,
+                          'nombre_tipodocumental',
+                          'id_tipodocumental',
+                          'tipodocumental_saliente',
+                          '',
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+                      </div>
+
+
 
                     </div>
 

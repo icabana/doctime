@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
   function editar_tipodocumental() {
 
     if(!validar_requeridos()){
@@ -27,6 +28,21 @@
     }
 
   }
+  
+
+  function cargar_subseries() {
+
+    ejecutarAccion(
+      'administracion',
+      'Tiposdocumentales',
+      'cargarSubseries',
+      'id_serie='+$('#serie_tipodocumental').val(),
+      "$('#div_subseries').html(data);"
+    );
+
+  }
+
+
 </script>
 
 
@@ -56,6 +72,48 @@ $froms = new Formularios();
                         value="<?php echo $datos['id_tipodocumental']; ?>">
 
               <div class="card-body">
+
+
+              
+            <div class="form-group">
+ 
+ <label>Serie Documental<span style="color:red">*</span></label>
+ <?php
+ echo $froms->Lista_Desplegable(
+         $series,
+         'nombre_serie',
+         'id_serie',
+         'serie_tipodocumental',
+         $datos['serie_tipodocumental'],
+         '',
+         'cargar_subseries()'
+     );
+ ?>
+
+</div>
+
+
+<div class="form-group">
+
+ <label>SubSerie Documental<span style="color:red">*</span></label>
+ <div id="div_subseries">
+ <?php
+ echo $froms->Lista_Desplegable(
+         $subseries,
+         'nombre_subserie',
+         'id_subserie',
+         'subserie_tipodocumental',
+         $datos['subserie_tipodocumental'],
+         '',
+         ''
+     );
+ ?>
+
+</div>
+</div>
+
+
+
                 <div class="form-group">
                   <label>Tipo Documental<span style="color:red">*</span></label>
 

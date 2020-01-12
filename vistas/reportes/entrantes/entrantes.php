@@ -6,7 +6,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Entrantes', 
           'generarReporteEntrantes',
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
@@ -24,7 +24,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Entrantes', 
           'generarReporteEntrantesExcel', 
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
@@ -42,8 +42,24 @@
     
         ejecutarAccion(
           'reportes',
-          'Reportes',
-          'cargarReporteEntrantes',
+          'Entrantes',
+          'cargarEntrantes',
+          "estado="+$("#estado_reporte").val()+
+          "&fecha1="+$("#fecha1_reporte").val()+
+          "&fecha2="+$("#fecha2_reporte").val()+ 
+          "&remitente="+$("#remitente_entrante_reporte").val()+ 
+          "&destinatario="+$("#destinatario_entrante_reporte").val(), 
+          "$('#div_reporte_entrante').html(data);"    
+        );
+        
+    }
+      
+    function cargarTablaEntrantes(){
+    
+        ejecutarAccion(
+          'reportes',
+          'Entrantes',
+          'cargarTablaEntrantes',
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
@@ -119,7 +135,7 @@
 
         $('#vista_remitente_entrante_reporte').hide();
 
-        cargarReporte();
+        cargarTablaEntrantes();
 
     }
 
@@ -131,7 +147,8 @@
 
         $("#destinatario_entrante_reporte").val(id_destinatario);
         $("#destinatario_entrante_reporte2").val(nombre_destinatario);
-        cargarReporte();
+        
+        cargarTablaEntrantes();
 
         $('#vista_destinatario_entrante_reporte').hide();
 

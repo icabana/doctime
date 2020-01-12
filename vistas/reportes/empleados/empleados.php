@@ -108,7 +108,7 @@
               <label>Seleccionar Dependencia:</label>
 
                 <?php
-                    echo $froms->Lista_Desplegable(
+                    echo $froms->Lista_Desplegable_TODOS(
                         $dependencias,
                         'nombre_dependencia',
                         'id_dependencia',
@@ -124,7 +124,7 @@
           <div class="col-md-3">
             <label>Seleccionar Genero:</label>
             <?php
-                      echo $froms->Lista_Desplegable(
+                      echo $froms->Lista_Desplegable_TODOS(
                           $sexos,
                           'nombre_sexo',
                           'id_sexo',

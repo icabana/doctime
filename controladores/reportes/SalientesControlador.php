@@ -25,8 +25,8 @@ class SalientesControlador extends ControllerBase {
             $_POST['fecha1'], $_POST['fecha2']
         );
                  
-        include("vistas/reportes/pdf_reporte_saliente.php");          
-        $dirPdf = "archivos/reportes/pdf_reporte_saliente.pdf";
+        include("vistas/reportes/salientes/pdf_reporte_saliente.php");          
+        $dirPdf = "archivos/reportes/salientes/pdf_reporte_saliente.pdf";
         $this->pdf->Output(''.$dirPdf.'');
         echo "urlRuta=".$dirPdf;
         
@@ -44,7 +44,7 @@ class SalientesControlador extends ControllerBase {
             $_POST['fecha2']
         );
       
-        include("vistas/reportes/reporte_excel_salientes.php");        
+        include("vistas/reportes/salientes/reporte_excel_salientes.php");        
            
         echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_salientes.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
           
@@ -59,7 +59,7 @@ class SalientesControlador extends ControllerBase {
         
         $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2']);
               
-        include 'vistas/reportes/tabla_salientes.php';
+        include 'vistas/reportes/salientes/tabla_salientes.php';
           
     }
     

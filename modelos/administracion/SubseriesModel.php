@@ -25,6 +25,32 @@ class SubseriesModel extends ModelBase {
         return $consulta;       
                
     }
+  
+    function getTodosPorSerie($serie_subserie) {
+        
+        $query = "select 
+                    subseries.id_subserie, 
+                    subseries.serie_subserie, 
+                    subseries.codigo_subserie, 
+                    subseries.nombre_subserie, 
+                    subseries.tiempogestion_subserie, 
+                    subseries.tiempocentral_subserie, 
+                    subseries.soporte_subserie, 
+                    subseries.disposicion_subserie,
+
+                    series.id_serie,
+                    series.codigo_serie,
+                    series.nombre_serie
+                
+                    from subseries LEFT JOIN series 
+                    ON subseries.serie_subserie = series.id_serie
+                    
+                    where subseries.serie_subserie = '".$serie_subserie."'";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    }
 
     function getDatos($id_subserie) {
        

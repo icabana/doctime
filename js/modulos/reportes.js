@@ -32,7 +32,7 @@ function cargar_reporte_salientes(){
 
 
 
-function cargar_reportes_empleados(){
+function cargar_reporte_empleados(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -50,7 +50,7 @@ function cargar_reportes_empleados(){
 
 
 
-function cargar_reportes_terceros(){
+function cargar_reporte_terceros(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -68,7 +68,7 @@ function cargar_reportes_terceros(){
 
 
 
-function cargar_reportes_dependencias(){
+function cargar_reporte_dependencias(){
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();

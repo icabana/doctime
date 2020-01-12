@@ -35,9 +35,9 @@ class EmpleadosControlador extends ControllerBase {
         );
 
                  
-        include("vistas/reportes/pdf_reporte_empleados.php");   
+        include("vistas/reportes/empleados/pdf_reporte_empleados.php");   
        
-        $dirPdf = "archivos/reportes/pdf_reporte_empleados.pdf";
+        $dirPdf = "archivos/reportes/empleados/pdf_reporte_empleados.pdf";
 
         $this->pdf->Output(''.$dirPdf.'');
 
@@ -61,7 +61,7 @@ class EmpleadosControlador extends ControllerBase {
         $nombre_archivo = "empleados_".date('Y-m-d_H-i-s').".xls";        
         $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
 
-        include("vistas/reportes/reporte_excel_empleados.php");        
+        include("vistas/reportes/empleados/reporte_excel_empleados.php");        
            
         echo "archivos/reportes_excel/".$nombre_archivo;
     }
@@ -78,7 +78,7 @@ class EmpleadosControlador extends ControllerBase {
                             $_POST['sexo']
                         );
               
-        include 'vistas/reportes/tabla_empleados.php';
+        include 'vistas/reportes/empleados/tabla_empleados.php';
           
     }
     

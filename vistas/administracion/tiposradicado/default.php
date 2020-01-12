@@ -22,7 +22,7 @@
 
     function eliminar_tiporadicado(id_tiporadicado) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tiporadicado2(" + id_tiporadicado + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar el tipo de radicado?", "eliminar_tiporadicado2(" + id_tiporadicado + "); ");
 
     }
 
@@ -33,7 +33,7 @@
             'Tiposradicado',
             'eliminar',
             "id_tiporadicado=" + id_tiporadicado,
-            ' mensaje_alertas("success", "Tiporadicado Eliminado con Éxito", "center"); cargar_tiposradicado();'
+            ' mensaje_alertas("success", "Tipo de radicado Eliminado con Éxito", "center"); cargar_tiposradicado();'
         );
 
     }

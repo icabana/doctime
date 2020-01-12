@@ -367,6 +367,14 @@
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_tiposradicado();" class="nav-link">
+                  <i class="far fa-file-archive nav-icon"></i>
+                  <p>Tipos de radicado</p>
+                </a>
+              </li>
+            </ul>
           </li>
          
 
@@ -454,6 +462,10 @@
             </ul>    
           </li>
 
+                <br>
+                <br>
+                <br>
+                <br>
 
          <?php
             }

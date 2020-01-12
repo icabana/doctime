@@ -6,7 +6,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Salientes', 
           'generarReporteSalientes',
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
@@ -23,7 +23,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Salientes', 
           'generarReporteSalientesExcel', 
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
@@ -40,7 +40,7 @@
     
         ejecutarAccion(
           'reportes',
-          'Reportes',
+          'Salientes',
           'cargarReporte',
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 

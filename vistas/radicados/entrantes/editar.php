@@ -401,19 +401,24 @@ $froms = new Formularios();
                         name="fecharadicado_entrante" value="<?php echo $datos['fecharadicado_entrante']; ?>">
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
+                          Crear Nuevo
+                        </a>
+                        <div id="div_tipo_radicado_entrante">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposradicado,
                           'nombre_tiporadicado',
                           'id_tiporadicado',
                           'tiporadicado_entrante',
-                          '',
+                          $datos['tiporadicado_entrante'],
                           '',
                           ''
                         );
                         ?>
+                      </div>
                       </div>
                     </div>
 
@@ -841,3 +846,11 @@ $froms = new Formularios();
     </div>
   </div>
 </div>
+
+
+
+<?php
+
+require_once("vistas/radicados/entrantes/modales/tipos_radicado.php");
+
+?>

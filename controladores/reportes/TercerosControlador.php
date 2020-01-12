@@ -23,9 +23,9 @@ class TercerosControlador extends ControllerBase {
 
         $terceros = $TercerosModel->getTodos();
                  
-        include("vistas/reportes/pdf_reporte_terceros.php");   
+        include("vistas/reportes/terceros/pdf_reporte_terceros.php");   
        
-        $dirPdf = "archivos/reportes/pdf_reporte_terceros.pdf";
+        $dirPdf = "archivos/reportes/terceros/pdf_reporte_terceros.pdf";
 
         $this->pdf->Output(''.$dirPdf.'');
 
@@ -44,7 +44,7 @@ class TercerosControlador extends ControllerBase {
         $nombre_archivo = "terceros_".date('Y-m-d_H-i-s').".xls";        
         $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
 
-        include("vistas/reportes/reporte_excel_terceros.php");        
+        include("vistas/reportes/terceros/reporte_excel_terceros.php");        
            
         echo "archivos/reportes_excel/".$nombre_archivo;
     }

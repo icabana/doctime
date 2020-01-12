@@ -87,8 +87,39 @@
     $('#vista_destinatarios').hide();
 
   }
+
+    
+  function cargar_subseries_entrantes() {
+
+    ejecutarAccion(
+      'radicados',
+      'entrantes',
+      'cargarSubseriesEntrantes',
+      'id_serie_entrante='+$('#serie_entrante').val(),
+      "$('#div_subseries_entrantes').html(data); cargar_tiposdocumentales_entrantes()"
+    );
+
+}
+    
+  function cargar_tiposdocumentales_entrantes() {
+
+      ejecutarAccion(
+        'radicados',
+        'entrantes',
+        'cargarTiposdocumentalesEntrantes',
+        'id_subserie_entrante='+$('#subserie_entrante').val(),
+        "$('#div_tiposdocumentales_entrantes').html(data);"
+      );
+
+  } 
+
 </script>
 
+<style>
+    #modal_remitentes2{
+      width: 80% !important;
+    }
+  </style>
 
 <?php
 $froms = new Formularios();
@@ -139,8 +170,12 @@ $froms = new Formularios();
                         name="fecharadicado_entrante" value="<?php echo date("Y-m-d"); ?>">
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
+                          Crear Nuevo
+                        </a>
+                        <div id="div_tipo_radicado_entrante">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposradicado,
@@ -153,6 +188,7 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
+                      </div>
                     </div>
 
                     <br>
@@ -161,6 +197,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_remitentes">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="remitente_entrante" name="remitente_entrante">
                         <input type="text" class="form-control requerido" id="remitente_entrante2" name="remitente_entrante2" onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
@@ -260,7 +299,7 @@ $froms = new Formularios();
                           'serie_entrante',
                           '',
                           '',
-                          ''
+                          'cargar_subseries_entrantes()'
                         );
                         ?>
 
@@ -269,22 +308,25 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Sub-Serie<span style="color:red">*</span></label>
-                        <?php
-                          echo $froms->Lista_Desplegable(
-                            $subseries,
-                            'nombre_subserie',
-                            'id_subserie',
-                            'subserie_entrante',
-                            '',
-                            '',
-                            ''
-                          );
-                        ?>
+                        <div id="div_subseries_entrantes">
+                          <?php
+                            echo $froms->Lista_Desplegable(
+                              $subseries,
+                              'nombre_subserie',
+                              'id_subserie',
+                              'subserie_entrante',
+                              '',
+                              '',
+                              'cargar_tiposdocumentales_entrantes()'
+                            );
+                          ?>
+                        </div>
                       </div>
 
 
                       <div class="col-md-4">
                         <label>Tipo Documental<span style="color:red">*</span></label>
+                        <div id="div_tiposdocumentales_entrantes">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposdocumentales,
@@ -296,6 +338,7 @@ $froms = new Formularios();
                           ''
                         );
                         ?>
+                      </div>
                       </div>
 
 
@@ -330,3 +373,10 @@ $froms = new Formularios();
 
     </div>
   </div>
+
+  <?php
+
+    require_once("vistas/radicados/entrantes/modales/tipos_radicado.php");
+    require_once("vistas/radicados/entrantes/modales/remitentes.php");
+
+  ?>

@@ -69,6 +69,8 @@
                 <table id="tabla_tiposdocumentales" class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th style='background-color:lavender'>SERIE</th>
+                            <th style='background-color:lavender'>SUBSERIE</th>
                             <th style='background-color:lavender'>NOMBRE</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
@@ -80,6 +82,8 @@
 
                             echo "<tr>";
 
+                            echo "<td>" . $items['nombre_serie'] . "</td>";
+                            echo "<td>" . $items['nombre_subserie'] . "</td>";
                             echo "<td>" . $items['nombre_tipodocumental'] . "</td>";
 
 

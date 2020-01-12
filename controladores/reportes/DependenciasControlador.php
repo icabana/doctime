@@ -25,7 +25,7 @@ class DependenciasControlador extends ControllerBase {
                  
         include("vistas/reportes/pdf_reporte_dependencias.php");   
        
-        $dirPdf = "archivos/reportes/pdf_reporte_dependencias.pdf";
+        $dirPdf = "archivos/reportes/dependencias/pdf_reporte_dependencias.pdf";
 
         $this->pdf->Output(''.$dirPdf.'');
 
@@ -45,7 +45,7 @@ class DependenciasControlador extends ControllerBase {
         $nombre_archivo = "dependencias_".date('Y-m-d_H-i-s').".xls";        
         $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
 
-        include("vistas/reportes/reporte_excel_dependencias.php");        
+        include("vistas/reportes/dependencias/reporte_excel_dependencias.php");        
            
         echo "archivos/reportes_excel/".$nombre_archivo;
     }

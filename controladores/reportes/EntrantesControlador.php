@@ -24,9 +24,9 @@ class EntrantesControlador extends ControllerBase {
             $_POST['estado'], $_POST['fecha1'], $_POST['fecha2'], $_POST['remitente'], $_POST['destinatario']
         );
                  
-        include("vistas/reportes/pdf_reporte.php");   
+        include("vistas/reportes/entrantes/pdf_reporte.php");   
        
-        $dirPdf = "archivos/reportes/pdf_reporte.pdf";
+        $dirPdf = "archivos/reportes/entrantes/pdf_reporte.pdf";
 
         $this->pdf->Output(''.$dirPdf.'');
 
@@ -53,7 +53,7 @@ class EntrantesControlador extends ControllerBase {
         $nombre_archivo = "entrada_".date('Y-m-d_H-i-s').".xls";        
         $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
 
-        include("vistas/reportes/reporte_excel_entrantes.php");        
+        include("vistas/reportes/entrantes/reporte_excel_entrantes.php");        
            
         echo "archivos/reportes_excel/".$nombre_archivo;
           
@@ -74,7 +74,7 @@ class EntrantesControlador extends ControllerBase {
                             $_POST['destinatario']
                         );
               
-        include 'vistas/reportes/tabla_entrantes.php';
+        include 'vistas/reportes/entrantes/tabla_entrantes.php';
           
     }
     

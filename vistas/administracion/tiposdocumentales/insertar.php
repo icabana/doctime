@@ -2,10 +2,9 @@
 
   function insertar_tipodocumental() {
 
-    if(!validar_requeridos()){
-        return 0;
-    }
-
+      if(!validar_requeridos()){
+          return 0;
+      }
 
       var datos = $('#formTiposdocumentales').serialize();
 
@@ -29,6 +28,21 @@
       }
 
   }
+
+  
+  function cargar_subseries() {
+
+    ejecutarAccion(
+      'administracion',
+      'Tiposdocumentales',
+      'cargarSubseries',
+      'id_serie='+$('#serie_tipodocumental').val(),
+      "$('#div_subseries').html(data);"
+    );
+
+}
+
+
 </script>
 
 
@@ -53,10 +67,52 @@
           <form autocomplete="on" id="formTiposdocumentales" method="post">
 
             <div class="card-body">
+
+
+            <div class="form-group">
+ 
+                <label>Serie Documental<span style="color:red">*</span></label>
+                <?php
+                echo $froms->Lista_Desplegable(
+                        $series,
+                        'nombre_serie',
+                        'id_serie',
+                        'serie_tipodocumental',
+                        '',
+                        '',
+                        'cargar_subseries()'
+                    );
+                ?>
+
+              </div>
+              
+
+              <div class="form-group">
+ 
+                <label>SubSerie Documental<span style="color:red">*</span></label>
+                <div id="div_subseries">
+                    <?php
+                    echo $froms->Lista_Desplegable(
+                            $subseries,
+                            'nombre_subserie',
+                            'id_subserie',
+                            'subserie_tipodocumental',
+                            '',
+                            '',
+                            ''
+                        );
+                    ?>
+                </div>
+              </div>
+              
+
               <div class="form-group">
                 <label>Tipo Documental<span style="color:red">*</span></label>
                 <input type="text" class="form-control requerido" id="nombre_tipodocumental" name="nombre_tipodocumental">
               </div>
+
+
+
             </div>
 
             <div class="card-footer">

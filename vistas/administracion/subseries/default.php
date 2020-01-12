@@ -63,7 +63,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="tabla_subseries" class="table table-bordered table-hover">
+                <table id="tabla_subseries9" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>NOMBRE DE LA SERIE</th>
