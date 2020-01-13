@@ -8,6 +8,15 @@
 
     }
 
+    
+    function nuevo_radicado_saliente(entrante_saliente) {
+
+      abrirVentanaContenedor(
+          'radicados', 'Salientes', 'nuevo', 'entrante_saliente='+entrante_saliente, ''
+      );
+
+    }
+
     function editar_entrante(id_entrante) {
 
         abrirVentanaContenedor(
@@ -17,6 +26,19 @@
             'id_entrante=' + id_entrante,
             "SubirArchivos('fileUpload_nuevo');"
         );
+
+    }
+
+    
+    function ver_radicado_saliente(id_saliente) {
+
+      abrirVentanaContenedor(
+          'radicados',
+          'Salientes',
+          'editar',
+          'id_saliente=' + id_saliente,
+          "SubirArchivos('fileUpload_nuevo');"
+      );
 
     }
 
@@ -403,6 +425,7 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender; width:20px '></th>
                             <th style='background-color:lavender; width:20px '></th>                            
                             <th style='background-color:lavender; width:20px'></th>
+                            <th style='background-color:lavender; width:20px'></th>
                         </tr>
                     </thead>
                 <tbody>
@@ -470,8 +493,20 @@ function enviar_bandeja_entrante2() {
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 
                     <?php
-                    echo "<td><a href='#'><i onclick='editar_entrante(" . $entrante['id_entrante'] . ");' 
+                        echo "<td><a href='#' title='Editar Radicado'><i onclick='editar_entrante(" . $entrante['id_entrante'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
+
+                        if($entrante['saliente_entrante'] == '' || $entrante['saliente_entrante'] == '0'){
+                          echo "<td><a href='#' title='Crear Radicado Saliente'><i onclick='nuevo_radicado_saliente(" . $entrante['id_entrante'] . ");' 
+                          class='fas fa-plus-square'></i></a></td>";
+                        }else{
+                            echo "<td><a href='#' title='Ver Radicado Saliente'><i onclick='ver_radicado_saliente(" . $entrante['saliente_entrante'] . ");' 
+                            class='fas fa-arrow-right'></i></a></td>";  
+  
+                        }
+                        
+
+
                       ?>
 
                   </tr>

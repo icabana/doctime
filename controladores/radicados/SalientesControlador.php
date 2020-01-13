@@ -34,6 +34,18 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("TiposradicadoModel.php", "administracion");
         $TiposradicadoModel = new TiposradicadoModel();
         $tiposradicado = $TiposradicadoModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($series[0]['id_serie']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($subseries[0]['id_subserie']);
 
         $this->model->cargar("SalientesModel.php", "radicados");
         $SalientesModel = new SalientesModel();
@@ -46,6 +58,8 @@ class SalientesControlador extends ControllerBase {
 
         $consecutivo = $consecutivo2.$max_consecutivo;
         $numero_saliente = date("Ymd").$consecutivo;
+
+        $entrante_saliente = $_POST['entrante_saliente'];
 
         include 'vistas/radicados/salientes/insertar.php';
         
@@ -61,7 +75,7 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("TiposradicadoModel.php", "administracion");
         $TiposradicadoModel = new TiposradicadoModel();
         $tiposradicado = $TiposradicadoModel->getTodos();
-
+                
         $this->model->cargar("SalientesModel.php");
         $SalientesModel = new SalientesModel();         
         $datos = $SalientesModel->getDatos($_POST['id_saliente']);
@@ -75,6 +89,20 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($datos['serie_saliente']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($datos['subserie_saliente']);
+
+
 
         include 'vistas/radicados/salientes/editar.php';
                
@@ -210,6 +238,10 @@ class SalientesControlador extends ControllerBase {
       
         $this->model->cargar("SalientesModel.php", "radicados");
         $SalientesModel = new SalientesModel();                 
+      
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();                 
+
         $max_consecutivo = $SalientesModel->getConsecutivo() + 1;
 
         $cantidad = strlen($max_consecutivo);
@@ -231,9 +263,15 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["numerofolios_saliente"],
                                     $_POST["descripcionfolios_saliente"],
                                     $_POST["asunto_saliente"],
-                                    $_POST["tiporadicado_saliente"]
+                                    $_POST["tiporadicado_saliente"],
+                                    $_POST["serie_saliente"],
+                                    $_POST["subserie_saliente"],
+                                    $_POST["tipodocumental_saliente"],
+                                    $_POST["entrante_saliente"]
                                 );        
         
+        $EntrantesModel->actualizarSaliente($_POST["entrante_saliente"],$resp);
+
         if( $resp != 0 ){
             
             mkdir('archivos/uploads/salientes/'.$resp);
@@ -266,6 +304,9 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["numerofolios_saliente"],
                                     $_POST["descripcionfolios_saliente"],
                                     $_POST["asunto_saliente"],
+                                    $_POST["serie_saliente"],
+                                    $_POST["subserie_saliente"],
+                                    $_POST["tipodocumental_saliente"],
                                     $_POST["tiporadicado_saliente"]
                                 );        
       
@@ -550,6 +591,51 @@ class SalientesControlador extends ControllerBase {
         echo "1";        
         
     }
-   
+  
+    
+    
+    public function cargarSubseriesSalientes() {
+        
+        $froms = new Formularios();
+         
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+
+        $subseries = $SubseriesModel->getTodosPorSerie($_POST['id_serie_saliente']);
+
+        echo $froms->Lista_Desplegable(
+            $subseries,
+            'nombre_subserie',
+            'id_subserie',
+            'subserie_saliente',
+            '',
+            '',
+            'cargar_tiposdocumentales_salientes()'
+        );
+
+    }       
+             
+        
+    public function cargarTiposdocumentalesSalientes() {
+        
+        $froms = new Formularios();
+        
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($_POST['id_subserie_saliente']);
+
+        echo $froms->Lista_Desplegable(
+            $tiposdocumentales,
+            'nombre_tipodocumental',
+            'id_tipodocumental',
+            'tipodocumental_saliente',
+            '',
+            '',
+            ''
+        );
+
+    }     
+
              
  }

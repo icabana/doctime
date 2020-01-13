@@ -299,6 +299,9 @@ class EntrantesControlador extends ControllerBase {
         }
 
         $consecutivo = $consecutivo2.$max_consecutivo;
+
+        $saliente_entrante = $_POST['saliente_entrante'];
+
         $numero_entrante = date("Ymd").$consecutivo;
 
         include 'vistas/radicados/entrantes/insertar.php';
@@ -542,6 +545,10 @@ class EntrantesControlador extends ControllerBase {
       
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();                 
+
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();                 
+
         $max_consecutivo = $EntrantesModel->getConsecutivo() + 1;
 
         $cantidad = strlen($max_consecutivo);
@@ -568,9 +575,12 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["responsable_entrante"],
                                     $_POST["serie_entrante"],
                                     $_POST["subserie_entrante"],
-                                    $_POST["tipodocumental_entrante"]
+                                    $_POST["tipodocumental_entrante"],
+                                    $_POST["saliente_entrante"]
                                 );        
         
+        $SalientesModel->actualizarEntrante($_POST["saliente_entrante"], $resp);
+
         if( $resp != 0 ){
             
             mkdir('archivos/uploads/entrantes/'.$resp);

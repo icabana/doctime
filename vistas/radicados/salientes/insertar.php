@@ -137,6 +137,8 @@ $froms = new Formularios();
 
       <form autocomplete="on" id="formSalientes" method="post">
 
+      <input type="text" id="entrante_saliente" name="entrante_saliente"  value="<?php echo $entrante_saliente; ?>">
+
         <div class="card-body">
 
           <div class="row">
@@ -161,6 +163,7 @@ $froms = new Formularios();
 
                         <label>No. de Radicado<span style="color:red">*</span></label>
                         <input type="text" readonly class="form-control requerido" id="numero_saliente" name="numero_saliente" onkeypress="return no_numeros(event)" value="<?php echo $numero_saliente; ?>">
+                        
 
                       </div>
 

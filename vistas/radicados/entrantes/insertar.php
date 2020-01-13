@@ -137,6 +137,8 @@ $froms = new Formularios();
 
       <form autocomplete="on" id="formEntrantes" method="post">
 
+      <input type="hidden" id="saliente_entrante" name="saliente_entrante" value="<?php echo $saliente_entrante; ?>">
+
         <div class="card-body">
 
           <div class="row">

@@ -264,9 +264,8 @@ $froms = new Formularios();
                         <input type="password" class="form-control requerido" id="password_empleado" 
                         name="password_empleado">
                       </div>
-                      </div>
-                      <br>
-                      <div class="row">                      
+                      
+                      
                       <div class="col-md-3">
                         <label>Rol<span style="color:red">*</span></label>
 

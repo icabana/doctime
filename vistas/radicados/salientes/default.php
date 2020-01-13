@@ -20,6 +20,29 @@
 
     }
 
+    
+    function nuevo_radicado_entrante(saliente_entrante) {
+
+      abrirVentanaContenedor(
+          'radicados', 'Entrantes', 'nuevo', 'saliente_entrante='+saliente_entrante, ''
+      );
+
+      }
+
+      
+    function ver_radicado_entrante(id_entrante) {
+
+        abrirVentanaContenedor(
+            'radicados',
+            'Entrantes',
+            'editar',
+            'id_entrante=' + id_entrante,
+            "SubirArchivos('fileUpload_nuevo');"
+        );
+
+    }
+
+
     function mover_carpeta0() {
 
         var cont = 0;
@@ -399,6 +422,7 @@ function enviar_bandeja_saliente2() {
                             <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
                             <th style='background-color:lavender; width:15px'></th>
+                            <th style='background-color:lavender; width:15px'></th>
                         </tr>
                     </thead>
                 <tbody>
@@ -458,8 +482,15 @@ function enviar_bandeja_saliente2() {
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 
                     <?php
-                    echo "<td><a href='#'><i onclick='editar_saliente(" . $saliente['id_saliente'] . ");' 
+                        echo "<td><a href='#'><i onclick='editar_saliente(" . $saliente['id_saliente'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
+                        if($saliente['entrante_saliente'] == '' || $saliente['entrante_saliente'] == '0'){
+                            echo "<td><a href='#' title='Crear Radicado Entrante'><i onclick='nuevo_radicado_entrante(" . $saliente['id_saliente'] . ");' 
+                                                class='fas fa-plus-square'></i></a></td>";
+                        }else{
+                          echo "<td><a href='#' title='Ver Radicado Entrante'><i onclick='ver_radicado_entrante(" . $saliente['entrante_saliente'] . ");' 
+                          class='fas fa-arrow-left'></i></a></td>";
+                        }
                       ?>
 
                   </tr>

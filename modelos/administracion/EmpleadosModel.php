@@ -56,10 +56,14 @@ class EmpleadosModel extends ModelBase {
                     empleados.lugarnacimiento_empleado,
                     empleados.usuario_empleado,
 
-                    tiposdocumento.codigo_tipodocumento
+                    tiposdocumento.codigo_tipodocumento,
+
+                    usuarios.nick_usuario,
+                    usuarios.password_usuario
                 
-                    from empleados left join 
-                            tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
+                    from empleados 
+                        left join tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
+                        left join usuarios on empleados.usuario_empleado = usuarios.id_usuario
 
                     where empleados.id_empleado='".$id_empleado."'";
         

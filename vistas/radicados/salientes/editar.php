@@ -318,6 +318,30 @@ ejecutarAccion(
 }
 
 
+    
+function cargar_subseries_salientes() {
+
+ejecutarAccion(
+  'radicados',
+  'salientes',
+  'cargarSubseriesSalientes',
+  'id_serie_saliente='+$('#serie_saliente').val(),
+  "$('#div_subseries_salientes').html(data); cargar_tiposdocumentales_salientes()"
+);
+
+}
+
+function cargar_tiposdocumentales_salientes() {
+
+  ejecutarAccion(
+    'radicados',
+    'salientes',
+    'cargarTiposdocumentalesSalientes',
+    'id_subserie_saliente='+$('#subserie_saliente').val(),
+    "$('#div_tiposdocumentales_salientes').html(data);"
+  );
+
+} 
 </script>
 
 
@@ -458,6 +482,63 @@ $froms = new Formularios();
                         <input type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente"
                         value="<?php echo $datos['numerofolios_saliente']; ?>" onkeypress="return no_numeros(event)">
                       </div>
+
+                      
+                      
+                      <div class="col-md-3">
+                        <label>Serie<span style="color:red">*</span></label>
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $series,
+                          'nombre_serie',
+                          'id_serie',
+                          'serie_saliente',
+                          $datos['serie_saliente'],
+                          '',
+                          'cargar_subseries_salientes()'
+                        );
+                        ?>
+
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label>Sub-Serie<span style="color:red">*</span></label>
+                        <div id="div_subseries_salientes">
+                          <?php
+                            echo $froms->Lista_Desplegable(
+                              $subseries,
+                              'nombre_subserie',
+                              'id_subserie',
+                              'subserie_saliente',
+                              $datos['subserie_saliente'],
+                              '',
+                              'cargar_tiposdocumentales_salientes()'
+                            );
+                          ?>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <label>Tipo Documental<span style="color:red">*</span></label>
+                        <div id="div_tiposdocumentales_salientes">
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $tiposdocumentales,
+                          'nombre_tipodocumental',
+                          'id_tipodocumental',
+                          'tipodocumental_saliente',
+                          $datos['tipodocumental_saliente'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+                      </div>
+
+
+
 
                     </div>
 
@@ -702,7 +783,7 @@ $froms = new Formularios();
 
                     <input  type="file" name="userfile" class="fileUpload_nu0evo" multiple /><br> 
 
-                     <input type="hidden" id="id_saliente" name="id_saliente"  value="<?php echo $datos['id_saliente']; ?>" >
+                     <input type="hidden" id="id_saliente_upload" name="id_saliente_upload"  value="<?php echo $datos['id_saliente']; ?>" >
                  
                      <input type="hidden" id="documento_soporte" name="documento_soporte" >
                      

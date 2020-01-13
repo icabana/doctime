@@ -545,6 +545,7 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Sub-Serie<span style="color:red">*</span></label>
+                        <div id="div_subseries_entrantes">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $subseries,
@@ -557,10 +558,12 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
+                      </div>
 
 
                       <div class="col-md-4">
                         <label>Tipo Documental<span style="color:red">*</span></label>
+                        <div id="div_tiposdocumentales_entrantes">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposdocumentales,
@@ -572,6 +575,7 @@ $froms = new Formularios();
                           ''
                         );
                         ?>
+                      </div>
                       </div>
 
                     </div>

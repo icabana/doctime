@@ -34,6 +34,10 @@ class EmpleadosControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
         include 'vistas/administracion/empleados/insertar.php';
         
     }
@@ -60,6 +64,10 @@ class EmpleadosControlador extends ControllerBase {
         $this->model->cargar("EstadosModel.php", "configuracion");
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();     
@@ -147,11 +155,22 @@ class EmpleadosControlador extends ControllerBase {
                                     $_POST["lugarnacimiento_empleado"]
                                 );        
       
-        if( $resp != 0 ){
-             echo 1;             
-        }else{
-            echo 0;		
-        }
+        $this->model->cargar("UsuariosModel.php", 'configuracion');
+        $UsuariosModel = new UsuariosModel();
+            
+        $UsuariosModel->editar(
+                            $_POST["usuario"], 
+                            $_POST["nick_empleado"], 
+                            $_POST["password_empleado"], 
+                            $_POST["password2_empleado"], 
+                            $_POST["estado_empleado"], 
+                            $_POST["rol_empleado"]
+                        );        
+      
+
+       
+        echo 1;             
+       
         
     }    
         

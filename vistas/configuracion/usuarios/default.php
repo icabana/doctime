@@ -34,13 +34,7 @@
                         <div class="col-md-10">
                             <h4 style="color:grey">GESTIONAR USUARIOS</h4>
                         </div>
-                        <div class="col-md-2">
-
-                            <button onclick="nuevo_usuario(); return false;" class="btn btn-success btn-sm">
-                                Nuevo Usuario
-                            </button>
-
-                        </div>
+                       
                     </div>
                 </div>
 

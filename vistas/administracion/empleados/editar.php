@@ -230,20 +230,40 @@ $froms = new Formularios();
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_3">
 
+                  <input type="hidden" class="form-control requerido" id="usuario" 
+                      name="usuario" value="<?php echo $datos_usuario['id_usuario']; ?>">
+
                     <div class="row">
                     <div class="col-md-3">
                       <label>Nombre de Usuario<span style="color:red">*</span></label>
-                      <input readonly type="text" class="form-control requerido" id="celular_empleado" 
-                      name="usuario_empleado" value="<?php echo $datos_usuario['nick_usuario']; ?>">
+                      <input  type="text" class="form-control requerido" id="nick_empleado" 
+                      name="nick_empleado" value="<?php echo $datos_usuario['nick_usuario']; ?>">
                     </div>
 
                     <div class="col-md-3">
                       <label>Contrase&ntilde;a<span style="color:red">*</span></label>
                       <input type="hidden" id="password2_empleado" name="password2_empleado" 
                           value="<?php echo $datos['password_usuario']; ?>">
-                      <input readonly type="password" class="form-control requerido" id="password_empleado"
+                      <input type="password" class="form-control requerido" id="password_empleado"
                        name="password_empleado" value="<?php echo $datos_usuario['password_usuario']; ?>">
                     </div>
+
+                    <div class="col-md-3">
+                        <label>Rol</label>
+
+                        <?php
+                        echo $froms->Lista_Desplegable(
+                          $roles,
+                          'nombre_rol',
+                          'id_rol',
+                          'rol_empleado',
+                          $datos_usuario['rol_usuario'],
+                          '',
+                          ''
+                        );
+                        ?>
+                      </div>
+              
 
                     <div class="col-md-3">
                         <label>Estado</label>
@@ -254,7 +274,7 @@ $froms = new Formularios();
                           'nombre_estado',
                           'id_estado',
                           'estado_empleado',
-                          $datos['estado_usuario'],
+                          $datos_usuario['estado_usuario'],
                           '',
                           ''
                         );

@@ -14,6 +14,10 @@ class SalientesModel extends ModelBase {
                     salientes.descripcionfolios_saliente,
                     salientes.asunto_saliente,
                     salientes.tiporadicado_saliente,
+                    salientes.serie_saliente,
+                    salientes.subserie_saliente,
+                    salientes.tipodocumental_saliente,
+                    salientes.entrante_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -67,6 +71,10 @@ class SalientesModel extends ModelBase {
                     salientes.descripcionfolios_saliente,
                     salientes.asunto_saliente,
                     salientes.tiporadicado_saliente,
+                    salientes.serie_saliente,
+                    salientes.subserie_saliente,
+                    salientes.tipodocumental_saliente,
+                    salientes.entrante_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -114,6 +122,10 @@ class SalientesModel extends ModelBase {
                     salientes.descripcionfolios_saliente,
                     salientes.asunto_saliente,
                     salientes.tiporadicado_saliente,
+                    salientes.serie_saliente,
+                    salientes.subserie_saliente,
+                    salientes.tipodocumental_saliente,
+                    salientes.entrante_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -195,6 +207,10 @@ class SalientesModel extends ModelBase {
                     salientes.descripcionfolios_saliente,
                     salientes.asunto_saliente,
                     salientes.tiporadicado_saliente,
+                    salientes.serie_saliente,
+                    salientes.subserie_saliente,
+                    salientes.tipodocumental_saliente,
+                    salientes.entrante_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -243,7 +259,11 @@ class SalientesModel extends ModelBase {
                         $numerofolios_saliente,
                         $descripcionfolios_saliente,
                         $asunto_saliente,
-                        $tiporadicado_saliente
+                        $tiporadicado_saliente,
+                        $serie_saliente,
+                        $subserie_saliente,
+                        $tipodocumental_saliente,
+                        $entrante_saliente
                     ){
                 
         $query = "INSERT INTO salientes (
@@ -255,7 +275,11 @@ class SalientesModel extends ModelBase {
                                 numerofolios_saliente,
                                 descripcionfolios_saliente,
                                 asunto_saliente,
-                                tiporadicado_saliente
+                                tiporadicado_saliente,
+                                serie_saliente,
+                                subserie_saliente,
+                                tipodocumental_saliente,
+                                entrante_saliente
                             )
                             VALUES(
                                 '".$consecutivo_saliente."',
@@ -266,7 +290,11 @@ class SalientesModel extends ModelBase {
                                 '".$numerofolios_saliente."',
                                 '".$descripcionfolios_saliente."',
                                 '".$asunto_saliente."',
-                                '".$tiporadicado_saliente."'
+                                '".$tiporadicado_saliente."',
+                                '".$serie_saliente."',
+                                '".$subserie_saliente."',
+                                '".$tipodocumental_saliente."',
+                                '".$entrante_saliente."'
                             );";
        
         
@@ -282,6 +310,9 @@ class SalientesModel extends ModelBase {
                     $numerofolios_saliente,
                     $descripcionfolios_saliente,
                     $asunto_saliente,
+                    $serie_saliente,
+                    $subserie_saliente,
+                    $tipodocumental_saliente,
                     $tiporadicado_saliente
                 ) {
         
@@ -293,7 +324,10 @@ class SalientesModel extends ModelBase {
                         numerofolios_saliente = '". $numerofolios_saliente ."',
                         descripcionfolios_saliente = '". $descripcionfolios_saliente ."',
                         asunto_saliente = '". $asunto_saliente ."',
-                        tiporadicado_saliente = '". $tiporadicado_saliente ."'
+                        tiporadicado_saliente = '". $tiporadicado_saliente ."',
+                        serie_saliente = '". $serie_saliente ."',
+                        subserie_saliente = '". $subserie_saliente ."',
+                        tipodocumental_saliente = '". $tipodocumental_saliente ."'
 
                     WHERE id_saliente = '" . $id_saliente . "'";
        
@@ -617,6 +651,15 @@ return $this->modificarRegistros($query);
         return $this->crear_ultimo_id($query);
 
     }
+   
+    function actualizarEntrante($id_saliente, $entrante_saliente) {
+        
+        $query = "UPDATE salientes SET entrante_saliente = '".$entrante_saliente."' 
+                    WHERE id_saliente = '". $id_saliente ."'";        
+        $this->modificarRegistros($query);
+        
+    }
+
 
 
 

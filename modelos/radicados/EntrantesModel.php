@@ -22,6 +22,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -83,6 +84,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -143,6 +145,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -206,6 +209,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -270,6 +274,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -332,6 +337,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -394,6 +400,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -485,6 +492,7 @@ class EntrantesModel extends ModelBase {
             entrantes.serie_entrante,
             entrantes.subserie_entrante,
             entrantes.tipodocumental_entrante,
+            entrantes.saliente_entrante,
             
             entrantes.estado_entrante,
 
@@ -546,6 +554,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -609,6 +618,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -705,6 +715,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -766,6 +777,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.serie_entrante,
                     entrantes.subserie_entrante,
                     entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
 
@@ -826,7 +838,8 @@ class EntrantesModel extends ModelBase {
                         $responsable_entrante,
                         $serie_entrante,
                         $subserie_entrante,
-                        $tipodocumental_entrante
+                        $tipodocumental_entrante,
+                        $saliente_entrante
                     ){
                 
         $query = "INSERT INTO entrantes (
@@ -845,7 +858,8 @@ class EntrantesModel extends ModelBase {
                                 responsable_entrante,
                                 serie_entrante,
                                 subserie_entrante,
-                                tipodocumental_entrante
+                                tipodocumental_entrante,
+                                saliente_entrante
                             )
                             VALUES(
                                 '".$consecutivo_entrante."',
@@ -863,7 +877,8 @@ class EntrantesModel extends ModelBase {
                                 '".$responsable_entrante."',
                                 '".$serie_entrante."',
                                 '".$subserie_entrante."',
-                                '".$tipodocumental_entrante."'
+                                '".$tipodocumental_entrante."',
+                                '".$saliente_entrante."'
                             );";
        
        return $this->crear_ultimo_id($query);
@@ -1021,6 +1036,14 @@ return $this->modificarRegistros($query);
     function enviarBandejaEntrante($radicados) {
         
         $query = "UPDATE entrantes SET carpeta_entrante = '' WHERE id_entrante IN (". $radicados .")";        
+        $this->modificarRegistros($query);
+        
+    }
+        
+    function actualizarSaliente($id_entrante, $saliente_entrante) {
+        
+        $query = "UPDATE entrantes SET saliente_entrante = '".$saliente_entrante."' 
+                    WHERE id_entrante = '". $id_entrante ."'";        
         $this->modificarRegistros($query);
         
     }

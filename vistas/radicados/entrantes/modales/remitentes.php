@@ -88,7 +88,7 @@
 
                       <div class="col-md-6">
                         <label>Documento<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="documento_empleado" 
+                        <input type="text" class="form-control requerido_modal" id="documento_empleado" 
                         name="documento_empleado">
                       </div>
 
@@ -126,14 +126,14 @@
 
                       <div class="col-md-6">
                         <label>Nombres<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="nombres_empleado" 
+                        <input type="text" class="form-control requerido_modal" id="nombres_empleado" 
                         name="nombres_empleado">
                       </div>
 
 
                       <div class="col-md-6">
                         <label>Apellidos<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="apellidos_empleado" 
+                        <input type="text" class="form-control requerido_modal" id="apellidos_empleado" 
                         name="apellidos_empleado">
                       </div>
 
@@ -147,7 +147,7 @@
 
                       <div class="col-md-12">
                         <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="correo_empleado" 
+                        <input type="text" class="form-control requerido_modal" id="correo_empleado" 
                         name="correo_empleado">
                       </div>
 
@@ -249,13 +249,13 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Nombre de Usuario<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido" id="usuario_empleado" 
+                        <input type="text" class="form-control requerido_modal" id="usuario_empleado" 
                         name="usuario_empleado">
                       </div>
 
                       <div class="col-md-6">
                         <label>Contrase&ntilde;a<span style="color:red">*</span></label>
-                        <input type="password" class="form-control requerido" id="password_empleado" 
+                        <input type="password" class="form-control requerido_modal" id="password_empleado" 
                         name="password_empleado">
                       </div>
                       </div>
