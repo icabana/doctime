@@ -1,24 +1,24 @@
 <script type="text/javascript">
 
-function insertar_remitente_entrante() {
+function insertar_destinatario_entrante() {
 
 if(!validar_requeridos_modal()){
     return 0;
 }
 
-var datos = $('#formEmpleados').serialize();
+var datos = $('#formTerceros').serialize();
 
 ejecutarAccion(
   'administracion',
-  'Empleados',
+  'Terceros',
   'insertar_modal',
   datos,
-  'insertar_remitente_entrante2(data)'
+  'insertar_destinatario_entrante2(data)'
 );
 
 }
 
-function insertar_remitente_entrante2(data) {
+function insertar_destinatario_entrante2(data) {
 
 if (data == 'error_documento') {
   mensaje_alertas("error", "El Documento ya se encuentra registrado", "center");
@@ -34,15 +34,15 @@ if (data == 'error_nick') {
   return false;
 } 
 
-mensaje_alertas("success", "Empleado registrado correctamente", "center");
+mensaje_alertas("success", "Tercero registrado correctamente", "center");
 
 
 var json = eval(data);  
 
-$('#remitente_entrante').val(json[0].remitente_entrante);
-$('#remitente_entrante2').val(json[0].remitente_entrante2);
+$('#destinatario_entrante').val(json[0].destinatario_entrante);
+$('#destinatario_entrante2').val(json[0].destinatario_entrante2);
 
-$("#modal_remitentes").modal("hide");
+$("#modal_destinatarios").modal("hide");
 
 }
 
@@ -50,8 +50,8 @@ $("#modal_remitentes").modal("hide");
 </script>
 
 
-<div class="modal fade" id="modal_remitentes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" id="modal_remitentes2">
+<div class="modal fade" id="modal_destinatarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal_destinatarios2">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Remitente</h5>
@@ -63,7 +63,7 @@ $("#modal_remitentes").modal("hide");
      
 
 
-      <form autocomplete="on" id="formEmpleados" method="post">
+      <form autocomplete="on" id="formTerceros" method="post">
 
 
 
@@ -111,7 +111,7 @@ $("#modal_remitentes").modal("hide");
                           $tiposdocumento,
                           'nombre_tipodocumento',
                           'id_tipodocumento',
-                          'tipodocumento_empleado',
+                          'tipodocumento_tercero',
                           '',
                           '',
                           ''
@@ -121,8 +121,8 @@ $("#modal_remitentes").modal("hide");
 
                       <div class="col-md-6">
                         <label>Documento<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal" id="documento_empleado" 
-                        name="documento_empleado">
+                        <input type="text" class="form-control requerido_modal" id="documento_tercero" 
+                        name="documento_tercero">
                       </div>
 
                       
@@ -144,15 +144,15 @@ $("#modal_remitentes").modal("hide");
 
                       <div class="col-md-6">
                         <label>Nombres<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal" id="nombres_empleado" 
-                        name="nombres_empleado">
+                        <input type="text" class="form-control requerido_modal" id="nombres_tercero" 
+                        name="nombres_tercero">
                       </div>
 
 
                       <div class="col-md-6">
                         <label>Apellidos<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal" id="apellidos_empleado" 
-                        name="apellidos_empleado">
+                        <input type="text" class="form-control requerido_modal" id="apellidos_tercero" 
+                        name="apellidos_tercero">
                       </div>
 
 
@@ -173,7 +173,7 @@ $("#modal_remitentes").modal("hide");
                           $dependencias,
                           'nombre_dependencia',
                           'id_dependencia',
-                          'dependencia_empleado',
+                          'dependencia_tercero',
                           '',
                           '',
                           ''
@@ -185,8 +185,8 @@ $("#modal_remitentes").modal("hide");
                     <br>
 
                         <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal" id="correo_empleado" 
-                        name="correo_empleado">
+                        <input type="text" class="form-control requerido_modal" id="correo_tercero" 
+                        name="correo_tercero">
                       </div>
 
                     </div>
@@ -199,14 +199,14 @@ $("#modal_remitentes").modal("hide");
                     <div class="row">
                       <div class="col-md-6">
                         <label>Nombre de Usuario<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal" id="usuario_empleado" 
-                        name="usuario_empleado">
+                        <input type="text" class="form-control requerido_modal" id="usuario_tercero" 
+                        name="usuario_tercero">
                       </div>
 
                       <div class="col-md-6">
                         <label>Contrase&ntilde;a<span style="color:red">*</span></label>
-                        <input type="password" class="form-control requerido_modal" id="password_empleado" 
-                        name="password_empleado">
+                        <input type="password" class="form-control requerido_modal" id="password_tercero" 
+                        name="password_tercero">
                       </div>
                       </div>
 
@@ -222,7 +222,7 @@ $("#modal_remitentes").modal("hide");
                           $roles,
                           'nombre_rol',
                           'id_rol',
-                          'rol_empleado',
+                          'rol_tercero',
                           '',
                           '',
                           ''
@@ -238,7 +238,7 @@ $("#modal_remitentes").modal("hide");
                           $estados,
                           'nombre_estado',
                           'id_estado',
-                          'estado_empleado',
+                          'estado_tercero',
                           '',
                           '',
                           ''
@@ -266,7 +266,7 @@ $("#modal_remitentes").modal("hide");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button onclick="insertar_remitente_entrante(); return false;" class="btn btn-success">Guardar</button>
+        <button onclick="insertar_destinatario_entrante(); return false;" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>

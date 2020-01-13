@@ -380,5 +380,6 @@ $froms = new Formularios();
 
     require_once("vistas/radicados/entrantes/modales/tipos_radicado.php");
     require_once("vistas/radicados/entrantes/modales/remitentes.php");
+    require_once("vistas/radicados/entrantes/modales/destinatarios.php");
 
   ?>

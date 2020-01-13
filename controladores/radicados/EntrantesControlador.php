@@ -267,7 +267,6 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
         $prioridades = $PrioridadesModel->getTodos();
-
         
         $this->model->cargar("TiposdocumentoModel.php", "configuracion");
         $TiposdocumentoModel = new TiposdocumentoModel();
@@ -280,6 +279,10 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("SexosModel.php", "configuracion");
         $SexosModel = new SexosModel();
         $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
 
         $this->model->cargar("DependenciasModel.php", "administracion");
         $DependenciasModel = new DependenciasModel();
