@@ -79,6 +79,34 @@ class TiposradicadoControlador extends ControllerBase {
         
         
     }
+        
+    public function insertarModal2() {
+      
+        $froms = new Formularios();
+
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();            
+        
+        $nombre = $_POST["nombre_tiporadicado_saliente"];
+
+        $resp = $TiposradicadoModel->insertar(
+                                        $nombre
+                                    );        
+
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        echo $froms->Lista_Desplegable(
+                $tiposradicado,
+                'nombre_tiporadicado',
+                'id_tiporadicado',
+                'tiporadicado_saliente',
+                $resp,
+                '',
+                ''
+        );
+        
+        
+    }
     
     public function guardar() {
         

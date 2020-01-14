@@ -181,9 +181,67 @@ class EmpleadosControlador extends ControllerBase {
                 $resp
             );         
             
-            $remitente_entrante2 = $_POST["nombres_empleado"]." ".$_POST["apellidos_empleado"];
+            $destinatario_entrante2 = $_POST["nombres_empleado"]." ".$_POST["apellidos_empleado"];
 
-            $array[] = array('remitente_entrante'=>$resp,'remitente_entrante2'=>$remitente_entrante2 );
+            $array[] = array('destinatario_entrante'=>$resp,'destinatario_entrante2'=>$destinatario_entrante2 );
+
+         echo json_encode($array); 
+            
+        }
+    }
+    
+        
+    public function insertar_modal2() {
+      
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();      
+        
+        $this->model->cargar("UsuariosModel.php", "configuracion");
+        $UsuariosModel = new UsuariosModel();     
+        
+        if($UsuariosModel->existeNick($_POST["usuario_empleado"])){
+
+            echo "error_nick";
+
+        }else if($EmpleadosModel->existeDocumento($_POST["documento_empleado"])){
+
+            echo "error_documento";
+            return;
+
+        }else if($EmpleadosModel->existeCorreo($_POST["correo_empleado"])){
+
+            echo "error_correo";
+            return;
+
+        }else{
+        
+            $resp = $UsuariosModel->insertar(
+                                            $_POST["usuario_empleado"], 
+                                            $_POST["password_empleado"], 
+                                            $_POST["rol_empleado"]                                            
+                                        );        
+            
+            $resp = $EmpleadosModel->insertar(
+                $_POST["documento_empleado"],
+                $_POST["dependencia_empleado"],
+                $_POST["tipodocumento_empleado"],
+                $_POST["nombres_empleado"],
+                $_POST["apellidos_empleado"],
+                $_POST["telefono_empleado"],
+                $_POST["celular_empleado"],
+                $_POST["correo_empleado"],
+                $_POST["direccion_empleado"],
+                $_POST["ciudad_empleado"],
+                $_POST["sexo_empleado"],
+                $_POST["estadocivil_empleado"],
+                $_POST["fechanacimiento_empleado"],
+                $_POST["lugarnacimiento_empleado"],
+                $resp
+            );         
+            
+            $remitente_saliente2 = $_POST["nombres_empleado"]." ".$_POST["apellidos_empleado"];
+
+            $array[] = array('remitente_saliente'=>$resp,'remitente_saliente2'=>$remitente_saliente2 );
 
          echo json_encode($array); 
             

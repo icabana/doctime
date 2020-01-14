@@ -60,21 +60,21 @@
   }
 
 
-  function seleccionar_remitente(id_remitente, nombre_remitente) {
+  function seleccionar_destinatario(id_destinatario, nombre_destinatario) {
 
-      $("#remitente_saliente").val(id_remitente);
-      $("#remitente_saliente2").val(nombre_remitente);
+      $("#destinatario_saliente").val(id_destinatario);
+      $("#destinatario_saliente2").val(nombre_destinatario);
 
-      $('#vista_remitentes').hide();
+      $('#vista_destinatarios').hide();
 
   }
 
-  function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
+  function seleccionar_remitente(id_remitente, nombres_remitente, apellidos_remitente) {
 
-      $("#destinatario_saliente").val(id_destinatario);
-      $("#destinatario_saliente2").val(nombres_destinatario + ' ' + apellidos_destinatario);
+      $("#remitente_saliente").val(id_remitente);
+      $("#remitente_saliente2").val(nombres_remitente + ' ' + apellidos_remitente);
 
-      $('#vista_destinatarios').hide();
+      $('#vista_remitentes').hide();
 
   }
 
@@ -410,8 +410,11 @@ $froms = new Formularios();
                       </div>
                     
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado_saliente">
+                          Crear Nuevo
+                        </a>
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposradicado,
@@ -432,10 +435,14 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_remitentes_saliente">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="remitente_saliente" name="remitente_saliente" 
                         value="<?php echo $datos['remitente_saliente']; ?>">
                         <input type="text"  class="form-control requerido" id="remitente_saliente2" 
-                        name="remitente_saliente2" value="<?php echo $datos['nombre_tercero']; ?>" 
+                        name="remitente_saliente2" 
+                        value="<?php echo $datos['nombres_empleado'] . " " . $datos['apellidos_empleado']; ?>" 
                         onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
                       </div>
@@ -443,11 +450,14 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_destinatarios_saliente">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="destinatario_saliente" name="destinatario_saliente" 
                         value="<?php echo $datos['destinatario_saliente']; ?>">
                         <input type="text"  class="form-control requerido" id="destinatario_saliente2" 
                         name="destinario_saliente2" 
-                        value="<?php echo $datos['nombres_empleado'] . " " . $datos['apellidos_empleado']; ?>" 
+                        value="<?php echo $datos['nombre_tercero']; ?>" 
                         onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
                       </div>
@@ -841,3 +851,13 @@ $froms = new Formularios();
     </div>
   </div>
 </div>
+
+
+<?php
+
+require_once("vistas/radicados/salientes/modales/tipos_radicado.php");
+require_once("vistas/radicados/salientes/modales/remitentes.php");
+require_once("vistas/radicados/salientes/modales/destinatarios.php");    
+
+
+?>

@@ -34,6 +34,27 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("TiposradicadoModel.php", "administracion");
         $TiposradicadoModel = new TiposradicadoModel();
         $tiposradicado = $TiposradicadoModel->getTodos();
+
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
         
         $this->model->cargar("SeriesModel.php", "administracion");
         $SeriesModel = new SeriesModel();
@@ -85,6 +106,31 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("DocumentosSalientesModel.php", "configuracion");
         $DocumentosSalientesModel = new DocumentosSalientesModel();   
         $documentos  = $DocumentosSalientesModel->getTodos($_POST['id_saliente']);
+
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
 
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
@@ -184,7 +230,7 @@ class SalientesControlador extends ControllerBase {
 
         foreach ($terceros as $clave => $valor) {
 
-            $tabla_terceros .= "<tr onclick='seleccionar_remitente(" . $valor['id_tercero'] . ", \"" . $valor['nombre_tercero'] . "\");'>";  
+            $tabla_terceros .= "<tr onclick='seleccionar_destinatario(" . $valor['id_tercero'] . ", \"" . $valor['nombre_tercero'] . "\");'>";  
             $tabla_terceros .= "<td><strong>" . $valor['nombre_tercero'] . "</strong></td>";
             $tabla_terceros .= "</tr>";
 
@@ -218,7 +264,7 @@ class SalientesControlador extends ControllerBase {
 
         foreach ($empleados as $clave => $valor) {
 
-            $tabla_empleados .= "<tr onclick='seleccionar_destinatario(" . $valor['id_empleado'] . ", \"" . ($valor['nombres_empleado']) . "\", \"" . ($valor['apellidos_empleado']) . "\");'>";  
+            $tabla_empleados .= "<tr onclick='seleccionar_remitente(" . $valor['id_empleado'] . ", \"" . ($valor['nombres_empleado']) . "\", \"" . ($valor['apellidos_empleado']) . "\");'>";  
             $tabla_empleados .= "<td><strong>" . ($valor['nombres_empleado'])." ".($valor['apellidos_empleado']) . "</strong></td>";
             $tabla_empleados .= "</tr>";
 

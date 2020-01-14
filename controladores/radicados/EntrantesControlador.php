@@ -367,6 +367,12 @@ class EntrantesControlador extends ControllerBase {
         $DocumentosModel = new DocumentosModel();   
         $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
 
+        
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();

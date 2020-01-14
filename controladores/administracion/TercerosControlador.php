@@ -85,6 +85,47 @@ class TercerosControlador extends ControllerBase {
         }      
         
     }
+
+        
+    public function insertar_modal() {
+      
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();            
+        
+        $resp = $TercerosModel->insertar_modal(
+                                    $_POST["documento_tercero_entrante"],
+                                    $_POST["tipodocumento_tercero_entrante"],
+                                    $_POST["nombre_tercero_entrante"],
+                                    $_POST["correo_tercero_entrante"]
+                                );        
+        
+        $remitente_entrante2 = $_POST["nombre_tercero_entrante"];
+
+        $array[] = array('remitente_entrante'=>$resp,'remitente_entrante2'=>$remitente_entrante2 );
+                    
+        echo json_encode($array); 
+        
+    }
+        
+    public function insertar_modal2() {
+      
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();            
+        
+        $resp = $TercerosModel->insertar_modal(
+                                    $_POST["documento_tercero_saliente"],
+                                    $_POST["tipodocumento_tercero_saliente"],
+                                    $_POST["nombre_tercero_saliente"],
+                                    $_POST["correo_tercero_saliente"]
+                                );        
+        
+        $destinatario_saliente2 = $_POST["nombre_tercero_saliente"];
+
+        $array[] = array('destinatario_saliente'=>$resp,'destinatario_saliente2'=>$destinatario_saliente2 );
+                    
+        echo json_encode($array); 
+        
+    }
     
     public function guardar() {
         

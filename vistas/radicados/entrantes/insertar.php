@@ -215,6 +215,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_destinatarios">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="destinatario_entrante" name="destinatario_entrante">
                         <input type="text"  class="form-control requerido" id="destinatario_entrante2" name="destinario_entrante2" onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
@@ -380,6 +383,7 @@ $froms = new Formularios();
 
     require_once("vistas/radicados/entrantes/modales/tipos_radicado.php");
     require_once("vistas/radicados/entrantes/modales/remitentes.php");
-    require_once("vistas/radicados/entrantes/modales/destinatarios.php");
+    require_once("vistas/radicados/entrantes/modales/destinatarios.php");    
+    
 
   ?>

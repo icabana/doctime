@@ -428,6 +428,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_remitentes">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="remitente_entrante" name="remitente_entrante" 
                         value="<?php echo $datos['remitente_entrante']; ?>">
                         <input type="text"  class="form-control requerido" id="remitente_entrante2" 
@@ -445,6 +448,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_destinatarios">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="destinatario_entrante" name="destinatario_entrante" 
                         value="<?php echo $datos['destinatario_entrante']; ?>">
                         <input type="text"  class="form-control requerido" id="destinatario_entrante2" 
@@ -856,5 +862,7 @@ $froms = new Formularios();
 <?php
 
 require_once("vistas/radicados/entrantes/modales/tipos_radicado.php");
+require_once("vistas/radicados/entrantes/modales/remitentes.php");
+require_once("vistas/radicados/entrantes/modales/destinatarios.php");    
 
 ?>

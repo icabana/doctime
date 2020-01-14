@@ -1,24 +1,24 @@
 <script type="text/javascript">
 
-function insertar_remitente_entrante() {
+function insertar_destinatario_saliente() {
 
-if(!validar_requeridos_modal_remitente()){
+if(!validar_requeridos_modal_destinatario()){
     return 0;
 }
 
-var datos = $('#formTercerosRemitentes').serialize();
+var datos = $('#formTercerosDestinatariosSalientes').serialize();
 
 ejecutarAccion(
   'administracion',
   'Terceros',
-  'insertar_modal',
+  'insertar_modal2',
   datos,
-  'insertar_remitente_entrante2(data)'
+  'insertar_destinatario_saliente2(data)'
 );
 
 }
 
-function insertar_remitente_entrante2(data) {
+function insertar_destinatario_saliente2(data) {
 
 if (data == 'error_documento') {
   mensaje_alertas("error", "El Documento ya se encuentra registrado", "center");
@@ -38,12 +38,12 @@ mensaje_alertas("success", "Tercero registrado correctamente", "center");
 
 
 var json = eval(data);  
+alert(json[0].destinatario_saliente);
+alert(json[0].destinatario_saliente2);
+$('#destinatario_saliente').val(json[0].destinatario_saliente);
+$('#destinatario_saliente2').val(json[0].destinatario_saliente2);
 
-$('#remitente_entrante').val(json[0].remitente_entrante);
-$('#remitente_entrante2').val(json[0].remitente_entrante2);
-alert(json[0].remitente_entrante);
-alert(json[0].remitente_entrante2);
-$("#modal_remitentes").modal("hide");
+$("#modal_destinatarios_saliente").modal("hide");
 
 }
 
@@ -51,11 +51,11 @@ $("#modal_remitentes").modal("hide");
 </script>
 
 
-<div class="modal fade" id="modal_remitentes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" id="modal_remitentes2">
+<div class="modal fade" id="modal_destinatarios_saliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal_destinatarios_saliente2">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Crear Nuevo Remitente</h5>
+        <h5 class="modal-title">Crear Nuevo Destinatario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -64,7 +64,7 @@ $("#modal_remitentes").modal("hide");
      
 
 
-      <form autocomplete="on" id="formTercerosRemitentes" method="post">
+      <form autocomplete="on" id="formTercerosDestinatariosSalientes" method="post">
 
 
 
@@ -89,7 +89,7 @@ $("#modal_remitentes").modal("hide");
                           $tiposdocumento,
                           'nombre_tipodocumento',
                           'id_tipodocumento',
-                          'tipodocumento_tercero_entrante',
+                          'tipodocumento_tercero_saliente',
                           '',
                           '',
                           ''
@@ -99,8 +99,8 @@ $("#modal_remitentes").modal("hide");
 
                       <div class="col-md-6">
                         <label>Documento<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_remitente" id="documento_tercero_entrante" 
-                        name="documento_tercero_entrante">
+                        <input type="text" class="form-control requerido_modal_destinatario" id="documento_tercero_saliente" 
+                        name="documento_tercero_saliente">
                       </div>
 
                       
@@ -114,8 +114,8 @@ $("#modal_remitentes").modal("hide");
 
                       <div class="col-md-12">
                         <label>Nombre Tercero<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_remitente" id="nombre_tercero_entrante" 
-                        name="nombre_tercero_entrante">
+                        <input type="text" class="form-control requerido_modal_destinatario" id="nombre_tercero_saliente" 
+                        name="nombre_tercero_saliente">
                       </div>
 
                     </div>
@@ -126,8 +126,8 @@ $("#modal_remitentes").modal("hide");
                       <br>
   
                           <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
-                          <input type="text" class="form-control requerido_modal_remitente" id="correo_tercero_entrante" 
-                          name="correo_tercero_entrante">
+                          <input type="text" class="form-control requerido_modal_destinatario" id="correo_tercero_saliente" 
+                          name="correo_tercero_saliente">
                         </div>
   
                       </div>
@@ -150,7 +150,7 @@ $("#modal_remitentes").modal("hide");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button onclick="insertar_remitente_entrante(); return false;" class="btn btn-success">Guardar</button>
+        <button onclick="insertar_destinatario_saliente(); return false;" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>

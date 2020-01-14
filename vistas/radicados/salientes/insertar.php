@@ -132,12 +132,12 @@ $froms = new Formularios();
 
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Crear Nuevo Radicado de Entrada</h3>
+        <h3 class="card-title">Crear Nuevo Radicado de Salida</h3>
       </div>
 
       <form autocomplete="on" id="formSalientes" method="post">
 
-      <input type="text" id="entrante_saliente" name="entrante_saliente"  value="<?php echo $entrante_saliente; ?>">
+      <input type="hidden" id="entrante_saliente" name="entrante_saliente"  value="<?php echo $entrante_saliente; ?>">
 
         <div class="card-body">
 
@@ -174,8 +174,12 @@ $froms = new Formularios();
                       </div>
 
                     
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado_saliente">
+                          Crear Nuevo
+                        </a>
+                        <div id="div_tipo_radicado_saliente">
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposradicado,
@@ -188,6 +192,7 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
+                      </div>
                     </div>
 
                     <br>
@@ -196,6 +201,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Remitente<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_remitentes_saliente">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="remitente_saliente" name="remitente_saliente">
                         <input type="text" class="form-control requerido" id="remitente_saliente2" name="remitente_saliente2" onkeyup="buscar_remitente(this.value); return false;">
                         <div id="vista_remitentes"></div>
@@ -204,6 +212,9 @@ $froms = new Formularios();
 
                       <div class="col-md-4">
                         <label>Destinatario<span style="color:red">*</span></label>
+                        <a href="#" data-toggle="modal" data-target="#modal_destinatarios_saliente">
+                          Crear Nuevo
+                        </a>
                         <input type="hidden" class="requerido" id="destinatario_saliente" name="destinatario_saliente">
                         <input type="text"  class="form-control requerido" id="destinatario_saliente2" name="destinario_saliente2" onkeyup="buscar_destinatario(this.value); return false;">
                         <div id="vista_destinatarios"></div>
@@ -320,3 +331,15 @@ $froms = new Formularios();
 
     </div>
   </div>
+
+
+  
+  <?php
+
+    require_once("vistas/radicados/salientes/modales/tipos_radicado.php");
+    require_once("vistas/radicados/salientes/modales/destinatarios.php");    
+    require_once("vistas/radicados/salientes/modales/remitentes.php");
+    
+    
+
+  ?>

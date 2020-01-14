@@ -1,8 +1,8 @@
 <script type="text/javascript">
 
-function insertar_destinatario_entrante() {
+function insertar_remitente_saliente() {
 
-if(!validar_requeridos_modal_destinatario()){
+if(!validar_requeridos_modal_remitente()){
     return 0;
 }
 
@@ -11,14 +11,14 @@ var datos = $('#formEmpleados').serialize();
 ejecutarAccion(
   'administracion',
   'Empleados',
-  'insertar_modal',
+  'insertar_modal2',
   datos,
-  'insertar_destinatario_entrante2(data)'
+  'insertar_remitente_saliente2(data)'
 );
 
 }
 
-function insertar_destinatario_entrante2(data) {
+function insertar_remitente_saliente2(data) {
 
 if (data == 'error_documento') {
   mensaje_alertas("error", "El Documento ya se encuentra registrado", "center");
@@ -39,10 +39,10 @@ mensaje_alertas("success", "Empleado registrado correctamente", "center");
 
 var json = eval(data);  
 
-$('#destinatario_entrante').val(json[0].destinatario_entrante);
-$('#destinatario_entrante2').val(json[0].destinatario_entrante2);
+$('#remitente_saliente').val(json[0].remitente_saliente);
+$('#remitente_saliente2').val(json[0].remitente_saliente2);
 
-$("#modal_destinatarios").modal("hide");
+$("#modal_remitentes_saliente").modal("hide");
 
 }
 
@@ -50,11 +50,11 @@ $("#modal_destinatarios").modal("hide");
 </script>
 
 
-<div class="modal fade" id="modal_destinatarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" id="modal_destinatarios2">
+<div class="modal fade" id="modal_remitentes_saliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal_remitentes2">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Crear Nuevo Destinatario</h5>
+        <h5 class="modal-title">Crear Nuevo Remitente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -121,7 +121,7 @@ $("#modal_destinatarios").modal("hide");
 
                       <div class="col-md-6">
                         <label>Documento<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="documento_empleado" 
+                        <input type="text" class="form-control requerido_modal_remitente" id="documento_empleado" 
                         name="documento_empleado">
                       </div>
 
@@ -144,14 +144,14 @@ $("#modal_destinatarios").modal("hide");
 
                       <div class="col-md-6">
                         <label>Nombres<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="nombres_empleado" 
+                        <input type="text" class="form-control requerido_modal_remitente" id="nombres_empleado" 
                         name="nombres_empleado">
                       </div>
 
 
                       <div class="col-md-6">
                         <label>Apellidos<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="apellidos_empleado" 
+                        <input type="text" class="form-control requerido_modal_remitente" id="apellidos_empleado" 
                         name="apellidos_empleado">
                       </div>
 
@@ -185,7 +185,7 @@ $("#modal_destinatarios").modal("hide");
                     <br>
 
                         <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="correo_empleado" 
+                        <input type="text" class="form-control requerido_modal_remitente" id="correo_empleado" 
                         name="correo_empleado">
                       </div>
 
@@ -199,13 +199,13 @@ $("#modal_destinatarios").modal("hide");
                     <div class="row">
                       <div class="col-md-6">
                         <label>Nombre de Usuario<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="usuario_empleado" 
+                        <input type="text" class="form-control requerido_modal_remitente" id="usuario_empleado" 
                         name="usuario_empleado">
                       </div>
 
                       <div class="col-md-6">
                         <label>Contrase&ntilde;a<span style="color:red">*</span></label>
-                        <input type="password" class="form-control requerido_modal_destinatario" id="password_empleado" 
+                        <input type="password" class="form-control requerido_modal_remitente" id="password_empleado" 
                         name="password_empleado">
                       </div>
                       </div>
@@ -266,7 +266,7 @@ $("#modal_destinatarios").modal("hide");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button onclick="insertar_destinatario_entrante(); return false;" class="btn btn-success">Guardar</button>
+        <button onclick="insertar_remitente_saliente(); return false;" class="btn btn-success">Guardar</button>
       </div>
     </div>
   </div>

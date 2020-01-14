@@ -464,12 +464,13 @@ function enviar_bandeja_saliente2() {
 
                     <td class="mailbox-name">
                         
-                            <?php echo $saliente['nombre_tercero']; ?>
+                    <?php echo $saliente['nombres_empleado']." ".$saliente['apellidos_empleado']; ?>
                         
                     </td>
                     <td class="mailbox-name">
                         
-                            <?php echo $saliente['nombres_empleado']." ".$saliente['apellidos_empleado']; ?>
+                    <?php echo $saliente['nombre_tercero']; ?>
+                            
                         
                     </td>
 

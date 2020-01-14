@@ -115,6 +115,31 @@ class TercerosModel extends ModelBase {
         return $this->crear_ultimo_id($query);       
         
     }
+
+
+    function insertar_modal(                               
+                    $documento_tercero, 
+                    $tipodocumento_tercero, 
+                    $nombre_tercero,
+                    $correo_tercero
+                    ){
+                
+        $query = "INSERT INTO terceros (
+                                documento_tercero, 
+                                tipodocumento_tercero, 
+                                nombre_tercero, 
+                                correo_tercero
+                            )
+                            VALUES(
+                                '".$documento_tercero."',
+                                '".$tipodocumento_tercero."',
+                                '".$nombre_tercero."',
+                                '".$correo_tercero."'
+                            );";
+       
+        return $this->crear_ultimo_id($query);       
+        
+    }
     
     function editar(
                     $id_tercero, 
