@@ -38,12 +38,12 @@
 
 
       
-    function cargarReporte(){
+    function cargarTablaReporte(){
     
         ejecutarAccion(
           'reportes',
           'Entrantes',
-          'cargarEntrantes',
+          'cargarTablaEntrantes',
           "estado="+$("#estado_reporte").val()+
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
@@ -79,7 +79,7 @@
 
         if (texto.length == 0) {
 
-            cargarReporte();
+            cargarTablaReporte();
 
         }
         if (texto.length < 3) {
@@ -184,7 +184,7 @@
 
             <div class="col-md-2">
               <button onclick="generar_reporte_entrantes(); return false;" class="btn btn-primary pull-right" 
-              style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+              style="margin-right: 5px;"><i class="fa fa-download"></i> Generar PDF</button>
             </div>
 
 
@@ -217,7 +217,7 @@
               <h5 class="description-header">Seleccionar Estado</h5>
 
 
-              <select onchange="cargarReporte(); return false;" class="form-control" 
+              <select onchange="cargarTablaReporte(); return false;" class="form-control" 
                       id="estado_reporte" name="estado_reporte">
 
                   <option value="TODOS">TODOS</option>
@@ -238,7 +238,7 @@
           <div class="description-block">
               <h5 class="description-header">Fecha Inicial<?php echo $_SESSION['ruta_absoluta']; ?></h5>
               <span class="description-text">
-                  <input onchange="cargarReporte(); return false;" type="date" class="form-control" id="fecha1_reporte" name="fecha1_reporte">
+                  <input onchange="cargarTablaReporte(); return false;" type="date" class="form-control" id="fecha1_reporte" name="fecha1_reporte">
               </span>
           </div>
           </div>
@@ -250,7 +250,7 @@
             <div class="description-block">
               <h5 class="description-header">Fecha Final</h5>
               <span class="description-text">                        
-                  <input onchange="cargarReporte(); return false;" type="date" class="form-control" id="fecha2_reporte" name="fecha2_reporte">
+                  <input onchange="cargarTablaReporte(); return false;" type="date" class="form-control" id="fecha2_reporte" name="fecha2_reporte">
               </span>
             </div>
           </div>
@@ -267,7 +267,7 @@
             name="remitente_entrante_reporte">
 
             <input type="text" class="form-control requerido" id="remitente_entrante_reporte2" 
-            name="remitente_entrante_reporte2"  onchange="cargarReporte(); return false;"
+            name="remitente_entrante_reporte2"  onchange="cargarTablaReporte(); return false;"
 
               onkeyup="buscar_remitente_entrante_reporte(this.value); return false;">
             <div id="vista_remitente_entrante_reporte"></div>

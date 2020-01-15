@@ -51,7 +51,7 @@ class SalientesModel extends ModelBase {
 
     
 
-    function getSalientesPorEstadoyFecha($fecha1, $fecha2) {
+    function getSalientesPorEstadoyFecha($fecha1, $fecha2, $remitente, $destinatario) {
         
         $consulta_fecha = "";
         
@@ -59,7 +59,19 @@ class SalientesModel extends ModelBase {
            $consulta_fecha = " and salientes.fecharadicado_saliente BETWEEN '".$fecha1."' AND  '".$fecha2."'" ;
         }else{           
            $consulta_fecha = " " ;           
-       }             
+       }              
+
+       if($remitente == "" || $remitente == "TODOS"){           
+           $consulta_remitente = " " ;           
+       }else{           
+           $consulta_remitente =  " and salientes.remitente_saliente = '".$remitente."' ";           
+       }
+           
+       if($destinatario == "" || $destinatario == "TODOS"){
+           $consulta_destinatario = " " ;           
+       }else{           
+           $consulta_destinatario =  " and salientes.destinatario_saliente = '".$destinatario."' ";           
+       }
                
         $query = " select 
                     salientes.id_saliente, 
@@ -101,7 +113,7 @@ class SalientesModel extends ModelBase {
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
                             left join empleados ON salientes.remitente_saliente = empleados.id_empleado
                         
-                     where salientes.id_saliente != '' ".$consulta_fecha;
+                     where salientes.id_saliente != '' ".$consulta_fecha.$consulta_remitente.$consulta_destinatario;
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -109,6 +121,7 @@ class SalientesModel extends ModelBase {
     }
 
 
+    
 
     function getTodosTodos() {
         

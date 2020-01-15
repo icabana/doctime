@@ -22,7 +22,7 @@ class SalientesControlador extends ControllerBase {
         $SalientesModel = new SalientesModel();     
         
         $salientes = $SalientesModel->getSalientesPorEstadoyFecha(
-            $_POST['fecha1'], $_POST['fecha2']
+            $_POST['fecha1'], $_POST['fecha2'], $_POST['remitente'], $_POST['destinatario']
         );
                  
         include("vistas/reportes/salientes/pdf_reporte_saliente.php");          
@@ -41,13 +41,19 @@ class SalientesControlador extends ControllerBase {
         
         $salientes = $SalientesModel->getSalientesPorEstadoyFecha(
             $_POST['fecha1'], 
-            $_POST['fecha2']
+            $_POST['fecha2'], 
+            $_POST['remitente'],
+             $_POST['destinatario']
         );
-      
+        
+           
+        $nombre_archivo = "saliente_".date('Y-m-d_H-i-s').".xls";        
+        $ruta = dirname(__FILE__, 3).DIRECTORY_SEPARATOR."archivos".DIRECTORY_SEPARATOR."reportes_excel".DIRECTORY_SEPARATOR.$nombre_archivo;        
+
         include("vistas/reportes/salientes/reporte_excel_salientes.php");        
            
-        echo "<center><br><br><br><a href='vistas/reportes/reporte_excel_salientes.xls' ><div style='background-color: #232583; width:150px; padding:5px; color: white'>Descargar Archivo</div></a></center>";
-          
+        echo "archivos/reportes_excel/".$nombre_archivo;
+       
     }
     
     
@@ -57,7 +63,9 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("SalientesModel.php", "radicados");
         $SalientesModel = new SalientesModel();     
         
-        $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2']);
+        $salientes = $SalientesModel->getSalientesPorEstadoyFecha($_POST['fecha1'], $_POST['fecha2'],
+                                                                            $_POST['remitente'],
+                                                                            $_POST['destinatario']);
               
         include 'vistas/reportes/salientes/tabla_salientes.php';
           

@@ -29,7 +29,7 @@ abrirVentanaContenedorTabla(
                     <div class="row">
                         
                         <div class="col-md-12">
-                            <h4 style="color:grey">RADICADOS POR RESPONSABLE</h4>
+                            <h4 style="color:grey">RADICADOS POR EMPLEADO</h4>
                         </div>
                        
                     </div>

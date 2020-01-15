@@ -23,7 +23,7 @@ class DependenciasControlador extends ControllerBase {
 
         $dependencias = $DependenciasModel->getTodos();
                  
-        include("vistas/reportes/pdf_reporte_dependencias.php");   
+        include("vistas/reportes/dependencias/pdf_reporte_dependencias.php");   
        
         $dirPdf = "archivos/reportes/dependencias/pdf_reporte_dependencias.pdf";
 

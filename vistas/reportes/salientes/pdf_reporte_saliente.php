@@ -1,6 +1,6 @@
 <?php
        
-    $this->pdf = new PdfReportesSalientes(L, 'mm', 'legal');
+    $this->pdf = new PdfReporteSalientes(L, 'mm', 'legal');
 		
     $this->pdf->SetCreator('ISMAEL CABANA');
     $this->pdf->SetAuthor('ISMAEL CABANA');
@@ -40,8 +40,8 @@
             array(                 
                 $saliente['numero_saliente'],
                 $saliente['fecharadicado_saliente'],
-                utf8_decode($saliente['nombre_tercero']),
                 utf8_decode($saliente['nombres_empleado']." ".$saliente['apellidos_empleado']),
+                utf8_decode($saliente['nombre_tercero']),
                 utf8_decode($saliente['asunto_saliente'])
             )
         );

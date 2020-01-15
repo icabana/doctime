@@ -8,15 +8,7 @@ class EmpleadosControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         
-        $this->model->cargar("DependenciasModel.php", "administracion");
-        $DependenciasModel = new DependenciasModel();
-        
-        $this->model->cargar("SexosModel.php", "configuracion");
-        $SexosModel = new SexosModel();
-
         $empleados = $EmpleadosModel->getTodos();
-        $dependencias = $DependenciasModel->getTodos();
-        $sexos = $SexosModel->getTodos();
 
         include 'vistas/reportes/empleados/empleados.php';
                         
@@ -29,10 +21,7 @@ class EmpleadosControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
 
-        $empleados = $EmpleadosModel->getFiltroEmpleados(
-            $_POST['dependencia'], 
-            $_POST['sexo']
-        );
+        $empleados = $EmpleadosModel->getTodos();
 
                  
         include("vistas/reportes/empleados/pdf_reporte_empleados.php");   
@@ -52,10 +41,7 @@ class EmpleadosControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
 
-        $empleados = $EmpleadosModel->getFiltroEmpleados(
-            $_POST['dependencia'], 
-            $_POST['sexo']
-        );
+        $empleados = $EmpleadosModel->getTodos();
 
        
         $nombre_archivo = "empleados_".date('Y-m-d_H-i-s').".xls";        
@@ -67,20 +53,6 @@ class EmpleadosControlador extends ControllerBase {
     }
     
     
-    
-    public function cargarTablaEmpleados(){
-         
-        $this->model->cargar("EmpleadosModel.php", "administracion");
-        $EmpleadosModel = new EmpleadosModel();     
-        
-        $empleados = $EmpleadosModel->getFiltroEmpleados(
-                            $_POST['dependencia'], 
-                            $_POST['sexo']
-                        );
-              
-        include 'vistas/reportes/empleados/tabla_empleados.php';
-          
-    }
     
     
     

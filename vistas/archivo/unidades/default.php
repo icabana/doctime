@@ -1,45 +1,45 @@
 <script type="text/javascript">
 
-    function nuevo_tipoarchivo() {
+    function nuevo_unidad() {
 
         abrirVentanaContenedor(
-            'configuracion', 'Tiposarchivo', 'nuevo', '', ''
+            'configuracion', 'Unidades', 'nuevo', '', ''
         );
 
     }
 
-    function editar_tipoarchivo(id_tipoarchivo) {
+    function editar_unidad(id_unidad) {
 
         abrirVentanaContenedor(
             'configuracion',
-            'Tiposarchivo',
+            'Unidades',
             'editar',
-            'id_tipoarchivo=' + id_tipoarchivo,
+            'id_unidad=' + id_unidad,
             ''
         );
 
     }
 
-    function eliminar_tipoarchivo(id_tipoarchivo) {
+    function eliminar_unidad(id_unidad) {
 
-        mensaje_confirmar("¿Está seguro de eliminar el rol?", "eliminar_tipoarchivo2(" + id_tipoarchivo + "); ");
+        mensaje_confirmar("¿Está seguro de eliminar la unidad seleccionada?", "eliminar_unidad2(" + id_unidad + "); ");
 
     }
 
-    function eliminar_tipoarchivo2(id_tipoarchivo) {
+    function eliminar_unidad2(id_unidad) {
 
         ejecutarAccion(
             'configuracion',
-            'Tiposarchivo',
+            'Unidades',
             'eliminar',
-            "id_tipoarchivo=" + id_tipoarchivo,
-            ' mensaje_alertas("success", "Tipoarchivo Eliminado con Éxito", "center"); cargar_tiposarchivo();'
+            "id_unidad=" + id_unidad,
+            ' mensaje_alertas("success", "Tipoarchivo Eliminado con Éxito", "center"); cargar_unidades();'
         );
 
     }
 
     $(document).ready(function() {
-        CrearTabla('tabla_tiposarchivo');
+        CrearTabla('tabla_unidades');
     });
 </script>
 
@@ -53,12 +53,12 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-md-10">
-                            <h4 style="color:grey">GESTIONAR TIPOS DE ARCHIVO</h4>
+                            <h4 style="color:grey">GESTIONAR UNIDADES</h4>
                         </div>
                         <div class="col-md-2">
 
-                            <button onclick="nuevo_tipoarchivo(); return false;" class="btn btn-success btn-sm">
-                                NUEVO TIPO DE ARCHIVO
+                            <button onclick="nuevo_unidad(); return false;" class="btn btn-success btn-sm">
+                                NUEVA UNIDAD
                             </button>
 
                         </div>
@@ -72,24 +72,24 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>TIPO DE ARCHIVO</th>
+                            <th style='background-color:lavender'>Nombre Unidad de Consevaci&oacute;n</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($tiposarchivo as $NM => $items) {
+                        foreach ($unidades as $NM => $items) {
 
                             echo "<tr>";
 
-                            echo "<td>" . $items['nombre_tipoarchivo'] . "</td>";
+                            echo "<td>" . $items['nombre_unidad'] . "</td>";
 
 
-                            echo "<td><a href='#'><i onclick='editar_tipoarchivo(" . $items['id_tipoarchivo'] . ");' 
+                            echo "<td><a href='#'><i onclick='editar_unidad(" . $items['id_unidad'] . ");' 
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_tipoarchivo(" . $items['id_tipoarchivo'] . ");' 
+                            echo "<td><a href='#'><i onclick='eliminar_unidad(" . $items['id_unidad'] . ");' 
                                     class='fas fa-trash'></i></a></td>";
 
 

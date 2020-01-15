@@ -31,7 +31,7 @@ $this->excel->setActiveSheetIndex(0)
             
             ->setCellValue('A1', 'No.')
 
-            ->setCellValue('B1', 'NOMBRE DE LA DEPENDENCIAS')
+            ->setCellValue('B1', 'NOMBRE DE LA DEPENDENCIA')
                     
             ->setCellValue('C1', 'NOMBRE DEL JEFE');
             
@@ -51,7 +51,7 @@ $this->excel->setActiveSheetIndex(0)
              ->setCellValue('C'.$columna, $dependencia['nombre_jefe']);
 
             $columna ++;
-
+            $cont++;
         }
 
         

@@ -33,7 +33,7 @@ function cargar_reporte_salientes(){
 
 
 function cargar_reporte_empleados(){
-    
+
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -41,10 +41,10 @@ function cargar_reporte_empleados(){
     $('.ui-resizable').remove();
 
     limpiar_cuerpo();
-    
+  
    abrirVentanaContenedorTabla(
-              'tabla_empleados',
-            'reportes', 'Empleados', 'cargarEmpleados', '',"validar_sesion();")
+      'tabla_empleados',
+      'reportes', 'Empleados', 'cargarEmpleados', '',"")
         
 }
 
@@ -62,7 +62,7 @@ function cargar_reporte_terceros(){
     
     abrirVentanaContenedorTabla(
               'tabla_terceros',
-            'reportes', 'Terceros', 'cargarTerceros', '',"validar_sesion();")
+            'reportes', 'Terceros', 'cargarTerceros', '',"")
         
 }
 
@@ -80,7 +80,7 @@ function cargar_reporte_dependencias(){
     
     abrirVentanaContenedorTabla(
         'tabla_dependencias',
-        'reportes', 'Dependencias', 'cargarDependencias', '',"validar_sesion();"
+        'reportes', 'Dependencias', 'cargarDependencias', '',""
     )
         
 }

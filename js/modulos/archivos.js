@@ -1,4 +1,4 @@
-function cargar_expedientes(){
+function cargar_archivadores(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -9,12 +9,13 @@ function cargar_expedientes(){
     limpiar_cuerpo();
     
     abrirVentanaContenedorTabla(
-        'tabla_expedientes',
-        'radicados', 'Expedientes', 'index', '');    
+        'tabla_archivadores',
+        'archivos', 'Archivadores', 'index', ''
+    );    
         
 }
 
-function cargar_tiposarchivo(){
+function cargar_unidades(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
@@ -25,8 +26,9 @@ function cargar_tiposarchivo(){
     limpiar_cuerpo();
     
     abrirVentanaContenedorTabla(
-        'tabla_tiposarchivo',
-        'radicados', 'Tiposarchivo', 'index', '');    
+        'tabla_unidades',
+        'archivos', 'Unidades', 'index', ''
+    );    
         
 }
 

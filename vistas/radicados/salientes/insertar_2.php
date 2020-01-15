@@ -68,23 +68,25 @@
   }
 
 
-  function seleccionar_destinatario(id_destinatario, nombre_destinatario) {
+  function seleccionar_destinatario(id_remitente, nombres_remitente, apellidos_remitente) {
 
-    $("#destinatario_saliente").val(id_destinatario);
-    $("#destinatario_saliente2").val(nombre_destinatario);
 
-    $('#vista_destinatarios').hide();
-
-  }
-
-  function seleccionar_remitente(id_remitente, nombres_remitente, apellidos_remitente) {
-
-    nombre_remitente = nombres_remitente+" "+apellidos_remitente;
+    var nombre_remitente = nombres_remitente + ' ' + apellidos_remitente;
 
     $("#remitente_saliente").val(id_remitente);
     $("#remitente_saliente2").val(nombre_remitente);
 
     $('#vista_remitentes').hide();
+
+  }
+
+  function seleccionar_remitente(id_destinatario, nombre_destinatario) {
+
+
+    $("#destinatario_saliente").val(id_destinatario);
+    $("#destinatario_saliente2").val(nombre_destinatario);
+
+    $('#vista_destinatarios').hide();
 
   }
 
@@ -320,7 +322,7 @@ $froms = new Formularios();
               </div>
             </div>
           </div>
-          <button onclick="cargar_salientes();" class="btn btn-danger">Cancelar</button>
+          <button onclick="cargar_entrantes();" class="btn btn-danger">Cancelar</button>
           <button onclick="insertar_saliente(); return false;" class="btn btn-success">Guardar</button>
 
         </div>

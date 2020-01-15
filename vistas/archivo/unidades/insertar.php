@@ -1,24 +1,24 @@
 <script type="text/javascript">
 
-  function insertar_tipoarchivo() {
+  function insertar_unidad() {
 
-      var datos = $('#formTiposarchivo').serialize();
+      var datos = $('#formUnidades').serialize();
 
       ejecutarAccion(
         'configuracion',
-        'Tiposarchivo',
+        'Unidades',
         'insertar',
         datos,
-        'insertar_tipoarchivo2(data)'
+        'insertar_unidad2(data)'
       );
 
   }
 
-  function insertar_tipoarchivo2(data) {
+  function insertar_unidad2(data) {
 
       if (data == 1) {
         mensaje_alertas("success", "Tipoarchivo Registrado Exitosamente", "center");
-        cargar_tiposarchivo();
+        cargar_unidades();
       } else {
         mensaje_alertas("error", "El Nick ya se encuentra registrado", "center");
       }
@@ -42,21 +42,21 @@
 
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Registrar Tipos de Archivo</h3>
+            <h3 class="card-title">Registrar Unidad de Conservacion</h3>
           </div>
 
-          <form autocomplete="on" id="formTiposarchivo" method="post">
+          <form autocomplete="on" id="formUnidades" method="post">
 
             <div class="card-body">
               <div class="form-group">
-                <label>Tipo de archivo</label>
-                <input type="text" class="form-control" id="nombre_tipoarchivo" name="nombre_tipoarchivo">
+                <label>Nombre Unidad de Conservacion</label>
+                <input type="text" class="form-control" id="nombre_unidad" name="nombre_unidad">
               </div>
             </div>
 
             <div class="card-footer">
-              <button onclick="cargar_tiposarchivo();" class="btn btn-danger">Cancelar</button>
-              <button onclick="insertar_tipoarchivo(); return false;" class="btn btn-success">Guardar</button>
+              <button onclick="cargar_unidades();" class="btn btn-danger">Cancelar</button>
+              <button onclick="insertar_unidad(); return false;" class="btn btn-success">Guardar</button>
             </div>
             
           </form>

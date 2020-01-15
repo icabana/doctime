@@ -6,7 +6,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Empleados', 
           'generarReporteEmpleados',
           "dependencia="+$("#dependencia_reporte").val()+
           "&sexo="+$("#sexo_reporte").val(),
@@ -21,7 +21,7 @@
       
         ejecutarAccion(
           'reportes', 
-          'Reportes', 
+          'Empleados', 
           'generarReporteEmpleadosExcel', 
           "dependencia="+$("#dependencia_reporte").val()+
           "&sexo="+$("#sexo_reporte").val(),
@@ -30,29 +30,9 @@
         
     }
 
-
-      
-    function cargar_reporte_empleados(){
-    
-        ejecutarAccion(
-          'reportes',
-          'Reportes',
-          'cargarReporteEmpleados',
-          "dependencia="+$("#dependencia_reporte").val()+
-          "&sexo="+$("#sexo_reporte").val(),
-          "$('#div_reporte_empleado').html(data);"    
-        );
-        
-    }
-
-
   
 </script>   
 
-
-<?php
-  $froms = new Formularios();
-?>
 
 
 <div class="row">
@@ -103,42 +83,6 @@
       <div class="row">     
         
       
-          <div class="col-md-3">
-
-              <label>Seleccionar Dependencia:</label>
-
-                <?php
-                    echo $froms->Lista_Desplegable_TODOS(
-                        $dependencias,
-                        'nombre_dependencia',
-                        'id_dependencia',
-                        'dependencia_reporte',
-                        '',
-                        '',
-                        'cargar_reporte_empleados()'
-                    );
-                ?>
-          </div>
-
-
-          <div class="col-md-3">
-            <label>Seleccionar Genero:</label>
-            <?php
-                      echo $froms->Lista_Desplegable_TODOS(
-                          $sexos,
-                          'nombre_sexo',
-                          'id_sexo',
-                          'sexo_reporte',
-                          '',
-                          '',
-                          'cargar_reporte_empleados()'
-                        );
-                  ?>
-          </div>
-
-
-   
-
 
 
     </div>

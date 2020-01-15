@@ -30,8 +30,7 @@
     $this->pdf->Cell(150, 10, utf8_decode('Nombre del Jefe'),1,1, "C", 1);      
 
        $this->pdf->SetFont('Arial','',9);
-                            
-     $fechas = new Fechas(); 
+                       
      
 $cont = 1;     
      

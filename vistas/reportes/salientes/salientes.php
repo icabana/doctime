@@ -36,12 +36,12 @@
 
 
       
-    function cargarReporte(){
+    function cargarReporteSaliente(){
     
         ejecutarAccion(
           'reportes',
           'Salientes',
-          'cargarReporte',
+          'cargarTablaSalientes',
           "&fecha1="+$("#fecha1_reporte").val()+
           "&fecha2="+$("#fecha2_reporte").val()+ 
           "&remitente="+$("#remitente_saliente_reporte").val()+ 
@@ -60,7 +60,7 @@
 
         if (texto.length == 0) {
 
-            cargarReporte();
+            cargarReporteSaliente();
 
         }
         if (texto.length < 3) {
@@ -108,7 +108,9 @@
 
 
 
-    function seleccionar_remitente(id_remitente, nombre_remitente) {
+    function seleccionar_remitente(id_remitente, nombres_remitente, apellidos_remitente) {
+
+        var nombre_remitente = nombres_remitente + ' ' + apellidos_remitente;
 
         $("#remitente_saliente_reporte").val(id_remitente);
         $("#remitente_saliente_reporte2").val(nombre_remitente);
@@ -116,19 +118,20 @@
 
         $('#vista_remitente_saliente_reporte').hide();
 
-        cargarReporte();
+        cargarReporteSaliente();
 
     }
 
 
 
-    function seleccionar_destinatario(id_destinatario, nombres_destinatario, apellidos_destinatario) {
+    function seleccionar_destinatario(id_destinatario, nombre_destinatario) {
 
-        var nombre_destinatario = nombres_destinatario + ' ' + apellidos_destinatario;
+        
 
         $("#destinatario_saliente_reporte").val(id_destinatario);
         $("#destinatario_saliente_reporte2").val(nombre_destinatario);
-        cargarReporte();
+
+        cargarReporteSaliente();
 
         $('#vista_destinatario_saliente_reporte').hide();
 
@@ -193,7 +196,7 @@
           <div class="description-block">
               <h5 class="description-header">Fecha Inicial<?php echo $_SESSION['ruta_absoluta']; ?></h5>
               <span class="description-text">
-                  <input onchange="cargarReporte(); return false;" type="date" class="form-control" id="fecha1_reporte" name="fecha1_reporte">
+                  <input onchange="cargarReporteSaliente(); return false;" type="date" class="form-control" id="fecha1_reporte" name="fecha1_reporte">
               </span>
           </div>
           </div>
@@ -205,7 +208,7 @@
             <div class="description-block">
               <h5 class="description-header">Fecha Final</h5>
               <span class="description-text">                        
-                  <input onchange="cargarReporte(); return false;" type="date" class="form-control" id="fecha2_reporte" name="fecha2_reporte">
+                  <input onchange="cargarReporteSaliente(); return false;" type="date" class="form-control" id="fecha2_reporte" name="fecha2_reporte">
               </span>
             </div>
           </div>
@@ -222,7 +225,7 @@
             name="remitente_saliente_reporte">
 
             <input type="text" class="form-control requerido" id="remitente_saliente_reporte2" 
-            name="remitente_saliente_reporte2"  onchange="cargarReporte(); return false;"
+            name="remitente_saliente_reporte2"  onchange="cargarReporteSaliente(); return false;"
 
               onkeyup="buscar_remitente_saliente_reporte(this.value); return false;">
             <div id="vista_remitente_saliente_reporte"></div>

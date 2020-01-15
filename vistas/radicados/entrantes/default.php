@@ -12,7 +12,7 @@
     function nuevo_radicado_saliente(entrante_saliente) {
 
       abrirVentanaContenedor(
-          'radicados', 'Salientes', 'nuevo', 'entrante_saliente='+entrante_saliente, ''
+          'radicados', 'Salientes', 'nuevo_desde_entrada', 'entrante_saliente='+entrante_saliente, ''
       );
 
     }

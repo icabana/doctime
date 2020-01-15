@@ -86,6 +86,74 @@ class SalientesControlador extends ControllerBase {
         
     }
 
+    
+    public function nuevo_desde_entrada(){
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($series[0]['id_serie']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($subseries[0]['id_subserie']);
+
+        $this->model->cargar("SalientesModel.php", "radicados");
+        $SalientesModel = new SalientesModel();
+        $max_consecutivo = $SalientesModel->getConsecutivo() + 1;
+
+        $cantidad = strlen($max_consecutivo);
+        for($i=$cantidad; $i<5; $i++){
+            $consecutivo2 .= "0"; 
+        }
+
+        $consecutivo = $consecutivo2.$max_consecutivo;
+        $numero_saliente = date("Ymd").$consecutivo;
+
+        $entrante_saliente = $_POST['entrante_saliente'];
+
+        include 'vistas/radicados/salientes/insertar_2.php';
+        
+    }
+
+         
+
          
     public function editar(){
 
