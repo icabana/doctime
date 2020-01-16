@@ -134,6 +134,42 @@ class EntrantesControlador extends ControllerBase {
 
 
 
+
+
+    public function indexFinalizados2() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosFinalizados();
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("UnidadesModel.php", "archivos");
+        $UnidadesModel = new UnidadesModel();
+        $unidades = $UnidadesModel->getTodos();
+
+        $this->model->cargar("ArchivadoresModel.php", "archivos");
+        $ArchivadoresModel = new ArchivadoresModel();
+        $archivadores = $ArchivadoresModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default_por_archivar.php';
+                        
+    }    
+
+
+
+
+
     public function indexArchivados() {
         
         $this->model->cargar("EntrantesModel.php", "radicados");

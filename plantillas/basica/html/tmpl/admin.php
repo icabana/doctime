@@ -62,6 +62,7 @@
   <script language="JavaScript" type='text/javascript' src='js/modulos/radicados.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/estadisticas.js'></script>  
   <script language="JavaScript" type='text/javascript' src='js/modulos/reportes.js'></script>  
+  <script language="JavaScript" type='text/javascript' src='js/modulos/archivos.js'></script>  
     
   <?php
                     
@@ -304,7 +305,7 @@
               <li class="nav-item">
                 <a href="#" onclick="cargar_unidades();" class="nav-link">
                   <i class="far fa-edit nav-icon"></i>
-                  <p>Unidades de Conservaci&oacute;n</p>
+                  <p>Unidades</p>
                 </a>
               </li>  
 
