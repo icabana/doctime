@@ -1255,6 +1255,64 @@ return $this->modificarRegistros($query);
     }
 
 
+    
+
+    function insertar_archivar(
+        $radicados,
+        $archivador,
+        $fechainicio,
+        $fechafinal,
+        $unidad,
+        $codigo,
+        $folios,
+        $anexos
+){
+
+    $array_radicados = explode(",", $_POST['radicados']);
+
+        foreach($array_radicados as $array){
+
+            if($array[0] != 0){
+
+                $id_entrante = $array[0];
+
+    $query = "INSERT INTO entrantes_archivo (
+            entrante_archivo,
+            archivador_archivo,
+            fechainicio_archivo,
+            fechafinal_archivo,
+            unidad_archivo,
+            codigo_archivo,
+            folios_archivo,
+            anexos_archivo
+        )
+        VALUES(
+            '".$id_entrante."',
+            '".$archivador."',
+            '".$fechainicio."',
+            '".$fechafinal."',
+            '".$unidad."',
+            '".$codigo."',
+            '".$folios."',
+            '".$anexos."'
+        );";
+
+        $this->crear_ultimo_id($query);
+
+        $query = "  UPDATE entrantes 
+                SET estado_entrante = '3'
+                WHERE id_entrante = '".$id_entrante."'";
+
+        $this->modificarRegistros($query);
+
+
+    }
+    }
+
+}
+
+
+
 
 }
 

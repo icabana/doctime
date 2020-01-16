@@ -68,27 +68,25 @@
   }
 
 
-  function seleccionar_destinatario(id_remitente, nombres_remitente, apellidos_remitente) {
+  function seleccionar_destinatario(id_destinatario, nombre_destinatario) {
 
+$("#destinatario_saliente").val(id_destinatario);
+$("#destinatario_saliente2").val(nombre_destinatario);
 
-    var nombre_remitente = nombres_remitente + ' ' + apellidos_remitente;
+$('#vista_destinatarios').hide();
 
-    $("#remitente_saliente").val(id_remitente);
-    $("#remitente_saliente2").val(nombre_remitente);
+}
 
-    $('#vista_remitentes').hide();
+function seleccionar_remitente(id_remitente, nombres_remitente, apellidos_remitente) {
 
-  }
+nombre_remitente = nombres_remitente+" "+apellidos_remitente;
 
-  function seleccionar_remitente(id_destinatario, nombre_destinatario) {
+$("#remitente_saliente").val(id_remitente);
+$("#remitente_saliente2").val(nombre_remitente);
 
+$('#vista_remitentes').hide();
 
-    $("#destinatario_saliente").val(id_destinatario);
-    $("#destinatario_saliente2").val(nombre_destinatario);
-
-    $('#vista_destinatarios').hide();
-
-  }
+}
 
   
     

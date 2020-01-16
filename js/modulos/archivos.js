@@ -14,6 +14,22 @@ function cargar_archivar(){
         
 }
 
+function ver_archivados(){
+
+    $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
+    $('.ui-widget').remove();
+    $('.elfinder-quicklook').remove();
+    $('.ui-draggable').remove();
+    $('.ui-resizable').remove();
+
+    limpiar_cuerpo();
+    
+    abrirVentanaContenedorTabla(
+        'tabla_entrantes',
+        'radicados', 'Entrantes', 'indexArchivados2', '');    
+        
+}
+
 function cargar_archivadores(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();

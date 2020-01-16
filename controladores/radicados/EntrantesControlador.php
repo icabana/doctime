@@ -126,7 +126,7 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
-        include 'vistas/radicados/entrantes/default.php';
+        include 'vistas/radicados/entrantes/default_finalizados.php';
                         
     }    
 
@@ -188,7 +188,32 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
-        include 'vistas/radicados/entrantes/default.php';
+        include 'vistas/radicados/entrantes/default_archivados.php';
+                        
+    }    
+
+
+
+
+    public function indexArchivados2() {
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosArchivados();
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        include 'vistas/radicados/entrantes/default_ver_archivados.php';
                         
     }    
 
@@ -348,7 +373,160 @@ class EntrantesControlador extends ControllerBase {
     }
 
          
+
+
+    public function nuevo_finalizados(){
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($series[0]['id_serie']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($subseries[0]['id_subserie']);
+
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $max_consecutivo = $EntrantesModel->getConsecutivo() + 1;
+
+        $cantidad = strlen($max_consecutivo);
+        for($i=$cantidad; $i<5; $i++){
+            $consecutivo2 .= "0"; 
+        }
+
+        $consecutivo = $consecutivo2.$max_consecutivo;
+
+        $saliente_entrante = $_POST['saliente_entrante'];
+
+        $numero_entrante = date("Ymd").$consecutivo;
+
+        include 'vistas/radicados/entrantes/insertar_finalizados.php';
+        
+    }
+
+         
+
     
+
+    public function nuevo_archivados(){
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+        
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+        
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($series[0]['id_serie']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($subseries[0]['id_subserie']);
+
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $max_consecutivo = $EntrantesModel->getConsecutivo() + 1;
+
+        $cantidad = strlen($max_consecutivo);
+        for($i=$cantidad; $i<5; $i++){
+            $consecutivo2 .= "0"; 
+        }
+
+        $consecutivo = $consecutivo2.$max_consecutivo;
+
+        $saliente_entrante = $_POST['saliente_entrante'];
+
+        $numero_entrante = date("Ymd").$consecutivo;
+
+        include 'vistas/radicados/entrantes/insertar_archivados.php';
+        
+    }
+
+         
+
 
     public function nuevo_desde_salida(){
 
@@ -502,6 +680,174 @@ class EntrantesControlador extends ControllerBase {
         $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($datos['subserie_entrante']);
 
         include 'vistas/radicados/entrantes/editar.php';
+               
+    }
+         
+
+
+         
+    
+    
+    
+    public function editar_finalizados(){
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();   
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+
+        $this->model->cargar("EntrantesModel.php");
+        $EntrantesModel = new EntrantesModel();         
+        $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("DocumentosModel.php", "configuracion");
+        $DocumentosModel = new DocumentosModel();   
+        $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
+
+        
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($datos['serie_entrante']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($datos['subserie_entrante']);
+
+        include 'vistas/radicados/entrantes/editar_finalizados.php';
+               
+    }
+         
+
+
+         
+    
+    
+    
+    public function editar_archivados(){
+
+        $this->model->cargar("TercerosModel.php", "administracion");
+        $TercerosModel = new TercerosModel();
+        $terceros = $TercerosModel->getTodos();   
+        
+        $this->model->cargar("TiposradicadoModel.php", "administracion");
+        $TiposradicadoModel = new TiposradicadoModel();
+        $tiposradicado = $TiposradicadoModel->getTodos();
+
+        $this->model->cargar("EstadosModel.php", "configuracion");
+        $EstadosModel = new EstadosModel();
+        $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("PrioridadesModel.php", "configuracion");
+        $PrioridadesModel = new PrioridadesModel();
+        $prioridades = $PrioridadesModel->getTodos();
+
+        
+        $this->model->cargar("TiposdocumentoModel.php", "configuracion");
+        $TiposdocumentoModel = new TiposdocumentoModel();
+        $tiposdocumento = $TiposdocumentoModel->getTodos();
+
+        $this->model->cargar("EstadoscivilModel.php", "configuracion");
+        $EstadoscivilModel = new EstadoscivilModel();
+        $estadoscivil = $EstadoscivilModel->getTodos();
+
+        $this->model->cargar("SexosModel.php", "configuracion");
+        $SexosModel = new SexosModel();
+        $sexos = $SexosModel->getTodos();
+
+        $this->model->cargar("DependenciasModel.php", "administracion");
+        $DependenciasModel = new DependenciasModel();
+        $dependencias = $DependenciasModel->getTodos();
+
+        $this->model->cargar("EntrantesModel.php");
+        $EntrantesModel = new EntrantesModel();         
+        $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
+        $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("DocumentosModel.php", "configuracion");
+        $DocumentosModel = new DocumentosModel();   
+        $documentos  = $DocumentosModel->getTodos($_POST['id_entrante']);
+
+        
+        $this->model->cargar("RolesModel.php", "configuracion");
+        $RolesModel = new RolesModel();
+        $roles = $RolesModel->getTodos();
+
+        
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("SeriesModel.php", "administracion");
+        $SeriesModel = new SeriesModel();
+        $series = $SeriesModel->getTodos();
+
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+        $subseries = $SubseriesModel->getTodosPorSerie($datos['serie_entrante']);
+
+        $this->model->cargar("TiposdocumentalesModel.php", "administracion");
+        $TiposdocumentalesModel = new TiposdocumentalesModel();
+        $tiposdocumentales = $TiposdocumentalesModel->getTodosPorSubserie($datos['subserie_entrante']);
+
+        include 'vistas/radicados/entrantes/editar_archivados.php';
                
     }
          
@@ -967,6 +1313,29 @@ class EntrantesControlador extends ControllerBase {
        
         
     }    
+
+    
+    public function archivar_default() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->insertar_archivar(
+                                    $_POST["radicados"], 
+                                    $_POST["archivador"],
+                                    $_POST["fechainicio"],
+                                    $_POST["fechafinal"],
+                                    $_POST["unidad"],
+                                    $_POST["codigo"],
+                                    $_POST["folios"],
+                                    $_POST["anexos"]
+                                );        
+
+             echo 1;    
+       
+        
+    }    
+
 
 
     public function cambiarestado() {

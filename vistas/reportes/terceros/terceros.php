@@ -62,7 +62,7 @@
 
             <div class="col-md-2">
               <button onclick="generar_reporte_terceros(); return false;" class="btn btn-primary pull-right" 
-              style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+              style="margin-right: 5px;"><i class="fa fa-download"></i> Generar PDF</button>
             </div>
 
 

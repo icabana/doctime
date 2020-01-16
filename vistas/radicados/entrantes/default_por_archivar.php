@@ -1,7 +1,5 @@
 <script type="text/javascript">
 
-   
-
   function archivar_radicado0() {
 
     if (!validar_requeridos_archivar()) {
@@ -42,8 +40,11 @@ radicados += '0';
 ejecutarAccion(
 'radicados',
 'Entrantes',
-'cambiarestado_default',
-'estado_entrante='+$("#estado_entrante").val()+'&radicados='+radicados,
+'archivar_default',
+'archivador='+$("#archivador_archivar").val()+'&fechainicio='+$("#fechainicio_archivar").val()+
+'&fechafinal='+$("#fechafinal_archivar").val()+'&unidad='+$("#unidad_archivar").val()+
+'&codigo='+$("#codigo_archivar").val()+'&folios='+$("#folios_archivar").val()+
+'&anexos='+$("#anexos_archivar").val()+'&radicados='+radicados,
 'archivar_radicado2(data)'
 );
 
@@ -51,8 +52,7 @@ ejecutarAccion(
 
 function archivar_radicado2(data) {
 
-  cargar_entrantes();
-  mensaje_alertas("success", "Ajuste Exitoso", "center");
+  mensaje_alertas("success", "Radicados Archivados Correctamente", "center");
 
 
 } 
@@ -287,7 +287,21 @@ function archivar_radicado2(data) {
           <input type="text" class="form-control requerido_archivar" id="codigo_archivar" name="codigo_archivar">
         </div>
 
+        <br>
+
         </div>
+        <div class="row">
+        <div class="col-md-6">
+          <label>Folios<span style="color:red">*</span></label>
+          <input type="text" class="form-control requerido_archivar" id="folios_archivar" name="folios_archivar">
+        </div>
+
+        <div class="col-md-6">
+          <label>Anexos<span style="color:red">*</span></label>
+          <input type="text" class="form-control requerido_archivar" id="anexos_archivar" name="anexos_archivar">
+        </div>
+        </div>
+
 
 
 

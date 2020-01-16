@@ -293,6 +293,13 @@
                   <p>Archivar</p>
                 </a>
               </li>  
+              
+            <li class="nav-item">
+                <a href="#" onclick="ver_archivados();" class="nav-link">
+                  <i class="far fa-edit nav-icon"></i>
+                  <p>Archivados</p>
+                </a>
+              </li>  
 
               <li class="nav-item">
                 <a href="#" onclick="cargar_archivadores();" class="nav-link">
