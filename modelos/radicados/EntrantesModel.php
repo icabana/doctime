@@ -802,7 +802,7 @@ class EntrantesModel extends ModelBase {
                     terceros.direccion_tercero, 
                     terceros.ciudad_tercero,
 
-                    tiposradicado.id_tiporadicado,
+                        tiposradicado.id_tiporadicado,
                     tiposradicado.id_tiporadicado,
 
                     estadosradicados.id_estado,
@@ -822,6 +822,51 @@ class EntrantesModel extends ModelBase {
         
     }
     
+    
+    function getDatosArchivo($id_entrante) {
+       
+        $query = "select 
+
+                    entrantes_archivo.id_archivo,  
+                    entrantes_archivo.entrante_archivo,
+                    entrantes_archivo.archivador_archivo, 
+                    entrantes_archivo.fechainicio_archivo, 
+                    entrantes_archivo.fechafinal_archivo, 
+                    entrantes_archivo.unidad_archivo, 
+                    entrantes_archivo.codigo_archivo, 
+                    entrantes_archivo.folios_archivo, 
+                    entrantes_archivo.anexos_archivo, 
+
+                    entrantes.id_entrante, 
+                    entrantes.numero_entrante,
+                    entrantes.remitente_entrante,
+                    entrantes.enviadopor_entrante,
+                    entrantes.destinatario_entrante,
+                    entrantes.fecharadicado_entrante,
+                    entrantes.fechamaxima_entrante,
+                    entrantes.prioridad_entrante,
+                    entrantes.numerofolios_entrante,
+                    entrantes.descripcionfolios_entrante,
+                    entrantes.asunto_entrante,
+                    entrantes.tiporadicado_entrante,
+                    entrantes.responsable_entrante,
+                    entrantes.carpeta_entrante,
+                    entrantes.serie_entrante,
+                    entrantes.subserie_entrante,
+                    entrantes.tipodocumental_entrante,
+                    entrantes.saliente_entrante
+                
+                    from entrantes_archivo
+                            left join entrantes ON entrantes_archivo.entrante_archivo = entrantes.id_entrante
+
+                    where entrantes.id_entrante='".$id_entrante."'";
+        
+         $consulta = $this->consulta($query);
+        return $consulta[0];    
+        
+    }
+    
+
     function insertar(      
                         $consecutivo_entrante,
                         $numero_entrante,
@@ -1310,6 +1355,38 @@ return $this->modificarRegistros($query);
     }
 
 }
+
+
+
+
+function guardarDatosArchivo(
+    $entrante_archivo, 
+    $archivador_archivo,
+    $fechainicio_archivo,
+    $fechafinal_archivo,
+    $unidad_archivo,
+    $codigo_archivo,
+    $folios_archivo,
+    $anexos_archivo
+) {
+
+$query = "  UPDATE entrantes_archivo
+
+    SET archivador_archivo = '". $archivador_archivo ."',
+        fechainicio_archivo = '". $fechainicio_archivo ."',
+        fechafinal_archivo = '". $fechafinal_archivo ."',
+        unidad_archivo = '". $unidad_archivo ."',
+        codigo_archivo = '". $codigo_archivo ."',
+        folios_archivo = '". $folios_archivo ."',
+        anexos_archivo = '". $anexos_archivo ."'
+
+    WHERE entrante_archivo = '" . $entrante_archivo . "'";
+
+return $this->modificarRegistros($query);
+
+}
+
+
 
 
 

@@ -213,6 +213,14 @@ class EntrantesControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
 
+        $this->model->cargar("UnidadesModel.php", "archivos");
+        $UnidadesModel = new UnidadesModel();
+        $unidades = $UnidadesModel->getTodos();
+
+        $this->model->cargar("ArchivadoresModel.php", "archivos");
+        $ArchivadoresModel = new ArchivadoresModel();
+        $archivadores = $ArchivadoresModel->getTodos();
+
         include 'vistas/radicados/entrantes/default_ver_archivados.php';
                         
     }    
@@ -684,6 +692,45 @@ class EntrantesControlador extends ControllerBase {
     }
          
 
+    
+    
+    public function editarDatosArchivo(){
+
+        
+        $this->model->cargar("EntrantesModel.php", "radicados");
+        $EntrantesModel = new EntrantesModel();
+        $entrantes = $EntrantesModel->getTodosFinalizados();
+
+        $datos_archivo = $EntrantesModel->getDatosArchivo($_POST['id_entrante']);
+
+        $this->model->cargar("CarpetasModel.php", "radicados");
+        $CarpetasModel = new CarpetasModel();
+        $carpetas = $CarpetasModel->getTodos();
+
+        $this->model->cargar("EstadosradicadoModel.php", "configuracion");
+        $EstadosradicadoModel = new EstadosradicadoModel();
+        $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+        $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("UnidadesModel.php", "archivos");
+        $UnidadesModel = new UnidadesModel();
+        $unidades = $UnidadesModel->getTodos();
+
+        $this->model->cargar("ArchivadoresModel.php", "archivos");
+        $ArchivadoresModel = new ArchivadoresModel();
+        $archivadores = $ArchivadoresModel->getTodos();
+
+        include 'vistas/radicados/entrantes/editar_archivo.php';
+               
+    }
+         
+
+
+
+
 
          
     
@@ -1129,6 +1176,36 @@ class EntrantesControlador extends ControllerBase {
             $EntrantesModel->insertar_trazabilidad(
                 $_POST["id_entrante"],
                 "Modificó la información del radicado"
+            );  
+
+             echo 1;             
+        }else{
+            echo 0;		
+        }
+        
+    }    
+        
+    public function guardarDatosArchivo() {
+        
+        $this->model->cargar("EntrantesModel.php", 'radicados');
+        $EntrantesModel = new EntrantesModel();
+            
+        $resp = $EntrantesModel->guardarDatosArchivo(
+                                    $_POST["entrante_archivo"], 
+                                    $_POST["archivador_archivo"],
+                                    $_POST["fechainicio_archivo"],
+                                    $_POST["fechafinal_archivo"],
+                                    $_POST["unidad_archivo"],
+                                    $_POST["codigo_archivo"],
+                                    $_POST["folios_archivo"],
+                                    $_POST["anexos_archivo"]
+                                );        
+      
+        if( $resp != 0 ){
+
+            $EntrantesModel->insertar_trazabilidad(
+                $_POST["id_entrante"],
+                "Se Modificó la información de Archivo"
             );  
 
              echo 1;             

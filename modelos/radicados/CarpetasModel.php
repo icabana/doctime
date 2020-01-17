@@ -84,7 +84,7 @@ class CarpetasModel extends ModelBase {
     function eliminar($id_carpeta) {
         
         $query = "DELETE FROM carpetas WHERE id_carpeta = '". $id_carpeta ."'";        
-        $this->modificarRegistros($query);
+        return $this->modificarRegistros($query);
 
     }
     

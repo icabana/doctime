@@ -402,8 +402,7 @@ function enviar_bandeja_entrante2() {
                   <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
                   <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
-                  <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
-                </div>
+                 </div>
                
                 <!-- /.btn-group -->
                 <button title="Actualizar Lista de Radicados" onclick="cargar_entrantes_archivados();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>

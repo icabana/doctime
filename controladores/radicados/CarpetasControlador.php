@@ -76,9 +76,13 @@ class CarpetasControlador extends ControllerBase {
         $this->model->cargar("CarpetasModel.php", "radicados");
         $CarpetasModel = new CarpetasModel();
         
-        $CarpetasModel->eliminar($_POST["id_carpeta"]);
-        
-        echo "1";        
+        $resp = $CarpetasModel->eliminar($_POST["id_carpeta"]);
+       
+        if( $resp  ){
+            echo '1';             
+       }else{
+           echo '0';		
+       }     
         
     }    
    

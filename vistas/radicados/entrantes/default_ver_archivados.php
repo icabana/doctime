@@ -118,6 +118,17 @@
 
     }
 
+    
+
+    function editar_datos_archivo(id_entrante) {
+
+      abrirVentanaContenedor(
+          'radicados', 'Entrantes', 'editarDatosArchivo', 'id_entrante='+id_entrante, ''
+      );
+
+
+  }
+
     function cambiar_responsable() {
 
       $('#exampleModal2').modal('hide');
@@ -400,7 +411,6 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
                             <th style='background-color:lavender; width:20px '></th>
-                            <th style='background-color:lavender; width:20px '></th>   
                         </tr>
                     </thead>
                 <tbody>
@@ -462,12 +472,11 @@ function enviar_bandeja_entrante2() {
                         }
                     ?>    
 
-                    <td class="mailbox-attachment"><?php echo $adjuntos." ";  ?><i class="fas fa-paperclip"></i></td>
-
+                
 
                     
                     <?php
-                        echo "<td><a href='#' title='Editar Radicado'><idata-toggle='modal' data-target='#exampleModal77' class='fas fa-edit'></i></a></td>";
+                        echo '<td><button onclick="editar_datos_archivo('.$entrante['id_entrante'].')" title="Modificar Datos de Archivo"  type="button" class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button></td>';
 
 
                       ?>
@@ -491,231 +500,5 @@ function enviar_bandeja_entrante2() {
         <!-- /.col -->
         </div>
     </div>
-</div>
-
-
-
-
-
-
-<!-- Modal 1-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Mover a Carpeta:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="col-md-12">
-          <label>Seleccionar Carpeta</label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $carpetas,
-              'nombre_carpeta',
-              'id_carpeta',
-              'carpeta_entrante',
-              '',
-              '',
-              ''
-            );
-          ?>
-        </div>
-      </div>
-      <div class="modal-footer">        
-        <button onclick="mover_carpeta0();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- Modal 2-->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cambiar de Responsable:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="col-md-12">
-          <label>Seleccionar Responsable</label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $empleados,
-              'nombre_empleado',
-              'id_empleado',
-              'responsable_entrante',
-              '',
-              '',
-              ''
-            );
-          ?>
-        </div>
-      </div>
-      <div class="modal-footer">        
-        <button onclick="cambiar_responsable0();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modal 3-->
-<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Nueva Bitacora:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="col-md-12">
-          <label>Agregar Bitacora</label>
-          <textarea class="form-control" id="bitacora_entrante" cols="32"  name="bitacora_entrante" rows="4"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">        
-        <button onclick="nueva_bitacora0();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modal 7-->
-<div class="modal fade" id="exampleModal77" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cambiar Estado:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="col-md-12">
-          <label>Seleccionar Estado: </label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $estadosradicado,
-              'nombre_estado',
-              'id_estado',
-              'estado_entrante',
-              '',
-              '',
-              ''
-            );
-          ?>
-        </div>
-      </div>
-      <div class="modal-footer">        
-        <button onclick="cambiar_estado0();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal 7-->
-<div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Archivar Radicado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-        <div class="row">
-          <div class="col-md-12">
-            <label>Seleccionar Archivo<span style="color:red">*</span></label>
-            <?php
-              echo $froms->Lista_Desplegable(
-                $archivadores,
-                'nombre_archivador',
-                'id_archivador',
-                'archivador_archivar',
-                '',
-                '',
-                ''
-              );
-            ?>
-          </div>        
-        </div>
-
-<br>
-
-        <div class="row">
-        <div class="col-md-6">
-          <label>Fecha Inicio<span style="color:red">*</span></label>
-          <input type="date" class="form-control requerido_archivar" id="fechainicio_archivar" name="fechainicio_archivar">
-        </div>
-
-        <div class="col-md-6">
-          <label>Fecha Final<span style="color:red">*</span></label>
-          <input type="date" class="form-control requerido_archivar" id="fechafinal_archivar" name="fechafinal_archivar">
-        </div>
-        </div>
-<br>
-        <div class="row">
-        <div class="col-md-6">
-          <label>Unidad de Conservación<span style="color:red">*</span></label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $unidades,
-              'nombre_unidad',
-              'id_unidad',
-              'unidad_archivar',
-              '',
-              '',
-              ''
-            );
-          ?>
-        </div>
-        <div class="col-md-6">
-          <label>C&oacute;digo Unidad<span style="color:red">*</span></label>
-          <input type="text" class="form-control requerido_archivar" id="codigo_archivar" name="codigo_archivar">
-        </div>
-
-        <br>
-
-        </div>
-        <div class="row">
-        <div class="col-md-6">
-          <label>Folios<span style="color:red">*</span></label>
-          <input type="text" class="form-control requerido_archivar" id="folios_archivar" name="folios_archivar">
-        </div>
-
-        <div class="col-md-6">
-          <label>Anexos<span style="color:red">*</span></label>
-          <input type="text" class="form-control requerido_archivar" id="anexos_archivar" name="anexos_archivar">
-        </div>
-        </div>
-
-
-
-
-      </div>
-
-      <div class="modal-footer">        
-        <button onclick="archivar_radicado0();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
 </div>
 

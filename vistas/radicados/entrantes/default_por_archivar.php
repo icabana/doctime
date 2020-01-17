@@ -2,22 +2,24 @@
 
   function archivar_radicado0() {
 
+    var cont = 0;
+
+$("input[name=check_radicados]:checked").each(
+    function(){
+        cont++;
+}
+);
+
+if(cont == 0){
+mensaje_alertas("error", "Debe seleccionar algún registro");
+return 0;
+}
+
     if (!validar_requeridos_archivar()) {
       return 0;
     }
 
-    var cont = 0;
-
-    $("input[name=check_radicados]:checked").each(
-        function(){
-            cont++;
-    }
-  );
-
-if(cont == 0){
-  mensaje_alertas("error", "Debe seleccionar algún registro");
-  return 0;
-}
+   
 
 archivar_radicado();
 
@@ -287,18 +289,19 @@ function archivar_radicado2(data) {
           <input type="text" class="form-control requerido_archivar" id="codigo_archivar" name="codigo_archivar">
         </div>
 
-        <br>
+      
 
         </div>
+        <br>
         <div class="row">
         <div class="col-md-6">
           <label>Folios<span style="color:red">*</span></label>
-          <input type="text" class="form-control requerido_archivar" id="folios_archivar" name="folios_archivar">
+          <input type="text" onkeypress="return no_numeros(event)" class="form-control requerido_archivar" id="folios_archivar" name="folios_archivar">
         </div>
 
         <div class="col-md-6">
           <label>Anexos<span style="color:red">*</span></label>
-          <input type="text" class="form-control requerido_archivar" id="anexos_archivar" name="anexos_archivar">
+          <input type="text" onkeypress="return no_numeros(event)" class="form-control requerido_archivar" id="anexos_archivar" name="anexos_archivar">
         </div>
         </div>
 

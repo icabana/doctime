@@ -85,7 +85,7 @@
     $CarpetasModel = new CarpetasModel();   
   
     if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
-        $numero_entrantes = $EntrantesModel->getNumeroEntrantes();
+        $numero_entrantes = $EntrantesModel->getNumeroEntrantes() - 1;
         $numero_entrantes_activos = $EntrantesModel->getNumeroEntrantesActivos();
         $numero_entrantes_finalizados = $EntrantesModel->getNumeroEntrantesFinalizados();
         $numero_entrantes_archivados = $EntrantesModel->getNumeroEntrantesArchivados();  
@@ -280,7 +280,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
-                Archivo
+                Gesti&oacute;n de Archivo
                 <i class="fas fa-angle-right right"></i>
                 
               </p>
@@ -631,9 +631,9 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-folder"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Finalizados</span>
+                <span class="info-box-text"><a href='#' onclick='cargar_entrantes_finalizados();'>Radicados Finalizados</a></span>
                 <span class="info-box-number">
-                <?php echo $numero_entrantes_finalizados; ?>
+                <a href='#' onclick='cargar_entrantes_finalizados();'><?php echo $numero_entrantes_finalizados; ?></a>
                 </span>
               </div>
               <!-- /.info-box-content -->

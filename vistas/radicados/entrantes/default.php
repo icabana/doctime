@@ -645,17 +645,9 @@ function enviar_bandeja_entrante2() {
       <div class="modal-body">
       <div class="col-md-12">
           <label>Seleccionar Estado: </label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $estadosradicado,
-              'nombre_estado',
-              'id_estado',
-              'estado_entrante',
-              '',
-              '',
-              ''
-            );
-          ?>
+          <select class="form-control"  id='estado_entrante' name='estado_entrante'>
+            <option value='2' >FINALIZADO</option>
+          </select>
         </div>
       </div>
       <div class="modal-footer">        

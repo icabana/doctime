@@ -33,7 +33,7 @@
             'Carpetas',
             'eliminar',
             "id_carpeta=" + id_carpeta,
-            ' mensaje_alertas("success", "Carpeta Eliminada con Éxito", "center"); cargar_carpetas();'
+            'if(data == 1){ location.reload(); } else { mensaje_alertas("error", "Esta carpeta tiene radicados asociados", "center"); } '
         );
 
     }
