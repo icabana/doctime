@@ -4,9 +4,9 @@
 
     $upload = new file_upload();
         
-    mkdir('../../archivos/uploads/salientes/'.$_POST['id_saliente'].'/'.$_POST['documento_soporte']);
+    mkdir('../../archivos/uploads/salientes/'.$_POST['id_saliente_upload'].'/'.$_POST['documento_soporte']);
 
-    $carpeta = '../../archivos/uploads/salientes/'.$_POST['id_saliente'].'/'.$_POST['documento_soporte'].'/';
+    $carpeta = '../../archivos/uploads/salientes/'.$_POST['id_saliente_upload'].'/'.$_POST['documento_soporte'].'/';
     
      $upload->upload_dir = $carpeta;
     

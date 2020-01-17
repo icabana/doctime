@@ -591,30 +591,15 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Radicados Entrantes</span>
-                <span class="info-box-number">
-                  <?php echo $numero_entrantes; ?>
-                </span>
-              </div>
-
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
+         
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-edit"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Activos</span>
+                <span class="info-box-text"><a href='#' onclick='cargar_entrantes();'>Radicados Activos</a></span>
                 <span class="info-box-number">
-                <?php echo $numero_entrantes_activos; ?>
+                <a href='#' onclick='cargar_entrantes();'><?php echo $numero_entrantes_activos; ?></a>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -646,29 +631,24 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-clone"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Archivados</span>
-                <span class="info-box-number"><?php echo $numero_entrantes_archivados; ?></span>
+                <span class="info-box-text"><a href='#' onclick='cargar_entrantes_archivados();'>Radicados Archivados</a></span>
+                <span class="info-box-number">
+                <a href='#' onclick='cargar_entrantes_archivados();'><?php echo $numero_entrantes_archivados; ?></a>
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-        </div> <!-- ./col -->
-        </div>
-
-        <br> 
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Radicados Salientes</span>
+                <span class="info-box-text"><a href='#' onclick='cargar_salientes();'>Radicados Salientes</a></span>
                 <span class="info-box-number">
-                  <?php echo $numero_salientes; ?>
+                <a href='#' onclick='cargar_salientes();'><?php echo $numero_salientes; ?></a>
                 </span>
               </div>
 
@@ -676,15 +656,24 @@
             </div>
             <!-- /.info-box -->
           </div>
+        </div> <!-- ./col -->
+        
+        </div>
+
+        <br> 
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+         
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-university"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Dependencias</span>
+                <span class="info-box-text"><a href='#' onclick='cargar_dependencias();'>Dependencias</a></span>
                 <span class="info-box-number">
-                <?php echo $dependencias; ?>
+                <a href='#' onclick='cargar_dependencias();'><?php echo $dependencias; ?></a>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -702,9 +691,9 @@
 
               <div class="info-box-content">
 
-                <span class="info-box-text">Empleados</span>
+                <span class="info-box-text"><a href='#' onclick='cargar_empleados();'>Empleados</a></span>
                 <span class="info-box-number">
-                <?php echo $empleados; ?>
+                <a href='#' onclick='cargar_empleados();'><?php echo $empleados; ?></a>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -717,8 +706,8 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Terceros</span>
-                <span class="info-box-number"><?php echo $terceros; ?></span>
+                <span class="info-box-text"><a href='#' onclick='cargar_terceros();'>Terceros</a></span>
+                <a href='#' onclick='cargar_terceros();'><span class="info-box-number"><?php echo $terceros; ?></span></a>
               </div>
               <!-- /.info-box-content -->
             </div>

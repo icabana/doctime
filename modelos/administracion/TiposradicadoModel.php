@@ -63,7 +63,7 @@ class TiposradicadoModel extends ModelBase {
     function eliminar($id_tiporadicado) {
         
         $query = "DELETE FROM tiposradicado WHERE id_tiporadicado = '". $id_tiporadicado ."'";        
-        $this->modificarRegistros($query);
+        return $this->modificarRegistros($query);
 
     }
     

@@ -33,7 +33,7 @@
             'Unidades',
             'eliminar',
             "id_unidad=" + id_unidad,
-            ' mensaje_alertas("success", "Tipoarchivo Eliminado con Éxito", "center"); cargar_unidades();'
+            'if(data == 1){  mensaje_alertas("success", "Unidad Eliminada con Éxito", "center"); cargar_unidades(); } else { mensaje_alertas("error", "Esta Unidad tiene Archivos asociados", "center"); } '
         );
 
     }

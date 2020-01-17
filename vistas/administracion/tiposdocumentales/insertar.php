@@ -7,7 +7,7 @@
       }
 
       var datos = $('#formTiposdocumentales').serialize();
-
+alert(datos);
       ejecutarAccion(
         'administracion',
         'Tiposdocumentales',
@@ -30,12 +30,12 @@
   }
 
   
-  function cargar_subseries() {
+  function cargar_subseries777() {
 
     ejecutarAccion(
       'administracion',
       'Tiposdocumentales',
-      'cargarSubseries',
+      'cargarSubseries777',
       'id_serie='+$('#serie_tipodocumental').val(),
       "$('#div_subseries').html(data);"
     );
@@ -80,7 +80,7 @@
                         'serie_tipodocumental',
                         '',
                         '',
-                        'cargar_subseries()'
+                        'cargar_subseries777()'
                     );
                 ?>
 
@@ -96,7 +96,7 @@
                             $subseries,
                             'nombre_subserie',
                             'id_subserie',
-                            'subserie_tipodocumental',
+                            'subserie_tipodocumental777',
                             '',
                             '',
                             ''

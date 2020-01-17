@@ -1080,7 +1080,7 @@ return $this->modificarRegistros($query);
         
     function enviarBandejaEntrante($radicados) {
         
-        $query = "UPDATE entrantes SET carpeta_entrante = '' WHERE id_entrante IN (". $radicados .")";        
+        $query = "UPDATE entrantes SET carpeta_entrante = null WHERE id_entrante IN (". $radicados .")";        
         $this->modificarRegistros($query);
         
     }

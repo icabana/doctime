@@ -61,7 +61,7 @@ class UnidadesModel extends ModelBase {
     function eliminar($id_unidad) {
         
         $query = "DELETE FROM unidades WHERE id_unidad = '". $id_unidad ."'";        
-        $this->modificarRegistros($query);
+        return $this->modificarRegistros($query);
 
     }
     

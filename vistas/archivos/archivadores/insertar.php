@@ -2,6 +2,10 @@
 
   function insertar_archivador() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
       var datos = $('#formArchivadores').serialize();
 
       ejecutarAccion(
@@ -51,29 +55,29 @@
 
 
               <div class="form-group">
-                <label>Nombre Archivador</label>
-                <input type="text" class="form-control" id="nombre_archivador" name="nombre_archivador">
+                <label>Nombre Archivador<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="nombre_archivador" name="nombre_archivador">
               </div>
 
 
 
               <div class="form-group">
-                <label>Ciudad</label>
-                <input type="text" class="form-control" id="ciudad_archivador" name="ciudad_archivador">
+                <label>Ciudad<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="ciudad_archivador" name="ciudad_archivador">
               </div>
 
 
 
               <div class="form-group">
-                <label>Direccion</label>
-                <input type="text" class="form-control" id="direccion_archivador" name="direccion_archivador">
+                <label>Direcci&oacute;n<span style="color:red">*</span></label>
+                <input type="text" class="form-control requerido" id="direccion_archivador" name="direccion_archivador">
               </div>
 
 
 
               <div class="form-group">
-                <label>Ubicaci&oacute;n</label>
-                <textarea rows="3" class="form-control" id="ubicacion_archivador" name="ubicacion_archivador"></textarea>
+                <label>Descripci&oacute;n Ubicaci&oacute;n<span style="color:red">*</span></label>
+                <textarea rows="3" class="form-control requerido" id="ubicacion_archivador" name="ubicacion_archivador"></textarea>
               </div>
 
 

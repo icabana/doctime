@@ -131,9 +131,13 @@ class TiposradicadoControlador extends ControllerBase {
         $this->model->cargar("TiposradicadoModel.php", "administracion");
         $TiposradicadoModel = new TiposradicadoModel();
         
-        $TiposradicadoModel->eliminar($_POST["id_tiporadicado"]);
+        $resp = $TiposradicadoModel->eliminar($_POST["id_tiporadicado"]);
         
-        echo "1";        
+        if( $resp != 0 ){
+            echo 1;             
+       }else{
+           echo 0;		
+       }        
         
     }    
    

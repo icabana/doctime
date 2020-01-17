@@ -41,8 +41,7 @@ var json = eval(data);
 
 $('#remitente_entrante').val(json[0].remitente_entrante);
 $('#remitente_entrante2').val(json[0].remitente_entrante2);
-alert(json[0].remitente_entrante);
-alert(json[0].remitente_entrante2);
+
 $("#modal_remitentes").modal("hide");
 
 }

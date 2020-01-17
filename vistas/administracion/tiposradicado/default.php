@@ -33,7 +33,7 @@
             'Tiposradicado',
             'eliminar',
             "id_tiporadicado=" + id_tiporadicado,
-            ' mensaje_alertas("success", "Tipo de radicado Eliminado con Éxito", "center"); cargar_tiposradicado();'
+            'if(data == 1){  mensaje_alertas("success", "Tipo de radicado Eliminado con Éxito", "center"); cargar_tiposradicado(); } else { mensaje_alertas("error", "Esta Tipo de radicado tiene radicados asociados", "center"); } '
         );
 
     }

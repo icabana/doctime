@@ -404,6 +404,20 @@ class SalientesControlador extends ControllerBase {
         }      
         
     }
+
+    
+    public function actualizarTrazabilidad(){
+
+        $this->model->cargar("SalientesModel.php");
+        $SalientesModel = new SalientesModel();         
+        $trazabilidad = $SalientesModel->getTrazabilidad($_POST['id_saliente']);
+
+        include 'vistas/radicados/salientes/tabla_trazabilidad.php';
+        echo $tabla_trazabilidad;
+               
+    }
+
+    
     
     public function guardar() {
         

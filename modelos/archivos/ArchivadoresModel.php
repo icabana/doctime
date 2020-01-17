@@ -82,7 +82,7 @@ class ArchivadoresModel extends ModelBase {
     function eliminar($id_archivador) {
         
         $query = "DELETE FROM archivadores WHERE id_archivador = '". $id_archivador ."'";        
-        $this->modificarRegistros($query);
+        return $this->modificarRegistros($query);
 
     }
     

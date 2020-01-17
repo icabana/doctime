@@ -82,9 +82,13 @@ class ArchivadoresControlador extends ControllerBase {
         $this->model->cargar("ArchivadoresModel.php", "archivos");
         $ArchivadoresModel = new ArchivadoresModel();
         
-        $ArchivadoresModel->eliminar($_POST["id_archivador"]);
+       $resp = $ArchivadoresModel->eliminar($_POST["id_archivador"]);
         
-        echo "1";        
+        if( $resp  ){
+            echo '1';             
+       }else{
+           echo '0';		
+       }       
         
     }    
    

@@ -329,6 +329,30 @@ ejecutarAccion(
 }
 
 
+  function cargar_subseries_entrantes() {
+
+    ejecutarAccion(
+      'radicados',
+      'entrantes',
+      'cargarSubseriesEntrantes',
+      'id_serie_entrante='+$('#serie_entrante').val(),
+      "$('#div_subseries_entrantes').html(data); cargar_tiposdocumentales_entrantes()"
+    );
+
+}
+    
+  function cargar_tiposdocumentales_entrantes() {
+
+      ejecutarAccion(
+        'radicados',
+        'entrantes',
+        'cargarTiposdocumentalesEntrantes',
+        'id_subserie_entrante='+$('#subserie_entrante').val(),
+        "$('#div_tiposdocumentales_entrantes').html(data);"
+      );
+
+  } 
+
 </script>
 
 
@@ -543,7 +567,7 @@ $froms = new Formularios();
                           'serie_entrante',
                           $datos['serie_entrante'],
                           '',
-                          ''
+                          'cargar_subseries_entrantes()'
                         );
                         ?>
 
@@ -560,7 +584,7 @@ $froms = new Formularios();
                           'subserie_entrante',
                           $datos['subserie_entrante'],
                           '',
-                          ''
+                          'cargar_tiposdocumentales_entrantes()'
                         );
                         ?>
                       </div>
@@ -837,17 +861,9 @@ $froms = new Formularios();
       <div class="modal-body">
       <div class="col-md-12">
           <label>Seleccionar Estado: </label>
-          <?php
-            echo $froms->Lista_Desplegable(
-              $estadosradicado,
-              'nombre_estado',
-              'id_estado',
-              'estado_entrante_editar',
-              '',
-              '',
-              ''
-            );
-          ?>
+          <select class="form-control"  id='estado_entrante_editar' name='estado_entrante_editar'>
+            <option value='2' >FINALIZADO</option>
+          </select>
         </div>
       </div>
       <div class="modal-footer">        

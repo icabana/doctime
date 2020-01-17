@@ -76,9 +76,13 @@ class UnidadesControlador extends ControllerBase {
         $this->model->cargar("UnidadesModel.php", "archivos");
         $UnidadesModel = new UnidadesModel();
         
-        $UnidadesModel->eliminar($_POST["id_unidad"]);
+        $resp = $UnidadesModel->eliminar($_POST["id_unidad"]);
         
-        echo "1";        
+        if( $resp  ){
+            echo '1';             
+       }else{
+           echo '0';		
+       }         
         
     }    
    

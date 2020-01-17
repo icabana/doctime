@@ -53,7 +53,7 @@ ejecutarAccion(
 }
 
 function archivar_radicado2(data) {
-
+  cargar_archivar();
   mensaje_alertas("success", "Radicados Archivados Correctamente", "center");
 
 

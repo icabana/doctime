@@ -1,6 +1,10 @@
 <script type="text/javascript">
   function editar_archivador() {
 
+    if(!validar_requeridos()){
+        return 0;
+    }
+
     var datos = $('#formArchivadores').serialize();
 
     ejecutarAccion(
@@ -55,31 +59,31 @@ $froms = new Formularios();
 
 
                 <div class="form-group">
-                  <label>Nombre Archivador</label>
+                  <label>Nombre Archivador<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="nombre_archivador" name="nombre_archivador" 
+                  <input type="text" class="form-control requerido" id="nombre_archivador" name="nombre_archivador" 
                         value="<?php echo $datos['nombre_archivador']; ?>">
                 </div>
 
                 <div class="form-group">
-                  <label>Ciudad</label>
+                  <label>Ciudad<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="ciudad_archivador" name="ciudad_archivador" 
+                  <input type="text" class="form-control requerido" id="ciudad_archivador" name="ciudad_archivador" 
                         value="<?php echo $datos['ciudad_archivador']; ?>">
                 </div>
 
 
                 <div class="form-group">
-                  <label>Dirección</label>
+                  <label>Dirección<span style="color:red">*</span></label>
 
-                  <input type="text" class="form-control" id="direccion_archivador" name="direccion_archivador" 
+                  <input type="text" class="form-control requerido" id="direccion_archivador" name="direccion_archivador" 
                         value="<?php echo $datos['direccion_archivador']; ?>">
                 </div>
 
                 <div class="form-group">
-                  <label>Ubicaci&oacute;n</label>
+                  <label>Descripci&oacute;n Ubicaci&oacute;n<span style="color:red">*</span></label>
 
-                  <textarea rows="3" class="form-control" id="ubicacion_archivador" name="ubicacion_archivador"><?php echo $datos['ubicacion_archivador']; ?></textarea>
+                  <textarea rows="3" class="form-control requerido" id="ubicacion_archivador" name="ubicacion_archivador"><?php echo $datos['ubicacion_archivador']; ?></textarea>
                   
                 </div>
 

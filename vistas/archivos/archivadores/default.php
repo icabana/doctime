@@ -33,7 +33,7 @@
             'Archivadores',
             'eliminar',
             "id_archivador=" + id_archivador,
-            ' mensaje_alertas("success", "Archivador Eliminado con Éxito", "center"); cargar_archivadores();'
+            'if(data == 1){  mensaje_alertas("success", "Archivador Eliminado con Éxito", "center"); cargar_archivadores(); } else { mensaje_alertas("error", "Este Archivor tiene archivos asociados", "center"); } '
         );
 
     }
@@ -74,8 +74,8 @@
                         <tr>
                             <th style='background-color:lavender'>NOMBRE</th>
                             <th style='background-color:lavender'>CIUDAD</th>
-                            <th style='background-color:lavender'>DIRECCION</th>
-                            <th style='background-color:lavender'>UBICACION</th>
+                            <th style='background-color:lavender'>DIRECCIÓN</th>
+                            <th style='background-color:lavender'>UBICACIÓN</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>

@@ -71,7 +71,7 @@ class TiposdocumentalesControlador extends ControllerBase {
         
         $resp = $TiposdocumentalesModel->insertar(            
                                             $_POST["serie_tipodocumental"],
-                                            $_POST["subserie_tipodocumental"],
+                                            $_POST["subserie_tipodocumental777"],
                                             $_POST["nombre_tipodocumental"]
                                         );        
         
@@ -91,7 +91,7 @@ class TiposdocumentalesControlador extends ControllerBase {
         $resp = $TiposdocumentalesModel->editar(
                                             $_POST["id_tipodocumental"], 
                                             $_POST["serie_tipodocumental"],
-                                            $_POST["subserie_tipodocumental"],
+                                            $_POST["subserie_tipodocumental777"],
                                             $_POST["nombre_tipodocumental"]
                                         );        
       
@@ -128,6 +128,29 @@ class TiposdocumentalesControlador extends ControllerBase {
             'nombre_subserie',
             'id_subserie',
             'subserie_entrante',
+            '',
+            '',
+            ''
+        );
+
+    }       
+             
+
+    
+    public function cargarSubseries777() {
+        
+        $froms = new Formularios();
+         
+        $this->model->cargar("SubseriesModel.php", "administracion");
+        $SubseriesModel = new SubseriesModel();
+
+        $subseries = $SubseriesModel->getTodosPorSerie($_POST['id_serie']);
+
+        echo $froms->Lista_Desplegable(
+            $subseries,
+            'nombre_subserie',
+            'id_subserie',
+            'subserie_tipodocumental777',
             '',
             '',
             ''
