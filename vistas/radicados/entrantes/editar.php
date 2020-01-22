@@ -788,7 +788,7 @@ $froms = new Formularios();
       <div class="modal-body">
         <div class="col-md-12">
           <label>Agregar Documento</label>
-          <input type="text" class="form-control" id="documento" name="documento">
+          <input type="text" class="form-control requeridodocumentos" id="documento" name="documento">
         </div>
       </div>
       <div class="modal-footer">
@@ -837,9 +837,7 @@ $froms = new Formularios();
 
 
       </div>
-      <div class="modal-footer">
-        <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
+      
     </div>
   </div>
 </div>

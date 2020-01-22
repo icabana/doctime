@@ -190,9 +190,18 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         
+
+
+
+
+
+
+
+
+
           
           <?php
-            if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
+            if($_SESSION['rol'] == "1"){
           ?>
 
           <li class="nav-item has-treeview">
@@ -229,20 +238,7 @@
                 </a>
               </li>
          
-              <?php
-                foreach($carpetas as $carpeta){
-              ?>
-              <li class="nav-item">
-                <a  href="#" onclick="cargar_entrantes_carpeta(<?php echo $carpeta['id_carpeta']; ?>);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p><?php echo $carpeta['nombre_carpeta']; ?></p>
-                </a>
-              </li>
-              <?php
-                }
-              ?>
-
-
+         
 
             </ul>
           </li>
@@ -334,13 +330,7 @@
             </a>
             <ul class="nav nav-treeview">
          
-            <li class="nav-item">
-                <a  href="#" onclick="cargar_carpetas();" class="nav-link">
-                  <i class="far fa-folder nav-icon"></i>
-                  <p>Carpetas</p>
-                </a>
-              </li>
-
+         
               <li class="nav-item">
                 <a href="#" onclick="cargar_usuarios();" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
@@ -526,8 +516,239 @@
          ?>
 
 
+
+
+
+
+
+
+
+
+
+
+
+        
+          
           <?php
-            if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
+            if($_SESSION['rol'] == "2"){
+          ?>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Radicados Entrantes
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes();" class="nav-link">
+                  <i class="far fa-edit nav-icon"></i>
+                  <p>Radicados Activos</p>
+                </a>
+              </li>
+         
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes_finalizados();" class="nav-link">
+                  <i class="far fa-folder nav-icon"></i>
+                  <p>Radicados Finalizados</p>
+                </a>
+              </li>
+         
+            
+              <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes_archivados();" class="nav-link">
+                  <i class="far fa-clone nav-icon"></i>
+                  <p>Radicados Archivados</p>
+                </a>
+              </li>
+       
+
+            </ul>
+          </li>
+
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+                Radicados Salientes
+                <i class="fas fa-angle-right right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              
+              <li class="nav-item">
+                <a href="#" onclick="cargar_salientes();" class="nav-link">
+                  <i class="far fa-edit nav-icon"></i>
+                  <p>Radicados de Salida</p>
+                </a>
+              </li>                      
+             
+            </ul>
+          </li>
+
+
+          
+
+
+
+
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Administraci&oacute;n
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_dependencias();" class="nav-link">
+                  <i class="fas fa-university nav-icon"></i>
+                  <p>Dependencias </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_empleados();"  class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Empleados </p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_terceros();"  class="nav-link">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Terceros </p>
+                </a>
+              </li>
+              </ul>
+          
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="cargar_tiposradicado();" class="nav-link">
+                  <i class="far fa-file-archive nav-icon"></i>
+                  <p>Tipos de radicado</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+         
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-area"></i>
+              <p>
+                Estad&iacute;sticas
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_responsable();" class="nav-link">
+                  <i class="fas fa-chart-area nav-icon"></i>
+                  <p>Por Empleados </p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_dependencias();"  class="nav-link">
+                  <i class="fas fa-chart-area nav-icon"></i>
+                  <p>Por Dependencia </p>
+                </a>
+              </li>
+            </ul>            
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" onclick="radicados_tiporadicado();" class="nav-link">
+                  <i class="fas fa-chart-area nav-icon"></i>
+                  <p>Por Tipo de Radicado </p>
+                </a>
+              </li>
+            </ul>           
+          </li>
+          
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file-pdf"></i>
+              <p>
+                Reportes
+                <i class="right fas fa-angle-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_reporte_entrantes();" class="nav-link">
+                  <i class="fas fa-file-pdf nav-icon"></i>
+                  <p>Radicados de Entrada</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_reporte_salientes();" class="nav-link">
+                  <i class="far fas fa-file-pdf nav-icon"></i>
+                  <p>Radicados de Salida</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_reporte_empleados();" class="nav-link">
+                  <i class="far fas fa-file-pdf nav-icon"></i>
+                  <p>Empleados</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_reporte_terceros();" class="nav-link">
+                  <i class="far fas fa-file-pdf nav-icon"></i>
+                  <p>Terceros</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_reporte_dependencias();" class="nav-link">
+                  <i class="far fas fa-file-pdf nav-icon"></i>
+                  <p>Dependencias</p>
+                </a>
+              </li>
+
+
+            </ul>    
+          </li>
+
+               
+         <?php
+            }
+         ?>
+
+
+
+ <br>
+                <br>
+                <br>
+                <br>
+
+
+
+
+
+          <?php
+            if($_SESSION['rol'] == "3"){
           ?>
 
             

@@ -508,58 +508,11 @@ $froms = new Formularios();
                       </div>
 
                       
-                      
-                      <div class="col-md-3">
-                        <label>Serie<span style="color:red">*</span></label>
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $series,
-                          'nombre_serie',
-                          'id_serie',
-                          'serie_saliente',
-                          $datos['serie_saliente'],
-                          '',
-                          'cargar_subseries_salientes()'
-                        );
-                        ?>
-
-                      </div>
+                   
 
 
-                      <div class="col-md-3">
-                        <label>Sub-Serie<span style="color:red">*</span></label>
-                        <div id="div_subseries_salientes">
-                          <?php
-                            echo $froms->Lista_Desplegable(
-                              $subseries,
-                              'nombre_subserie',
-                              'id_subserie',
-                              'subserie_saliente',
-                              $datos['subserie_saliente'],
-                              '',
-                              'cargar_tiposdocumentales_salientes()'
-                            );
-                          ?>
-                        </div>
-                      </div>
+                    
 
-
-                      <div class="col-md-3">
-                        <label>Tipo Documental<span style="color:red">*</span></label>
-                        <div id="div_tiposdocumentales_salientes">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposdocumentales,
-                          'nombre_tipodocumental',
-                          'id_tipodocumental',
-                          'tipodocumental_saliente',
-                          $datos['tipodocumental_saliente'],
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
 
 
 
@@ -793,9 +746,7 @@ $froms = new Formularios();
 
 
       </div>
-      <div class="modal-footer">
-        <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
+      
     </div>
   </div>
 </div>

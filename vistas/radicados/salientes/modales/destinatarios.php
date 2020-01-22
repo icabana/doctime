@@ -83,7 +83,7 @@ $("#modal_destinatarios_saliente").modal("hide");
                     <div class="row">
 
                       <div class="col-md-6">
-                        <label>Tipo de Documento<span style="color:red">*</span></label>
+                        <label>Tipo de Documento</label>
                         <?php
                         echo $froms->Lista_Desplegable(
                           $tiposdocumento,
@@ -98,8 +98,8 @@ $("#modal_destinatarios_saliente").modal("hide");
                       </div>
 
                       <div class="col-md-6">
-                        <label>Documento<span style="color:red">*</span></label>
-                        <input type="text" class="form-control requerido_modal_destinatario" id="documento_tercero_saliente" 
+                        <label>Documento</label>
+                        <input type="text" class="form-control" id="documento_tercero_saliente" 
                         name="documento_tercero_saliente">
                       </div>
 
@@ -125,8 +125,8 @@ $("#modal_destinatarios_saliente").modal("hide");
                       <div class="col-md-12">
                       <br>
   
-                          <label>Correo el&eacute;ctronico<span style="color:red">*</span></label>
-                          <input type="text" class="form-control requerido_modal_destinatario" id="correo_tercero_saliente" 
+                          <label>Correo el&eacute;ctronico</label>
+                          <input type="text" class="form-control" id="correo_tercero_saliente" 
                           name="correo_tercero_saliente">
                         </div>
   

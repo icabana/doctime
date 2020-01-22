@@ -531,62 +531,7 @@ $froms = new Formularios();
 
                     <br>
                     
-                    <div class="row">
-
-                      <div class="col-md-4">
-                        <label>Serie<span style="color:red">*</span></label>
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $series,
-                          'nombre_serie',
-                          'id_serie',
-                          'serie_entrante',
-                          $datos['serie_entrante'],
-                          '',
-                          ''
-                        );
-                        ?>
-
-                      </div>
-
-                      <div class="col-md-4">
-                        <label>Sub-Serie<span style="color:red">*</span></label>
-                        <div id="div_subseries_entrantes">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $subseries,
-                          'nombre_subserie',
-                          'id_subserie',
-                          'subserie_entrante',
-                          $datos['subserie_entrante'],
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
-
-
-                      <div class="col-md-4">
-                        <label>Tipo Documental<span style="color:red">*</span></label>
-                        <div id="div_tiposdocumentales_entrantes">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposdocumentales,
-                          'nombre_tipodocumental',
-                          'id_tipodocumental',
-                          'tipodocumental_entrante',
-                          $datos['tipodocumental_entrante'],
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
-
-                    </div>
-
-                    <br>
+            
 
                     <div class="row">
 

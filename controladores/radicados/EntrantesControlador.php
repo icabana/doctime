@@ -969,7 +969,7 @@ class EntrantesControlador extends ControllerBase {
 
         $this->model->cargar("EntrantesModel.php");
         $EntrantesModel = new EntrantesModel();         
-       // $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
+        $datos = $EntrantesModel->getDatos($_POST['id_entrante']);
 
         $trazabilidad = $EntrantesModel->getTrazabilidad($_POST['id_entrante']);
 
