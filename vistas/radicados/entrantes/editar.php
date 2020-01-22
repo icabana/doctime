@@ -353,6 +353,50 @@ ejecutarAccion(
 
   } 
 
+
+  function upload_entradas(){//Funcion encargada de enviar el archivo via AJAX
+
+				$(".upload-msg").text('Cargando...');
+				var inputFileImage = document.getElementById("fileToUploadEntradas");
+
+        inputFileImage.files[0]['error'] = '1';
+
+				var file = inputFileImage.files[0];
+
+     
+
+				var data = new FormData();
+				data.append('fileToUploadEntradas',file);
+     
+      
+				
+				jQuery.each($('#fileToUploadEntradas')[0].files, function(i, file) {
+					data.append('file'+i, file);
+				});
+
+        for (const prop in data) {
+          console.log(`obj.${prop} = ${data[prop]}`);
+        }
+     
+				$.ajax({
+					url: "libs/uploads/upload_entrantes.php",        // Url to which the request is send
+					type: "POST",             // Type of request to be send, called as method
+					data: data, 			  // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+					contentType: false,       // The content type used when sending data to the server.
+					cache: false,             // To unable request pages to be cached
+					processData:false,        // To send DOMDocument or non processed data file it is set to false
+					success: function(data)   // A function to be called if request succeeds
+					{          
+						$(".upload-msg").html(data);
+						window.setTimeout(function() {
+						$(".alert-dismissible").fadeTo(500, 0).slideUp(500, function(){
+						$(this).remove();
+						});	}, 5000);
+					}
+				});
+				
+			}
+
 </script>
 
 
@@ -780,19 +824,23 @@ $froms = new Formularios();
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal4_editar_entrante">Registrar Nuevo Documento</h5>
+        <h5 class="modal-title" id="exampleModal4_editar_entrante">Subir Documento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="col-md-12">
-          <label>Agregar Documento</label>
-          <input type="text" class="form-control requeridodocumentos" id="documento" name="documento">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button onclick="nuevo_documento();" type="button" class="btn btn-primary">Aceptar</button>
+          <div class="text-center">
+            <form>
+          <div class="form-group">
+          <label for="exampleInputFile">Subir archivo</label>
+            <input type="file"  id="fileToUploadEntradas" onchange="upload_entradas();">
+          <p class="help-block">Seleccion un archivo.</p>
+          </div>
+          <div class="upload-msg"></div><!--Para mostrar la respuesta del archivo llamado via ajax -->
+        
+        </form>
+          </div>
       </div>
     </div>
   </div>
