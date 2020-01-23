@@ -1,8 +1,8 @@
 <?php
 
 //echo count($_FILES["file0"]["name"]);exit;
-if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["fileToUploadEntradas"]["type"])){
-$target_dir = "../../archivos/uploads/entrantes/".$_POST['id_entrante']."/";
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_FILES["fileToUploadSalidas"]["type"])){
+$target_dir = "../../archivos/uploads/salientes/".$_POST['id_saliente']."/";
 $carpeta=$target_dir;
 if (!file_exists($carpeta)) {
     mkdir($carpeta, 0777, true);
@@ -19,16 +19,16 @@ while ($archivo = readdir($directorio)) {
 closedir($directorio);
 
 
-$target_file = $carpeta . basename($_FILES["fileToUploadEntradas"]["name"]);
+$target_file = $carpeta . basename($_FILES["fileToUploadSalidas"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-$target_file = $carpeta.$_POST['numero_entrante']."-".$cont.".".$imageFileType ;
+$target_file = $carpeta.$_POST['numero_saliente']."-".$cont.".".$imageFileType ;
 if (file_exists($target_file)) {
-	$target_file = $carpeta.$_POST['numero_entrante']."-".($cont+rand(10,40)).".".$imageFileType ;
+	$target_file = $carpeta.$_POST['numero_saliente']."-".($cont+rand(10,40)).".".$imageFileType ;
 }
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUploadEntradas"]["tmp_name"]);
+    $check = getimagesize($_FILES["fileToUploadSalidas"]["tmp_name"]);
     if($check !== false) {
         $errors[]= "El archivo es una imagen - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -44,7 +44,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUploadEntradas"]["size"] > 524288) {
+if ($_FILES["fileToUploadSalidas"]["size"] > 524288) {
     $errors[]= "Lo sentimos, el archivo es demasiado grande.  Tamaño máximo admitido: 0.5 MB";
     $uploadOk = 0;
 }
@@ -61,7 +61,7 @@ if ($uploadOk == 0) {
     $errors[]= "Lo sentimos, tu archivo no fue subido.";
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["fileToUploadEntradas"]["tmp_name"], $target_file)) {
+    if (move_uploaded_file($_FILES["fileToUploadSalidas"]["tmp_name"], $target_file)) {
        $messages[]= "El Archivo ha sido subido correctamente.";
 	   
 	   

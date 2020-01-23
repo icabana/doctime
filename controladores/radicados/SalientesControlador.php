@@ -504,6 +504,31 @@ class SalientesControlador extends ControllerBase {
     }    
 
 
+
+
+    public function eliminarArchivo(){
+        
+        unlink($_POST['archivo']);
+
+        $id_entrante = $_POST['id_entrante'];
+        include 'vistas/radicados/salientes/tabla_documentos.php';
+        echo $tabla_documentos;
+               
+    }
+
+    
+
+
+    public function actualizarDocumentos(){
+        
+        $id_entrante = $_POST['id_entrante'];
+        include 'vistas/radicados/salientes/tabla_documentos.php';
+        echo $tabla_documentos;
+               
+    }
+
+    
+
     public function cambiar() {
         
         $this->model->cargar("SalientesModel.php", 'radicados');

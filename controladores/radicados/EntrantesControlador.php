@@ -937,6 +937,28 @@ class EntrantesControlador extends ControllerBase {
                
     }
 
+
+    public function eliminarArchivo(){
+        
+        unlink($_POST['archivo']);
+
+        $id_entrante = $_POST['id_entrante'];
+        include 'vistas/radicados/entrantes/tabla_documentos.php';
+        echo $tabla_documentos;
+               
+    }
+
+    
+
+
+    public function actualizarDocumentos(){
+        
+        $id_entrante = $_POST['id_entrante'];
+        include 'vistas/radicados/entrantes/tabla_documentos.php';
+        echo $tabla_documentos;
+               
+    }
+
     
     
 

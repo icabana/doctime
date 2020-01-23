@@ -90,22 +90,6 @@
 
 
 
-  function eliminar_archivo(id_soporte, nombre_soporte, archivo) {
-
-    var opcion = confirm("Está seguro de eliminar este archivo?");
-    if (opcion != true) return 0;
-
-    ejecutarAccion(
-      'radicados',
-      'Entrantes',
-      'eliminarDDocumento',
-      'id_radicado=' + $("#id_radicado").val() + '&nombre_soporte=' + nombre_soporte + '&archivo=' + archivo + '&id_soporte=' + id_soporte,
-      "$('#vista_soportes_solicitud').html(data);  mensaje_alertas('success', 'Archivo Eliminado correctamente', 'center'); "
-
-    );
-
-  }
-
 
 
   function mover_carpeta_editar() {
@@ -142,20 +126,7 @@
 
   }
 
-  function actualizar_vista_soportes() {
 
-
-    ejecutarAccion(
-        'radicados',
-        'Entrantes',
-        'actualizarUpload',
-        'id_entrante='+$("#id_entrante").val(),
-        "$('#vista_soportes').html(data); "
-
-    );
- 
-
-  }
 
   
 
@@ -354,30 +325,49 @@ ejecutarAccion(
   } 
 
 
+
+  function eliminar_archivo_entrante(archivo_entrante) {
+
+      var opcion = confirm("¿Está seguro de eliminar este archivo?");
+      if (opcion != true) return 0;
+
+      ejecutarAccion(
+        'radicados',
+        'Entrantes',
+        'eliminarArchivo',
+        'archivo=' + archivo_entrante+'&id_entrante=' + $("#id_entrante").val(),
+        "$('#vista_documentos_estrantes').html(data);  mensaje_alertas('success', 'Archivo Eliminado correctamente', 'center'); "
+
+      );
+
+    }
+
+    function actualizar_documentos_entrante() {
+
+        ejecutarAccion(
+          'radicados',
+          'Entrantes',
+          'actualizarDocumentos',
+          'id_entrante=' + $("#id_entrante").val(),
+          "$('#vista_documentos_estrantes').html(data);  "
+
+        ); 
+
+    }
+
   function upload_entradas(){//Funcion encargada de enviar el archivo via AJAX
 
-				$(".upload-msg").text('Cargando...');
+    $(".upload-msg").text('Cargando...');
 				var inputFileImage = document.getElementById("fileToUploadEntradas");
-
-        inputFileImage.files[0]['error'] = '1';
-
 				var file = inputFileImage.files[0];
-
-     
-
 				var data = new FormData();
 				data.append('fileToUploadEntradas',file);
-     
-      
 				
-				jQuery.each($('#fileToUploadEntradas')[0].files, function(i, file) {
-					data.append('file'+i, file);
-				});
-
-        for (const prop in data) {
-          console.log(`obj.${prop} = ${data[prop]}`);
-        }
-     
+			  data.append('id_entrante', $("#id_entrante").val());
+			  data.append('numero_entrante', $("#numero_entrante2").val());
+				
+        console.log(data);
+							
 				$.ajax({
 					url: "libs/uploads/upload_entrantes.php",        // Url to which the request is send
 					type: "POST",             // Type of request to be send, called as method
@@ -386,8 +376,11 @@ ejecutarAccion(
 					cache: false,             // To unable request pages to be cached
 					processData:false,        // To send DOMDocument or non processed data file it is set to false
 					success: function(data)   // A function to be called if request succeeds
-					{          
+					{
 						$(".upload-msg").html(data);
+            actualizar_documentos_entrante();
+            $('#exampleModal4_editar_entrante').modal('hide');
+          $('#fileToUploadEntradas').val('');
 						window.setTimeout(function() {
 						$(".alert-dismissible").fadeTo(500, 0).slideUp(500, function(){
 						$(this).remove();
@@ -435,6 +428,7 @@ $froms = new Formularios();
       <form autocomplete="on" id="formEntrantes" method="post">
 
       <input type="hidden" id="id_entrante" name="id_entrante" value="<?php echo $datos['id_entrante']; ?>">
+      <input type="hidden" id="numero_entrante2" name="numero_entrante2" value="<?php echo $datos['numero_entrante']; ?>">
 
         <div class="card-body">
 
@@ -673,9 +667,9 @@ $froms = new Formularios();
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_3">
 
-                    <h3>Documentos soportes</h3>
+                    <h3>Documentos</h3>
 
-                    <div id="vista_soportes">
+                    <div id="vista_documentos_estrantes">
                       <?php
                       $id_entrante = $datos['id_entrante'];
                       require_once 'tabla_documentos.php';
@@ -830,6 +824,7 @@ $froms = new Formularios();
         </button>
       </div>
       <div class="modal-body">
+
           <div class="text-center">
             <form>
           <div class="form-group">
@@ -841,56 +836,12 @@ $froms = new Formularios();
         
         </form>
           </div>
+
+          
       </div>
     </div>
   </div>
 </div>
-
-
-    <!-- Modal 5-->
-    <div class="modal fade" id="exampleModal5_editar_entrante" tabindex="-1" role="dialog" aria-labelledby="exampleModal5_editar_entrante" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal5_editar_entrante">Adjuntar Documento</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-      
-
-
-      <div class="col-xs-3">                           
-                   
-            <div id="main_container">
-
-                <form id="form_upload" target="_blank" action="libs/uploads/upload_nuevo.php" method="post" enctype="multipart/form-data" >
-
-                    <input  type="file" name="userfile" class="fileUpload_nu0evo" multiple /><br> 
-
-                     <input type="hidden" id="id_entrante" name="id_entrante"  value="<?php echo $datos['id_entrante']; ?>" >
-                 
-                     <input type="hidden" id="documento_soporte" name="documento_soporte" >
-                     
-
-                    &nbsp;&nbsp; &nbsp;&nbsp;<button onclick="actualizar_upload_archivo();" class="btn btn-block btn-primary btn-lg" id="px-submit" type="button" >Subir Archivo</button>
-
-                </form>
-
-            </div> 
-       
-    </div>
-
-
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
 
 
 

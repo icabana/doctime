@@ -356,6 +356,75 @@ function cargar_tiposdocumentales_salientes() {
   );
 
 } 
+
+
+
+
+
+  function eliminar_archivo_saliente(archivo_saliente) {
+
+      var opcion = confirm("¿Está seguro de eliminar este archivo?");
+      if (opcion != true) return 0;
+
+      ejecutarAccion(
+        'radicados',
+        'Salientes',
+        'eliminarArchivo',
+        'archivo=' + archivo_saliente+'&id_saliente=' + $("#id_saliente").val(),
+        "$('#vista_documentos_salientes').html(data);  mensaje_alertas('success', 'Archivo Eliminado correctamente', 'center'); "
+
+      );
+
+    }
+
+    function actualizar_documentos_saliente() {
+
+        ejecutarAccion(
+          'radicados',
+          'Salientes',
+          'actualizarDocumentos',
+          'id_saliente=' + $("#id_saliente").val(),
+          "$('#vista_documentos_salientes').html(data);  "
+
+        ); 
+
+    }
+
+  function upload_entradas(){//Funcion encargada de enviar el archivo via AJAX
+
+    $(".upload-msg").text('Cargando...');
+				var inputFileImage = document.getElementById("fileToUploadSalidas");
+				var file = inputFileImage.files[0];
+				var data = new FormData();
+				data.append('fileToUploadSalidas',file);
+				
+			  data.append('id_saliente', $("#id_saliente").val());
+			  data.append('numero_saliente', $("#numero_saliente2").val());
+				
+        console.log(data);
+							
+				$.ajax({
+					url: "libs/uploads/upload_salientes.php",        // Url to which the request is send
+					type: "POST",             // Type of request to be send, called as method
+					data: data, 			  // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+					contentType: false,       // The content type used when sending data to the server.
+					cache: false,             // To unable request pages to be cached
+					processData:false,        // To send DOMDocument or non processed data file it is set to false
+					success: function(data)   // A function to be called if request succeeds
+					{
+						$(".upload-msg").html(data);
+            actualizar_documentos_saliente();
+            $('#exampleModal4_editar').modal('hide');
+            $('#fileToUploadSalidas').val('');
+						window.setTimeout(function() {
+						$(".alert-dismissible").fadeTo(500, 0).slideUp(500, function(){
+						$(this).remove();
+						});	}, 5000);
+					}
+				});
+				
+			}
+
 </script>
 
 
@@ -540,7 +609,7 @@ $froms = new Formularios();
 
                     <h3>Documentos soportes</h3>
 
-                    <div id="vista_soportes_editar">
+                    <div id="vista_documentos_salientes">
                       <?php
                       $id_saliente = $datos['id_saliente'];
                       require_once 'tabla_documentos.php';
@@ -695,58 +764,29 @@ $froms = new Formularios();
         </button>
       </div>
       <div class="modal-body">
-        <div class="col-md-12">
-          <label>Agregar Documento</label>
-          <input type="text" class="form-control" id="documento_editar" name="documento_editar">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button onclick="nuevo_documento_editar();" type="button" class="btn btn-primary">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-    <!-- Modal 5-->
-    <div class="modal fade" id="exampleModal5_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModal4_editar" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal4_editar">Adjuntar Documento</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
         
-      
+
+      <div class="text-center">
+            <form>
+          <div class="form-group">
+          <label for="exampleInputFile">Subir archivo</label>
+            <input type="file"  id="fileToUploadSalidas" onchange="upload_salidas();">
+          <p class="help-block">Seleccion un archivo.</p>
+          </div>
+          <div class="upload-msg"></div><!--Para mostrar la respuesta del archivo llamado via ajax -->
+        
+        </form>
+          </div>
 
 
-      <div class="col-xs-3">                           
-                   
-            <div id="main_container">
-
-                <form id="form_upload" target="_blank" action="libs/uploads/upload_nuevo_salientes.php" method="post" enctype="multipart/form-data" >
-
-                    <input  type="file" name="userfile" class="fileUpload_nu0evo" multiple /><br> 
-
-                     <input type="text" id="id_saliente_upload" name="id_saliente_upload"  value="<?php echo $datos['id_saliente']; ?>" >
-                 
-                     <input type="hidden" id="documento_soporte" name="documento_soporte" >
-                     
-
-                    &nbsp;&nbsp; &nbsp;&nbsp;<button onclick="actualizar_upload_archivo();" class="btn btn-block btn-primary btn-lg" id="px-submit" type="button" >Subir Archivo</button>
-
-                </form>
-
-            </div> 
-       
-    </div>
+          
 
 
-      </div>
-      
+
+
+
     </div>
   </div>
 </div>
