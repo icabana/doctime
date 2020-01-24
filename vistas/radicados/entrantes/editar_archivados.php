@@ -76,19 +76,6 @@
   }
 
 
-  function abrir_upload_archivo(id_soporte, documento_soporte) {
-
-    abrirVentanaContenedor(
-      'radicados',
-      'Entrantes',
-      'abrirDocumentosContrato2',
-      'id_soporte=' + id_soporte + '&documento_soporte=' + documento_soporte + '&id_contrato=' + $("#id_contrato").val(),
-      "SubirArchivos('fileUpload_nuevo');"
-    );
-
-  }
-
-
 
   function mover_carpeta_editar() {
 
@@ -374,7 +361,7 @@ $(".upload-msg").text('Cargando...');
         window.setTimeout(function() {
         $(".alert-dismissible").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
-        });	}, 5000);
+        });	}, 2000);
       }
     });
     

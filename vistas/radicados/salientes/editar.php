@@ -79,37 +79,6 @@
   }
 
 
-  function abrir_upload_archivo(id_soporte, documento_soporte) {
-
-    abrirVentanaContenedor(
-      'radicados',
-      'Salientes',
-      'abrirDocumentosContrato2',
-      'id_soporte=' + id_soporte + '&documento_soporte=' + documento_soporte + '&id_contrato=' + $("#id_contrato").val(),
-      "SubirArchivos('fileUpload_nuevo');"
-    );
-
-  }
-
-
-
-  function eliminar_archivo(id_soporte, nombre_soporte, archivo) {
-
-    var opcion = confirm("Está seguro de eliminar este archivo?");
-    if (opcion != true) return 0;
-
-    ejecutarAccion(
-      'radicados',
-      'Salientes',
-      'eliminarDocumento',
-      'id_radicado=' + $("#id_radicado").val() + '&nombre_soporte=' + nombre_soporte + '&archivo=' + archivo + '&id_soporte=' + id_soporte,
-      "$('#vista_soportes_solicitud').html(data);  mensaje_alertas('success', 'Archivo Eliminado correctamente', 'center'); "
-
-    );
-
-  }
-
-
 
   function mover_carpeta_editar() {
 
@@ -308,7 +277,7 @@ function enviar_bandeja_saliente_editar2() {
     'Salientes',
     'enviarBandejaSaliente',
     "radicados=" + $("#id_saliente").val(),
-    ' mensaje_alertas("success", "Enviado a la bandeja de entrada", "center"); cargar_salientes();'
+    ' mensaje_alertas("success", "Enviado a la bandeja de salida", "center"); cargar_salientes();'
   );
 
 }
@@ -390,7 +359,7 @@ function cargar_tiposdocumentales_salientes() {
 
     }
 
-  function upload_entradas(){//Funcion encargada de enviar el archivo via AJAX
+  function upload_salidas(){//Funcion encargada de enviar el archivo via AJAX
 
     $(".upload-msg").text('Cargando...');
 				var inputFileImage = document.getElementById("fileToUploadSalidas");
@@ -414,12 +383,12 @@ function cargar_tiposdocumentales_salientes() {
 					{
 						$(".upload-msg").html(data);
             actualizar_documentos_saliente();
-            $('#exampleModal4_editar').modal('hide');
+            $('#exampleModal4_editar_saliente').modal('hide');
             $('#fileToUploadSalidas').val('');
 						window.setTimeout(function() {
 						$(".alert-dismissible").fadeTo(500, 0).slideUp(500, function(){
 						$(this).remove();
-						});	}, 5000);
+						});	}, 2000);
 					}
 				});
 				
@@ -458,6 +427,7 @@ $froms = new Formularios();
       <form autocomplete="on" id="formSalientes" method="post">
 
       <input type="hidden" id="id_saliente" name="id_saliente" value="<?php echo $datos['id_saliente']; ?>">
+      <input type="hidden" id="numero_saliente2" name="numero_saliente2" value="<?php echo $datos['numero_saliente']; ?>">
 
         <div class="card-body">
 
@@ -469,7 +439,7 @@ $froms = new Formularios();
 
                 <ul class="nav nav-pills ml-auto p-2">
                   <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a></li>
+             
                   <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Documentos</a></li>
                   <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Trazabilidad</a></li>
                 </ul>
@@ -545,64 +515,40 @@ $froms = new Formularios();
                         <div id="vista_destinatarios"></div>
                       </div>
 
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-
-                      <div class="col-md-12">
-                        <label>Asunto<span style="color:red">*</span></label>
-                        <textarea class="form-control radicado" rows="3" id="asunto_saliente" 
-                        name="asunto_saliente"><?php echo $datos['asunto_saliente']; ?></textarea
-                        value="">
-                      </div>
-
-                    </div>
-
-
-                  </div>
-
-                  <div style="padding: 20px;" class="tab-pane" id="tab_2">
-
-                    <div class="row">
-
-                  
-
-
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>
                         <input type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente"
                         value="<?php echo $datos['numerofolios_saliente']; ?>" onkeypress="return no_numeros(event)">
                       </div>
 
-                      
-                   
-
-
-                    
-
-
-
-
-
                     </div>
 
                     <br>
 
                     <div class="row">
-
+                      
                       <div class="col-md-12">
+                        <label>Asunto<span style="color:red">*</span></label>
+                        <textarea class="form-control radicado" rows="2" id="asunto_saliente" 
+                        name="asunto_saliente"><?php echo $datos['asunto_saliente']; ?></textarea
+                        value="">
+                      </div>
+                      
+                      
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
-                        <textarea class="form-control" rows="3" id="descripcionfolios_saliente" 
+                        <textarea class="form-control" rows="2" id="descripcionfolios_saliente" 
                         name="descripcionfolios_saliente"><?php echo $datos['descripcionfolios_saliente']; ?></textarea>
 
                       </div>
-
                     </div>
 
                   </div>
 
+                  
 
 
                   <div style="padding: 20px;" class="tab-pane" id="tab_3">
@@ -754,7 +700,7 @@ $froms = new Formularios();
   </div>
 
     <!-- Modal 4-->
-  <div class="modal fade" id="exampleModal4_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModal4_editar" aria-hidden="true">
+  <div class="modal fade" id="exampleModal4_editar_saliente" tabindex="-1" role="dialog" aria-labelledby="exampleModal4_editar" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -779,6 +725,8 @@ $froms = new Formularios();
         
         </form>
           </div>
+          </div>
+
 
 
           

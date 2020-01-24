@@ -45,7 +45,7 @@ $tabla_documentos = "
                       <div class="mailbox-attachment-info">
                         <a target="_blank" href="'.$ruta_archivo.'" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '.$nombre_archivo.'</a>
                         <span class="mailbox-attachment-size">
-                            <a href="#"  title="Eliminar Archivo" onclick="eliminar_archivo(\''.$ruta_archivo.'\'); return false;">Eliminar Archivo</a>
+                            <a href="#"  title="Eliminar Archivo" onclick="eliminar_archivo_saliente(\''.$ruta_archivo.'\'); return false;">Eliminar Archivo</a>
                          
                           </a>
                         </span>

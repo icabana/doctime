@@ -510,7 +510,7 @@ class SalientesControlador extends ControllerBase {
         
         unlink($_POST['archivo']);
 
-        $id_entrante = $_POST['id_entrante'];
+        $id_saliente = $_POST['id_saliente'];
         include 'vistas/radicados/salientes/tabla_documentos.php';
         echo $tabla_documentos;
                
@@ -521,7 +521,7 @@ class SalientesControlador extends ControllerBase {
 
     public function actualizarDocumentos(){
         
-        $id_entrante = $_POST['id_entrante'];
+        $id_saliente = $_POST['id_saliente'];
         include 'vistas/radicados/salientes/tabla_documentos.php';
         echo $tabla_documentos;
                

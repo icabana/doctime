@@ -1030,7 +1030,8 @@
 <script src="<?php echo $this->ruta(); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
 
-<script type="text/javascript" src="js/plugins/uploads/jquery.fileUploader.js"></script> 
+
+<div id="cargando"></div>
 
 </body>
 </html>

@@ -24,7 +24,7 @@
             'Entrantes',
             'editar',
             'id_entrante=' + id_entrante,
-            "SubirArchivos('fileUpload_nuevo');"
+            ""
         );
 
     }
@@ -37,7 +37,7 @@
           'Salientes',
           'editar',
           'id_saliente=' + id_saliente,
-          "SubirArchivos('fileUpload_nuevo');"
+          ""
       );
 
     }

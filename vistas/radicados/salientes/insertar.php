@@ -141,20 +141,8 @@ $froms = new Formularios();
 
           <div class="row">
             <div class="col-12">
-              <!-- Custom Tabs -->
-              <div class="card">
 
-                <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#tab_1" data-toggle="tab">Informaci&oacute;n Principal</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#tab_2" data-toggle="tab">Informaci&oacute;n Secundaria</a>
-                  </li>
-                </ul>
-
-                <div class="tab-content">
-                  <div style="padding: 20px;" class="tab-pane active" id="tab_1">
+            
                     <div class="row">
 
                       <div class="col-md-3">
@@ -218,6 +206,11 @@ $froms = new Formularios();
                         <div id="vista_destinatarios"></div>
                       </div>
 
+                      <div class="col-md-3">
+                        <label>N&uacute;mero de Folios</label>
+                        <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente">
+                      </div>
+
                     </div>
 
                     <br>
@@ -226,100 +219,27 @@ $froms = new Formularios();
 
                       <div class="col-md-12">
                         <label>Asunto<span style="color:red">*</span></label>
-                        <textarea class="form-control requerido" rows="3" id="asunto_saliente" name="asunto_saliente"></textarea>
+                        <textarea class="form-control requerido" rows="2" id="asunto_saliente" name="asunto_saliente"></textarea>
                       </div>
 
                     </div>
-
-
-                  </div>
-
-                  <div style="padding: 20px;" class="tab-pane" id="tab_2">
-
+<br>
                     <div class="row">
-                    
-
-
-                      <div class="col-md-3">
-                        <label>N&uacute;mero de Folios</label>
-                        <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente">
-                      </div>
-
-                      
-                      <div class="col-md-3">
-                        <label>Serie<span style="color:red">*</span></label>
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $series,
-                          'nombre_serie',
-                          'id_serie',
-                          'serie_saliente',
-                          '',
-                          '',
-                          'cargar_subseries_salientes()'
-                        );
-                        ?>
-
-                      </div>
-
-
-                      <div class="col-md-3">
-                        <label>Sub-Serie<span style="color:red">*</span></label>
-                        <div id="div_subseries_salientes">
-                          <?php
-                            echo $froms->Lista_Desplegable(
-                              $subseries,
-                              'nombre_subserie',
-                              'id_subserie',
-                              'subserie_saliente',
-                              '',
-                              '',
-                              'cargar_tiposdocumentales_salientes()'
-                            );
-                          ?>
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-3">
-                        <label>Tipo Documental<span style="color:red">*</span></label>
-                        <div id="div_tiposdocumentales_salientes">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposdocumentales,
-                          'nombre_tipodocumental',
-                          'id_tipodocumental',
-                          'tipodocumental_saliente',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
-
-
-
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-
                       <div class="col-md-12">
                         <label>Descripci&oacute;n de los folios</label>
-                        <textarea class="form-control" rows="3" id="descripcionfolios_saliente" name="descripcionfolios_saliente"></textarea>
+                        <textarea class="form-control" rows="2" id="descripcionfolios_saliente" name="descripcionfolios_saliente"></textarea>
                       </div>
-
                     </div>
+
 
                   </div>
 
+                 
 
-                </div>
-              </div>
-            </div>
+
+              
           </div>
+          <br>
           <button onclick="cargar_salientes();" class="btn btn-danger">Cancelar</button>
           <button onclick="insertar_saliente(); return false;" class="btn btn-success">Guardar</button>
 

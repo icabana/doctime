@@ -79,20 +79,6 @@
   }
 
 
-  function abrir_upload_archivo(id_soporte, documento_soporte) {
-
-    abrirVentanaContenedor(
-      'radicados',
-      'Entrantes',
-      'abrirDocumentosContrato2',
-      'id_soporte=' + id_soporte + '&documento_soporte=' + documento_soporte + '&id_contrato=' + $("#id_contrato").val(),
-      "SubirArchivos('fileUpload_nuevo');"
-    );
-
-  }
-
-
-
   function eliminar_archivo(id_soporte, nombre_soporte, archivo) {
 
     var opcion = confirm("Está seguro de eliminar este archivo?");

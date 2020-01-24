@@ -176,10 +176,6 @@ function formatoNumerico() {
 
 }
 
-function SubirArchivos(clase_elemento) {
-    
-    $('.' + clase_elemento).fileUploader();
-}
 
 function mensaje_alertas(tipo, texto, layout) {
 
@@ -238,7 +234,7 @@ function abrirVentanaContenedor(modulo, controlador, accion, datos, script) {
 
             $("#cuerpo").html(data);
             eval(script);
-            bloqueoCargando();
+            desbloqueoCargando();
 
         }
 
@@ -321,7 +317,7 @@ function ejecutarAccion(modulo, controlador, accion, datos, script) {
         function (data) {
             data = data.replace(/^\s+/g, '').replace(/\s+$/g, '');
             eval(script);
-            bloqueoCargando();
+            desbloqueoCargando();
         }
     );
 }
@@ -348,7 +344,7 @@ function cargarVisorPDF(datos) {
 
 
 
-var cargando = '<div style=" z-index:ZINDEXMASALTO; position:absolute; top:0; left:0px; width:100%; height:100%; background-color:transparent; background-image:url(imagenes/fondos/fondoCarga.png); background-position:center center; background-repeat:repeat; overflow:hidden;" ><div style="width:650px; margin: 20% auto; text-align: center;"><img src="imagenes/iconos/cargando.gif" width="600px"  alt="Cargando / Loading"  /><h1 style="color: blue; font-size:25px; font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;"></h1></div>  </div>';
+var cargando = '<div style=" z-index:ZINDEXMASALTO; position:absolute; top:0; left:0px; width:100%; height:100%; background-color:transparent; background-image:url(imagenes/fondos/fondoCarga.png); background-position:center center; background-repeat:repeat; overflow:hidden;" ><div style="width:650px; margin: 20% auto; text-align: center;"><img src="imagenes/iconos/cargando.gif" width="300px"  alt="Cargando / Loading"  /><h1 style="color: blue; font-size:25px; font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;"></h1></div>  </div>';
 
 function bloqueoCargando(){
 	var posicion = zIndex();
