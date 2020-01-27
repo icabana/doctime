@@ -44,8 +44,8 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUploadEntradas"]["size"] > 524288) {
-    $errors[]= "Lo sentimos, el archivo es demasiado grande.  Tamaño máximo admitido: 0.5 MB";
+if ($_FILES["fileToUploadEntradas"]["size"] > 3000000) {
+    $errors[]= "Lo sentimos, el archivo es demasiado grande.  Tamaño máximo admitido: 30 MB";
     $uploadOk = 0;
 }
 
