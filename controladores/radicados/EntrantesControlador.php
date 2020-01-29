@@ -834,6 +834,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
         $prioridades = $PrioridadesModel->getTodos();
@@ -1112,7 +1116,8 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["serie_entrante"],
                                     $_POST["subserie_entrante"],
                                     $_POST["tipodocumental_entrante"],
-                                    $_POST["saliente_entrante"]
+                                    $_POST["saliente_entrante"],
+                                    $_POST["tieneanexos_entrante"]
                                 );        
         
         $SalientesModel->actualizarEntrante($_POST["saliente_entrante"], $resp);
@@ -1190,7 +1195,8 @@ class EntrantesControlador extends ControllerBase {
                                     $_POST["responsable_entrante"],
                                     $_POST["serie_entrante"],
                                     $_POST["subserie_entrante"],
-                                    $_POST["tipodocumental_entrante"]
+                                    $_POST["tipodocumental_entrante"],
+                                    $_POST["tieneanexos_entrante"]
                                 );        
       
         if( $resp != 0 ){

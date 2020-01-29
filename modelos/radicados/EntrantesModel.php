@@ -25,6 +25,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -48,13 +49,17 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado                            
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0";
         
@@ -87,6 +92,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -110,14 +116,18 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
-                            left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado";
+                            left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -148,6 +158,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -171,7 +182,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -179,6 +193,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.estado_entrante = '1' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
         
@@ -212,6 +227,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -235,7 +251,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -243,6 +262,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.responsable_entrante = '".$id_empleado."'";
         
@@ -277,6 +297,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -300,7 +321,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -308,6 +332,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where empleados2.dependencia_empleado = '".$id_dependencia."'";
         
@@ -340,6 +365,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -363,7 +389,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -371,6 +400,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.tiporadicado_entrante = '".$id_tiporadicado."'";
         
@@ -403,6 +433,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -426,7 +457,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -434,6 +468,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.estado_entrante = '2' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
         
@@ -495,6 +530,7 @@ class EntrantesModel extends ModelBase {
             entrantes.saliente_entrante,
             
             entrantes.estado_entrante,
+            entrantes.tieneanexos_entrante,
 
             empleados.id_empleado, 
             empleados.documento_empleado, 
@@ -518,7 +554,10 @@ class EntrantesModel extends ModelBase {
             terceros.ciudad_tercero,
 
             estadosradicados.id_estado,
-            estadosradicados.nombre_estado
+            estadosradicados.nombre_estado,
+
+            estados2.id_estado as id_estado2,
+            estados2.nombre_estado as nombre_estado2
  
             from entrantes 
              left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -526,6 +565,7 @@ class EntrantesModel extends ModelBase {
              
              left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
              left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
 
                 where entrantes.id_entrante != '' ".$consulta_estado.$consulta_fecha.$consulta_remitente.$consulta_destinatario;
         
@@ -557,6 +597,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -580,7 +621,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -588,6 +632,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.estado_entrante = '3' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
         
@@ -621,6 +666,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -644,13 +690,17 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
                             left join empleados ON entrantes.destinatario_entrante = empleados.id_empleado                            
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0) and 
                     entrantes.responsable_entrante = '".$_SESSION['id_empleado']."'";
@@ -718,6 +768,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -741,7 +792,10 @@ class EntrantesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -749,6 +803,7 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where entrantes.carpeta_entrante = '".$carpeta_entrante."'";
         
@@ -780,6 +835,7 @@ class EntrantesModel extends ModelBase {
                     entrantes.saliente_entrante,
                     
                     entrantes.estado_entrante,
+                    entrantes.tieneanexos_entrante,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -806,7 +862,10 @@ class EntrantesModel extends ModelBase {
                     tiposradicado.id_tiporadicado,
 
                     estadosradicados.id_estado,
-                    estadosradicados.nombre_estado
+                    estadosradicados.nombre_estado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from entrantes 
                             left join terceros ON entrantes.remitente_entrante = terceros.id_tercero
@@ -814,6 +873,7 @@ class EntrantesModel extends ModelBase {
                             left join tiposradicado ON entrantes.tiporadicado_entrante = tiposradicado.id_tiporadicado
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
 
                     where entrantes.id_entrante='".$id_entrante."'";
         
@@ -884,7 +944,8 @@ class EntrantesModel extends ModelBase {
                         $serie_entrante,
                         $subserie_entrante,
                         $tipodocumental_entrante,
-                        $saliente_entrante
+                        $saliente_entrante,
+                        $tieneanexos_entrante
                     ){
                 
         $query = "INSERT INTO entrantes (
@@ -904,7 +965,8 @@ class EntrantesModel extends ModelBase {
                                 serie_entrante,
                                 subserie_entrante,
                                 tipodocumental_entrante,
-                                saliente_entrante
+                                saliente_entrante,
+                                tieneanexos_entrante
                             )
                             VALUES(
                                 '".$consecutivo_entrante."',
@@ -923,7 +985,8 @@ class EntrantesModel extends ModelBase {
                                 '".$serie_entrante."',
                                 '".$subserie_entrante."',
                                 '".$tipodocumental_entrante."',
-                                '".$saliente_entrante."'
+                                '".$saliente_entrante."',
+                                '".$tieneanexos_entrante."'
                             );";
        
        return $this->crear_ultimo_id($query);
@@ -946,7 +1009,8 @@ class EntrantesModel extends ModelBase {
                     $responsable_entrante,
                     $serie_entrante,
                     $subserie_entrante,
-                    $tipodocumental_entrante
+                    $tipodocumental_entrante,
+                    $tieneanexos_entrante
                 ) {
         
         $query = "  UPDATE entrantes 
@@ -965,7 +1029,8 @@ class EntrantesModel extends ModelBase {
                         responsable_entrante = '". $responsable_entrante ."',
                         serie_entrante = '". $serie_entrante ."',
                         subserie_entrante = '". $subserie_entrante ."',
-                        tipodocumental_entrante = '". $tipodocumental_entrante ."'
+                        tipodocumental_entrante = '". $tipodocumental_entrante ."',
+                        tieneanexos_entrante = '". $tieneanexos_entrante ."'
 
                     WHERE id_entrante = '" . $id_entrante . "'";
        

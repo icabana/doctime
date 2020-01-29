@@ -393,12 +393,6 @@ $froms = new Formularios();
                       </div>
 
                       <div class="col-md-3">
-                        <label>Fecha Recibido<span style="color:red">*</span></label>
-                        <input type="date" class="form-control radicado" id="fecharecibido_entrante" 
-                        name="fecharecibido_entrante" value="<?php echo $datos['fecharecibido_entrante']; ?>">
-                      </div>
-
-                      <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <?php
                         echo $froms->Lista_Desplegable(
@@ -412,6 +406,24 @@ $froms = new Formularios();
                         );
                         ?>
                       </div>
+                      
+                      <div class="col-md-3">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_entrante',
+                            $datos['tieneanexos_entrante'],
+                            '',
+                            ''
+                          );
+                          ?>                   
+                      </div>
+
+
                     </div>
 
                     <br>

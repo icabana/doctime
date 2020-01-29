@@ -173,25 +173,44 @@ $froms = new Formularios();
                         name="fecharadicado_entrante" value="<?php echo date("Y-m-d"); ?>">
                       </div>
 
-                      <div class="col-md-4">
-                        <label>Tipo de Radicado<span style="color:red">*</span></label>
-                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
-                          Crear Nuevo
-                        </a>
-                        <div id="div_tipo_radicado_entrante">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposradicado,
-                          'nombre_tiporadicado',
-                          'id_tiporadicado',
-                          'tiporadicado_entrante',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
+                      <div class="col-md-3">
+                          <label>Tipo de Radicado<span style="color:red">*</span></label>
+                          <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
+                            Crear Nuevo
+                          </a>
+                          <div id="div_tipo_radicado_entrante">
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                            $tiposradicado,
+                            'nombre_tiporadicado',
+                            'id_tiporadicado',
+                            'tiporadicado_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>
+                          </div>                      
                       </div>
+
+
+                      <div class="col-md-3">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>                   
                       </div>
+
+
                     </div>
 
                     <br>

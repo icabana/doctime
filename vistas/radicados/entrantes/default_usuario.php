@@ -340,6 +340,7 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender'>No. Radicado</th>
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Asunto</th>
+                            <th style='background-color:lavender; '>¿Tiene Anexos?</th>
                             <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
                             <th style='background-color:lavender; width:15px'></th>
@@ -391,6 +392,12 @@ $fechas = new Fechas();
                     <td class="mailbox-subject">
                         <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
                     </td>
+
+
+                    <td class="mailbox-attachment">
+                        <?php echo $entrante['nombre_estado2']; ?>
+                    </td>
+
                     <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
 
 
