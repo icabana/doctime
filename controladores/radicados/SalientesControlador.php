@@ -44,6 +44,10 @@ class SalientesControlador extends ControllerBase {
         $EstadoscivilModel = new EstadoscivilModel();
         $estadoscivil = $EstadoscivilModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
         $this->model->cargar("SexosModel.php", "configuracion");
         $SexosModel = new SexosModel();
         $sexos = $SexosModel->getTodos();
@@ -125,6 +129,10 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("SeriesModel.php", "administracion");
         $SeriesModel = new SeriesModel();
         $series = $SeriesModel->getTodos();
+
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
         
         $this->model->cargar("SubseriesModel.php", "administracion");
         $SubseriesModel = new SubseriesModel();
@@ -203,6 +211,10 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("EmpleadosModel.php", "administracion");
         $EmpleadosModel = new EmpleadosModel();
         $empleados = $EmpleadosModel->getTodos();
+
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
         
         $this->model->cargar("SeriesModel.php", "administracion");
         $SeriesModel = new SeriesModel();
@@ -260,6 +272,10 @@ class SalientesControlador extends ControllerBase {
         $this->model->cargar("EstadosModel.php", "configuracion");
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
+
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
 
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
@@ -381,7 +397,8 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["serie_saliente"],
                                     $_POST["subserie_saliente"],
                                     $_POST["tipodocumental_saliente"],
-                                    $_POST["entrante_saliente"]
+                                    $_POST["entrante_saliente"],
+                                    $_POST["tieneanexos_saliente"]
                                 );        
         
         $EntrantesModel->actualizarSaliente($_POST["entrante_saliente"],$resp);
@@ -435,7 +452,8 @@ class SalientesControlador extends ControllerBase {
                                     $_POST["serie_saliente"],
                                     $_POST["subserie_saliente"],
                                     $_POST["tipodocumental_saliente"],
-                                    $_POST["tiporadicado_saliente"]
+                                    $_POST["tiporadicado_saliente"],
+                                    $_POST["tieneanexos_saliente"]
                                 );        
       
         if( $resp != 0 ){

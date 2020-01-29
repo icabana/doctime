@@ -353,6 +353,10 @@ class EntrantesControlador extends ControllerBase {
         $RolesModel = new RolesModel();
         $roles = $RolesModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
         $this->model->cargar("DependenciasModel.php", "administracion");
         $DependenciasModel = new DependenciasModel();
         $dependencias = $DependenciasModel->getTodos();
@@ -627,6 +631,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
         $prioridades = $PrioridadesModel->getTodos();
@@ -750,6 +758,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosModel = new EstadosModel();
         $estados = $EstadosModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
         $this->model->cargar("PrioridadesModel.php", "configuracion");
         $PrioridadesModel = new PrioridadesModel();
         $prioridades = $PrioridadesModel->getTodos();
@@ -792,6 +804,7 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("RolesModel.php", "configuracion");
         $RolesModel = new RolesModel();
         $roles = $RolesModel->getTodos();
+
 
         
         $this->model->cargar("EmpleadosModel.php", "administracion");

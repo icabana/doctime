@@ -172,7 +172,7 @@ $froms = new Formularios();
                       </div>
 
                     
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado_saliente">
                           Crear Nuevo
@@ -191,6 +191,26 @@ $froms = new Formularios();
                         ?>
                       </div>
                       </div>
+
+
+
+                      <div class="col-md-3">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_saliente',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>                   
+                      </div>
+
+
                     </div>
 
                     <br>
@@ -243,60 +263,7 @@ $froms = new Formularios();
                       <div class="col-md-3">
                         <label>N&uacute;mero de Folios</label>
                         <input onkeypress="return no_numeros(event)" type="text" class="form-control" id="numerofolios_saliente" name="numerofolios_saliente">
-                      </div>
-
-                      
-                      <div class="col-md-3">
-                        <label>Serie<span style="color:red">*</span></label>
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $series,
-                          'nombre_serie',
-                          'id_serie',
-                          'serie_saliente',
-                          '',
-                          '',
-                          'cargar_subseries_salientes()'
-                        );
-                        ?>
-
-                      </div>
-
-
-                      <div class="col-md-3">
-                        <label>Sub-Serie<span style="color:red">*</span></label>
-                        <div id="div_subseries_salientes">
-                          <?php
-                            echo $froms->Lista_Desplegable(
-                              $subseries,
-                              'nombre_subserie',
-                              'id_subserie',
-                              'subserie_saliente',
-                              '',
-                              '',
-                              'cargar_tiposdocumentales_salientes()'
-                            );
-                          ?>
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-3">
-                        <label>Tipo Documental<span style="color:red">*</span></label>
-                        <div id="div_tiposdocumentales_salientes">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposdocumentales,
-                          'nombre_tipodocumental',
-                          'id_tipodocumental',
-                          'tipodocumental_saliente',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
+                      </div>                      
 
 
 

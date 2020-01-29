@@ -19,6 +19,8 @@ class SalientesModel extends ModelBase {
                     salientes.tipodocumental_saliente,
                     salientes.entrante_saliente,
 
+                    salientes.tieneanexos_saliente,
+
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
                     empleados.tipodocumento_empleado, 
@@ -38,11 +40,15 @@ class SalientesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.ciudad_tercero
+                    terceros.ciudad_tercero,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from salientes 
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado";
+                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado
+                            left join estados2 ON salientes.tieneanexos_saliente = estados2.id_estado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -87,6 +93,8 @@ class SalientesModel extends ModelBase {
                     salientes.subserie_saliente,
                     salientes.tipodocumental_saliente,
                     salientes.entrante_saliente,
+                    
+                    salientes.tieneanexos_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -107,11 +115,15 @@ class SalientesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.ciudad_tercero
+                    terceros.ciudad_tercero,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from salientes 
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
                             left join empleados ON salientes.remitente_saliente = empleados.id_empleado
+                            left join estados2 ON salientes.tieneanexos_saliente = estados2.id_estado
                         
                      where salientes.id_saliente != '' ".$consulta_fecha.$consulta_remitente.$consulta_destinatario;
         
@@ -139,6 +151,8 @@ class SalientesModel extends ModelBase {
                     salientes.subserie_saliente,
                     salientes.tipodocumental_saliente,
                     salientes.entrante_saliente,
+                    
+                    salientes.tieneanexos_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -159,11 +173,15 @@ class SalientesModel extends ModelBase {
                     terceros.celular_tercero, 
                     terceros.correo_tercero, 
                     terceros.direccion_tercero, 
-                    terceros.ciudad_tercero
+                    terceros.ciudad_tercero,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from salientes 
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
-                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado";
+                            left join empleados ON salientes.remitente_saliente = empleados.id_empleado
+                            left join estados2 ON salientes.tieneanexos_saliente = estados2.id_estado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -224,6 +242,8 @@ class SalientesModel extends ModelBase {
                     salientes.subserie_saliente,
                     salientes.tipodocumental_saliente,
                     salientes.entrante_saliente,
+                    
+                    salientes.tieneanexos_saliente,
 
                     empleados.id_empleado, 
                     empleados.documento_empleado, 
@@ -247,12 +267,16 @@ class SalientesModel extends ModelBase {
                     terceros.ciudad_tercero,
 
                     tiposradicado.id_tiporadicado,
-                    tiposradicado.id_tiporadicado
+                    tiposradicado.id_tiporadicado,
+
+                    estados2.id_estado as id_estado2,
+                    estados2.nombre_estado as nombre_estado2
                 
                     from salientes 
                             left join terceros ON salientes.destinatario_saliente = terceros.id_tercero
                             left join empleados ON salientes.remitente_saliente = empleados.id_empleado
                             left join tiposradicado ON salientes.tiporadicado_saliente = tiposradicado.id_tiporadicado
+                            left join estados2 ON salientes.tieneanexos_saliente = estados2.id_estado
 
                     where salientes.id_saliente='".$id_saliente."'";
         
@@ -276,7 +300,8 @@ class SalientesModel extends ModelBase {
                         $serie_saliente,
                         $subserie_saliente,
                         $tipodocumental_saliente,
-                        $entrante_saliente
+                        $entrante_saliente,
+                        $tieneanexos_saliente
                     ){
                 
         $query = "INSERT INTO salientes (
@@ -292,7 +317,8 @@ class SalientesModel extends ModelBase {
                                 serie_saliente,
                                 subserie_saliente,
                                 tipodocumental_saliente,
-                                entrante_saliente
+                                entrante_saliente,
+                                tieneanexos_saliente
                             )
                             VALUES(
                                 '".$consecutivo_saliente."',
@@ -307,7 +333,8 @@ class SalientesModel extends ModelBase {
                                 '".$serie_saliente."',
                                 '".$subserie_saliente."',
                                 '".$tipodocumental_saliente."',
-                                '".$entrante_saliente."'
+                                '".$entrante_saliente."',
+                                '".$tieneanexos_saliente."'
                             );";
        
         
@@ -326,7 +353,8 @@ class SalientesModel extends ModelBase {
                     $serie_saliente,
                     $subserie_saliente,
                     $tipodocumental_saliente,
-                    $tiporadicado_saliente
+                    $tiporadicado_saliente,
+                    $tieneanexos_saliente
                 ) {
         
         $query = "  UPDATE salientes 
@@ -340,7 +368,8 @@ class SalientesModel extends ModelBase {
                         tiporadicado_saliente = '". $tiporadicado_saliente ."',
                         serie_saliente = '". $serie_saliente ."',
                         subserie_saliente = '". $subserie_saliente ."',
-                        tipodocumental_saliente = '". $tipodocumental_saliente ."'
+                        tipodocumental_saliente = '". $tipodocumental_saliente ."',
+                        tieneanexos_saliente = '". $tieneanexos_saliente ."'
 
                     WHERE id_saliente = '" . $id_saliente . "'";
        

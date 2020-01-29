@@ -160,7 +160,7 @@ $froms = new Formularios();
                       </div>
 
                     
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
                         <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado_saliente">
                           Crear Nuevo
@@ -179,6 +179,26 @@ $froms = new Formularios();
                         ?>
                       </div>
                       </div>
+
+
+
+                      <div class="col-md-3">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_saliente',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>                   
+                      </div>
+
+
                     </div>
 
                     <br>
