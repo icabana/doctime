@@ -343,7 +343,7 @@ $froms = new Formularios();
         <!-- Check all button -->
       
         <div class="btn-group ">
-          <button title="Eliminar Radicado" onclick="eliminar_entrante_editar();" type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+         
           <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
           <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante_editar();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
         
