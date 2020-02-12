@@ -61,7 +61,9 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0";
+                    where entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -127,7 +129,9 @@ class EntrantesModel extends ModelBase {
                             
                             left join empleados as empleados2 ON entrantes.responsable_entrante = empleados2.id_empleado
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
-                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado";
+                            left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
+                    
+                            order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -195,7 +199,10 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.estado_entrante = '1' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
+                    where entrantes.estado_entrante = '1' 
+                    and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -264,7 +271,9 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.responsable_entrante = '".$id_empleado."'";
+                    where entrantes.responsable_entrante = '".$id_empleado."'
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -334,7 +343,9 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where empleados2.dependencia_empleado = '".$id_dependencia."'";
+                    where empleados2.dependencia_empleado = '".$id_dependencia."'
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -402,7 +413,9 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.tiporadicado_entrante = '".$id_tiporadicado."'";
+                    where entrantes.tiporadicado_entrante = '".$id_tiporadicado."'
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -470,7 +483,10 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.estado_entrante = '2' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
+                    where entrantes.estado_entrante = '2' and
+                    (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -634,7 +650,10 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.estado_entrante = '3' and (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)";
+                    where entrantes.estado_entrante = '3' and 
+                    (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0)
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -703,7 +722,9 @@ class EntrantesModel extends ModelBase {
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
                     where (entrantes.carpeta_entrante IS NULL or entrantes.carpeta_entrante = 0) and 
-                    entrantes.responsable_entrante = '".$_SESSION['id_empleado']."'";
+                    entrantes.responsable_entrante = '".$_SESSION['id_empleado']."'
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -805,7 +826,9 @@ class EntrantesModel extends ModelBase {
                             left join estadosradicados ON entrantes.estado_entrante = estadosradicados.id_estado
                             left join estados2 ON entrantes.tieneanexos_entrante = estados2.id_estado
                             
-                    where entrantes.carpeta_entrante = '".$carpeta_entrante."'";
+                    where entrantes.carpeta_entrante = '".$carpeta_entrante."'
+                    
+                    order by entrantes.numero_entrante";
         
         $consulta = $this->consulta($query);
         return $consulta;       
