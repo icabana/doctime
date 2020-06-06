@@ -89,7 +89,11 @@ function cargar_entrantes_carpeta_usuarios(id_carpeta){
     
     abrirVentanaContenedorTabla(
         'tabla_entrantes',
-        'radicados', 'Entrantes', 'index_carpeta_usuarios', 'id_carpeta='+id_carpeta);    
+        'radicados', 
+        'Entrantes', 
+        'index_carpeta_usuarios', 
+        'id_carpeta='+id_carpeta
+    );    
         
 }
 

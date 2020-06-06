@@ -391,6 +391,12 @@ $froms = new Formularios();
                         <input type="date" class="form-control radicado" id="fecharadicado_entrante" 
                         name="fecharadicado_entrante" value="<?php echo $datos['fecharadicado_entrante']; ?>">
                       </div>
+                      
+                      <div class="col-md-3">
+                        <label>Fecha Max de Respuesta<span style="color:red">*</span></label>
+                        <input type="date" class="form-control" id="fechamaxima_entrante" name="fechamaxima_entrante"
+                                value="<?php echo $datos['fechamaxima_entrante']; ?>">
+                      </div>
 
                       <div class="col-md-3">
                         <label>Tipo de Radicado<span style="color:red">*</span></label>
@@ -407,22 +413,6 @@ $froms = new Formularios();
                         ?>
                       </div>
                       
-                      <div class="col-md-3">
-                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
-                       
-                          <?php
-                          echo $froms->Lista_Desplegable(
-                             $estados2,
-                            'nombre_estado',
-                            'id_estado',
-                            'tieneanexos_entrante',
-                            $datos['tieneanexos_entrante'],
-                            '',
-                            ''
-                          );
-                          ?>                   
-                      </div>
-
 
                     </div>
 
@@ -497,12 +487,7 @@ $froms = new Formularios();
                       </div>
 
 
-                      <div class="col-md-3">
-                        <label>Fecha de Respuesta</label>
-                        <input type="date" class="form-control" id="fechamaxima_entrante" name="fechamaxima_entrante"
-                        value="<?php echo $datos['fechamaxima_entrante']; ?>">
-                      </div>
-
+                      
 
                       <div class="col-md-3">
                         <label>Responsable<span style="color:red">*</span></label>
@@ -518,6 +503,24 @@ $froms = new Formularios();
                             );
                         ?>
                       </div>
+
+
+                      <div class="col-md-3">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_entrante',
+                            $datos['tieneanexos_entrante'],
+                            '',
+                            ''
+                          );
+                          ?>                   
+                      </div>
+
 
 
                       <div class="col-md-3">

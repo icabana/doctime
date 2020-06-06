@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link REL="Shortcut Icon" href="imagenes/iconos/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>..: DocumenTime :..</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -94,6 +95,7 @@
         $empleados = count($EmpleadosModel->getTodos());
         $terceros = count($TercerosModel->getTodos());
         $dependencias = count($DependenciasModel->getTodos());
+        $por_finalizar = $EntrantesModel->getPorFinalizar();
     }
 
     if($_SESSION['rol'] == "3" || $_SESSION['rol'] == "4"){
@@ -108,10 +110,8 @@
     
     
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">
-
-
 
   <!-- BARRA DE NAVEGACION -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -121,11 +121,21 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
 
+       <li class="nav-item d-none d-sm-inline-block">
+        <a  href="javascript:location.reload()" class="nav-link">Inicio</a>
+      </li>
+
       <?php
             if($_SESSION['rol'] == "1" || $_SESSION['rol'] == "2"){
           ?>
       <li class="nav-item d-none d-sm-inline-block">
-      <a onclick="nuevo_radicado_entrante();" href="#" class="nav-link">Nuevo Radicado de Entrada</a>
+        <a onclick="cargar_entrantes();" href="#" class="nav-link">Ver Radicados Entrantes</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a onclick="cargar_salientes();" href="#" class="nav-link">Ver Radicados Salientes</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a onclick="nuevo_radicado_entrante();" href="#" class="nav-link">Nuevo Radicado de Entrada</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a onclick="nuevo_radicado_saliente();" href="#" class="nav-link">Nuevo Radicado de Salida</a>
@@ -731,17 +741,17 @@
             </ul>    
           </li>
 
-               
-         <?php
-            }
-         ?>
-
-
 
  <br>
                 <br>
                 <br>
                 <br>
+
+
+               
+         <?php
+            }
+         ?>
 
 
 
@@ -809,134 +819,212 @@
       ?>
 
         <br> <br> <br>
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
         <div class="row">
-         
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-edit"></i></span>
+        <div class="col-md-8">
+              <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-success elevation-1"><i class="fas fa-edit"></i></span>
 
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_entrantes();'>Radicados Activos</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_entrantes();'><?php echo $numero_entrantes_activos; ?></a>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_entrantes();'>Radicados Activos</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_entrantes();'><?php echo $numero_entrantes_activos; ?></a>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                  <!-- fix for small devices only -->
+                  <div class="clearfix hidden-md-up"></div>
+
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-folder"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_entrantes_finalizados();'>Radicados Finalizados</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_entrantes_finalizados();'><?php echo $numero_entrantes_finalizados; ?></a>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-clone"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_entrantes_archivados();'>Radicados Archivados</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_entrantes_archivados();'><?php echo $numero_entrantes_archivados; ?></a>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  
+                </div> <!-- ./col -->
+                
+                </div>
+
+                
+                <br> 
+              <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_salientes();'>Radicados Salientes</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_salientes();'><?php echo $numero_salientes; ?></a>
+                        </span>
+                      </div>
+
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+
+                  
+                  <!-- /.col -->
+                </div> <!-- ./col -->
+                </div>
+
+                <br> 
+              <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-university"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_dependencias();'>Dependencias</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_dependencias();'><?php echo $dependencias; ?></a>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                  <!-- fix for small devices only -->
+                  <div class="clearfix hidden-md-up"></div>
+
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
+
+                      <div class="info-box-content">
+
+                        <span class="info-box-text"><a href='#' onclick='cargar_empleados();'>Empleados</a></span>
+                        <span class="info-box-number">
+                        <a href='#' onclick='cargar_empleados();'><?php echo $empleados; ?></a>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <div class="info-box mb-3">
+                      <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text"><a href='#' onclick='cargar_terceros();'>Terceros</a></span>
+                        <a href='#' onclick='cargar_terceros();'><span class="info-box-number"><?php echo $terceros; ?></span></a>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+
+                </div> <!-- ./col -->
+                </div>
+          </div> <!-- ./col -->
+       
+
+           <div class="col-md-4">
+              <!-- PRODUCT LIST -->
+              <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Empleados con Radicados Sin Finalizar</h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                      <ul class="products-list product-list-in-card pl-2 pr-2">
+
+                      <?php
+                        foreach($por_finalizar as $radicado){
+                      ?>
+
+                        <li class="item">
+                        
+                          <div class="product-info">
+                            <a href="javascript:void(0)" class="product-title"><?php echo $radicado['nombres_empleado']." ".$radicado['apellidos_empleado']; ?>
+                              <?php
+                                if($radicado['numero'] > 5){
+                              ?>
+                              <span class="badge badge-danger float-right"><?php echo $radicado['numero']; ?></span></a>
+                              <?php
+                                }else{
+                              ?>
+                              <span class="badge badge-warning float-right"><?php echo $radicado['numero']; ?></span></a>
+                              <?php
+                                }
+                              ?>
+                            <span class="product-description">
+                             <?php echo $radicado['correo_empleado']; ?>
+                             <br>
+                              <button onclick="enviar_correo_empleado('<?php echo $radicado['correo_empleado']; ?>', <?php echo $radicado['id_empleado']; ?>); return false;" class="btn btn-success btn-sm">
+                                Enviar Correo
+                              </button>
+                            </span>
+                          </div>
+                        </li>
+
+                      <?php
+                        }
+                      ?>
+
+                    
+                      </ul>
+                    </div>
+                   
+                  </div>
             </div>
-            <!-- /.info-box -->
           </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-folder"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_entrantes_finalizados();'>Radicados Finalizados</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_entrantes_finalizados();'><?php echo $numero_entrantes_finalizados; ?></a>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-clone"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_entrantes_archivados();'>Radicados Archivados</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_entrantes_archivados();'><?php echo $numero_entrantes_archivados; ?></a>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_salientes();'>Radicados Salientes</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_salientes();'><?php echo $numero_salientes; ?></a>
-                </span>
-              </div>
-
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-        </div> <!-- ./col -->
-        
-        </div>
-
-        <br> 
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-         
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-university"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_dependencias();'>Dependencias</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_dependencias();'><?php echo $dependencias; ?></a>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
-
-              <div class="info-box-content">
-
-                <span class="info-box-text"><a href='#' onclick='cargar_empleados();'>Empleados</a></span>
-                <span class="info-box-number">
-                <a href='#' onclick='cargar_empleados();'><?php echo $empleados; ?></a>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><a href='#' onclick='cargar_terceros();'>Terceros</a></span>
-                <a href='#' onclick='cargar_terceros();'><span class="info-box-number"><?php echo $terceros; ?></span></a>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div> <!-- ./col -->
-        </div>
 
 
         <?php

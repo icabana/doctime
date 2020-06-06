@@ -29,7 +29,9 @@ class EmpleadosModel extends ModelBase {
                 
                     from empleados 
                     left join tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
-                    left join dependencias on empleados.dependencia_empleado = dependencias.id_dependencia";
+                    left join dependencias on empleados.dependencia_empleado = dependencias.id_dependencia
+                    
+                    order by empleados.nombres_empleado";
         
         $consulta = $this->consulta($query);
         return $consulta;       
@@ -65,7 +67,9 @@ class EmpleadosModel extends ModelBase {
                         left join tiposdocumento on empleados.tipodocumento_empleado = tiposdocumento.id_tipodocumento
                         left join usuarios on empleados.usuario_empleado = usuarios.id_usuario
 
-                    where empleados.id_empleado='".$id_empleado."'";
+                    where empleados.id_empleado='".$id_empleado."'
+                    
+                    order by empleados.nombres_empleado";
         
          $consulta = $this->consulta($query);
         return $consulta[0];    
@@ -100,7 +104,9 @@ class EmpleadosModel extends ModelBase {
 
                     where   empleados.nombres_empleado LIKE '%".$texto."%' OR 
                             empleados.apellidos_empleado LIKE '%".$texto."%' OR
-                            empleados.documento_empleado LIKE '%".$texto."%' ";
+                            empleados.documento_empleado LIKE '%".$texto."%'
+                    
+                    order by empleados.nombres_empleado ";
         
          $consulta = $this->consulta($query);
         return $consulta;    

@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link REL="Shortcut Icon" href="imagenes/iconos/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>..: DocumenTime :..</title>
   <!-- Tell the browser to be responsive to screen width -->

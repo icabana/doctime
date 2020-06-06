@@ -254,39 +254,36 @@ class EmpleadosControlador extends ControllerBase {
         $EmpleadosModel = new EmpleadosModel();
             
         $resp = $EmpleadosModel->editar(
-                                    $_POST["id_empleado"], 
-                                    $_POST["documento_empleado"],
-                                    $_POST["dependencia_empleado"],
-                                    $_POST["tipodocumento_empleado"],
-                                    $_POST["nombres_empleado"],
-                                    $_POST["apellidos_empleado"],
-                                    $_POST["telefono_empleado"],
-                                    $_POST["celular_empleado"],
-                                    $_POST["correo_empleado"],
-                                    $_POST["direccion_empleado"],
-                                    $_POST["ciudad_empleado"],
-                                    $_POST["sexo_empleado"],
-                                    $_POST["estadocivil_empleado"],
-                                    $_POST["fechanacimiento_empleado"],
-                                    $_POST["lugarnacimiento_empleado"]
-                                );        
+            $_POST["id_empleado"], 
+            $_POST["documento_empleado"],
+            $_POST["dependencia_empleado"],
+            $_POST["tipodocumento_empleado"],
+            $_POST["nombres_empleado"],
+            $_POST["apellidos_empleado"],
+            $_POST["telefono_empleado"],
+            $_POST["celular_empleado"],
+            $_POST["correo_empleado"],
+            $_POST["direccion_empleado"],
+            $_POST["ciudad_empleado"],
+            $_POST["sexo_empleado"],
+            $_POST["estadocivil_empleado"],
+            $_POST["fechanacimiento_empleado"],
+            $_POST["lugarnacimiento_empleado"]
+        );        
       
         $this->model->cargar("UsuariosModel.php", 'configuracion');
         $UsuariosModel = new UsuariosModel();
             
         $UsuariosModel->editar(
-                            $_POST["usuario"], 
-                            $_POST["nick_empleado"], 
-                            $_POST["password_empleado"], 
-                            $_POST["password2_empleado"], 
-                            $_POST["estado_empleado"], 
-                            $_POST["rol_empleado"]
-                        );        
-      
-
-       
-        echo 1;             
-       
+            $_POST["usuario"], 
+            $_POST["nick_empleado"], 
+            $_POST["password_empleado"], 
+            $_POST["password2_empleado"], 
+            $_POST["estado_empleado"], 
+            $_POST["rol_empleado"]
+        );        
+            
+        echo $resp;       
         
     }    
         

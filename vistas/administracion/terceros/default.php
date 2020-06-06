@@ -69,9 +69,9 @@
                 <table id="tabla_terceros" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>DOCUMENTO</th>
-                            <th style='background-color:lavender'>NOMBRE DEL TERCERO</th>
-                            <th style='background-color:lavender'>DIRECCI&Oacute;N</th>
+                            <th style='background-color:lavender'>Documento</th>
+                            <th style='background-color:lavender'>Nombre del tercero</th>
+                            <th style='background-color:lavender'>Direcci&oacute;n</th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>

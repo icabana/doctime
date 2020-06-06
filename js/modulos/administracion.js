@@ -109,3 +109,15 @@ function cargar_tiposradicado(){
         'administracion', 'Tiposradicado', 'index', '');    
         
 }
+
+function enviar_correo_empleado(correo, id_empleado) {
+
+    ejecutarAccion(
+      'alertas',
+      'Alertas',
+      'enviarCorreoEmpleado',
+      "correo="+correo+"&id_empleado="+id_empleado,
+      'mensaje_alertas("success", "Correo Enviado Correctamente", "center");'
+    );
+
+  }

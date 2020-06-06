@@ -731,6 +731,42 @@ class EntrantesModel extends ModelBase {
                
     } 
 
+    
+    function getPorFinalizar() {
+        
+        $fecha_actual = date("Y-m-d");
+
+        $query = "SELECT count(entrantes.id_entrante) as numero,
+
+                    empleados.id_empleado, 
+                    empleados.documento_empleado, 
+                    empleados.tipodocumento_empleado, 
+                    empleados.nombres_empleado, 
+                    empleados.apellidos_empleado, 
+                    empleados.telefono_empleado, 
+                    empleados.celular_empleado, 
+                    empleados.correo_empleado, 
+                    empleados.direccion_empleado, 
+                    empleados.ciudad_empleado
+                
+                FROM entrantes 
+                           
+                LEFT JOIN empleados ON entrantes.responsable_entrante = empleados.id_empleado     
+                                 
+                WHERE   entrantes.estado_entrante = 1 and 
+                        entrantes.fechamaxima_entrante < '".$fecha_actual."' and
+                        empleados.nombres_empleado != ''
+                                
+                GROUP BY empleados.id_empleado
+                        
+                ORDER BY numero desc";
+        
+        $consulta = $this->consulta($query);
+        return $consulta;       
+               
+    }  
+
+
 
     function getTrazabilidad($radicado_trazabilidad) {
         

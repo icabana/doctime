@@ -5,6 +5,14 @@
     if(!validar_requeridos()){
         return 0;
     }
+        
+    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+
+    if (!regex.test($('#correo_tercero').val().trim()) && $('#correo_tercero').val() != "") {    
+        mensaje_alertas("error", "El correo registrado no tiene un formato correcto.", "center");
+        return false;
+    }
+
 
 
     var datos = $('#formTerceros').serialize();

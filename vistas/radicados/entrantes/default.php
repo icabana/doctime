@@ -424,13 +424,13 @@ function enviar_bandeja_entrante2() {
                 <thead>
                         <tr>
                             <th style='background-color:lavender'></th>
-                            <th style='background-color:lavender'>No. Radicado</th>
+                            <th style='background-color:lavender'>No. de Radicado</th>
+                            <th style='background-color:lavender'>Fecha de Radicado</th>
+                            <th style='background-color:lavender'>Fecha Max Respuesta</th>
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Destinatario</th>
-                            <th style='background-color:lavender; '>Asunto</th>
-                            <th style='background-color:lavender; '>¿Tiene Anexos?</th>
-                            <th style='background-color:lavender; width:20px '></th>
-                            <th style='background-color:lavender; width:20px '></th>                            
+                            <th style='background-color:lavender; '>Asunto</th>                          
+                            <th style='background-color:lavender; width:20px'></th>
                             <th style='background-color:lavender; width:20px'></th>
                             <th style='background-color:lavender; width:20px'></th>
                         </tr>
@@ -441,10 +441,23 @@ function enviar_bandeja_entrante2() {
 
                     foreach($entrantes as $entrante){
 
+                      $fecha_actual = date("Y-m-d");
+                      
+                        $dias_alerta = $this->fechas->diasEntreFechas($fecha_actual, $entrante['fechamaxima_entrante']);
+
+                        $color_fondo = "";
+                        if($fecha_actual > $entrante['fechamaxima_entrante']){
+                          $color_fondo = " style = 'background-color: #F65A5A' ";
+                        }else{
+                          if( $dias_alerta <= 5 ){
+                            $color_fondo = "  style = 'background-color: #FDFB85'";
+                          }
+                        }
+                        if($dias_alerta )
 
                         $id_check = "check".$entrante['id_entrante'];                        
                   
-                        $fecha_actual = date("Y-m-d");
+                        
                         $dias = $this->fechas->diasEntreFechas($fecha_actual, $entrante['fecharadicado_entrante']);
 
                         if($dias == 0){
@@ -454,11 +467,12 @@ function enviar_bandeja_entrante2() {
                           $dia = "Ayer";
                         }
                         if($dias > 1){
-                          $dia = "Hace ".$dias." días";
+                          $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
+                        echo "<tr  ".$color_fondo.">";
                   ?>
-                  <tr>
+                  
                     <td>
                       <div class="icheck-primary">
                         <input class="check" name="check_radicados" type="checkbox" value="<?php echo $entrante['id_entrante']; ?>" id="check<?php echo $id_check; ?>">
@@ -470,6 +484,18 @@ function enviar_bandeja_entrante2() {
                         
                             <?php echo $entrante['numero_entrante'] ?>
                         
+                    </td>
+
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['fecharadicado_entrante'] ?>
+                    
+                    </td>
+
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['fechamaxima_entrante'] ?>
+                    
                     </td>
 
                     <td class="mailbox-name">
@@ -484,22 +510,8 @@ function enviar_bandeja_entrante2() {
                     </td>
 
                     <td class="mailbox-subject">
-                        <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
+                        <?php echo substr($entrante['asunto_entrante'], 0, 70)."..."; ?>
                     </td>
-
-                    <td class="mailbox-attachment">
-                        <?php echo $entrante['nombre_estado2']; ?>
-                    </td>
-
-
-                    <?php
-                        $adjuntos = 0;
-                        if($entrante['numerofolios_entrante'] != "" && $entrante['numerofolios_entrante'] != 0){
-                            $adjuntos = $entrante['numerofolios_entrante'];
-                        }
-                    ?>    
-
-                    <td class="mailbox-attachment"><?php echo $adjuntos." ";  ?><i class="fas fa-paperclip"></i></td>
 
 
                     <td class="mailbox-date"><?php echo $dia; ?></td>

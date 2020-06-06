@@ -26,15 +26,15 @@ $tabla_documentos = "
                 $nombre_archivo = $archivo;
                 $ruta_archivo = $path.$nombre_archivo;
             
-                $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/pdf.png">';
+                $icono_archivo = '<img width="50px" height="50px" src="imagenes/iconos/pdf.png">';
                 if($extension == "pdf"){
-                    $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/pdf.png">';
+                    $icono_archivo = '<img width="50px" height="50px" src="imagenes/iconos/pdf.png">';
                 }
                 if($extension == "doc" || $extension == "docx"){
-                    $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/word.png">';
+                    $icono_archivo = '<img width="50px" height="50px" src="imagenes/iconos/word.png">';
                 }
                 if($extension == "xls" || $extension == "xlsx"){
-                    $icono_archivo = '<img width="100px" height="100px" src="imagenes/iconos/excel.png"';
+                    $icono_archivo = '<img width="50px" height="50px" src="imagenes/iconos/excel.png"';
                 }                
 
                 $tabla_documentos .= ' <div class="col-md-3">
@@ -69,8 +69,8 @@ $tabla_documentos = "
       <a href="#">
           <ul class="mailbox-attachments clearfix">
               <li>
-                  <span class="mailbox-attachment-icon"><img data-toggle="modal" data-target="#exampleModal4_editar_entrante"  width="100px" height="100px" src="imagenes/iconos/nuevo.png"></span>
-                  <div ><center>AÑADIR DOCUMENTO</center>
+                  <span class="mailbox-attachment-icon"><img data-toggle="modal" data-target="#exampleModal4_editar_entrante"  width="50px" height="50px" src="imagenes/iconos/nuevo.png"></span>
+                  <div ><center>Adjuntar Documento</center>
                     <span class="mailbox-attachment-size">
                   </div>
               </li>

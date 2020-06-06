@@ -337,11 +337,12 @@ function enviar_bandeja_entrante2() {
                 <thead>
                         <tr>
                             <th style='background-color:lavender'></th>
-                            <th style='background-color:lavender'>No. Radicado</th>
+                            <th style='background-color:lavender'>No. de Radicado</th>
+                            <th style='background-color:lavender'>Fecha de Radicado</th>
+                            <th style='background-color:lavender'>Tipo de Radicado</th>
                             <th style='background-color:lavender; '>Remitente</th>
+                            <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
-                            <th style='background-color:lavender; '>¿Tiene Anexos?</th>
-                            <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -350,9 +351,9 @@ function enviar_bandeja_entrante2() {
 
                   <?php
 
-$fechas = new Fechas();
-                    foreach($entrantes as $entrante){
+                    $fechas = new Fechas();
 
+                    foreach($entrantes as $entrante){
 
                         $id_check = "check".$entrante['id_entrante'];                        
                   
@@ -366,7 +367,7 @@ $fechas = new Fechas();
                           $dia = "Ayer";
                         }
                         if($dias > 1){
-                          $dia = "Hace ".$dias." días";
+                          $dia = "Registrado Hace ".$dias." días";
                         }
 
                   ?>
@@ -384,21 +385,34 @@ $fechas = new Fechas();
                        
                     </td>
 
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['fecharadicado_entrante'] ?>
+                    
+                    </td>
+
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['nombre_tiporadicado'] ?>
+                    
+                    </td>
+
                     <td class="mailbox-name">
                        
                             <?php echo $entrante['nombre_tercero'] ?>
                       
                     </td>
+
+                    <td class="mailbox-name">
+                        
+                        <?php echo $entrante['nombres_empleado']." ".$entrante['apellidos_empleado']; ?>
+                    
+                </td>
+
                     <td class="mailbox-subject">
-                        <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
+                        <?php echo substr($entrante['asunto_entrante'], 0, 70)."..."; ?>
                     </td>
 
-
-                    <td class="mailbox-attachment">
-                        <?php echo $entrante['nombre_estado2']; ?>
-                    </td>
-
-                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
 
 
                     <td class="mailbox-date"><?php echo $dia; ?></td>

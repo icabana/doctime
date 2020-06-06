@@ -419,8 +419,6 @@ function enviar_bandeja_saliente2() {
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
-                            <th style='background-color:lavender; '>¿Tiene Anexos?</th>
-                            <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
@@ -445,7 +443,7 @@ function enviar_bandeja_saliente2() {
                           $dia = "Ayer";
                         }
                         if($dias > 1){
-                          $dia = "Hace ".$dias." días";
+                          $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
                   ?>
@@ -476,15 +474,10 @@ function enviar_bandeja_saliente2() {
                     </td>
 
                     <td class="mailbox-subject">
-                        <?php echo substr($saliente['asunto_saliente'], 0, 35)."..."; ?>
+                        <?php echo substr($saliente['asunto_saliente'], 0, 75)."..."; ?>
                     </td>
 
-                    <td class="mailbox-attachment">
-                        <?php echo $saliente['nombre_estado2']; ?>
-                    </td>
-
-                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-
+                  
 
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 

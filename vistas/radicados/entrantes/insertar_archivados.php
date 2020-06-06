@@ -157,62 +157,85 @@ $froms = new Formularios();
 
                 <div class="tab-content">
                   <div style="padding: 20px;" class="tab-pane active" id="tab_1">
+
+
                     <div class="row">
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
 
                         <label>No. de Radicado<span style="color:red">*</span></label>
                         <input type="text" readonly class="form-control requerido" id="numero_entrante" name="numero_entrante" onkeypress="return no_numeros(event)" value="<?php echo $numero_entrante; ?>">
 
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Fecha Radicado<span style="color:red">*</span></label>
                         <input type="date" class="form-control requerido" id="fecharadicado_entrante" 
                         name="fecharadicado_entrante" value="<?php echo date("Y-m-d"); ?>">
                       </div>
 
-                      <div class="col-md-3">
-                        <label>Tipo de Radicado<span style="color:red">*</span></label>
-                        <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
-                          Crear Nuevo
-                        </a>
-                        <div id="div_tipo_radicado_entrante">
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $tiposradicado,
-                          'nombre_tiporadicado',
-                          'id_tiporadicado',
-                          'tiporadicado_entrante',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
-                      </div>
-
-
-                      <div class="col-md-3">
-                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
-                       
-                          <?php
-                          echo $froms->Lista_Desplegable(
-                             $estados2,
-                            'nombre_estado',
-                            'id_estado',
-                            'tieneanexos_entrante',
-                            '',
-                            '',
-                            ''
-                          );
-                          ?>                   
+                      
+                      <div class="col-md-4">
+                        <label>Fecha Max de Respuesta<span style="color:red">*</span></label>
+                        <input type="date" class="form-control requerido" id="fechamaxima_entrante" name="fechamaxima_entrante">
                       </div>
 
 
                     </div>
 
+
                     <br>
+
+
+
+                    <div class="row">
+
+
+                      <div class="col-md-4">
+                        
+                          <label>Tipo de Radicado<span style="color:red">*</span></label>
+                          <a href="#" data-toggle="modal" data-target="#modal_tipo_radicado">
+                            Crear Nuevo
+                          </a>
+                          <div id="div_tipo_radicado_entrante">
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                            $tiposradicado,
+                            'nombre_tiporadicado',
+                            'id_tiporadicado',
+                            'tiporadicado_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>
+                          </div>
+
+                      </div>
+                      
+
+                      <div class="col-md-4">
+                          <label>Responsable (Funcionario Interno)<span style="color:red">*</span></label>
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                            $empleados,
+                            'nombre_empleado',
+                            'id_empleado',
+                            'responsable_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>
+                      </div>
+
+
+
+                    </div>
+
+
+                    <br>
+                    
 
                     <div class="row">
 
@@ -262,7 +285,7 @@ $froms = new Formularios();
 
                     <div class="row">
 
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <label>Prioridad</label>
                         <?php
                         echo $froms->Lista_Desplegable(
@@ -278,27 +301,23 @@ $froms = new Formularios();
 
                       </div>
 
-
-                      <div class="col-md-3">
-                        <label>Fecha de Respuesta</label>
-                        <input type="date" class="form-control" id="fechamaxima_entrante" name="fechamaxima_entrante">
+                      
+                      <div class="col-md-4">
+                          <label>¿Tiene Anexos?<span style="color:red">*</span></label>
+                       
+                          <?php
+                          echo $froms->Lista_Desplegable(
+                             $estados2,
+                            'nombre_estado',
+                            'id_estado',
+                            'tieneanexos_entrante',
+                            '',
+                            '',
+                            ''
+                          );
+                          ?>                   
                       </div>
 
-
-                      <div class="col-md-3">
-                        <label>Responsable<span style="color:red">*</span></label>
-                        <?php
-                        echo $froms->Lista_Desplegable(
-                          $empleados,
-                          'nombre_empleado',
-                          'id_empleado',
-                          'responsable_entrante',
-                          '',
-                          '',
-                          ''
-                        );
-                        ?>
-                      </div>
 
 
                       <div class="col-md-3">

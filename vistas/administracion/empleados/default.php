@@ -70,9 +70,10 @@
                 <table id="tabla_empleados" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th style='background-color:lavender'>DOCUMENTO</th>
-                            <th style='background-color:lavender'>DEPENDENCIA</th>
-                            <th style='background-color:lavender'>NOMBRE DEL EMPLEADO</th>
+                            <th style='background-color:lavender'>Documento</th>
+                            <th style='background-color:lavender'>Dependencia</th>
+                            <th style='background-color:lavender'>Nombre Completo</th>
+                            <th style='background-color:lavender'>Correo </th>
                             <th style='background-color:lavender; width:15px'></th>
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -86,6 +87,7 @@
                             echo "<td>" . $items['codigo_tipodocumento']." ".$items['documento_empleado'] . "</td>";
                             echo "<td>" . $items['nombre_dependencia'] . "</td>";
                             echo "<td>" . $items['nombres_empleado']."  ".$items['apellidos_empleado'] . "</td>";
+                            echo "<td>" . $items['correo_empleado'] . "</td>";
 
                             echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 
                                     class='fas fa-edit'></i></a></td>";

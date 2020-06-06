@@ -6,6 +6,15 @@
           return 0;
       }
 
+          
+      var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+
+      if (!regex.test($('#correo_empleado').val().trim()) && $('#correo_empleado').val() != "") {    
+          mensaje_alertas("error", "El correo registrado no tiene un formato correcto.", "center");
+          return false;
+      }
+
+
       var datos = $('#formEmpleados').serialize();
 
       ejecutarAccion(
@@ -24,7 +33,7 @@
         mensaje_alertas("success", "Empleado Editado Exitosamente", "center");
         cargar_empleados();
       } else {
-        mensaje_alertas("error", "El Documento o Correo ya se encuentra registrado", "center");
+        mensaje_alertas("error", "El Documento o Correo ya se encuentra registrado en el Sistema", "center");
       }
 
   }

@@ -285,7 +285,7 @@ class EntrantesControlador extends ControllerBase {
         
         $this->model->cargar("EntrantesModel.php", "radicados");
         $EntrantesModel = new EntrantesModel();
-        $entrantes = $EntrantesModel->getTodosPorCarpeta($_POST['id_carpeta']);
+        $entrantes = $EntrantesModel->getTodosPorCarpetaPorUsuario($_POST['id_carpeta']);
 
         $this->model->cargar("CarpetasModel.php", "radicados");
         $CarpetasModel = new CarpetasModel();
