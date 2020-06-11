@@ -455,7 +455,7 @@ function enviar_bandeja_entrante2() {
                           $dia = "Ayer";
                         }
                         if($dias > 1){
-                          $dia = "Hace ".$dias." días";
+                          $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
                   ?>

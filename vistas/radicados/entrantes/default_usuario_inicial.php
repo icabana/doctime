@@ -328,6 +328,7 @@ $(document).ready(function() {
                   <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
                   <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
+                  <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
                 </div>
                
                 <!-- /.btn-group -->
@@ -342,12 +343,13 @@ $(document).ready(function() {
                 <table id="tabla_entrantes" class="table table-hover table-striped">
                 <thead>
                         <tr>
-                            <th style='background-color:lavender'></th>
-                            <th style='background-color:lavender'>No. Radicado</th>
+                        <th style='background-color:lavender'></th>
+                            <th style='background-color:lavender'>No. de Radicado</th>
+                            <th style='background-color:lavender'>Fecha de Radicado</th>
+                            <th style='background-color:lavender'>Tipo de Radicado</th>
                             <th style='background-color:lavender; '>Remitente</th>
+                            <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
-                            <th style='background-color:lavender; '>¿Tiene Anexos?</th>
-                            <th style='background-color:lavender; '></th>
                             <th style='background-color:lavender; '></th>                            
                             <th style='background-color:lavender; width:15px'></th>
                         </tr>
@@ -356,7 +358,8 @@ $(document).ready(function() {
 
                   <?php
 
-$fechas = new Fechas();
+                    $fechas = new Fechas();
+
                     foreach($entrantes as $entrante){
 
 
@@ -372,11 +375,11 @@ $fechas = new Fechas();
                           $dia = "Ayer";
                         }
                         if($dias > 1){
-                          $dia = "Hace ".$dias." días";
+                          $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
                   ?>
-                  <tr>
+                   <tr>
                     <td>
                       <div class="icheck-primary">
                         <input class="check" name="check_radicados" type="checkbox" value="<?php echo $entrante['id_entrante']; ?>" id="check<?php echo $id_check; ?>">
@@ -390,21 +393,34 @@ $fechas = new Fechas();
                        
                     </td>
 
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['fecharadicado_entrante'] ?>
+                    
+                    </td>
+
+                    <td class="mailbox-star">
+                        
+                        <?php echo $entrante['nombre_tiporadicado'] ?>
+                    
+                    </td>
+
                     <td class="mailbox-name">
                        
                             <?php echo $entrante['nombre_tercero'] ?>
                       
                     </td>
-                    <td class="mailbox-subject">
-                        <?php echo substr($entrante['asunto_entrante'], 0, 35)."..."; ?>
-                    </td>
 
-
-                    <td class="mailbox-attachment">
-                        <?php echo $entrante['nombre_estado2']; ?>
-                    </td>
+                    <td class="mailbox-name">
+                        
+                        <?php echo $entrante['nombres_empleado']." ".$entrante['apellidos_empleado']; ?>
                     
-                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                </td>
+
+                    <td class="mailbox-subject">
+                        <?php echo substr($entrante['asunto_entrante'], 0, 70)."..."; ?>
+                    </td>
+
 
 
                     <td class="mailbox-date"><?php echo $dia; ?></td>
@@ -541,5 +557,33 @@ $fechas = new Fechas();
     </div>
 
 
+  </div>
+</div>
+
+
+
+
+<!-- Modal 7-->
+<div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Estado:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-12">
+          <label>Seleccionar Estado: </label>
+          <select class="form-control"  id='estado_entrante' name='estado_entrante'>
+            <option value='2' >FINALIZADO</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">        
+        <button onclick="cambiar_estado0();" type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -769,6 +769,13 @@
                 </a>
               </li>
              
+               <li class="nav-item">
+                <a href="#" onclick="cargar_entrantes_usuario_finalizados();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Radicados Finalizados</p>
+                </a>
+              </li>
+             
          
               <?php
                 foreach($carpetas as $carpeta){

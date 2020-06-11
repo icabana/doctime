@@ -13,7 +13,7 @@
         abrirVentanaContenedor(
             'radicados',
             'Entrantes',
-            'editarUsuario',
+            'editarUsuarioFinalizados',
             'id_entrante=' + id_entrante,
             ''
         );
@@ -370,17 +370,14 @@ function enviar_bandeja_entrante2() {
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i onclick="seleccionar_check(); return false;" class="far fa-square"></i>
                 </button>
                 <div class="btn-group ">
-                   <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                  <button title="Cambiar Carpeta"  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
                   <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
                   <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
-                  <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
-                  <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
+                  <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>                  
                 </div>
-               
-                <!-- /.btn-group -->
+
                 <button title="Actualizar Lista de Radicados" onclick="cargar_entrantes_usuario();" type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                 
-                <!-- /.float-right -->
               </div>
 
 

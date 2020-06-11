@@ -343,7 +343,7 @@ $froms = new Formularios();
           <button title="Enviar a Bandeja de Entrada" onclick="enviar_bandeja_entrante_editar();"  type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>        
           <button title="Cambiar de responsable"  data-toggle="modal" data-target="#exampleModal2_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-user"></i></button>
           <button title="Agregar Bitacora" data-toggle="modal" data-target="#exampleModal3_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-plus"></i></button>
-          <button title="Cambiar Estado" data-toggle="modal" data-target="#exampleModal7_editar" type="button" class="btn btn-default btn-sm"><i class="fas fa-tags"></i></button>
+        
         </div>
 
 
