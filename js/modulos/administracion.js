@@ -30,6 +30,24 @@ function cargar_empleados(){
         
 }
 
+
+function cargar_empleados_usuario(){
+
+    $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
+    $('.ui-widget').remove();
+    $('.elfinder-quicklook').remove();
+    $('.ui-draggable').remove();
+    $('.ui-resizable').remove();
+
+    limpiar_cuerpo();
+    
+    abrirVentanaContenedorTabla(
+        'tabla_empleados',
+        'administracion', 'Empleados', 'index_usuario', '');    
+        
+}
+
+
 function cargar_terceros(){
 
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();

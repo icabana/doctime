@@ -797,6 +797,13 @@
                   <p>Nueva Carpeta</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="#" onclick="cargar_empleados_usuario();" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mi Informaci&oacute;n</p>
+                </a>
+              </li>
          
 
 

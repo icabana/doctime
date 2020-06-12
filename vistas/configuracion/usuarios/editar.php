@@ -61,7 +61,7 @@ $froms = new Formularios();
                   <label>Nick<span style="color:red">*</span></label>
 
                   <input type="text" class="form-control requerido" id="nick_usuario" name="nick_usuario" 
-                  value="<?php echo $datos['nick_usuario']; ?>">
+                  value="<?php echo $datos['nick_usuario']; ?>" readonly>
 
                 </div>
 

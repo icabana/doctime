@@ -1043,6 +1043,10 @@ class EntrantesControlador extends ControllerBase {
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
 
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
+
 
         include 'vistas/radicados/entrantes/editar_usuario.php';
                
@@ -1089,6 +1093,10 @@ class EntrantesControlador extends ControllerBase {
         $this->model->cargar("EstadosradicadoModel.php", "configuracion");
         $EstadosradicadoModel = new EstadosradicadoModel();
         $estadosradicado = $EstadosradicadoModel->getTodos();
+
+        $this->model->cargar("Estados2Model.php", "configuracion");
+        $Estados2Model = new Estados2Model();
+        $estados2 = $Estados2Model->getTodos();
 
 
         include 'vistas/radicados/entrantes/editar_usuario_finalizados.php';
@@ -1218,39 +1226,6 @@ class EntrantesControlador extends ControllerBase {
                 $resp,
                 "Registró el Radicado No. ".$numero_entrante
             );    
-
-            $radicado = $EntrantesModel->getDatos($resp);
-
-            
-            $mensaje = "Se le ha asignado un nuevo radicado, el cual se detalla a continuación: <br><br>";             
-
-
-
-            $mensaje .= "Radicado No.: ". $radicado['numero_radicado']."<br>";
-            $mensaje .= "Remitente: ".$radicado['nombre_tercero']."<br>";
-            $mensaje .= "Destinatario: ". $radicado['nombres_empleado']." ".$radicado['apellidos_empleado']."<br>";
-         
-            
-            $mensaje .= "<br><br><br><br>"; 
-
-          
-
-            
-            $mensaje .= "<center>Sistema Estratégico de Transporte Público de Santa Marta S.A.S.</center><br>";      
-            $mensaje .= "<center>PBX. (57-5) 4317777 </center><br>";      
-            $mensaje .= "<center>Cl. 24 No. 3-99, Edificio Banco de Bogotá – Oficina 1202</center><br>";      
-            $mensaje .= "<center>www.setpsantamarta.gov.co</center><br>";    
-
-
-
-            $correo1 = "icabana@solati.com.co";
-            $nombre1 = "Ismael";
-
-
-
-            //echo $this->EnviarCorreo($mensaje, $asunto, $correo1, $nombre1);
-            
-  
 
             echo $resp;
 
@@ -1431,11 +1406,11 @@ class EntrantesControlador extends ControllerBase {
             
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $EntrantesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Movió el radicado de carpeta"
                     ); 
                 }
@@ -1461,11 +1436,11 @@ class EntrantesControlador extends ControllerBase {
                    
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $EntrantesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Se modificó el responsable del Radicado"
                     ); 
                 }
@@ -1491,11 +1466,11 @@ class EntrantesControlador extends ControllerBase {
                    
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $EntrantesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Se modificó el estado del Radicado"
                     ); 
                 }
@@ -1544,11 +1519,11 @@ class EntrantesControlador extends ControllerBase {
                    
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
 
-            if($array[0] != 0){
+            if($valor != 0){
                 $EntrantesModel->insertar_trazabilidad(
-                    $array[0],
+                    $valor,
                     "Se modificó el estado del Radicado"
                 ); 
             }
@@ -1567,12 +1542,12 @@ class EntrantesControlador extends ControllerBase {
         
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
     
-            if($array[0] != 0){
+            if($valor != 0){
 
-                $EntrantesModel->insertar_trazabilidad(
-                    $array[0],
+                echo $EntrantesModel->insertar_trazabilidad(
+                    $valor,
                     $_POST["bitacora_entrante"]
                 ); 
                 
@@ -1605,12 +1580,12 @@ class EntrantesControlador extends ControllerBase {
         
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
     
-            if($array[0] != 0){
+            if($valor != 0){
 
                 $EntrantesModel->insertar_trazabilidad(
-                    $array[0],
+                    $valor,
                     "Envió el radicado nuevamente a la Bandeja de Entrada"
                 ); 
                 

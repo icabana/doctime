@@ -849,19 +849,10 @@ class EntrantesModel extends ModelBase {
                     trazabilidad_entrantes.usuario_trazabilidad,
                     trazabilidad_entrantes.fecha_trazabilidad,
 
-                    empleados.id_empleado, 
-                    empleados.documento_empleado, 
-                    empleados.tipodocumento_empleado, 
-                    empleados.nombres_empleado, 
-                    empleados.apellidos_empleado, 
-                    empleados.telefono_empleado, 
-                    empleados.celular_empleado, 
-                    empleados.correo_empleado, 
-                    empleados.direccion_empleado, 
-                    empleados.ciudad_empleado
+                    usuarios.nick_usuario
                 
                     from trazabilidad_entrantes
-                            left join empleados ON trazabilidad_entrantes.usuario_trazabilidad = empleados.id_empleado
+                            left join usuarios ON trazabilidad_entrantes.usuario_trazabilidad = usuarios.id_usuario
                             
                     where trazabilidad_entrantes.radicado_trazabilidad = '".$radicado_trazabilidad."'
                     
@@ -1478,6 +1469,9 @@ return $this->modificarRegistros($query);
             $accion_trazabilidad
     ){
 
+        $usuario = $_SESSION['id_usuario'];
+        $fecha_actual = date('Y-m-d H:i:s');
+
         $query = "INSERT INTO trazabilidad_entrantes (
                 radicado_trazabilidad,
                 accion_trazabilidad,
@@ -1487,11 +1481,11 @@ return $this->modificarRegistros($query);
             VALUES(
                 '".$radicado_trazabilidad."',
                 '".$accion_trazabilidad."',
-                '".date('Y-m-d H:i:s')."',
-                '".$_SESSION['id_empleado']."'
+                '".$fecha_actual."',
+                '".$usuario."'
             );";
 
-        return $this->crear_ultimo_id($query);
+           return $this->crear_ultimo_id($query);
 
     }
 

@@ -31,7 +31,7 @@
 
       if (data == 1) {
         mensaje_alertas("success", "Empleado Editado Exitosamente", "center");
-        cargar_empleados();
+        cargar_empleados_usuario();
       } else {
         mensaje_alertas("error", "El Documento o Correo ya se encuentra registrado en el Sistema", "center");
       }

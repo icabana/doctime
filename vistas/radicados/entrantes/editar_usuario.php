@@ -261,7 +261,7 @@ function cambiar_estado2_editar(data) {
       'Entrantes',
       'nueva',
       'bitacora_entrante_editar=' + $("#bitacora_entrante_editar").val() + '&id_entrante=' + $("#id_entrante").val(),
-      'nueva_bitacora_editar2(data)'
+      ' console.log(data); nueva_bitacora_editar2(data)'
     );
 
   }

@@ -595,11 +595,11 @@ class SalientesControlador extends ControllerBase {
             
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $SalientesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Movió el radicado de carpeta"
                     ); 
                 }
@@ -625,11 +625,11 @@ class SalientesControlador extends ControllerBase {
                    
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $SalientesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Se modificó el responsable del Radicado"
                     ); 
                 }
@@ -655,11 +655,11 @@ class SalientesControlador extends ControllerBase {
                    
             $array_radicados = explode(",", $_POST['radicados']);
 
-            foreach($array_radicados as $array){
+            foreach($array_radicados as $valor){
 
-                if($array[0] != 0){
+                if($valor != 0){
                     $SalientesModel->insertar_trazabilidad(
-                        $array[0],
+                        $valor,
                         "Se modificó el estado del Radicado"
                     ); 
                 }
@@ -685,11 +685,11 @@ class SalientesControlador extends ControllerBase {
                    
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
 
-            if($array[0] != 0){
+            if($valor != 0){
                 $SalientesModel->insertar_trazabilidad(
-                    $array[0],
+                    $valor,
                     "Se modificó el estado del Radicado"
                 ); 
             }
@@ -708,12 +708,12 @@ class SalientesControlador extends ControllerBase {
         
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
     
-            if($array[0] != 0){
+            if($valor != 0){
 
                 $SalientesModel->insertar_trazabilidad(
-                    $array[0],
+                    $valor,
                     $_POST["bitacora_saliente"]
                 ); 
                 
@@ -746,12 +746,12 @@ class SalientesControlador extends ControllerBase {
         
         $array_radicados = explode(",", $_POST['radicados']);
 
-        foreach($array_radicados as $array){
+        foreach($array_radicados as $valor){
     
-            if($array[0] != 0){
+            if($valor != 0){
 
                 $SalientesModel->insertar_trazabilidad(
-                    $array[0],
+                    $valor,
                     "Envió el radicado nuevamente a la Bandeja de Entrada"
                 ); 
                 

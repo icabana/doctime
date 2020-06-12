@@ -242,7 +242,7 @@ function cambiar_estado2(data) {
       );
 
       radicados += '0';
-
+      
         ejecutarAccion(
           'radicados',
           'Entrantes',
@@ -453,8 +453,7 @@ function enviar_bandeja_entrante2() {
                             $color_fondo = "  style = 'background-color: #FDFB85'";
                           }
                         }
-                        if($dias_alerta )
-
+                      
                         $id_check = "check".$entrante['id_entrante'];                        
                   
                         
@@ -643,7 +642,7 @@ function enviar_bandeja_entrante2() {
       <div class="modal-body">
       <div class="col-md-12">
           <label>Agregar Bitacora</label>
-          <textarea class="form-control" id="bitacora_entrante" cols="32"  name="bitacora_entrante" rows="4"></textarea>
+          <textarea class="form-control" id="bitacora_entrante" cols="55"  name="bitacora_entrante" rows="4"></textarea>
         </div>
       </div>
       <div class="modal-footer">        

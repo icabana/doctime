@@ -792,7 +792,6 @@ $froms = new Formularios();
           <div class="form-group">
           <label for="exampleInputFile">Subir archivo</label>
             <input type="file"  id="fileToUploadEntradas" onchange="upload_entradas();">
-          <p class="help-block">Seleccion un archivo.</p>
           </div>
           <div class="upload-msg"></div><!--Para mostrar la respuesta del archivo llamado via ajax -->
         

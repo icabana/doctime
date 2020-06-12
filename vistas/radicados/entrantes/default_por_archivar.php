@@ -15,10 +15,6 @@ mensaje_alertas("error", "Debe seleccionar algún registro");
 return 0;
 }
 
-    if (!validar_requeridos_archivar()) {
-      return 0;
-    }
-
    
 
 archivar_radicado();

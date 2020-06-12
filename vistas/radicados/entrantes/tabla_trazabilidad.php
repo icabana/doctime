@@ -16,10 +16,12 @@ echo '<table id="tabla_trazabilidad" class="table table-hover table-striped">
                           $cont = 1;
                           foreach ($trazabilidad as $NM => $items) {
 
+                            $nombre = $items["nick_usuario"];
+
                             echo "<tr>";
 
                             echo "<td>" . $cont . "</td>";
-                            echo "<td>" . strtolower($items["nombres_empleado"] . " " . $items["apellidos_empleado"]) . "</td>";
+                            echo "<td>" . strtolower($nombre) . "</td>";
                             echo "<td>" . strtolower($items["accion_trazabilidad"]) . "</td>";
                             echo "<td>" . strtolower($items["fecha_trazabilidad"]) . "</td>";
 

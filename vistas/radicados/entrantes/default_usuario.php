@@ -219,7 +219,7 @@
               radicados += $(this).val()+",";
           }
       );
-
+ 
       radicados += '0';
 
         ejecutarAccion(
@@ -392,7 +392,7 @@ function enviar_bandeja_entrante2() {
                             <th style='background-color:lavender'></th>
                             <th style='background-color:lavender'>No. de Radicado</th>
                             <th style='background-color:lavender'>Fecha de Radicado</th>
-                            <th style='background-color:lavender'>Tipo de Radicado</th>
+                            <th style='background-color:lavender'>Fecha Max Respuesta</th>
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
@@ -413,6 +413,15 @@ function enviar_bandeja_entrante2() {
                         $fecha_actual = date("Y-m-d");
                         $dias = $fechas->diasEntreFechas($fecha_actual, $entrante['fecharadicado_entrante']);
 
+                        $color_fondo = "";
+                        if($fecha_actual > $entrante['fechamaxima_entrante']){
+                          $color_fondo = " style = 'background-color: #F65A5A' ";
+                        }else{
+                          if( $dias <= 5 ){
+                            $color_fondo = "  style = 'background-color: #FDFB85'";
+                          }
+                        }
+
                         if($dias == 0){
                            $dia = "Hoy";
                         }
@@ -423,8 +432,9 @@ function enviar_bandeja_entrante2() {
                           $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
+                        echo "<tr  ".$color_fondo.">";
                   ?>
-                  <tr>
+                  
                     <td>
                       <div class="icheck-primary">
                         <input class="check" name="check_radicados" type="checkbox" value="<?php echo $entrante['id_entrante']; ?>" id="check<?php echo $id_check; ?>">
@@ -446,7 +456,7 @@ function enviar_bandeja_entrante2() {
 
                     <td class="mailbox-star">
                         
-                        <?php echo $entrante['nombre_tiporadicado'] ?>
+                      <?php echo "<b>".$entrante['fechamaxima_entrante']."</b>" ?>
                     
                     </td>
 

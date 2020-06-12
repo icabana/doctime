@@ -134,7 +134,7 @@
     } 
 
 
-    function nueva_bitacora0() {
+      function nueva_bitacora0() {
 
         var cont = 0;
 
@@ -151,26 +151,26 @@
 
         nueva_bitacora();
 
-    }
+      }
 
-    function nueva_bitacora() {
+      function nueva_bitacora() {
 
-   
-
-      if($("#bitacora_entrante").val() == ""){
+        if($("#bitacora_entrante").val() == ""){
         mensaje_alertas("error", "Debe escribir alguna bitacora", "center");
         return 0;
-      }
-      $('#exampleModal3').modal('hide');
-      var radicados = "";
+        }
 
-      $("input[name=check_radicados]:checked").each(
+        $('#exampleModal3').modal('hide');
+
+        var radicados = "";
+
+        $("input[name=check_radicados]:checked").each(
           function(){
               radicados += $(this).val()+",";
           }
-      );
+        );
 
-      radicados += '0';
+        radicados += '0';
 
         ejecutarAccion(
           'radicados',
@@ -180,14 +180,13 @@
           'nueva_bitacora2(data)'
         );
 
-    }
+      }
 
-    function nueva_bitacora2(data) {
+      function nueva_bitacora2(data) {
 
-       mensaje_alertas("success", "Cambio de Carpeta Exitoso", "center");
-       
-    } 
+      mensaje_alertas("success", "Bitacora registrada Exitosamente", "center");       
 
+      } 
 
 
     function seleccionar_check() {
@@ -269,6 +268,60 @@
 
   }
 
+  
+  function cambiar_estado0() {
+
+      var cont = 0;
+
+      $("input[name=check_radicados]:checked").each(
+          function(){
+              cont++;
+      }
+      );
+
+      if(cont == 0){
+      mensaje_alertas("error", "Debe seleccionar algún registro");
+      return 0;
+      }
+
+      cambiar_estado();
+
+      }
+
+      function cambiar_estado() {
+
+          $('#exampleModal7').modal('hide');
+
+          var radicados = "";
+
+          $("input[name=check_radicados]:checked").each(
+          function(){
+            radicados += $(this).val()+",";
+          }
+          );
+
+          radicados += '0';
+
+          ejecutarAccion(
+            'radicados',
+            'Entrantes',
+            'cambiarestado_default',
+            'estado_entrante='+$("#estado_entrante").val()+'&radicados='+radicados,
+            'cambiar_estado2(data)'
+          );
+
+      }
+
+      function cambiar_estado2(data) {
+
+        cargar_entrantes_usuario();
+        mensaje_alertas("success", "Ajuste Exitoso", "center");
+
+
+      } 
+
+
+
 function enviar_bandeja_entrante2() {
 
     var radicados = "";
@@ -346,7 +399,7 @@ $(document).ready(function() {
                         <th style='background-color:lavender'></th>
                             <th style='background-color:lavender'>No. de Radicado</th>
                             <th style='background-color:lavender'>Fecha de Radicado</th>
-                            <th style='background-color:lavender'>Tipo de Radicado</th>
+                            <th style='background-color:lavender'>Fecha Max Respuesta</th>
                             <th style='background-color:lavender; '>Remitente</th>
                             <th style='background-color:lavender; '>Destinatario</th>
                             <th style='background-color:lavender; '>Asunto</th>
@@ -368,6 +421,15 @@ $(document).ready(function() {
                         $fecha_actual = date("Y-m-d");
                         $dias = $fechas->diasEntreFechas($fecha_actual, $entrante['fecharadicado_entrante']);
 
+                        $color_fondo = "";
+                        if($fecha_actual > $entrante['fechamaxima_entrante']){
+                          $color_fondo = " style = 'background-color: #F65A5A' ";
+                        }else{
+                          if( $dias <= 5 ){
+                            $color_fondo = "  style = 'background-color: #FDFB85'";
+                          }
+                        }
+
                         if($dias == 0){
                            $dia = "Hoy";
                         }
@@ -378,8 +440,9 @@ $(document).ready(function() {
                           $dia = "Hace ".number_format($dias, 0, ',', '.')." días";
                         }
 
+                        echo "<tr  ".$color_fondo.">";
                   ?>
-                   <tr>
+              
                     <td>
                       <div class="icheck-primary">
                         <input class="check" name="check_radicados" type="checkbox" value="<?php echo $entrante['id_entrante']; ?>" id="check<?php echo $id_check; ?>">
@@ -401,7 +464,7 @@ $(document).ready(function() {
 
                     <td class="mailbox-star">
                         
-                        <?php echo $entrante['nombre_tiporadicado'] ?>
+                      <?php echo "<b>".$entrante['fechamaxima_entrante']."</b>" ?>
                     
                     </td>
 
