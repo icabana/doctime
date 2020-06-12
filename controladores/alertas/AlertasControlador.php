@@ -4,7 +4,7 @@ class AlertasControlador extends ControllerBase {
 
 
     public function radicadosxFinalizar() {
-        
+        /*
         $this->model->cargar("AlertasModel.php", "alertas");
         $AlertasModel = new AlertasModel();
 
@@ -55,7 +55,7 @@ class AlertasControlador extends ControllerBase {
             $cont = 2;
 
         }
-                        
+                 */       
     }    
 
 
@@ -65,7 +65,10 @@ class AlertasControlador extends ControllerBase {
         $this->model->cargar("AlertasModel.php", "alertas");
         $AlertasModel = new AlertasModel();
 
-        $empleado = $AlertasModel->getPorFinalizarPorEmpleado($_POST['id_empleado']);
+        $this->model->cargar("EmpleadosModel.php", "administracion");
+        $EmpleadosModel = new EmpleadosModel();
+
+        $empleado = $EmpleadosModel->getDatos($_POST['id_empleado']);
 
         $fechas = new Fechas();
         $correo = new Correos();
