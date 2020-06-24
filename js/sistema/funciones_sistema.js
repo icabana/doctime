@@ -33,6 +33,49 @@ function validar_requeridos() {
     return 1;
 }
 
+
+function validar_requeridos_modal_remitente() {
+
+    var error = 0;
+    $('.requerido_modal_remitente').each(function (i, elem) {        
+        if ($(elem).val() == '') {
+            $(elem).css({ 'border': '1px solid red' });
+            error++;
+        } else {
+            $(elem).css({ 'border': '0px' });
+        }
+    });
+    
+    if (error > 0) {
+        mensaje_alertas("error", "Debe rellenar los campos requeridos", "center");
+        return false;
+    }
+
+    return 1;
+}
+
+
+
+function validar_requeridos_modal_destinatario() {
+
+    var error = 0;
+    $('.requerido_modal_destinatario').each(function (i, elem) {        
+        if ($(elem).val() == '') {
+            $(elem).css({ 'border': '1px solid red' });
+            error++;
+        } else {
+            $(elem).css({ 'border': '0px' });
+        }
+    });
+    
+    if (error > 0) {
+        mensaje_alertas("error", "Debe rellenar los campos requeridos", "center");
+        return false;
+    }
+
+    return 1;
+}
+
 function login_inicial() {
 
     if ($("#nick").val() == "" || $("#password").val() == "") {
