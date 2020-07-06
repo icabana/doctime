@@ -1,5 +1,5 @@
 <?php
-class PdfReporteOrdenMedica extends FPDF{
+class PdfReportesEmpleados extends FPDF{
 
     var $widths;
 
@@ -206,16 +206,22 @@ return $nl;
 	function Header(){
                          
 	    $params = Parametros::singleton();
-	    $this->SetFont('Arial','B',10);
-	 
-                      
-                        
-	   $this->Image('imagenes/logos/logo_salud.jpg',21,9,34,21);
+	    $this->SetFont('Arial','B',10);	 
             
-            //$this->Image('imagenes/iconos/sistema/logo_50.jpg',320,9,17,17);
+            $this->Cell( 0, 7,utf8_decode("SISTEMA ESTRATÉGICO DE TRANSPORTE PÚBLICO"),0,1,'C');    
+            $this->Cell( 0, 7,utf8_decode("SANTA MARTA - MAGDALENA"),0,1,'C');            
+            $this->Cell( 0, 7,utf8_decode("REPORTE DE EMPLEADOS"),0,1,'C');
+                         
+	    	$this->Image('imagenes/logos/logo.jpg',22,13,35,16);           
 	   
 
-         
+            $this->Line(17, 8, 340, 8);
+            $this->Line(17, 32, 340, 32);    
+            
+            $this->Line(17, 8, 17, 32);
+            $this->Line(340, 8, 340, 32);
+             
+            $this->Line(55, 8, 55, 32);
         
             
     $this->Ln();
@@ -223,6 +229,40 @@ return $nl;
     $this->Ln();
 	}
 	
+	function Footer(){
+		$params = Parametros::singleton();
+		
+	  	       $this->SetY(-23);
+$this->SetFont('Arial','I',7);
+
+
+ $this->Cell(0,6, utf8_decode("Equidad para todos. Primero los niños y las niñas."),0,1,'C');
+
+
+$y = $this->GetY();
+
+ $this->line('50', $y, '300', $y);
+
+
+
+
+	    $this->SetFont('Arial','B',7);
+
+            
+            $datos_contacto = utf8_decode("Teléfono: (+57) 5 4317777 - Fax: (+57) 5 4317777 - Dirección: Calle 24 No. 3 - 99 Torre Empresarial 4.24 oficina 1202 Santa Marta - Magdalena");
+            
+            $this->Cell(0,4, $datos_contacto,0,1,'C');
+
+
+	    $this->SetFont('Arial','B',7);
+
+            $datos_contacto2 = utf8_decode("Email: solicitudpqr@setpsantamarta.gov.co - Horario de atención:Lunes a Viernes de 8 a.m. 12 p.m. y 2 p.m a 6 p.m.");
+            
+            $this->Cell(0,4, $datos_contacto2,0,0,'C');
+
+
+	}   
+  	
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
-class PdfReporteEgresos extends FPDF{
+
+class PdfReportesDependencias extends FPDF{
 
     var $widths;
 
@@ -206,17 +207,13 @@ return $nl;
 	function Header(){
                          
 	    $params = Parametros::singleton();
-	    $this->SetFont('Arial','B',10);
-	 
+	    $this->SetFont('Arial','B',10);	 
             
-            $this->Cell( 0, 7,utf8_decode("CORPORACIÓN EDUCATIVA"),0,1,'C');
-    
-            $this->Cell( 0, 7,utf8_decode("ASESORIAS DEL NORTE"),0,1,'C');
-            
-            $this->Cell( 0, 7,utf8_decode("REPORTE DE EGRESOS"),0,1,'C');
-            
+            $this->Cell( 0, 7,utf8_decode("SISTEMA ESTRATÉGICO DE TRANSPORTE PÚBLICO"),0,1,'C');    
+            $this->Cell( 0, 7,utf8_decode("SANTA MARTA - MAGDALENA"),0,1,'C');            
+            $this->Cell( 0, 7,utf8_decode("REPORTE DE TERCEROS"),0,1,'C');
                          
-	    $this->Image('imagenes/logos/logo.jpg',30,9,12,19);
+	    	$this->Image('imagenes/logos/logo.jpg',22,13,35,16);           
 	   
 
             $this->Line(17, 8, 340, 8);
@@ -236,11 +233,11 @@ return $nl;
 	function Footer(){
 		$params = Parametros::singleton();
 		
-	  	       $this->SetY(-18);
+	  	       $this->SetY(-23);
 $this->SetFont('Arial','I',7);
 
 
- $this->Cell(0,4, utf8_decode("Formando la generación para los nuevos tiempos!"),0,1,'C');
+ $this->Cell(0,6, utf8_decode("Equidad para todos. Primero los niños y las niñas."),0,1,'C');
 
 
 $y = $this->GetY();
@@ -253,16 +250,16 @@ $y = $this->GetY();
 	    $this->SetFont('Arial','B',7);
 
             
-             $datos_contacto = utf8_decode("Teléfono: 424 21 31 - Dirección: Cra. 10 No. 7-82 Ciénaga-Magdalena");
+            $datos_contacto = utf8_decode("Teléfono: (+57) 5 4317777 - Fax: (+57) 5 4317777 - Dirección: Calle 24 No. 3 - 99 Torre Empresarial 4.24 oficina 1202 Santa Marta - Magdalena");
             
-            $this->Cell(0,3, $datos_contacto,0,1,'C');
+            $this->Cell(0,4, $datos_contacto,0,1,'C');
 
 
 	    $this->SetFont('Arial','B',7);
 
-            $datos_contacto2 = utf8_decode("Correo electrónico: asenorte@gmail.com - Página Web: www.asenorte.edu.co");
+            $datos_contacto2 = utf8_decode("Email: solicitudpqr@setpsantamarta.gov.co - Horario de atención:Lunes a Viernes de 8 a.m. 12 p.m. y 2 p.m a 6 p.m.");
             
-            $this->Cell(0,3, $datos_contacto2,0,0,'C');
+            $this->Cell(0,4, $datos_contacto2,0,0,'C');
 
 
 	}   

@@ -1,5 +1,5 @@
 <?php
-class PdfReportesSalientes extends FPDF{
+class PdfReporteSalientes extends FPDF{
 
     var $widths;
 

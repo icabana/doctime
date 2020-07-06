@@ -1,6 +1,6 @@
 <?php
        
-    $this->pdf = new PdfReportesEmpleados('L', 'mm', 'legal');
+    $this->pdf = new PdfReportes('L', 'mm', 'legal');
 		
     $this->pdf->SetCreator('ISMAEL CABANA');
     $this->pdf->SetAuthor('ISMAEL CABANA');
