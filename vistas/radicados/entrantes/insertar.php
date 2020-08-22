@@ -219,6 +219,18 @@ $froms = new Formularios();
 
                         
                         <div class="col-md-4">
+                            <label>Medio en que se Recibe<span style="color:red">*</span></label>
+                            
+                            <div id="div_tipo_radicado_entrante">
+                             <select class="form-control requerido" name="medio_entrante" id="medio_entrante">
+                                <option value="Medio Físico">Medio F&iacute;sico</option>
+                                <option value="Correo Electrónico">Correo Electr&oacute;nico</option>
+                             </select>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-md-4">
                           <label>Responsable (Funcionario Interno)<span style="color:red">*</span></label>
                           <?php
                           echo $froms->Lista_Desplegable(

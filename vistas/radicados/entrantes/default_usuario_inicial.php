@@ -393,7 +393,7 @@ $(document).ready(function() {
 
               <br>
               <div class="table-responsive mailbox-messages">
-                <table id="tabla_entrantes" class="table table-hover table-striped">
+                <table id="tabla_entrantes" style="width:100%; font-size:12px" class="table table-hover table-striped">
                 <thead>
                         <tr>
                         <th style='background-color:lavender'></th>

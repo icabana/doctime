@@ -411,7 +411,7 @@ function enviar_bandeja_saliente2() {
 
               <br>
               <div class="table-responsive mailbox-messages">
-                <table id="tabla_salientes" class="table table-hover table-striped">
+                <table id="tabla_salientes" style="width:100%; font-size:12px" class="table table-hover table-striped">
                 <thead>
                         <tr>
                             <th style='background-color:lavender'></th>
@@ -482,13 +482,13 @@ function enviar_bandeja_saliente2() {
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 
                     <?php
-                        echo "<td><a href='#'><i onclick='editar_saliente(" . $saliente['id_saliente'] . ");' 
+                        echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_saliente(" . $saliente['id_saliente'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
                         if($saliente['entrante_saliente'] == '' || $saliente['entrante_saliente'] == '0'){
-                            echo "<td><a href='#' title='Crear Radicado Entrante'><i onclick='nuevo_radicado_entrante(" . $saliente['id_saliente'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' title='Crear Radicado Entrante' onclick='nuevo_radicado_entrante(" . $saliente['id_saliente'] . ");' ><i
                                                 class='fas fa-plus-square'></i></a></td>";
                         }else{
-                          echo "<td><a href='#' title='Ver Radicado Entrante'><i onclick='ver_radicado_entrante(" . $saliente['entrante_saliente'] . ");' 
+                          echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' title='Ver Radicado Entrante' onclick='ver_radicado_entrante(" . $saliente['entrante_saliente'] . ");' ><i
                           class='fas fa-arrow-left'></i></a></td>";
                         }
                       ?>

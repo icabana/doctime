@@ -67,7 +67,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="tabla_empleados" class="table table-bordered table-hover">
+                <table id="tabla_empleados" style="width:100%; font-size:12px" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>Documento</th>
@@ -89,11 +89,13 @@
                             echo "<td>" . $items['nombres_empleado']."  ".$items['apellidos_empleado'] . "</td>";
                             echo "<td>" . $items['correo_empleado'] . "</td>";
 
-                            echo "<td><a href='#'><i onclick='editar_empleado(" . $items['id_empleado'] . ");' 
-                                    class='fas fa-edit'></i></a></td>";
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' 
+                                            onclick='editar_empleado(" . $items['id_empleado'] . ");' >
+                                        <i class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_empleado(" . $items['id_empleado'] . ");' 
-                                    class='fas fa-trash'></i></a></td>";
+                            echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#'
+                                        onclick='eliminar_empleado(" . $items['id_empleado'] . ");' >
+                                    <i class='fas fa-trash'></i></a></td>";
 
                             echo "</tr>";
                         }

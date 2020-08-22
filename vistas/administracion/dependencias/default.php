@@ -69,7 +69,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="tabla_dependencias" class="table table-bordered table-hover">
+            <table id="tabla_dependencias" style="width:100%; font-size:12px" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th style='background-color:lavender'>C&Oacute;DIGO</th>
@@ -89,10 +89,10 @@
                         echo "<td>" . $items['nombre_dependencia'] . "</td>";
                         echo "<td>" . $items['nombre_jefe'] . "</td>";                            
 
-                        echo "<td><a href='#'><i onclick='editar_dependencia(" . $items['id_dependencia'] . ");' 
+                        echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_dependencia(" . $items['id_dependencia'] . ");' ><i
                                 class='fas fa-edit'></i></a></td>";
 
-                        echo "<td><a href='#'><i onclick='eliminar_dependencia(" . $items['id_dependencia'] . ");' 
+                        echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#' onclick='eliminar_dependencia(" . $items['id_dependencia'] . ");' ><i
                                 class='fas fa-trash'></i></a></td>";
 
                         echo "</tr>";

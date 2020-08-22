@@ -63,7 +63,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="tabla_subseries9" class="table table-bordered table-hover">
+                <table id="tabla_subseries9" style="width:100%; font-size:12px" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>NOMBRE DE LA SERIE</th>
@@ -83,10 +83,10 @@
                             echo "<td>" . $items['codigo_subserie'] . "</td>";
                             echo "<td>" . $items['nombre_subserie'] . "</td>";
 
-                            echo "<td><a href='#'><i onclick='editar_subserie(" . $items['id_subserie'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_subserie(" . $items['id_subserie'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_subserie(" . $items['id_subserie'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#' onclick='eliminar_subserie(" . $items['id_subserie'] . ");' ><i
                                     class='fas fa-trash'></i></a></td>";
 
                             echo "</tr>";

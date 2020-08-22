@@ -1,5 +1,7 @@
 function cargar_archivar(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -16,6 +18,8 @@ function cargar_archivar(){
 
 function ver_archivados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -32,6 +36,8 @@ function ver_archivados(){
 
 function cargar_archivadores(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -50,6 +56,8 @@ function cargar_archivadores(){
 
 function cargar_unidades(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();

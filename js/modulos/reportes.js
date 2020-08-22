@@ -1,5 +1,7 @@
 function cargar_reporte_entrantes(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
   $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
   $('.ui-widget').remove();
   $('.elfinder-quicklook').remove();
@@ -16,6 +18,8 @@ function cargar_reporte_entrantes(){
 
 function cargar_reporte_salientes(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
   $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
   $('.ui-widget').remove();
   $('.elfinder-quicklook').remove();
@@ -34,6 +38,8 @@ function cargar_reporte_salientes(){
 
 function cargar_reporte_empleados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -52,6 +58,8 @@ function cargar_reporte_empleados(){
 
 function cargar_reporte_terceros(){
     
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -69,6 +77,8 @@ function cargar_reporte_terceros(){
 
 
 function cargar_reporte_dependencias(){
+    
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
     
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();

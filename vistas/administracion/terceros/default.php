@@ -66,7 +66,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="tabla_terceros" class="table table-bordered table-hover">
+                <table id="tabla_terceros" style="width:100%; font-size:12px" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th style='background-color:lavender'>Documento</th>
@@ -87,10 +87,10 @@
                             echo "<td>" . $items['direccion_tercero']." ".$items['ciudad_tercero'] . "</td>";
 
 
-                            echo "<td><a href='#'><i onclick='editar_tercero(" . $items['id_tercero'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_tercero(" . $items['id_tercero'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_tercero(" . $items['id_tercero'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#' onclick='eliminar_tercero(" . $items['id_tercero'] . ");' ><i
                                     class='fas fa-trash'></i></a></td>";
 
 

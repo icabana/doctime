@@ -411,7 +411,7 @@ function enviar_bandeja_saliente2() {
 
               <br>
               <div class="table-responsive mailbox-messages">
-                <table id="tabla_salientes" class="table table-hover table-striped">
+                <table id="tabla_salientes" style="width:100%; font-size:12px" class="table table-hover table-striped">
                 <thead>
                         <tr>
                             <th style='background-color:lavender'></th>

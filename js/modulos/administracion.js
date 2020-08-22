@@ -1,5 +1,7 @@
 function cargar_dependencias(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -16,6 +18,8 @@ function cargar_dependencias(){
 
 function cargar_empleados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -33,6 +37,8 @@ function cargar_empleados(){
 
 function cargar_empleados_usuario(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -50,6 +56,8 @@ function cargar_empleados_usuario(){
 
 function cargar_terceros(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -66,6 +74,8 @@ function cargar_terceros(){
 
 function cargar_series(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -82,6 +92,8 @@ function cargar_series(){
 
 function cargar_subseries(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -98,6 +110,8 @@ function cargar_subseries(){
 
 function cargar_tiposdocumentales(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -114,6 +128,8 @@ function cargar_tiposdocumentales(){
 
 function cargar_tiposradicado(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();

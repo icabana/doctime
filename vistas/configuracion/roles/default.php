@@ -81,7 +81,7 @@
                             echo "<td>" . $items['nombre_rol'] . "</td>";
 
 
-                            echo "<td><a href='#'><i onclick='editar_rol(" . $items['id_rol'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_rol(" . $items['id_rol'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
                             echo "</tr>";

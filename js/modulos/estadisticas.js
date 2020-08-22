@@ -1,5 +1,7 @@
 function radicados_responsable(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -17,6 +19,8 @@ function radicados_responsable(){
 
 function radicados_dependencias(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -34,6 +38,8 @@ function radicados_dependencias(){
 
 function radicados_tiporadicado(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();

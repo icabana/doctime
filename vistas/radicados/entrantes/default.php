@@ -420,19 +420,21 @@ function enviar_bandeja_entrante2() {
 
               <br>
               <div class="table-responsive mailbox-messages">
-                <table id="tabla_entrantes" class="table table-hover table-striped">
+                <table id="tabla_entrantes" style="width:100%; font-size:12px" class="table table-hover table-striped">
                 <thead>
                         <tr>
-                            <th style='background-color:lavender'></th>
-                            <th style='background-color:lavender'>No. de Radicado</th>
-                            <th style='background-color:lavender'>Fecha de Radicado</th>
-                            <th style='background-color:lavender'>Fecha Max Respuesta</th>
-                            <th style='background-color:lavender; '>Remitente</th>
-                            <th style='background-color:lavender; '>Destinatario</th>
-                            <th style='background-color:lavender; '>Asunto</th>                          
-                            <th style='background-color:lavender; width:20px'></th>
-                            <th style='background-color:lavender; width:20px'></th>
-                            <th style='background-color:lavender; width:20px'></th>
+                            <th style='background-color:lavender; width:3px'></th>
+                            <th style='background-color:lavender; width:10px'>No. de Radicado</th>
+                            <th style='background-color:lavender; width:10px'>Fecha de Radicado</th>
+                            <th style='background-color:lavender; width:10px'>Fecha Max Respuesta</th>
+                            <th style='background-color:lavender; width:10px'>Tipo de Solicitud</th>
+                            <th style='background-color:lavender; width:10px'>Medio</th>
+                            <th style='background-color:lavender; width:20px; '>Remitente</th>
+                            <th style='background-color:lavender; width:20px; '>Destinatario</th>
+                            <th style='background-color:lavender; width:25px; '>Asunto</th>                          
+                            <th style='background-color:lavender; width:15px'></th>
+                            <th style='background-color:lavender; width:7px'></th>
+                            <th style='background-color:lavender; width:7px'></th>
                         </tr>
                     </thead>
                 <tbody>
@@ -444,7 +446,7 @@ function enviar_bandeja_entrante2() {
                       $fecha_actual = date("Y-m-d");
                       
                         $dias_alerta = $this->fechas->diasEntreFechas($fecha_actual, $entrante['fechamaxima_entrante']);
-
+/*
                         $color_fondo = "";
                         if($fecha_actual > $entrante['fechamaxima_entrante']){
                           $color_fondo = " style = 'background-color: #F65A5A' ";
@@ -453,7 +455,7 @@ function enviar_bandeja_entrante2() {
                             $color_fondo = "  style = 'background-color: #FDFB85'";
                           }
                         }
-                      
+                      */
                         $id_check = "check".$entrante['id_entrante'];                        
                   
                         
@@ -497,6 +499,19 @@ function enviar_bandeja_entrante2() {
                     
                     </td>
 
+                    
+                     <td class="mailbox-name">
+                        
+                            <?php echo $entrante['nombre_tiporadicado']; ?>
+                        
+                    </td>
+
+                     <td class="mailbox-name">
+                        
+                            <?php echo $entrante['medio_entrante']; ?>
+                        
+                    </td>
+
                     <td class="mailbox-name">
                         
                             <?php echo $entrante['nombre_tercero']; ?>
@@ -516,14 +531,14 @@ function enviar_bandeja_entrante2() {
                     <td class="mailbox-date"><?php echo $dia; ?></td>
 
                     <?php
-                        echo "<td><a href='#' title='Editar Radicado'><i onclick='editar_entrante(" . $entrante['id_entrante'] . ");' 
+                        echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' title='Editar Radicado' onclick='editar_entrante(" . $entrante['id_entrante'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
                         if($entrante['saliente_entrante'] == '' || $entrante['saliente_entrante'] == '0'){
-                          echo "<td><a href='#' title='Crear Radicado Saliente'><i onclick='nuevo_radicado_saliente(" . $entrante['id_entrante'] . ");' 
+                          echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' title='Crear Radicado Saliente' onclick='nuevo_radicado_saliente(" . $entrante['id_entrante'] . ");' ><i
                           class='fas fa-plus-square'></i></a></td>";
                         }else{
-                            echo "<td><a href='#' title='Ver Radicado Saliente'><i onclick='ver_radicado_saliente(" . $entrante['saliente_entrante'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' title='Ver Radicado Saliente' onclick='ver_radicado_saliente(" . $entrante['saliente_entrante'] . ");' ><i
                             class='fas fa-arrow-right'></i></a></td>";  
   
                         }

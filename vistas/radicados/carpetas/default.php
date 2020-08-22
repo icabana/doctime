@@ -83,10 +83,10 @@
                             echo "<td>" . $items['nombre_carpeta'] . "</td>";
 
 
-                            echo "<td><a href='#'><i onclick='editar_carpeta(" . $items['id_carpeta'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_carpeta(" . $items['id_carpeta'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_carpeta(" . $items['id_carpeta'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#' onclick='eliminar_carpeta(" . $items['id_carpeta'] . ");' ><i
                                     class='fas fa-trash'></i></a></td>";
 
 

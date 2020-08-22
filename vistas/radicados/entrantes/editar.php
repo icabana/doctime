@@ -19,7 +19,7 @@
 
   function editar_entrante2(data) {
 
-      mensaje_alertas("success", "Entrante Registrado Exitosamente", "center");
+      mensaje_alertas("success", "Radicado Editado Exitosamente", "center");
       cargar_entrantes();
    
 
@@ -494,6 +494,18 @@ $froms = new Formularios();
                           </div>
 
                       </div>
+
+                       
+                        <div class="col-md-4">
+                            <label>Medio en que se Recibe<span style="color:red">*</span></label>
+                            
+                            <div id="div_tipo_radicado_entrante">
+                             <select class="form-control requerido" name="medio_entrante" id="medio_entrante">
+                             <option <?php if($datos['medio_entrante'] == 'Medio Físico'){ echo "selected"; } ?> value="Medio Físico">Medio F&iacute;sico</option>
+                                <option <?php if($datos['medio_entrante'] == 'Correo Electrónico'){ echo "selected"; } ?> value="Correo Electrónico">Correo Electr&oacute;nico</option>
+                             </select>
+                            </div>
+                        </div>
 
                       
                       <div class="col-md-4">

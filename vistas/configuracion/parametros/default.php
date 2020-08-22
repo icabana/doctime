@@ -84,10 +84,10 @@
 
                             echo "<td>" . $items['valor_parametro'] . "</td>";
 
-                            echo "<td><a href='#'><i onclick='editar_parametro(" . $items['id_parametro'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-success' style='padding:5px 11px 5px 11px' href='#' onclick='editar_parametro(" . $items['id_parametro'] . ");' ><i
                                     class='fas fa-edit'></i></a></td>";
 
-                            echo "<td><a href='#'><i onclick='eliminar_parametro(" . $items['id_parametro'] . ");' 
+                            echo "<td><a class='btn btn-sm btn-danger' style='padding:5px 11px 5px 11px' href='#' onclick='eliminar_parametro(" . $items['id_parametro'] . ");' ><i
                                     class='fas fa-trash'></i></a></td>";
 
 

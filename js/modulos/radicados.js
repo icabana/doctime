@@ -1,5 +1,7 @@
 function cargar_entrantes(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -15,6 +17,8 @@ function cargar_entrantes(){
 }
 function cargar_entrantes_finalizados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -30,6 +34,8 @@ function cargar_entrantes_finalizados(){
 }
 function cargar_entrantes_archivados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -46,6 +52,8 @@ function cargar_entrantes_archivados(){
 
 function cargar_entrantes_usuario(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -62,6 +70,8 @@ function cargar_entrantes_usuario(){
 
 function cargar_entrantes_usuario_finalizados(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -77,6 +87,8 @@ function cargar_entrantes_usuario_finalizados(){
 }
 function cargar_entrantes_carpeta(id_carpeta){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -94,6 +106,8 @@ function cargar_entrantes_carpeta(id_carpeta){
 
 function cargar_entrantes_carpeta_usuarios(id_carpeta){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -114,6 +128,8 @@ function cargar_entrantes_carpeta_usuarios(id_carpeta){
 
 function cargar_salientes(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();
@@ -130,6 +146,8 @@ function cargar_salientes(){
 
 function cargar_carpetas(){
 
+    $('.main-sidebar').removeClass('sidebar-expanded sidebar-focused');
+    
     $('.ui-helper-reset ui-widget elfinder-quicklook ui-draggable ui-resizable').remove();
     $('.ui-widget').remove();
     $('.elfinder-quicklook').remove();

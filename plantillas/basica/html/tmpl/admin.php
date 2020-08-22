@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link REL="Shortcut Icon" href="imagenes/iconos/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>..: DocumenTime :..</title>
+  <title>..: DocTime :..</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -164,16 +164,7 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a class="brand-link">
-      <img src="<?php echo $this->ruta(); ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" 
-      class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">
-        <img src="<?php echo $this->ruta(); ?>dist/img/logo.png"  style="opacity: .8">
-      </span>
-    </a>
-
+  
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
