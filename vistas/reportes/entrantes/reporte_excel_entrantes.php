@@ -35,7 +35,10 @@ $this->excel->setActiveSheetIndex(0)
     ->setCellValue('D1', 'Enviado por')            
     ->setCellValue('E1', 'Destinatario')
     ->setCellValue('F1', 'Asunto')            
-    ->setCellValue('G1', 'Estado');
+    ->setCellValue('G1', 'Tipo de Solicitud')            
+    ->setCellValue('H1', 'Medio')            
+    ->setCellValue('I1', 'Responsable del Radicado')            
+    ->setCellValue('J1', 'Estado');
     
     $columna =2;
             
@@ -50,7 +53,10 @@ $this->excel->setActiveSheetIndex(0)
             ->setCellValue('D'.$columna, $entrante['enviadopor_entrante'])
             ->setCellValue('E'.$columna, $entrante['nombres_empleado']." ".$entrante['apellidos_empleado'])
             ->setCellValue('F'.$columna, $entrante['asunto_entrante'])
-            ->setCellValue('G'.$columna, $entrante['nombre_estado']);
+            ->setCellValue('G'.$columna, $entrante['medio_entrante'])
+            ->setCellValue('H'.$columna, $entrante['nombre_tiporadicado'])
+            ->setCellValue('I'.$columna, $entrante['nombres_responsable']." ".$entrante['apellidos_responsable'])
+            ->setCellValue('J'.$columna, $entrante['nombre_estado']);
 
         $columna ++;
 
@@ -80,7 +86,7 @@ $this->excel->setActiveSheetIndex(0)
         ),
 
     );
-  $this->excel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray_color);
+  $this->excel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($styleArray_color);
 
   $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
   $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
@@ -89,6 +95,9 @@ $this->excel->setActiveSheetIndex(0)
   $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(40);
   $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(50);
   $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
+  $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
+  $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+  $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
     
 
 // Rename worksheet

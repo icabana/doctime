@@ -588,6 +588,9 @@ class EntrantesModel extends ModelBase {
             empleados.direccion_empleado, 
             empleados.ciudad_empleado,
 
+            empleados2.nombres_empleado as nombres_responsable, 
+            empleados2.apellidos_empleado as apellidos_responsable, 
+
             terceros.id_tercero, 
             terceros.documento_tercero, 
             terceros.tipodocumento_tercero, 

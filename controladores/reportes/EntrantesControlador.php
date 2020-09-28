@@ -42,12 +42,12 @@ class EntrantesControlador extends ControllerBase {
         $EntrantesModel = new EntrantesModel();     
         
         $entrantes = $EntrantesModel->getEntrantesPorEstadoyFecha(
-                                            $_POST['estado'], 
-                                            $_POST['fecha1'], 
-                                            $_POST['fecha2'],
-                                            $_POST['remitente'],
-                                            $_POST['destinatario']
-                                        );
+                        $_POST['estado'], 
+                        $_POST['fecha1'], 
+                        $_POST['fecha2'],
+                        $_POST['remitente'],
+                        $_POST['destinatario']
+                    );
       
       
         $nombre_archivo = "entrada_".date('Y-m-d_H-i-s').".xls";        
