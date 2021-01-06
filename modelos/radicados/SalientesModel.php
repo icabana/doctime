@@ -304,6 +304,8 @@ class SalientesModel extends ModelBase {
                         $tieneanexos_saliente
                     ){
                 
+        $agn_saliente = date("Y");
+
         $query = "INSERT INTO salientes (
                                 consecutivo_saliente,
                                 numero_saliente,
@@ -318,7 +320,8 @@ class SalientesModel extends ModelBase {
                                 subserie_saliente,
                                 tipodocumental_saliente,
                                 entrante_saliente,
-                                tieneanexos_saliente
+                                tieneanexos_saliente,
+                                agn_saliente
                             )
                             VALUES(
                                 '".$consecutivo_saliente."',
@@ -334,7 +337,8 @@ class SalientesModel extends ModelBase {
                                 '".$subserie_saliente."',
                                 '".$tipodocumental_saliente."',
                                 '".$entrante_saliente."',
-                                '".$tieneanexos_saliente."'
+                                '".$tieneanexos_saliente."',
+                                '".$agn_saliente."'
                             );";
        
         
@@ -517,7 +521,9 @@ return $this->modificarRegistros($query);
         
         $query = "select max(salientes.consecutivo_saliente) as consecutivo
                 
-                    from salientes";
+                    from salientes
+                    
+                    where agn_saliente = '".date('Y')."'";
         
         $consulta = $this->consulta($query);
 
